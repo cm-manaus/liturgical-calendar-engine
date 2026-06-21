@@ -50,6 +50,8 @@ type LiturgicalResponse struct {
 	RequestedLang    string                      `json:"requested_lang"`
 	ResolvedLang     string                      `json:"resolved_lang"`
 	IncludeBrazilian bool                        `json:"include_brazilian"`
+	SaintName        string                      `json:"saint_name,omitempty"`
+	SaintWikiSlug    string                      `json:"saint_wiki_slug,omitempty"`
 }
 
 var (
@@ -188,6 +190,19 @@ func resolveLiturgicalDay(dateStr, lang, acceptLanguage string, includeBrazilian
 
 	jsonResult := result.ToJSON(translations)
 
+	saintName := ""
+	saintWikiSlug := ""
+	saint, err := drawSaint(targetDate, nil, "")
+	if err == nil {
+		saintName = saint.Name
+		wikiSlug := strings.ReplaceAll(strings.TrimPrefix(saint.Name, "S. "), " ", "_")
+		wikiSlug = strings.ReplaceAll(wikiSlug, "B. ", "")
+		wikiSlug = strings.ReplaceAll(wikiSlug, "Bto. ", "")
+		wikiSlug = strings.ReplaceAll(wikiSlug, "São ", "")
+		wikiSlug = strings.ReplaceAll(wikiSlug, "Santa ", "")
+		saintWikiSlug = wikiSlug
+	}
+
 	return LiturgicalResponse{
 		MainDay:          jsonResult.MainDay,
 		Commemorations:   jsonResult.Commemorations,
@@ -195,6 +210,8 @@ func resolveLiturgicalDay(dateStr, lang, acceptLanguage string, includeBrazilian
 		RequestedLang:    selectedLang,
 		ResolvedLang:     resolvedLang,
 		IncludeBrazilian: includeBrazilian,
+		SaintName:        saintName,
+		SaintWikiSlug:    saintWikiSlug,
 	}, nil
 }
 
