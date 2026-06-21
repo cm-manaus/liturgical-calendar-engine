@@ -1,0 +1,14 @@
+<sanctorale>
+    <feast date="02-04" name="St. John de Brito" nameResId="st_john_brito" class="III" color="RED" />
+    <feast date="05-03" name="Finding of the Holy Cross" nameResId="finding_cross" class="II" color="RED" isLordFeast="true" />
+    <feast date="06-09" name="St. Jose de Anchieta" nameResId="st_jose_anchieta" class="III" color="WHITE" />
+    <feast date="07-09" name="Our Lady Queen of Peace" nameResId="our_lady_queen_peace" class="III" color="WHITE" />
+    <feast date="07-15" name="Bl. Ignatius of Azevedo and Companions" nameResId="bl_ignatius_azevedo" class="III" color="RED" />
+    <feast date="08-30" name="St. Rose of Lima" nameResId="st_rose_lima" class="I" color="WHITE" />
+    <feast date="10-01" name="B.V.M. Mediatrix of All Graces" nameResId="bvm_mediatrix" class="III" color="WHITE" />
+    <feast date="10-12" name="Our Lady of Aparecida" nameResId="our_lady_aparecida" class="I" color="WHITE" />
+    <feast date="10-19" name="St. Peter of Alcantara" nameResId="st_peter_alcantara" class="III" color="WHITE" />
+    <feast date="11-05" name="Holy Relics" nameResId="holy_relics" class="III" color="RED" />
+    <feast date="11-17" name="Bl. Roque González and Companions" nameResId="bl_roque_gonzalez" class="III" color="RED" />
+    <feast date="12-12" name="Our Lady of Guadalupe" nameResId="our_lady_guadalupe" class="I" color="WHITE" />
+</sanctorale>

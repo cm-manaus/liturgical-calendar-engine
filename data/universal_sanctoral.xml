@@ -1,0 +1,234 @@
+<sanctorale>
+    <feast date="01-01" name="Circumcision of Our Lord" nameResId="circumcision_lord" class="I" color="WHITE" isLordFeast="true" />
+    <feast date="01-06" name="The Epiphany of Our Lord" nameResId="epiphany" class="I" color="WHITE" isLordFeast="true" />
+    <feast date="01-13" name="Commemoration of the Baptism of Our Lord" nameResId="baptism_lord" class="II" color="WHITE" isLordFeast="true" />
+    <feast date="01-14" name="St. Hilary, Bishop, Confessor and Doctor" nameResId="st_hilary" class="III" color="WHITE" />
+    <feast date="01-15" name="St. Paul, the First Hermit, Confessor" nameResId="st_paul_hermit" class="III" color="WHITE" />
+    <feast date="01-16" name="St. Marcellus I, Pope &amp; Martyr" nameResId="st_marcellus" class="III" color="RED" />
+    <feast date="01-17" name="St. Anthony, Abbot" nameResId="st_anthony_abbot" class="III" color="WHITE" />
+    <feast date="01-20" name="Sts. Fabian and Sebastian, Martyrs" nameResId="sts_fabian_sebastian" class="III" color="RED" />
+    <feast date="01-21" name="St. Agnes, Virgin and Martyr" nameResId="st_agnes" class="III" color="RED" />
+    <feast date="01-22" name="SS. Vincent and Anastasius, Martyrs" nameResId="sts_vincent_anastasius" class="III" color="RED" />
+    <feast date="01-23" name="St. Raymond of Peñafort, Confessor" nameResId="st_raymond_penafort" class="III" color="WHITE" />
+    <feast date="01-24" name="St. Timothy, Bishop &amp; Martyr" nameResId="st_timothy" class="III" color="RED" />
+    <feast date="01-25" name="Conversion of St. Paul, Apostle" nameResId="conversion_st_paul" class="III" color="WHITE" />
+    <feast date="01-26" name="St. Polycarp, Bishop and Martyr" nameResId="st_polycarp" class="III" color="RED" />
+    <feast date="01-27" name="St. John Chrysostom, Bishop, Confessor and Doctor" nameResId="st_john_chrysostom" class="III" color="WHITE" />
+    <feast date="01-28" name="St. Peter Nolasco, Confessor" nameResId="st_peter_nolasco" class="III" color="WHITE" />
+    <feast date="01-29" name="St. Francis de Sales, Bishop, Confessor and Doctor" nameResId="st_francis_de_sales" class="III" color="WHITE" />
+    <feast date="01-30" name="St. Martina, Virgin &amp; Martyr" nameResId="st_martina" class="III" color="RED" />
+    <feast date="01-31" name="St. John Bosco, Confessor" nameResId="st_john_bosco" class="III" color="WHITE" />
+    <feast date="02-01" name="St. Ignatius, Bishop and Martyr" nameResId="st_ignatius" class="III" color="RED" />
+    <feast date="02-02" name="Purification of the B.V.M." nameResId="purification_bvm" class="II" color="WHITE" />
+    <feast date="02-04" name="St. Andrew Corsini, Bishop &amp; Confessor" nameResId="st_andrew_corsini" class="III" color="WHITE" />
+    <feast date="02-05" name="St. Agatha, Virgin and Martyr" nameResId="st_agatha" class="III" color="RED" />
+    <feast date="02-06" name="St. Titus, Bishop and Confessor" nameResId="st_titus" class="III" color="WHITE" />
+    <feast date="02-07" name="St. Romuald, Abbot" nameResId="st_romuald" class="III" color="WHITE" />
+    <feast date="02-08" name="St. John of Matha, Confessor" nameResId="st_john_matha" class="III" color="WHITE" />
+    <feast date="02-09" name="St. Cyril of Alexandria, Bishop, Confessor &amp; Doctor" nameResId="st_cyril_alexandria" class="III" color="WHITE" />
+    <feast date="02-10" name="St. Scholastica, Virgin" nameResId="st_scholastica" class="III" color="WHITE" />
+    <feast date="02-11" name="Apparition of the B.V.M. Immaculate (Lourdes)" nameResId="apparition_bvm" class="III" color="WHITE" />
+    <feast date="02-12" name="Seven Holy Founders of the Servite Order" nameResId="seven_founders_servites" class="III" color="WHITE" />
+    <feast date="02-22" name="Chair of St. Peter, Apostle" nameResId="st_peter_chair" class="II" color="WHITE" />
+    <feast date="02-23" name="St. Peter Damian, Bishop, Confessor &amp; Doctor" nameResId="st_peter_damian" class="III" color="WHITE" />
+    <feast date="02-24" name="St. Matthias, Apostle" nameResId="st_matthias" class="II" color="RED" />
+    <feast date="03-04" name="St. Casimir, Confessor" nameResId="st_casimir" class="III" color="WHITE" />
+    <feast date="03-06" name="SS. Perpetua and Felicity, Martyrs" nameResId="sts_perpetua_felicity" class="III" color="RED" />
+    <feast date="03-07" name="St. Thomas Aquinas, Confessor and Doctor" nameResId="st_thomas_aquinas" class="III" color="WHITE" />
+    <feast date="03-08" name="St. John of God, Confessor" nameResId="st_john_god" class="III" color="WHITE" />
+    <feast date="03-09" name="St. Frances of Rome, Widow" nameResId="st_frances_rome" class="III" color="WHITE" />
+    <feast date="03-10" name="The Forty Holy Martyrs" nameResId="forty_martyrs" class="III" color="RED" />
+    <feast date="03-12" name="St. Gregory I, Pope, Confessor and Doctor" nameResId="st_gregory" class="III" color="WHITE" />
+    <feast date="03-17" name="St. Patrick, Bishop and Confessor" nameResId="st_patrick" class="III" color="WHITE" />
+    <feast date="03-18" name="St. Cyril of Jerusalem, Bishop, Confessor &amp; Doctor" nameResId="st_cyril_jerusalem" class="III" color="WHITE" />
+    <feast date="03-19" name="St. Joseph, Confessor, Spouse of the B.V.M." nameResId="st_joseph" class="I" color="WHITE" />
+    <feast date="03-21" name="St. Benedict, Abbot" nameResId="st_benedict" class="III" color="WHITE" />
+    <feast date="03-24" name="St. Gabriel, Archangel" nameResId="st_gabriel" class="III" color="WHITE" />
+    <feast date="03-25" name="Annunciation of the B.V.M." nameResId="annunciation" class="I" color="WHITE" />
+    <feast date="03-27" name="St. John Damascene, Confessor &amp; Doctor" nameResId="st_john_damascene" class="III" color="WHITE" />
+    <feast date="03-28" name="St. John Capistran, Confessor" nameResId="st_john_capistran" class="III" color="WHITE" />
+    <feast date="04-02" name="St. Francis of Paola, Confessor" nameResId="st_francis_paola" class="III" color="WHITE" />
+    <feast date="04-04" name="St. Isidore, Bishop, Confessor and Doctor" nameResId="st_isidore" class="III" color="WHITE" />
+    <feast date="04-05" name="St. Vincent Ferrer, Confessor" nameResId="st_vincent_ferrer" class="III" color="WHITE" />
+    <feast date="04-11" name="St. Leo I, Pope, Confessor and Doctor" nameResId="st_leo" class="III" color="WHITE" />
+    <feast date="04-13" name="St. Hermenegild, Martyr" nameResId="st_hermenegild" class="III" color="RED" />
+    <feast date="04-14" name="St. Justin, Martyr" nameResId="st_justin" class="III" color="RED" />
+    <feast date="04-21" name="St. Anselm, Bishop, Confessor &amp; Doctor" nameResId="st_anselm" class="III" color="WHITE" />
+    <feast date="04-22" name="SS. Soter and Caius, Popes &amp; Martyrs" nameResId="sts_soter_caius" class="III" color="RED" />
+    <feast date="04-24" name="St. Fidelis of Sigmaringen, Martyr" nameResId="st_fidelis" class="III" color="RED" />
+    <feast date="04-25" name="St. Mark, Evangelist" nameResId="st_mark" class="II" color="RED" />
+    <feast date="04-26" name="SS. Cletus and Marcellinus, Popes &amp; Martyrs" nameResId="sts_cletus_marcellinus" class="III" color="RED" />
+    <feast date="04-27" name="St. Peter Canisius, Confessor &amp; Doctor" nameResId="st_peter_canisius" class="III" color="WHITE" />
+    <feast date="04-28" name="St. Paul of the Cross, Confessor" nameResId="st_paul_cross" class="III" color="WHITE" />
+    <feast date="04-29" name="St. Peter, Martyr" nameResId="st_peter_martyr" class="III" color="RED" />
+    <feast date="04-30" name="St. Catherine of Siena, Virgin" nameResId="st_catherine_siena" class="III" color="WHITE" />
+    <feast date="05-01" name="St. Joseph the Worker" nameResId="st_joseph_worker" class="I" color="WHITE" />
+    <feast date="05-02" name="St. Athanasius, Bishop, Confessor and Doctor" nameResId="st_athanasius" class="III" color="WHITE" />
+    <feast date="05-04" name="St. Monica, Widow" nameResId="st_monica" class="III" color="WHITE" />
+    <feast date="05-05" name="St. Pius V, Pope and Confessor" nameResId="st_pius_v" class="III" color="WHITE" />
+    <feast date="05-07" name="St. Stanislaus, Bishop &amp; Martyr" nameResId="st_stanislaus" class="III" color="RED" />
+    <feast date="05-08" name="Our Lady, Mediatrix of All Graces" nameResId="our_lady_mediatrix" class="III" color="WHITE" />
+    <feast date="05-09" name="St. Gregory Nazianzen, Bishop, Confessor &amp; Doctor" nameResId="st_gregory_nazianzen" class="III" color="WHITE" />
+    <feast date="05-10" name="St. Antoninus, Bishop &amp; Confessor" nameResId="st_antoninus" class="III" color="WHITE" />
+    <feast date="05-11" name="Sts. Philip and James, Apostles" nameResId="sts_philip_james" class="II" color="RED" />
+    <feast date="05-12" name="SS. Nereus, Achilleus, Domitilla &amp; Pancras, Martyrs" nameResId="sts_nereus_achilleus" class="III" color="RED" />
+    <feast date="05-13" name="St. Robert Bellarmine, Bishop, Confessor and Doctor" nameResId="st_robert_bellarmine" class="III" color="WHITE" />
+    <feast date="05-15" name="St. John Baptist de la Salle, Confessor" nameResId="st_john_baptist_de_la_salle" class="III" color="WHITE" />
+    <feast date="05-16" name="St. Ubaldus, Bishop &amp; Confessor" nameResId="st_ubaldus" class="III" color="WHITE" />
+    <feast date="05-17" name="St. Paschal Baylon, Confessor" nameResId="st_paschal_baylon" class="III" color="WHITE" />
+    <feast date="05-18" name="St. Venantius, Martyr" nameResId="st_venantius" class="III" color="RED" />
+    <feast date="05-19" name="St. Peter Celestine, Pope &amp; Confessor" nameResId="st_peter_celestine" class="III" color="WHITE" />
+    <feast date="05-20" name="St. Bernardine of Siena, Confessor" nameResId="st_bernardine_siena" class="III" color="WHITE" />
+    <feast date="05-25" name="St. Gregory VII, Pope &amp; Confessor" nameResId="st_gregory_vii" class="III" color="WHITE" />
+    <feast date="05-26" name="St. Philip Neri, Confessor" nameResId="st_philip_neri" class="III" color="WHITE" />
+    <feast date="05-27" name="St. Bede the Venerable, Confessor and Doctor" nameResId="st_bede" class="III" color="WHITE" />
+    <feast date="05-28" name="St. Augustine of Canterbury, Bishop &amp; Confessor" nameResId="st_augustine_canterbury" class="III" color="WHITE" />
+    <feast date="05-29" name="St. Mary Magdalen de Pazzi, Virgin" nameResId="st_mary_magdalen_pazzi" class="III" color="WHITE" />
+    <feast date="05-31" name="The Queenship of the B.V.M." nameResId="queenship_bvm" class="II" color="WHITE" />
+    <feast date="06-01" name="St. Angela Merici, Virgin" nameResId="st_angela_merici" class="III" color="WHITE" />
+    <feast date="06-02" name="SS. Marcellinus, Peter, and Erasmus, Martyrs" nameResId="sts_marcellinus_peter_erasmus" class="III" color="RED" />
+    <feast date="06-04" name="St. Francis Caracciolo, Confessor" nameResId="st_francis_caracciolo" class="III" color="WHITE" />
+    <feast date="06-05" name="St. Boniface, Bishop and Martyr" nameResId="st_boniface" class="III" color="RED" />
+    <feast date="06-06" name="St. Norbert, Bishop &amp; Confessor" nameResId="st_norbert" class="III" color="WHITE" />
+    <feast date="06-10" name="St. Margaret, Queen of Scotland, Widow" nameResId="st_margaret_scotland" class="III" color="WHITE" />
+    <feast date="06-11" name="St. Barnabas, Apostle" nameResId="st_barnabas" class="III" color="RED" />
+    <feast date="06-12" name="St. John of San Facundo, Confessor" nameResId="st_john_san_facundo" class="III" color="WHITE" />
+    <feast date="06-13" name="St. Anthony of Padua, Confessor and Doctor" nameResId="st_anthony" class="III" color="WHITE" />
+    <feast date="06-14" name="St. Basil the Great, Bishop, Confessor &amp; Doctor" nameResId="st_basil_great" class="III" color="WHITE" />
+    <feast date="06-17" name="St. Gregory Barbarigo, Bishop &amp; Confessor" nameResId="st_gregory_barbarigo" class="III" color="WHITE" />
+    <feast date="06-18" name="St. Ephrem the Syrian, Deacon, Confessor &amp; Doctor" nameResId="st_ephrem" class="III" color="WHITE" />
+    <feast date="06-19" name="St. Juliana Falconieri, Virgin" nameResId="st_juliana_falconieri" class="III" color="WHITE" />
+    <feast date="06-21" name="St. Aloysius Gonzaga, Confessor" nameResId="st_aloysius_gonzaga" class="III" color="WHITE" />
+    <feast date="06-23" name="Vigil of the Nativity of St. John the Baptist" nameResId="vigil_st_john_baptist" class="II" color="VIOLET" />
+    <feast date="06-24" name="Nativity of St. John the Baptist" nameResId="st_john_baptist_nativity" class="I" color="WHITE" />
+    <feast date="06-25" name="St. William, Abbot" nameResId="st_william_abbot" class="III" color="WHITE" />
+    <feast date="06-26" name="SS. John and Paul, Martyrs" nameResId="sts_john_paul_martyrs" class="III" color="RED" />
+    <feast date="06-28" name="Vigil of SS. Peter and Paul, Apostles" nameResId="vigil_sts_peter_paul" class="II" color="VIOLET" />
+    <feast date="06-29" name="Sts. Peter and Paul, Apostles" nameResId="sts_peter_paul" class="I" color="RED" />
+    <feast date="06-30" name="Commemoration of St. Paul, Apostle" nameResId="st_paul_commemoration" class="III" color="RED" />
+    <feast date="07-01" name="The Most Precious Blood of Our Lord" nameResId="precious_blood" class="I" color="RED" isLordFeast="true" />
+    <feast date="07-02" name="Visitation of the B.V.M." nameResId="visitation_bvm" class="II" color="WHITE" />
+    <feast date="07-03" name="St. Irenaeus, Bishop &amp; Martyr" nameResId="st_irenaeus" class="III" color="RED" />
+    <feast date="07-05" name="St. Anthony Mary Zaccaria, Confessor" nameResId="st_anthony_mary_zaccaria" class="III" color="WHITE" />
+    <feast date="07-07" name="Sts. Cyril and Methodius, Bishops and Confessors" nameResId="sts_cyril_methodius" class="III" color="WHITE" />
+    <feast date="07-08" name="St. Elizabeth, Queen of Portugal, Widow" nameResId="st_elizabeth_portugal" class="III" color="WHITE" />
+    <feast date="07-10" name="Seven Holy Brothers, Martyrs" nameResId="seven_holy_brothers" class="III" color="RED" />
+    <feast date="07-12" name="St. John Gualbert, Abbot" nameResId="st_john_gualbert" class="III" color="WHITE" />
+    <feast date="07-14" name="St. Bonaventure, Bishop, Confessor and Doctor" nameResId="st_bonaventure" class="III" color="WHITE" />
+    <feast date="07-15" name="St. Henry, Emperor, Confessor" nameResId="st_henry" class="III" color="WHITE" />
+    <feast date="07-16" name="Commemoration of B.V.M. of Mount Carmel" nameResId="commem_bvm_carmel" class="III" color="WHITE" />
+    <feast date="07-17" name="St. Alexius, Confessor" nameResId="st_alexius" class="III" color="WHITE" />
+    <feast date="07-18" name="St. Camillus de Lellis, Confessor" nameResId="st_camillus_de_lellis" class="III" color="WHITE" />
+    <feast date="07-19" name="St. Vincent de Paul, Confessor" nameResId="st_vincent_de_paul" class="III" color="WHITE" />
+    <feast date="07-20" name="St. Jerome Emiliani, Confessor" nameResId="st_jerome_emiliani" class="III" color="WHITE" />
+    <feast date="07-21" name="St. Lawrence of Brindisi, Confessor &amp; Doctor" nameResId="st_lawrence_brindisi" class="III" color="WHITE" />
+    <feast date="07-22" name="St. Mary Magdalene, Penitent" nameResId="st_mary_magdalene" class="III" color="WHITE" />
+    <feast date="07-23" name="St. Apollinaris, Bishop &amp; Martyr" nameResId="st_apollinaris" class="III" color="RED" />
+    <feast date="07-25" name="St. James, Apostle" nameResId="st_james_apostle" class="II" color="RED" />
+    <feast date="07-26" name="St. Anne, Mother of the B.V.M." nameResId="st_anne" class="II" color="WHITE" />
+    <feast date="07-28" name="SS. Nazarius and Celsus, Martyrs" nameResId="sts_nazarius_celsus" class="III" color="RED" />
+    <feast date="07-29" name="St. Martha, Virgin" nameResId="st_martha" class="III" color="WHITE" />
+    <feast date="07-31" name="St. Ignatius of Loyola, Confessor" nameResId="st_ignatius_loyola" class="III" color="WHITE" />
+    <feast date="08-02" name="St. Alphonsus Mary de Liguori, Bishop, Confessor and Doctor" nameResId="st_alphonsus_liguori" class="III" color="WHITE" />
+    <feast date="08-04" name="St. Dominic, Confessor" nameResId="st_dominic" class="III" color="WHITE" />
+    <feast date="08-05" name="Dedication of the Basilica of St. Mary Major" nameResId="dedication_st_mary_major" class="III" color="WHITE" />
+    <feast date="08-06" name="Transfiguration of Our Lord" nameResId="transfiguration" class="II" color="WHITE" isLordFeast="true" />
+    <feast date="08-07" name="St. Cajetan, Confessor" nameResId="st_cajetan" class="III" color="WHITE" />
+    <feast date="08-08" name="St. John Mary Vianney, Confessor" nameResId="st_john_vianney" class="III" color="WHITE" />
+    <feast date="08-09" name="Vigil of St. Lawrence, Martyr" nameResId="vigil_st_lawrence" class="III" color="VIOLET" />
+    <feast date="08-10" name="St. Lawrence, Martyr" nameResId="st_lawrence" class="II" color="RED" />
+    <feast date="08-12" name="St. Clare, Virgin" nameResId="st_clare" class="III" color="WHITE" />
+    <feast date="08-14" name="Vigil of the Assumption of the B.V.M." nameResId="vigil_assumption" class="II" color="VIOLET" />
+    <feast date="08-15" name="Assumption of the B.V.M." nameResId="assumption" class="I" color="WHITE" />
+    <feast date="08-16" name="St. Joachim, Father of the B.V.M." nameResId="st_joachim" class="II" color="WHITE" />
+    <feast date="08-17" name="St. Hyacinth, Confessor" nameResId="st_hyacinth" class="III" color="WHITE" />
+    <feast date="08-19" name="St. John Eudes, Confessor" nameResId="st_john_eudes" class="III" color="WHITE" />
+    <feast date="08-20" name="St. Bernard, Abbot, Confessor and Doctor" nameResId="st_bernard" class="III" color="WHITE" />
+    <feast date="08-21" name="St. Jane Frances de Chantal, Widow" nameResId="st_jane_frances" class="III" color="WHITE" />
+    <feast date="08-22" name="The Immaculate Heart of the B.V.M." nameResId="immaculate_heart_bvm" class="II" color="WHITE" />
+    <feast date="08-23" name="St. Philip Benizi, Confessor" nameResId="st_philip_benizi" class="III" color="WHITE" />
+    <feast date="08-24" name="St. Bartholomew, Apostle" nameResId="st_bartholomew" class="II" color="RED" />
+    <feast date="08-25" name="St. Louis, King, Confessor" nameResId="st_louis" class="III" color="WHITE" />
+    <feast date="08-27" name="St. Joseph Calasanctius, Confessor" nameResId="st_joseph_calasanctius" class="III" color="WHITE" />
+    <feast date="08-28" name="St. Augustine, Bishop, Confessor and Doctor" nameResId="st_augustine" class="III" color="WHITE" />
+    <feast date="08-29" name="Beheading of St. John the Baptist" nameResId="beheading_st_john_baptist" class="III" color="RED" />
+    <feast date="08-30" name="St. Rose of Lima, Virgin" nameResId="st_rose_lima" class="III" color="WHITE" />
+    <feast date="08-31" name="St. Raymond Nonnatus, Confessor" nameResId="st_raymond_nonnatus" class="III" color="WHITE" />
+    <feast date="09-02" name="St. Stephen, King, Confessor" nameResId="st_stephen_king" class="III" color="WHITE" />
+    <feast date="09-03" name="St. Pius X, Pope and Confessor" nameResId="st_pius_x" class="III" color="WHITE" />
+    <feast date="09-05" name="St. Lawrence Justinian, Bishop &amp; Confessor" nameResId="st_lawrence_justinian" class="III" color="WHITE" />
+    <feast date="09-08" name="Nativity of the B.V.M." nameResId="nativity_bvm" class="II" color="WHITE" />
+    <feast date="09-10" name="St. Nicholas of Tolentino, Confessor" nameResId="st_nicholas_tolentino" class="III" color="WHITE" />
+    <feast date="09-12" name="The Most Holy Name of Mary" nameResId="holy_name_mary" class="III" color="WHITE" />
+    <feast date="09-14" name="Exaltation of the Holy Cross" nameResId="exaltation_cross" class="II" color="RED" isLordFeast="true" />
+    <feast date="09-15" name="Seven Sorrows of the B.V.M." nameResId="seven_sorrows_bvm" class="II" color="WHITE" />
+    <feast date="09-16" name="SS. Cornelius and Cyprian, Martyrs" nameResId="sts_cornelius_cyprian" class="III" color="RED" />
+    <feast date="09-18" name="St. Joseph of Cupertino, Confessor" nameResId="st_joseph_cupertino" class="III" color="WHITE" />
+    <feast date="09-19" name="SS. Januarius and Companions, Martyrs" nameResId="sts_januarius_companions" class="III" color="RED" />
+    <feast date="09-21" name="St. Matthew, Apostle and Evangelist" nameResId="st_matthew" class="II" color="RED" />
+    <feast date="09-22" name="St. Thomas of Villanova, Bishop &amp; Confessor" nameResId="st_thomas_villanova" class="III" color="WHITE" />
+    <feast date="09-23" name="St. Linus, Pope &amp; Martyr" nameResId="st_linus" class="III" color="RED" />
+    <feast date="09-24" name="Our Lady of Ransom" nameResId="our_lady_ransom" class="III" color="WHITE" />
+    <feast date="09-26" name="SS. Isaac Jogues, John de Brebeuf &amp; Companions" nameResId="sts_north_american_martyrs" class="III" color="RED" />
+    <feast date="09-27" name="SS. Cosmas and Damian, Martyrs" nameResId="sts_cosmas_damian" class="III" color="RED" />
+    <feast date="09-28" name="St. Wenceslaus, Duke, Martyr" nameResId="st_wenceslaus" class="III" color="RED" />
+    <feast date="09-29" name="Dedication of St. Michael the Archangel" nameResId="st_michael" class="I" color="WHITE" />
+    <feast date="09-30" name="St. Jerome, Confessor and Doctor" nameResId="st_jerome" class="III" color="WHITE" />
+    <feast date="10-02" name="Holy Guardian Angels" nameResId="holy_guardian_angels" class="III" color="WHITE" />
+    <feast date="10-03" name="St. Therese of the Child Jesus, Virgin" nameResId="st_therese" class="III" color="WHITE" />
+    <feast date="10-04" name="St. Francis of Assisi, Confessor" nameResId="st_francis" class="III" color="WHITE" />
+    <feast date="10-06" name="St. Bruno, Confessor" nameResId="st_bruno" class="III" color="WHITE" />
+    <feast date="10-07" name="The Most Holy Rosary of the B.V.M." nameResId="holy_rosary" class="II" color="WHITE" />
+    <feast date="10-08" name="St. Bridget, Widow" nameResId="st_bridget" class="III" color="WHITE" />
+    <feast date="10-09" name="St. John Leonardi, Confessor" nameResId="st_john_leonardi" class="III" color="WHITE" />
+    <feast date="10-10" name="St. Francis Borgia, Confessor" nameResId="st_francis_borgia" class="III" color="WHITE" />
+    <feast date="10-11" name="Maternity of the B.V.M." nameResId="maternity_bvm" class="II" color="WHITE" />
+    <feast date="10-13" name="St. Edward, King, Confessor" nameResId="st_edward" class="III" color="WHITE" />
+    <feast date="10-14" name="St. Callistus I, Pope and Martyr" nameResId="st_callistus" class="III" color="RED" />
+    <feast date="10-15" name="St. Teresa of Avila, Virgin" nameResId="st_teresa_avila" class="III" color="WHITE" />
+    <feast date="10-16" name="St. Hedwig, Widow" nameResId="st_hedwig" class="III" color="WHITE" />
+    <feast date="10-17" name="St. Margaret Mary Alacoque, Virgin" nameResId="st_margaret_mary" class="III" color="WHITE" />
+    <feast date="10-18" name="St. Luke, Evangelist" nameResId="st_luke" class="II" color="RED" />
+    <feast date="10-19" name="St. Peter of Alcantara, Confessor" nameResId="st_peter_alcantara" class="III" color="WHITE" />
+    <feast date="10-20" name="St. John Cantius, Confessor" nameResId="st_john_cantius" class="III" color="WHITE" />
+    <feast date="10-23" name="St. Anthony Mary Claret, Bishop &amp; Confessor" nameResId="st_anthony_mary_claret" class="III" color="WHITE" />
+    <feast date="10-24" name="St. Raphael, Archangel" nameResId="st_raphael" class="III" color="WHITE" />
+    <feast date="10-25" name="SS. Chrysanthus and Daria, Martyrs" nameResId="sts_chrysanthus_daria" class="III" color="RED" />
+    <feast date="10-28" name="Sts. Simon and Jude, Apostles" nameResId="sts_simon_jude" class="II" color="RED" />
+    <feast date="11-01" name="All Saints" nameResId="all_saints" class="I" color="WHITE" />
+    <feast date="11-02" name="Commemoration of All the Faithful Departed" nameResId="all_souls" class="I" color="BLACK" />
+    <feast date="11-04" name="St. Charles Borromeo, Bishop and Confessor" nameResId="st_charles_borromeo" class="III" color="WHITE" />
+    <feast date="11-09" name="Dedication of the Archbasilica of the Savior" nameResId="dedication_archbasilica" class="II" color="WHITE" isLordFeast="true" />
+    <feast date="11-10" name="St. Andrew Avellino, Confessor" nameResId="st_andrew_avellino" class="III" color="WHITE" />
+    <feast date="11-11" name="St. Martin of Tours, Bishop and Confessor" nameResId="st_martin" class="III" color="WHITE" />
+    <feast date="11-12" name="St. Martin I, Pope &amp; Martyr" nameResId="st_martin_i" class="III" color="RED" />
+    <feast date="11-13" name="St. Didacus, Confessor" nameResId="st_didacus" class="III" color="WHITE" />
+    <feast date="11-14" name="St. Josaphat, Bishop and Martyr" nameResId="st_josaphat" class="III" color="RED" />
+    <feast date="11-15" name="St. Albert the Great, Bishop, Confessor and Doctor" nameResId="st_albert_great" class="III" color="WHITE" />
+    <feast date="11-16" name="St. Gertrude, Virgin" nameResId="st_gertrude" class="III" color="WHITE" />
+    <feast date="11-17" name="St. Gregory Thaumaturgus, Bishop &amp; Confessor" nameResId="st_gregory_thaumaturgus" class="III" color="WHITE" />
+    <feast date="11-18" name="Dedication of the Basilicas of SS. Peter and Paul" nameResId="dedication_peter_paul" class="III" color="WHITE" />
+    <feast date="11-19" name="St. Elizabeth, Queen of Hungary, Widow" nameResId="st_elizabeth_hungary" class="III" color="WHITE" />
+    <feast date="11-20" name="St. Felix of Valois, Confessor" nameResId="st_felix_valois" class="III" color="WHITE" />
+    <feast date="11-21" name="Presentation of the B.V.M." nameResId="presentation_bvm" class="III" color="WHITE" />
+    <feast date="11-22" name="St. Cecilia, Virgin and Martyr" nameResId="st_cecilia" class="III" color="RED" />
+    <feast date="11-23" name="St. Clement I, Pope &amp; Martyr" nameResId="st_clement" class="III" color="RED" />
+    <feast date="11-24" name="St. John of the Cross, Confessor and Doctor" nameResId="st_john_cross" class="III" color="WHITE" />
+    <feast date="11-25" name="St. Catherine, Virgin and Martyr" nameResId="st_catherine" class="III" color="RED" />
+    <feast date="11-26" name="St. Sylvester, Abbot" nameResId="st_sylvester_abbot" class="III" color="WHITE" />
+    <feast date="11-30" name="St. Andrew, Apostle" nameResId="st_andrew" class="II" color="RED" />
+    <feast date="12-02" name="St. Bibiana, Virgin and Martyr" nameResId="st_bibiana" class="III" color="RED" />
+    <feast date="12-03" name="St. Francis Xavier, Confessor" nameResId="st_francis_xavier" class="III" color="WHITE" />
+    <feast date="12-04" name="St. Peter Chrysologus, Bishop, Confessor &amp; Doctor" nameResId="st_peter_chrysologus" class="III" color="WHITE" />
+    <feast date="12-06" name="St. Nicholas, Bishop and Confessor" nameResId="st_nicholas" class="III" color="WHITE" />
+    <feast date="12-07" name="St. Ambrose, Bishop, Confessor and Doctor" nameResId="st_ambrose" class="III" color="WHITE" />
+    <feast date="12-08" name="Immaculate Conception of the B.V.M." nameResId="immaculate_conception" class="I" color="WHITE" />
+    <feast date="12-11" name="St. Damasus I, Pope and Confessor" nameResId="st_damasus" class="III" color="WHITE" />
+    <feast date="12-13" name="St. Lucy, Virgin and Martyr" nameResId="st_lucy" class="III" color="RED" />
+    <feast date="12-16" name="St. Eusebius, Bishop &amp; Martyr" nameResId="st_eusebius" class="III" color="RED" />
+    <feast date="12-21" name="St. Thomas, Apostle" nameResId="st_thomas_apostle" class="II" color="RED" />
+    <feast date="12-26" name="St. Stephen, Protomartyr" nameResId="st_stephen" class="II" color="RED" />
+    <feast date="12-27" name="St. John, Apostle and Evangelist" nameResId="st_john_apostle" class="II" color="WHITE" />
+    <feast date="12-28" name="The Holy Innocents, Martyrs" nameResId="holy_innocents" class="II" color="RED" />
+    <feast date="12-31" name="St. Sylvester I, Pope and Confessor" nameResId="st_sylvester" class="III" color="WHITE" />
+</sanctorale>

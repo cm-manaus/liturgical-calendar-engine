@@ -1,0 +1,30 @@
+services:
+  liturgical-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      network: host
+    image: tesouro-backend-go-liturgical-backend:latest
+    ports:
+      - "8082:8080"
+    environment:
+      - PORT=8080
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GEMINI_MODEL=${GEMINI_MODEL}
+    restart: unless-stopped
+    # Security hardening settings
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+
+  # Cloudflare Tunnel Agent
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    command: tunnel --no-autoupdate run
+    environment:
+      - TUNNEL_TOKEN=${CLOUDFLARE_TUNNEL_TOKEN}
+    restart: unless-stopped

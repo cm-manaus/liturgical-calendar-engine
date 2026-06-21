@@ -1,0 +1,4 @@
+.env
+*.tar
+test_bin
+.DS_Store
