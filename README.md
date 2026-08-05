@@ -37,7 +37,7 @@ graph TD
 
     subgraph home_server ["🍓 Raspberry Pi (Manaus - ARM64)"]
         subgraph docker_compose ["Docker Compose Stack"]
-            F["liturgical-backend (Go App)"<br>Port: 8080]:::container
+            F["liturgical-backend (Go App) <br> Port: 8080"]:::container
             G["cloudflared (Cloudflare Tunnel Client)"]:::container
             
             G <-->|Conexão Segura Interna| F
@@ -48,16 +48,16 @@ graph TD
     end
 
     %% Deploy Flow
-    C -->|3. rsync / SSH <br> via Tailscale| E
+    C -->|"3. rsync / SSH <br> via Tailscale"| E
     E -->|4. docker load| docker_compose
     E -->|5. Cleanup Source & Tar| E
 
     %% Client Request Flow
     L["Cliente / App Salve Maria"]:::client -->|6. GET /liturgical-day| I
-    K <-->|7. Túnel Reverso Seguro <br> (Sem Port Forwarding)| G
+    K <-->|"7. Túnel Reverso Seguro <br> (Sem Port Forwarding)"| G
 
     %% AI Integration
-    F -->|8. Request estruturado <br> se configurado| M["Gemini API <br> (gemini-2.5-flash)"]:::cloud
+    F -->|"8. Request estruturado <br> se configurado"| M["Gemini API <br> (gemini-2.5-flash)"]:::cloud
     F -->|9. Fallback Local se API offline| N["Dados Locais <br> (marian.go)"]:::container
 ```
 
