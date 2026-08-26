@@ -1,0 +1,996 @@
+<?xml version='1.0' encoding='utf-8'?>
+<temporal calendar="divino_afflatu_1954" schemaVersion="1" sourceSet="missale-romanum-1954">
+  <coverage cycle="easter-relative" offsetMin="-63" offsetMax="217" fixedDatePattern="MM-DD" feriaFallback="explicit_rules" />
+
+  <contract calendar="divino_afflatu_1954" gradeSystem="pre55-six-rank" deltaPolicy="merged_at_build_time">
+    <grade id="D1Cl" label="Duplex I Classis" precedence="6.5" />
+    <grade id="D2Cl" label="Duplex II Classis" precedence="5" />
+    <grade id="DMaj" label="Duplex Maius" precedence="4" />
+    <grade id="D" label="Duplex" precedence="3" />
+    <grade id="SD" label="Semiduplex" precedence="2.2" />
+    <grade id="S" label="Simplex" precedence="1.2" />
+  </contract>
+  <easter_cycle sourceRef="Missale Romanum 1954; DO 1939 baseline + 1954 delta">
+    <day id="septuagesima_sunday" name="Septuagesima Sunday" observanceKind="sunday" pre55Grade="D2Cl" season="Septuagesima" color="VIOLET" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="5" offset="-63" nameResId="septuagesima_sunday">
+      <precedence rank="D2Cl" numeric="5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="true" preface="Trinity" />
+      <readings epistle="1Co 9,24-27; 10,1-5" gospel="Mt 20,1-16" source="Missale Romanum 1954" />
+    </day>
+    <day id="sexagesima_sunday" name="Sexagesima Sunday" observanceKind="sunday" pre55Grade="D2Cl" season="Septuagesima" color="VIOLET" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="5" offset="-56" nameResId="sexagesima_sunday">
+      <precedence rank="D2Cl" numeric="5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="true" preface="Trinity" />
+      <readings epistle="2Co 11,19-33; 12,1-9" gospel="Lc 8,4-15" source="Missale Romanum 1954" />
+    </day>
+    <day id="quinquagesima_sunday" name="Quinquagesima Sunday" observanceKind="sunday" pre55Grade="D2Cl" season="Septuagesima" color="VIOLET" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="5" offset="-49" nameResId="quinquagesima_sunday">
+      <precedence rank="D2Cl" numeric="5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="true" preface="Trinity" />
+      <readings epistle="1Co 13,1-13" gospel="Lc 18,31-43" source="Missale Romanum 1954" />
+    </day>
+    <day id="ash_wednesday" name="Ash Wednesday" observanceKind="feria" pre55Grade="D1Cl" season="Lent" color="VIOLET" privileged="true" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="-46" nameResId="ash_wednesday">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="false" occurrence="suppress_lower" concurrence="none" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="false" preface="Lent" />
+      <readings epistle="Jl 2,12-19" gospel="Mt 6,16-21" source="Missale Romanum 1954" />
+    </day>
+    <day id="1st_sunday_of_lent" name="1st Sunday of Lent" observanceKind="sunday" pre55Grade="D1Cl" season="Lent" color="VIOLET" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="-42" nameResId="lent_sunday" nameArg="1">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="true" preface="Lent" />
+      <readings epistle="2Co 6,1-10" gospel="Mt 4,1-11" source="Missale Romanum 1954" />
+    </day>
+    <day id="ember_wednesday_of_lent" name="Ember Wednesday of Lent" observanceKind="feria" pre55Grade="D2Cl" season="Lent" color="VIOLET" privileged="true" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="5" offset="-39" nameResId="ember_wednesday" nameArg="of_lent">
+      <precedence rank="D2Cl" numeric="5" firstVespers="false" occurrence="suppress_lower" concurrence="none" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="false" preface="Lent" />
+      <readings epistle="Ex 24,12-18; 3Rs 19,3-8" gospel="Mt 12,38-52" source="Missale Romanum 1954" />
+    </day>
+    <day id="ember_friday_of_lent" name="Ember Friday of Lent" observanceKind="feria" pre55Grade="D2Cl" season="Lent" color="VIOLET" privileged="true" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="5" offset="-37" nameResId="ember_friday" nameArg="of_lent">
+      <precedence rank="D2Cl" numeric="5" firstVespers="false" occurrence="suppress_lower" concurrence="none" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="false" preface="Lent" />
+      <readings epistle="Ez 18,20-28" gospel="Jo 5,1-15" source="Missale Romanum 1954" />
+    </day>
+    <day id="ember_saturday_of_lent" name="Ember Saturday of Lent" observanceKind="feria" pre55Grade="D2Cl" season="Lent" color="VIOLET" privileged="true" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="5" offset="-36" nameResId="ember_saturday" nameArg="of_lent">
+      <precedence rank="D2Cl" numeric="5" firstVespers="false" occurrence="suppress_lower" concurrence="none" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="false" preface="Lent" />
+      <readings epistle="Dt 26,12-19; Dt 11,22-25; 2Mac 1,23-26; 1,27; Eclo 36,1-10; Dn 3,47-51; 3,52-59; 1Ts 5,14-23" gospel="Mt 17,1-9" source="Missale Romanum 1954" />
+    </day>
+    <day id="2nd_sunday_of_lent" name="2nd Sunday of Lent" observanceKind="sunday" pre55Grade="D1Cl" season="Lent" color="VIOLET" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="-35" nameResId="lent_sunday" nameArg="2">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="true" preface="Lent" />
+      <readings epistle="1Ts 4,1-7" gospel="Mt 17,1-9" source="Missale Romanum 1954" />
+    </day>
+    <day id="3rd_sunday_of_lent" name="3rd Sunday of Lent" observanceKind="sunday" pre55Grade="D1Cl" season="Lent" color="VIOLET" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="-28" nameResId="lent_sunday" nameArg="3">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="true" preface="Lent" />
+      <readings epistle="Ef 5,1-8" gospel="Lc 11,14-28" source="Missale Romanum 1954" />
+    </day>
+    <day id="4th_sunday_of_lent" name="4th Sunday of Lent" observanceKind="sunday" pre55Grade="D1Cl" season="Lent" color="ROSE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="-21" nameResId="lent_sunday_laetare" nameArg="4">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="ROSE" gloria="false" credo="true" preface="Lent" />
+      <readings epistle="Gl 4,22-31" gospel="Jo 6,1-15" source="Missale Romanum 1954" />
+    </day>
+    <day id="1st_sunday_of_passiontide" name="1st Sunday of Passiontide" observanceKind="sunday" pre55Grade="D1Cl" season="Passiontide" color="VIOLET" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="-14" nameResId="passion_sunday_1">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="true" preface="HolyCross" />
+      <readings epistle="Hb 9,11-15" gospel="Jo 8,46-59" source="Missale Romanum 1954" />
+    </day>
+    <day id="palm_sunday" name="Palm Sunday" observanceKind="sunday" pre55Grade="D1Cl" season="Lent" color="VIOLET" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="-7" nameResId="palm_sunday_passion">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="true" preface="HolyCross" />
+      <readings epistle="Fl 2,5-11" gospel="Mt 26,1-27,66" source="Missale Romanum 1954" />
+    </day>
+    <day id="monday_of_holy_week" name="Monday of Holy Week" observanceKind="feria" pre55Grade="D1Cl" season="HolyWeek" color="VIOLET" privileged="true" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="-6" nameResId="monday_holy_week">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="false" occurrence="suppress_lower" concurrence="none" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="false" preface="HolyCross" />
+      <readings epistle="Is 50,5-10" gospel="Jo 12,1-9" source="Missale Romanum 1954" />
+    </day>
+    <day id="tuesday_of_holy_week" name="Tuesday of Holy Week" observanceKind="feria" pre55Grade="D1Cl" season="HolyWeek" color="VIOLET" privileged="true" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="-5" nameResId="tuesday_holy_week">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="false" occurrence="suppress_lower" concurrence="none" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="false" preface="HolyCross" />
+      <readings epistle="Jr 11,18-20" gospel="Mc 14,1-72; 15,1-46" source="Missale Romanum 1954" />
+    </day>
+    <day id="wednesday_of_holy_week" name="Wednesday of Holy Week" observanceKind="feria" pre55Grade="D1Cl" season="HolyWeek" color="VIOLET" privileged="true" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="-4" nameResId="wednesday_holy_week">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="false" occurrence="suppress_lower" concurrence="none" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="false" preface="HolyCross" />
+      <readings epistle="Is 62,11; 63,1-7; Is 53,1-12" gospel="Lc 22,1-71; 23,1-53" source="Missale Romanum 1954" />
+    </day>
+    <day id="holy_thursday" name="Holy Thursday" observanceKind="feria" pre55Grade="D1Cl" season="Lent" color="WHITE" privileged="true" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="-3" nameResId="holy_thursday">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="false" occurrence="suppress_lower" concurrence="none" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="HolyCross" />
+      <readings epistle="1Co 11,20-32" gospel="Jo 13,1-15" source="Missale Romanum 1954" />
+    </day>
+    <day id="good_friday" name="Good Friday" observanceKind="feria" pre55Grade="D1Cl" season="Lent" color="BLACK" privileged="true" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="-2" nameResId="good_friday">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="false" occurrence="suppress_lower" concurrence="none" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="BLACK" gloria="false" credo="false" preface="None" />
+      <readings epistle="Os 6,1-6; Ex 12,1-11" gospel="Jo 18,1-19,42" source="Missale Romanum 1954" />
+    </day>
+    <day id="holy_saturday" name="Holy Saturday (Easter Vigil)" observanceKind="vigil" pre55Grade="D1Cl" season="Easter" color="VIOLET" privileged="true" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="-1" nameResId="holy_saturday">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="false" occurrence="suppress_lower" concurrence="none" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="privileged_i" privileged="true" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="true" credo="false" preface="Easter" />
+      <readings epistle="Gen 1,1-31; 2,1-2; Gen 5,32—8,21; Gen 22,1-19; Ex 14,24-31; 15,1a; Is 54,17; 55,1-11; Bar 3,9-38; Ez 37,1-14; Is 4,1-6; Ex 12,1-11; Jon 3,1-10; Dt 31,22-30; Dn 3,1-24; Col 3,1-4" gospel="Mt 28,1-7" source="Missale Romanum 1954; PRE55_RULES.md II.6" />
+    </day>
+    <day id="easter_sunday" name="Easter Sunday" observanceKind="sunday" pre55Grade="D1Cl" season="Easter" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="0" isLordFeast="true" nameResId="easter_sunday">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Easter" day="0" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Easter" />
+      <readings epistle="1Co 5,7-8" gospel="Mc 16,1-7" source="Missale Romanum 1954" />
+    </day>
+    <day id="easter_monday" name="Easter Monday" observanceKind="feast" pre55Grade="D1Cl" season="Easter" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="1" nameResId="easter_monday">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Easter" day="1" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Easter" />
+      <readings epistle="At 10,37-43" gospel="Lc 24,13-35" source="Missale Romanum 1954" />
+    </day>
+    <day id="easter_tuesday" name="Easter Tuesday" observanceKind="feast" pre55Grade="D1Cl" season="Easter" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="2" nameResId="easter_tuesday">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Easter" day="2" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Easter" />
+      <readings epistle="At 13,16; 13,26-33" gospel="Lc 24,36-47" source="Missale Romanum 1954" />
+    </day>
+    <day id="easter_wednesday" name="Easter Wednesday" observanceKind="feast" pre55Grade="D1Cl" season="Easter" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="3" nameResId="easter_wednesday">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Easter" day="3" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Easter" />
+      <readings epistle="At 3,13-15; 3,17-19" gospel="Jo 21,1-14" source="Missale Romanum 1954" />
+    </day>
+    <day id="easter_thursday" name="Easter Thursday" observanceKind="feast" pre55Grade="D1Cl" season="Easter" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="4" nameResId="easter_thursday">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Easter" day="4" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Easter" />
+      <readings epistle="At 8,26-40" gospel="Jo 20,11-18" source="Missale Romanum 1954" />
+    </day>
+    <day id="easter_friday" name="Easter Friday" observanceKind="feast" pre55Grade="D1Cl" season="Easter" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="5" nameResId="easter_friday">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Easter" day="5" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Easter" />
+      <readings epistle="1Pe 3,18-22" gospel="Mt 28,16-20" source="Missale Romanum 1954" />
+    </day>
+    <day id="easter_saturday" name="Easter Saturday" observanceKind="feast" pre55Grade="D1Cl" season="Easter" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="6" nameResId="easter_saturday">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Easter" day="6" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Easter" />
+      <readings epistle="1Pe 2,1-10" gospel="Jo 20,1-9" source="Missale Romanum 1954" />
+    </day>
+    <day id="low_sunday_quasimodo" name="Low Sunday (Quasimodo)" observanceKind="sunday" pre55Grade="D1Cl" season="Easter" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="7" nameResId="low_sunday">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Easter" day="8" status="octave_day" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Easter" />
+      <readings epistle="1Jo 5,4-10" gospel="Jo 20,19-31" source="Missale Romanum 1954" />
+    </day>
+
+    <day id="2nd_sunday_after_easter_good_shepherd_sunday" name="2nd Sunday after Easter (Good Shepherd Sunday)" observanceKind="sunday" pre55Grade="SD" season="Easter" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2" offset="14" nameResId="sunday_after_easter_good_shepherd">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Easter" />
+      <readings epistle="1Pe 2,21-25" gospel="Jo 10,11-16" source="Missale Romanum 1954" />
+    </day>
+    <day id="patronage_of_st_joseph" name="Patronage of St. Joseph" observanceKind="feast" pre55Grade="D1Cl" season="Easter" color="WHITE" privileged="false" sourceRef="Missale Romanum 1954; DO Tempora/Pasc2-3" sourceRank="6.5" offset="17" nameResId="patronage_st_joseph">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="PatronageJoseph" day="0" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="SaintJoseph" />
+      <readings epistle="Gen 49,22-26" gospel="Lc 3,21-23" source="Missale Romanum 1954; DO Tempora/Pasc2-3" />
+    </day>
+    <day id="second_day_within_octave_patronage_st_joseph" name="2nd Day within the Octave of the Patronage of St. Joseph" observanceKind="within_octave" pre55Grade="SD" season="Easter" color="WHITE" privileged="false" sourceRef="Missale Romanum 1954; DO Tempora/Pasc2-4" sourceRank="2" offset="18" nameResId="patronage_st_joseph_octave">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="PatronageJoseph" day="1" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="false" preface="SaintJoseph" />
+      <readings epistle="Gen 49,22-26" gospel="Lc 3,21-23" source="Missale Romanum 1954; DO Tempora/Pasc2-4" />
+    </day>
+    <day id="third_day_within_octave_patronage_st_joseph" name="3rd Day within the Octave of the Patronage of St. Joseph" observanceKind="within_octave" pre55Grade="SD" season="Easter" color="WHITE" privileged="false" sourceRef="Missale Romanum 1954; DO Tempora/Pasc2-5" sourceRank="2" offset="19" nameResId="patronage_st_joseph_octave">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="PatronageJoseph" day="2" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="false" preface="SaintJoseph" />
+      <readings epistle="Gen 49,22-26" gospel="Lc 3,21-23" source="Missale Romanum 1954; DO Tempora/Pasc2-5" />
+    </day>
+    <day id="fourth_day_within_octave_patronage_st_joseph" name="4th Day within the Octave of the Patronage of St. Joseph" observanceKind="within_octave" pre55Grade="SD" season="Easter" color="WHITE" privileged="false" sourceRef="Missale Romanum 1954; DO Tempora/Pasc2-6" sourceRank="2" offset="20" nameResId="patronage_st_joseph_octave">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="PatronageJoseph" day="3" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="false" preface="SaintJoseph" />
+      <readings epistle="Gen 49,22-26" gospel="Lc 3,21-23" source="Missale Romanum 1954; DO Tempora/Pasc2-6" />
+    </day>
+    <day id="fifth_day_within_octave_patronage_st_joseph" name="5th Day within the Octave of the Patronage of St. Joseph" observanceKind="within_octave" pre55Grade="D2Cl" season="Easter" color="WHITE" privileged="false" sourceRef="Missale Romanum 1954; DO Tempora/Pasc3-0t" sourceRank="5.5" offset="21" nameResId="patronage_st_joseph_octave">
+      <precedence rank="D2Cl" numeric="5.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="PatronageJoseph" day="4" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="SaintJoseph" />
+      <readings epistle="Gen 49,22-26" gospel="Lc 3,21-23" source="Missale Romanum 1954; DO Tempora/Pasc3-0t" />
+    </day>
+    <day id="sixth_day_within_octave_patronage_st_joseph" name="6th Day within the Octave of the Patronage of St. Joseph" observanceKind="within_octave" pre55Grade="SD" season="Easter" color="WHITE" privileged="false" sourceRef="Missale Romanum 1954; DO Tempora/Pasc3-1" sourceRank="2" offset="22" nameResId="patronage_st_joseph_octave">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="PatronageJoseph" day="5" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="false" preface="SaintJoseph" />
+      <readings epistle="Gen 49,22-26" gospel="Lc 3,21-23" source="Missale Romanum 1954; DO Tempora/Pasc3-1" />
+    </day>
+    <day id="seventh_day_within_octave_patronage_st_joseph" name="7th Day within the Octave of the Patronage of St. Joseph" observanceKind="within_octave" pre55Grade="SD" season="Easter" color="WHITE" privileged="false" sourceRef="Missale Romanum 1954; DO Tempora/Pasc3-2" sourceRank="2" offset="23" nameResId="patronage_st_joseph_octave">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="PatronageJoseph" day="6" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="false" preface="SaintJoseph" />
+      <readings epistle="Gen 49,22-26" gospel="Lc 3,21-23" source="Missale Romanum 1954; DO Tempora/Pasc3-2" />
+    </day>
+    <day id="octave_day_patronage_st_joseph" name="Octave Day of the Patronage of St. Joseph" observanceKind="octave_day" pre55Grade="DMaj" season="Easter" color="WHITE" privileged="false" sourceRef="Missale Romanum 1954; DO Tempora/Pasc3-3" sourceRank="4" offset="24" nameResId="patronage_st_joseph_octave">
+      <precedence rank="DMaj" numeric="4" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="PatronageJoseph" day="7" status="octave_day" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="SaintJoseph" />
+      <readings epistle="Gen 49,22-26" gospel="Lc 3,21-23" source="Missale Romanum 1954; DO Tempora/Pasc3-3" />
+    </day>
+    <day id="3rd_sunday_after_easter" name="3rd Sunday after Easter" observanceKind="sunday" pre55Grade="SD" season="Easter" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2" offset="21" nameResId="sunday_after_easter" nameArg="3">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Easter" />
+      <readings epistle="1Pe 2,11-19" gospel="Jo 16,16-22" source="Missale Romanum 1954" />
+    </day>
+    <day id="4th_sunday_after_easter" name="4th Sunday after Easter" observanceKind="sunday" pre55Grade="SD" season="Easter" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2" offset="28" nameResId="sunday_after_easter" nameArg="4">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Easter" />
+      <readings epistle="Tg 1,17-21" gospel="Jo 16,5-14" source="Missale Romanum 1954" />
+    </day>
+    <day id="5th_sunday_after_easter" name="5th Sunday after Easter" observanceKind="sunday" pre55Grade="SD" season="Easter" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2" offset="35" nameResId="sunday_after_easter" nameArg="5">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Easter" />
+      <readings epistle="Tg 1,22-27" gospel="Jo 16,23-30" source="Missale Romanum 1954" />
+    </day>
+    <day id="vigil_of_the_ascension" name="Vigil of the Ascension" observanceKind="vigil" pre55Grade="D2Cl" season="Easter" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="5" offset="38" nameResId="vigil_ascension">
+      <precedence rank="D2Cl" numeric="5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Ascension" day="0" status="day_within" />
+      <vigil kind="common" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="false" credo="true" preface="Easter" />
+      <readings epistle="Ef 4,7-13" gospel="Jo 17,1-11" source="Missale Romanum 1954" />
+    </day>
+    <day id="ascension_of_our_lord" name="Ascension of Our Lord" observanceKind="feast" pre55Grade="D1Cl" season="Easter" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="39" isLordFeast="true" nameResId="ascension">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Ascension" day="0" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Ascension" />
+      <readings epistle="At 1,1-11" gospel="Mc 16,14-20" source="Missale Romanum 1954" />
+    </day>
+    <day id="sunday_after_ascension" name="Sunday after Ascension" observanceKind="sunday" pre55Grade="SD" season="Easter" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2" offset="42" nameResId="sunday_after_ascension">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Ascension" day="3" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Ascension" />
+      <readings epistle="1Pe 4,7-11" gospel="Jo 15,26—16,4" source="Missale Romanum 1954" />
+    </day>
+    <day id="vigil_of_pentecost" name="Vigil of Pentecost" observanceKind="vigil" pre55Grade="D1Cl" season="Pentecost" color="VIOLET" privileged="true" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="48" nameResId="vigil_pentecost">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="privileged_i" privileged="true" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="false" preface="Pentecost" />
+      <readings epistle="Gn 22,1-19; Ex 14,24-31; 15,1; Dt 31,22-30; Is 4,1-6; Ba 3,9-38; Ez 37,1-14; At 19,1-8" gospel="Jo 14,15-21" source="Missale Romanum 1954; PRE55_RULES.md II.8" />
+    </day>
+    <day id="pentecost_sunday" name="Pentecost Sunday" observanceKind="sunday" pre55Grade="D1Cl" season="Pentecost" color="RED" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="49" isLordFeast="true" nameResId="pentecost">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Pentecost" day="0" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="RED" gloria="true" credo="true" preface="Pentecost" />
+      <readings epistle="At 2,1-11" gospel="Jo 14,23-31" source="Missale Romanum 1954" />
+    </day>
+    <day id="pentecost_monday" name="Pentecost Monday" observanceKind="feast" pre55Grade="D1Cl" season="Pentecost" color="RED" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="50" nameResId="pentecost_monday">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Pentecost" day="1" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="RED" gloria="true" credo="true" preface="Pentecost" />
+      <readings epistle="At 10,34; 10,42-48" gospel="Jo 3,16-21" source="Missale Romanum 1954" />
+    </day>
+    <day id="pentecost_tuesday" name="Pentecost Tuesday" observanceKind="feast" pre55Grade="D1Cl" season="Pentecost" color="RED" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="51" nameResId="pentecost_tuesday">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Pentecost" day="2" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="RED" gloria="true" credo="true" preface="Pentecost" />
+      <readings epistle="At 8,14-17" gospel="Jo 10,1-10" source="Missale Romanum 1954" />
+    </day>
+    <day id="quarta_feira_das_t_mporas_de_pentecostes" name="Quarta-feira das Têmporas de Pentecostes" observanceKind="feast" pre55Grade="D1Cl" season="Pentecost" color="RED" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="52" nameResId="ember_wednesday" nameArg="of_pentecost">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Pentecost" day="3" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="RED" gloria="true" credo="true" preface="Pentecost" />
+      <readings epistle="At 2,14-21; At 5,12-16" gospel="Jo 6,44-52" source="Missale Romanum 1954" />
+    </day>
+    <day id="pentecost_thursday" name="Pentecost Thursday" observanceKind="feast" pre55Grade="D1Cl" season="Pentecost" color="RED" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="53" nameResId="pentecost_thursday">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Pentecost" day="4" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="RED" gloria="true" credo="true" preface="Pentecost" />
+      <readings epistle="At 8,5-8" gospel="Lc 9,1-6" source="Missale Romanum 1954" />
+    </day>
+    <day id="sexta_feira_das_t_mporas_de_pentecostes" name="Sexta-feira das Têmporas de Pentecostes" observanceKind="feast" pre55Grade="D1Cl" season="Pentecost" color="RED" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="54" nameResId="ember_friday" nameArg="of_pentecost">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Pentecost" day="5" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="RED" gloria="true" credo="true" preface="Pentecost" />
+      <readings epistle="Jl 2,23-24; 2,26-27" gospel="Lc 5,17-26" source="Missale Romanum 1954" />
+    </day>
+    <day id="s_bado_das_t_mporas_de_pentecostes" name="Sábado das Têmporas de Pentecostes" observanceKind="feast" pre55Grade="D1Cl" season="Pentecost" color="RED" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="55" nameResId="ember_saturday" nameArg="of_pentecost">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Pentecost" day="6" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="RED" gloria="true" credo="true" preface="Pentecost" />
+      <readings epistle="Jl 2,28-32; Lv 23,9-11; 23,15-17; 23,21; Dt 26,1-3; 26,7-11; Lv 26,3-12; Dn 3,47-51; 3,52-59; Rm 5,1-5" gospel="Lc 4,38-44" source="Missale Romanum 1954" />
+    </day>
+    <day id="trinity_sunday" name="Trinity Sunday" observanceKind="sunday" pre55Grade="D1Cl" season="AfterPentecost" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="56" isLordFeast="true" nameResId="trinity_sunday">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="Rm 11,33-36" gospel="Mt 28,18-20" source="Missale Romanum 1954" />
+    </day>
+    <day id="corpus_christi" name="Corpus Christi" observanceKind="feast" pre55Grade="D1Cl" season="AfterPentecost" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="60" isLordFeast="true" nameResId="corpus_christi">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="CorpusChristi" day="0" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Christmas" />
+      <readings epistle="1Co 11,23-29" gospel="Jo 6,56-59" source="Missale Romanum 1954" />
+    </day>
+    <day id="sacred_heart_of_jesus" name="Sacred Heart of Jesus" observanceKind="feast" pre55Grade="D1Cl" season="AfterPentecost" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="68" isLordFeast="true" nameResId="sacred_heart">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="SacredHeart" day="0" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="SacredHeart" />
+      <readings epistle="Ep 3,8-12; 3,14-19" gospel="Jo 19,31-37" source="Missale Romanum 1954" />
+    </day>
+  </easter_cycle>
+  <sunday_rules sourceRef="Missale Romanum 1954; PRE55_RULES.md Parts II.1, II.3, II.9, II.11">
+    <sundayRule id="1st_sunday_of_advent" name="1st Sunday of Advent" nameResId="sunday_of_advent" nameArg="1" cycle="advent" week="1" season="Advent" window="advent" observanceKind="sunday" pre55Grade="D1Cl" color="VIOLET" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="true" preface="Advent" />
+      <readings epistle="Rm 13,11-14" gospel="Lc 21,25-33" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="2nd_sunday_of_advent" name="2nd Sunday of Advent" nameResId="sunday_of_advent" nameArg="2" cycle="advent" week="2" season="Advent" window="advent" observanceKind="sunday" pre55Grade="D2Cl" color="VIOLET" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="5">
+      <precedence rank="D2Cl" numeric="5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="true" preface="Advent" />
+      <readings epistle="Rm 15,4-13" gospel="Mt 11,2-10" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="3rd_sunday_of_advent_gaudete" name="3rd Sunday of Advent (Gaudete)" nameResId="sunday_of_advent_gaudete" nameArg="3" cycle="advent" week="3" season="Advent" window="advent" observanceKind="sunday" pre55Grade="D2Cl" color="ROSE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="5">
+      <precedence rank="D2Cl" numeric="5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="ROSE" gloria="false" credo="true" preface="Advent" />
+      <readings epistle="Fl 4,4-7" gospel="Jo 1,19-28" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="4th_sunday_of_advent" name="4th Sunday of Advent" nameResId="sunday_of_advent" nameArg="4" cycle="advent" week="4" season="Advent" window="advent" observanceKind="sunday" pre55Grade="D1Cl" color="VIOLET" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="true" preface="Advent" />
+      <readings epistle="1Co 4,1-5" gospel="Lc 3,1-6" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="holy_family_sunday_within_epiphany_octave" name="Holy Family Sunday within the Octave of Epiphany" nameResId="holy_family" cycle="after_epiphany" week="1" season="Epiphany" window="epiphany_octave" observanceKind="sunday" pre55Grade="DMaj" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="4">
+      <precedence rank="DMaj" numeric="4" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Epiphany" day="1" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Epiphany" />
+      <readings epistle="Col 3,12-17" gospel="Lc 2,42-52" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="2nd_sunday_after_epiphany" name="2nd Sunday after Epiphany" nameResId="sunday_after_epiphany" nameArg="2" cycle="after_epiphany" week="2" season="Epiphany" window="after_epiphany" observanceKind="sunday" pre55Grade="SD" color="GREEN" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="Rm 12,6-16" gospel="Jo 2,1-11" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="3rd_sunday_after_epiphany" name="3rd Sunday after Epiphany" nameResId="sunday_after_epiphany" nameArg="3" cycle="after_epiphany" week="3" season="Epiphany" window="after_epiphany" observanceKind="sunday" pre55Grade="SD" color="GREEN" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="Rm 12,16-21" gospel="Mt 8,1-13" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="4th_sunday_after_epiphany" name="4th Sunday after Epiphany" nameResId="sunday_after_epiphany" nameArg="4" cycle="after_epiphany" week="4" season="Epiphany" window="after_epiphany" observanceKind="sunday" pre55Grade="SD" color="GREEN" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="Rm 13,8-10" gospel="Mt 8,23-27" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="5th_sunday_after_epiphany" name="5th Sunday after Epiphany" nameResId="sunday_after_epiphany" nameArg="5" cycle="after_epiphany" week="5" season="Epiphany" window="after_epiphany" observanceKind="sunday" pre55Grade="SD" color="GREEN" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="Col 3,12-17" gospel="Mt 13,24-30" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="6th_sunday_after_epiphany" name="6th Sunday after Epiphany" nameResId="sunday_after_epiphany" nameArg="6" cycle="after_epiphany" week="6" season="Epiphany" window="after_epiphany" observanceKind="sunday" pre55Grade="SD" color="GREEN" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="1Ts 1,2-10" gospel="Mt 13,31-35" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="2nd_sunday_after_pentecost" name="2nd Sunday after Pentecost" nameResId="sunday_after_pentecost" nameArg="2" cycle="after_pentecost" week="2" season="AfterPentecost" window="after_pentecost" easterOffset="63" observanceKind="sunday" pre55Grade="SD" color="GREEN" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="CorpusChristi" day="3" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="1Jo 3,13-18" gospel="Lc 14,16-24" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="3rd_sunday_after_pentecost" name="3rd Sunday after Pentecost" nameResId="sunday_after_pentecost" nameArg="3" cycle="after_pentecost" week="3" season="AfterPentecost" window="after_pentecost" easterOffset="70" observanceKind="sunday" pre55Grade="SD" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="SacredHeart" day="2" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="1Pe 5,6-11" gospel="Lc 15,1-10" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="4th_sunday_after_pentecost" name="4th Sunday after Pentecost" nameResId="sunday_after_pentecost" nameArg="4" cycle="after_pentecost" week="4" season="AfterPentecost" window="after_pentecost" easterOffset="77" observanceKind="sunday" pre55Grade="SD" color="GREEN" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="Rm 8,18-23" gospel="Lc 5,1-11" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="5th_sunday_after_pentecost" name="5th Sunday after Pentecost" nameResId="sunday_after_pentecost" nameArg="5" cycle="after_pentecost" week="5" season="AfterPentecost" window="after_pentecost" easterOffset="84" observanceKind="sunday" pre55Grade="SD" color="GREEN" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="1Pe 3,8-15" gospel="Mt 5,20-24" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="6th_sunday_after_pentecost" name="6th Sunday after Pentecost" nameResId="sunday_after_pentecost" nameArg="6" cycle="after_pentecost" week="6" season="AfterPentecost" window="after_pentecost" easterOffset="91" observanceKind="sunday" pre55Grade="SD" color="GREEN" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="Rm 6,3-11" gospel="Mc 8,1-9" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="7th_sunday_after_pentecost" name="7th Sunday after Pentecost" nameResId="sunday_after_pentecost" nameArg="7" cycle="after_pentecost" week="7" season="AfterPentecost" window="after_pentecost" easterOffset="98" observanceKind="sunday" pre55Grade="SD" color="GREEN" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="Rm 6,19-23" gospel="Mt 7,15-21" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="8th_sunday_after_pentecost" name="8th Sunday after Pentecost" nameResId="sunday_after_pentecost" nameArg="8" cycle="after_pentecost" week="8" season="AfterPentecost" window="after_pentecost" easterOffset="105" observanceKind="sunday" pre55Grade="SD" color="GREEN" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="Rm 8,12-17" gospel="Lc 16,1-9" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="9th_sunday_after_pentecost" name="9th Sunday after Pentecost" nameResId="sunday_after_pentecost" nameArg="9" cycle="after_pentecost" week="9" season="AfterPentecost" window="after_pentecost" easterOffset="112" observanceKind="sunday" pre55Grade="SD" color="GREEN" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="1Co 10,6-13" gospel="Lc 19,41-47" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="10th_sunday_after_pentecost" name="10th Sunday after Pentecost" nameResId="sunday_after_pentecost" nameArg="10" cycle="after_pentecost" week="10" season="AfterPentecost" window="after_pentecost" easterOffset="119" observanceKind="sunday" pre55Grade="SD" color="GREEN" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="1Co 12,2-11" gospel="Lc 18,9-14" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="11th_sunday_after_pentecost" name="11th Sunday after Pentecost" nameResId="sunday_after_pentecost" nameArg="11" cycle="after_pentecost" week="11" season="AfterPentecost" window="after_pentecost" easterOffset="126" observanceKind="sunday" pre55Grade="SD" color="GREEN" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="1Co 15,1-10" gospel="Mc 7,31-37" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="12th_sunday_after_pentecost" name="12th Sunday after Pentecost" nameResId="sunday_after_pentecost" nameArg="12" cycle="after_pentecost" week="12" season="AfterPentecost" window="after_pentecost" easterOffset="133" observanceKind="sunday" pre55Grade="SD" color="GREEN" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="2Co 3,4-9" gospel="Lc 10,23-37" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="13th_sunday_after_pentecost" name="13th Sunday after Pentecost" nameResId="sunday_after_pentecost" nameArg="13" cycle="after_pentecost" week="13" season="AfterPentecost" window="after_pentecost" easterOffset="140" observanceKind="sunday" pre55Grade="SD" color="GREEN" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="Gl 3,16-22" gospel="Lc 17,11-19" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="14th_sunday_after_pentecost" name="14th Sunday after Pentecost" nameResId="sunday_after_pentecost" nameArg="14" cycle="after_pentecost" week="14" season="AfterPentecost" window="after_pentecost" easterOffset="147" observanceKind="sunday" pre55Grade="SD" color="GREEN" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="Gl 5,16-24" gospel="Mt 6,24-33" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="15th_sunday_after_pentecost" name="15th Sunday after Pentecost" nameResId="sunday_after_pentecost" nameArg="15" cycle="after_pentecost" week="15" season="AfterPentecost" window="after_pentecost" easterOffset="154" observanceKind="sunday" pre55Grade="SD" color="GREEN" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="Gl 5,25-26; 6,1-10" gospel="Lc 7,11-16" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="16th_sunday_after_pentecost" name="16th Sunday after Pentecost" nameResId="sunday_after_pentecost" nameArg="16" cycle="after_pentecost" week="16" season="AfterPentecost" window="after_pentecost" easterOffset="161" observanceKind="sunday" pre55Grade="SD" color="GREEN" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="Ep 3,13-21" gospel="Lc 14,1-11" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="17th_sunday_after_pentecost" name="17th Sunday after Pentecost" nameResId="sunday_after_pentecost" nameArg="17" cycle="after_pentecost" week="17" season="AfterPentecost" window="after_pentecost" easterOffset="168" observanceKind="sunday" pre55Grade="SD" color="GREEN" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="Ep 4,1-6" gospel="Mt 22,34-46" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="18th_sunday_after_pentecost" name="18th Sunday after Pentecost" nameResId="sunday_after_pentecost" nameArg="18" cycle="after_pentecost" week="18" season="AfterPentecost" window="after_pentecost" easterOffset="175" observanceKind="sunday" pre55Grade="SD" color="GREEN" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="1Co 1,4-8" gospel="Mt 9,1-8" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="19th_sunday_after_pentecost" name="19th Sunday after Pentecost" nameResId="sunday_after_pentecost" nameArg="19" cycle="after_pentecost" week="19" season="AfterPentecost" window="after_pentecost" easterOffset="182" observanceKind="sunday" pre55Grade="SD" color="GREEN" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="Ep 4,23-28" gospel="Mt 22,1-14" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="20th_sunday_after_pentecost" name="20th Sunday after Pentecost" nameResId="sunday_after_pentecost" nameArg="20" cycle="after_pentecost" week="20" season="AfterPentecost" window="after_pentecost" easterOffset="189" observanceKind="sunday" pre55Grade="SD" color="GREEN" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="Ep 5,15-21" gospel="Jo 4,46-53" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="21th_sunday_after_pentecost" name="21th Sunday after Pentecost" nameResId="sunday_after_pentecost" nameArg="21" cycle="after_pentecost" week="21" season="AfterPentecost" window="after_pentecost" easterOffset="196" observanceKind="sunday" pre55Grade="SD" color="GREEN" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="Ep 6,10-17" gospel="Mt 18,23-35" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="22th_sunday_after_pentecost" name="22th Sunday after Pentecost" nameResId="sunday_after_pentecost" nameArg="22" cycle="after_pentecost" week="22" season="AfterPentecost" window="after_pentecost" easterOffset="203" observanceKind="sunday" pre55Grade="SD" color="GREEN" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="Fl 1,6-11" gospel="Mt 22,15-21" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="23th_sunday_after_pentecost" name="23th Sunday after Pentecost" nameResId="sunday_after_pentecost" nameArg="23" cycle="after_pentecost" week="23" season="AfterPentecost" window="after_pentecost" easterOffset="210" observanceKind="sunday" pre55Grade="SD" color="GREEN" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="Fl 3,17-21; 4,1-3" gospel="Mt 9,18-26" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="24th_sunday_after_pentecost" name="24th Sunday after Pentecost" nameResId="sunday_after_pentecost" nameArg="24" cycle="after_pentecost" week="24" season="AfterPentecost" window="after_pentecost" easterOffset="217" observanceKind="sunday" pre55Grade="SD" color="GREEN" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="2.2">
+      <precedence rank="SD" numeric="2.2" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="true" credo="true" preface="Trinity" />
+      <readings epistle="Col 1,9-14" gospel="Mt 24,15-35" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="sunday_within_christmas_octave" name="Sunday within the Octave of Christmas" nameResId="sunday_within_christmas_octave" cycle="christmas_octave" week="1" season="Christmas" window="christmas_octave" observanceKind="sunday" pre55Grade="D2Cl" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="5">
+      <precedence rank="D2Cl" numeric="5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Christmas" day="0" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Christmas" />
+      <readings epistle="Gal 4,1-7" gospel="Lc 2,33-40" source="Missale Romanum 1954" />
+    </sundayRule>
+    <sundayRule id="christ_the_king" name="Christ the King" nameResId="christ_the_king" cycle="christ_the_king" week="1" season="AfterPentecost" window="christ_the_king" observanceKind="feast" pre55Grade="D1Cl" color="WHITE" privileged="false" sourceRef="PRE55_RULES.md#II.10" sourceRank="6.5" isLordFeast="true">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="ChristTheKing" />
+      <readings epistle="Col 1,12-20" gospel="Jo 18,33-37" source="Missale Romanum 1954; PRE55_RULES.md II.10" />
+    </sundayRule>
+    <sundayRule id="holy_name_of_jesus" name="Most Holy Name of Jesus" nameResId="holy_name_jesus" cycle="holy_name" week="1" season="Christmas" window="holy_name" observanceKind="sunday" pre55Grade="D2Cl" color="WHITE" privileged="false" sourceRef="PRE55_RULES.md#II.2" sourceRank="5" isLordFeast="true">
+      <precedence rank="D2Cl" numeric="5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Christmas" />
+      <readings epistle="Acts 4:8-12" gospel="Lc 2:21" source="Missale Romanum 1954; PRE55_RULES.md II.2" />
+    </sundayRule>
+  </sunday_rules>
+  <christmas_cycle sourceRef="Missale Romanum 1954; DO 1939 baseline + 1954 delta">
+    <day id="vigil_of_the_nativity" name="Vigil of the Nativity" observanceKind="vigil" pre55Grade="D1Cl" season="Advent" color="VIOLET" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" date="12-24" nameResId="vigil_christmas">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Christmas" day="0" status="day_within" />
+      <vigil kind="privileged_i" privileged="true" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="false" preface="Common" />
+      <readings epistle="Rm 1,1-6" gospel="Mt 1,18b-21" source="Missale Romanum 1954" />
+    </day>
+    <day id="christmas_day" name="Christmas Day" observanceKind="feast" pre55Grade="D1Cl" season="Christmas" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" date="12-25" isLordFeast="true" nameResId="christmas">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Christmas" day="0" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Christmas" />
+      <readings epistle="Tt 2,11-14" gospel="Lc 2,1-14" source="Missale Romanum 1954" />
+    </day>
+    <day id="st_stephen_protomartyr" name="St. Stephen, Protomartyr" observanceKind="feast" pre55Grade="D2Cl" season="Christmas" color="RED" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="5" date="12-26" nameResId="st_stephen">
+      <precedence rank="D2Cl" numeric="5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Christmas" day="0" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="RED" gloria="true" credo="true" preface="Christmas" />
+      <readings epistle="At 6,1-7" gospel="Mt 23,34-39" source="Missale Romanum 1954" />
+    </day>
+    <day id="st_john_apostle_and_evangelist" name="St. John, Apostle and Evangelist" observanceKind="feast" pre55Grade="D2Cl" season="Christmas" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="5" date="12-27" nameResId="st_john_apostle">
+      <precedence rank="D2Cl" numeric="5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Christmas" day="0" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Christmas" />
+      <readings epistle="Eclo 15,1-6" gospel="Jo 21,19-24" source="Missale Romanum 1954" />
+    </day>
+    <day id="the_holy_innocents_martyrs" name="The Holy Innocents, Martyrs" observanceKind="feast" pre55Grade="D2Cl" season="Christmas" color="RED" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="5" date="12-28" nameResId="holy_innocents">
+      <precedence rank="D2Cl" numeric="5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Christmas" day="0" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="RED" gloria="true" credo="true" preface="Christmas" />
+      <readings epistle="Ap 14,1-5" gospel="Mt 2,13-18" source="Missale Romanum 1954" />
+    </day>
+    <day id="5th_day_within_the_octave_of_the_nativity" name="5th Day within the Octave of the Nativity" observanceKind="within_octave" pre55Grade="D" season="Christmas" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="3" date="12-29" nameResId="day_octave_nativity">
+      <precedence rank="D" numeric="3" firstVespers="false" occurrence="commemorate_or_transfer" concurrence="none" />
+      <octave id="Christmas" day="0" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Christmas" />
+      <readings epistle="Tt 3,4-7" gospel="Lc 2,15-20" source="Missale Romanum 1954" />
+    </day>
+    <day id="6th_day_within_the_octave_of_the_nativity" name="6th Day within the Octave of the Nativity" observanceKind="within_octave" pre55Grade="D2Cl" season="Christmas" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="5" date="12-30" nameResId="day_octave_nativity">
+      <precedence rank="D2Cl" numeric="5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Christmas" day="0" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Christmas" />
+      <readings epistle="Tt 3,4-7" gospel="Lc 2,15-20" source="Missale Romanum 1954" />
+    </day>
+    <day id="7th_day_within_the_octave_of_the_nativity" name="7th Day within the Octave of the Nativity" observanceKind="within_octave" pre55Grade="D" season="Christmas" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="3" date="12-31" nameResId="day_octave_nativity">
+      <precedence rank="D" numeric="3" firstVespers="false" occurrence="commemorate_or_transfer" concurrence="none" />
+      <octave id="Christmas" day="0" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Christmas" />
+      <readings epistle="Tt 3,4-7" gospel="Lc 2,15-20" source="Missale Romanum 1954" />
+    </day>
+    <day id="circumcision_of_our_lord" name="Circumcision of Our Lord" observanceKind="feast" pre55Grade="D2Cl" season="Christmas" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="5" date="01-01" isLordFeast="true" nameResId="circumcision_lord">
+      <precedence rank="D2Cl" numeric="5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Christmas" day="8" status="octave_day" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Christmas" />
+      <readings epistle="Tt 2,11-15" gospel="Lc 2,21" source="Missale Romanum 1954; PRE55_RULES.md#III.1" />
+    </day>
+    <day id="vigil_of_epiphany" name="Vigil of the Epiphany" observanceKind="vigil" pre55Grade="D2Cl" season="Epiphany" color="VIOLET" privileged="true" sourceRef="PRE55_RULES.md#II.3" sourceRank="5" date="01-05" nameResId="vigil_epiphany">
+      <precedence rank="D2Cl" numeric="5" firstVespers="false" occurrence="commemorate_or_transfer" concurrence="none" />
+      <suppression mode="lower_except" retain="st_telesphorus_pope_and_martyr,holy_name_of_jesus" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="privileged_ii" privileged="true" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="false" preface="Christmas" />
+      <readings epistle="Gl 4,1-7" gospel="Mt 2,19-23" source="Missale Romanum 1954; PRE55_RULES.md II.3" />
+    </day>
+    <day id="the_epiphany_of_our_lord" name="The Epiphany of Our Lord" observanceKind="feast" pre55Grade="D1Cl" season="Epiphany" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" date="01-06" isLordFeast="true" nameResId="epiphany">
+      <precedence rank="D1Cl" numeric="6.5" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Epiphany" day="0" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Epiphany" />
+      <readings epistle="Is 60,1-6" gospel="Mt 2,1-12" source="Missale Romanum 1954" />
+    </day>
+    <day id="2nd_day_within_the_octave_of_the_epiphany" name="2nd Day within the Octave of the Epiphany" observanceKind="within_octave" pre55Grade="SD" season="Epiphany" color="WHITE" privileged="false" sourceRef="PRE55_RULES.md#III.1" sourceRank="2.2" date="01-07" nameResId="day_octave_epiphany">
+      <precedence rank="SD" numeric="2.2" firstVespers="false" occurrence="commemorate_or_transfer" concurrence="none" />
+      <octave id="Epiphany" day="2" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Epiphany" />
+      <readings epistle="Is 60,1-6" gospel="Mt 2,1-12" source="Missale Romanum 1954; PRE55_RULES.md#III.1" />
+    </day>
+    <day id="3rd_day_within_the_octave_of_the_epiphany" name="3rd Day within the Octave of the Epiphany" observanceKind="within_octave" pre55Grade="SD" season="Epiphany" color="WHITE" privileged="false" sourceRef="PRE55_RULES.md#III.1" sourceRank="2.2" date="01-08" nameResId="day_octave_epiphany">
+      <precedence rank="SD" numeric="2.2" firstVespers="false" occurrence="commemorate_or_transfer" concurrence="none" />
+      <octave id="Epiphany" day="3" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Epiphany" />
+      <readings epistle="Is 60,1-6" gospel="Mt 2,1-12" source="Missale Romanum 1954; PRE55_RULES.md#III.1" />
+    </day>
+    <day id="4th_day_within_the_octave_of_the_epiphany" name="4th Day within the Octave of the Epiphany" observanceKind="within_octave" pre55Grade="SD" season="Epiphany" color="WHITE" privileged="false" sourceRef="PRE55_RULES.md#III.1" sourceRank="2.2" date="01-09" nameResId="day_octave_epiphany">
+      <precedence rank="SD" numeric="2.2" firstVespers="false" occurrence="commemorate_or_transfer" concurrence="none" />
+      <octave id="Epiphany" day="4" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Epiphany" />
+      <readings epistle="Is 60,1-6" gospel="Mt 2,1-12" source="Missale Romanum 1954; PRE55_RULES.md#III.1" />
+    </day>
+    <day id="5th_day_within_the_octave_of_the_epiphany" name="5th Day within the Octave of the Epiphany" observanceKind="within_octave" pre55Grade="SD" season="Epiphany" color="WHITE" privileged="false" sourceRef="PRE55_RULES.md#III.1" sourceRank="2.2" date="01-10" nameResId="day_octave_epiphany">
+      <precedence rank="SD" numeric="2.2" firstVespers="false" occurrence="commemorate_or_transfer" concurrence="none" />
+      <octave id="Epiphany" day="5" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Epiphany" />
+      <readings epistle="Is 60,1-6" gospel="Mt 2,1-12" source="Missale Romanum 1954; PRE55_RULES.md#III.1" />
+    </day>
+    <day id="6th_day_within_the_octave_of_the_epiphany" name="6th Day within the Octave of the Epiphany" observanceKind="within_octave" pre55Grade="SD" season="Epiphany" color="WHITE" privileged="false" sourceRef="PRE55_RULES.md#III.1" sourceRank="2.2" date="01-11" nameResId="day_octave_epiphany">
+      <precedence rank="SD" numeric="2.2" firstVespers="false" occurrence="commemorate_or_transfer" concurrence="none" />
+      <octave id="Epiphany" day="6" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Epiphany" />
+      <readings epistle="Is 60,1-6" gospel="Mt 2,1-12" source="Missale Romanum 1954; PRE55_RULES.md#III.1" />
+    </day>
+    <day id="7th_day_within_the_octave_of_the_epiphany" name="7th Day within the Octave of the Epiphany" observanceKind="within_octave" pre55Grade="SD" season="Epiphany" color="WHITE" privileged="false" sourceRef="PRE55_RULES.md#III.1" sourceRank="2.2" date="01-12" nameResId="day_octave_epiphany">
+      <precedence rank="SD" numeric="2.2" firstVespers="false" occurrence="commemorate_or_transfer" concurrence="none" />
+      <octave id="Epiphany" day="7" status="day_within" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Epiphany" />
+      <readings epistle="Is 60,1-6" gospel="Mt 2,1-12" source="Missale Romanum 1954; PRE55_RULES.md#III.1" />
+    </day>
+    <day id="commemoration_of_the_baptism_of_our_lord" name="Octave Day of the Epiphany (Commemoration of the Baptism of Our Lord)" observanceKind="octave_day" pre55Grade="DMaj" season="Epiphany" color="WHITE" privileged="false" sourceRef="PRE55_RULES.md#III.1" sourceRank="4" date="01-13" isLordFeast="true" nameResId="baptism_lord">
+      <precedence rank="DMaj" numeric="4" firstVespers="true" occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+      <octave id="Epiphany" day="8" status="octave_day" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="true" credo="true" preface="Epiphany" />
+      <readings epistle="Is 60,1-6" gospel="Jo 1,29-34" source="Missale Romanum 1954; PRE55_RULES.md#III.1" />
+    </day>
+  </christmas_cycle>
+  <feria_rules sourceRef="Missale Romanum 1954; PRE55_RULES.md Part II">
+    <feriaRule id="advent" observanceKind="feria" pre55Grade="S" season="Advent" color="VIOLET" privileged="false" sourceRef="Missale Romanum 1954">
+      <precedence rank="S" numeric="1.2" firstVespers="false" occurrence="commemorate" concurrence="none" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="false" preface="Advent" />
+      <readings epistle="ferial" gospel="ferial" source="Missale Romanum 1954" />
+    </feriaRule>
+    <feriaRule id="christmas" observanceKind="feria" pre55Grade="SD" season="Christmas" color="WHITE" privileged="false" sourceRef="Missale Romanum 1954">
+      <precedence rank="SD" numeric="2.2" firstVespers="false" occurrence="commemorate" concurrence="none" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="false" credo="false" preface="Christmas" />
+      <readings epistle="ferial" gospel="ferial" source="Missale Romanum 1954" />
+    </feriaRule>
+    <feriaRule id="epiphany" observanceKind="feria" pre55Grade="SD" season="Epiphany" color="GREEN" privileged="false" sourceRef="Missale Romanum 1954">
+      <precedence rank="SD" numeric="2.2" firstVespers="false" occurrence="commemorate" concurrence="none" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="false" credo="false" preface="Epiphany" />
+      <readings epistle="ferial" gospel="ferial" source="Missale Romanum 1954" />
+    </feriaRule>
+    <feriaRule id="septuagesima" observanceKind="feria" pre55Grade="S" season="Septuagesima" color="VIOLET" privileged="false" sourceRef="Missale Romanum 1954">
+      <precedence rank="S" numeric="1.2" firstVespers="false" occurrence="commemorate" concurrence="none" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="false" preface="Trinity" />
+      <readings epistle="ferial" gospel="ferial" source="Missale Romanum 1954" />
+    </feriaRule>
+    <feriaRule id="lent" observanceKind="feria" pre55Grade="S" season="Lent" color="VIOLET" privileged="false" sourceRef="Missale Romanum 1954">
+      <precedence rank="S" numeric="1.2" firstVespers="false" occurrence="commemorate" concurrence="none" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="false" preface="Lent" />
+      <readings epistle="ferial" gospel="ferial" source="Missale Romanum 1954" />
+    </feriaRule>
+    <feriaRule id="easter" observanceKind="feria" pre55Grade="SD" season="Easter" color="WHITE" privileged="false" sourceRef="Missale Romanum 1954">
+      <precedence rank="SD" numeric="2.2" firstVespers="false" occurrence="commemorate" concurrence="none" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="WHITE" gloria="false" credo="false" preface="Easter" />
+      <readings epistle="ferial" gospel="ferial" source="Missale Romanum 1954" />
+    </feriaRule>
+    <feriaRule id="pentecost" observanceKind="feria" pre55Grade="SD" season="Pentecost" color="RED" privileged="false" sourceRef="Missale Romanum 1954">
+      <precedence rank="SD" numeric="2.2" firstVespers="false" occurrence="commemorate" concurrence="none" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="RED" gloria="false" credo="false" preface="Pentecost" />
+      <readings epistle="ferial" gospel="ferial" source="Missale Romanum 1954" />
+    </feriaRule>
+    <feriaRule id="after_pentecost" observanceKind="feria" pre55Grade="SD" season="AfterPentecost" color="GREEN" privileged="false" sourceRef="Missale Romanum 1954">
+      <precedence rank="SD" numeric="2.2" firstVespers="false" occurrence="no_commemoration" concurrence="none" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="GREEN" gloria="false" credo="false" preface="Trinity" />
+      <readings epistle="ferial" gospel="ferial" source="Missale Romanum 1954" />
+    </feriaRule>
+    <feriaRule id="ember_wednesday_advent" name="Ember Wednesday of Advent" nameResId="ember_wednesday" nameArg="of_advent" weekday="3" window="after_advent_iii" observanceKind="feria" pre55Grade="D2Cl" season="Advent" color="VIOLET" privileged="true" sourceRef="PRE55_RULES.md#II.1" sourceRank="5">
+      <precedence rank="D2Cl" numeric="5" firstVespers="false" occurrence="suppress_lower" concurrence="none" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="false" preface="Advent" />
+      <readings epistle="Is 2,2-5; Is 7,10-15" gospel="Lc 1,26-38" source="Missale Romanum 1954; PRE55_RULES.md II.1" />
+    </feriaRule>
+    <feriaRule id="ember_friday_advent" name="Ember Friday of Advent" nameResId="ember_friday" nameArg="of_advent" weekday="5" window="after_advent_iii" observanceKind="feria" pre55Grade="D2Cl" season="Advent" color="VIOLET" privileged="true" sourceRef="PRE55_RULES.md#II.1" sourceRank="5">
+      <precedence rank="D2Cl" numeric="5" firstVespers="false" occurrence="suppress_lower" concurrence="none" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="false" preface="Advent" />
+      <readings epistle="Is 11,1-5" gospel="Lc 1,39-47" source="Missale Romanum 1954; PRE55_RULES.md II.1" />
+    </feriaRule>
+    <feriaRule id="ember_saturday_advent" name="Ember Saturday of Advent" nameResId="ember_saturday" nameArg="of_advent" weekday="6" window="after_advent_iii" observanceKind="feria" pre55Grade="D2Cl" season="Advent" color="VIOLET" privileged="true" sourceRef="PRE55_RULES.md#II.1" sourceRank="5">
+      <precedence rank="D2Cl" numeric="5" firstVespers="false" occurrence="suppress_lower" concurrence="none" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="false" preface="Advent" />
+      <readings epistle="Is 19,20-22; Is 35,1-7; Is 40,9-11; Is 45,1-8; Dn 3,47-51; 3,52-56; 2Ts 2,1-8" gospel="Lc 3,1-6" source="Missale Romanum 1954; PRE55_RULES.md II.1" />
+    </feriaRule>
+    <feriaRule id="ember_wednesday_september" name="Ember Wednesday of September" nameResId="ember_wednesday" nameArg="of_september" weekday="3" window="after_september_14" observanceKind="feria" pre55Grade="D2Cl" season="AfterPentecost" color="VIOLET" privileged="false" sourceRef="PRE55_RULES.md#II.12" sourceRank="5">
+      <precedence rank="D2Cl" numeric="5" firstVespers="false" occurrence="suppress_lower" concurrence="none" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="false" preface="Common" />
+      <readings epistle="Am 9,13-15; Ne 8,1-10" gospel="Mc 9,16-28" source="Missale Romanum 1954; PRE55_RULES.md II.12" />
+    </feriaRule>
+    <feriaRule id="ember_friday_september" name="Ember Friday of September" nameResId="ember_friday" nameArg="of_september" weekday="5" window="after_september_14" observanceKind="feria" pre55Grade="D2Cl" season="AfterPentecost" color="VIOLET" privileged="false" sourceRef="PRE55_RULES.md#II.12" sourceRank="5">
+      <precedence rank="D2Cl" numeric="5" firstVespers="false" occurrence="suppress_lower" concurrence="none" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="false" preface="Common" />
+      <readings epistle="Os 14,2-10" gospel="Lc 7,36-50" source="Missale Romanum 1954; PRE55_RULES.md II.12" />
+    </feriaRule>
+    <feriaRule id="ember_saturday_september" name="Ember Saturday of September" nameResId="ember_saturday" nameArg="of_september" weekday="6" window="after_september_14" observanceKind="feria" pre55Grade="D2Cl" season="AfterPentecost" color="VIOLET" privileged="false" sourceRef="PRE55_RULES.md#II.12" sourceRank="5">
+      <precedence rank="D2Cl" numeric="5" firstVespers="false" occurrence="suppress_lower" concurrence="none" />
+      <octave id="none" day="0" status="none" />
+      <vigil kind="none" privileged="false" anticipated="false" />
+      <transfer status="none" transferable="false" target="" />
+      <mass color="VIOLET" gloria="false" credo="false" preface="Common" />
+      <readings epistle="Lv 23,26-32; 23,39-43; Mi 7,14; 7,16; 7,18-20; Za 8,14-19; Dn 3,47-51; 3,52-56; Hb 9,2-12" gospel="Lc 13,6-17" source="Missale Romanum 1954; PRE55_RULES.md II.12" />
+    </feriaRule>
+  </feria_rules>
+  <transfer_rules sourceRef="Missale Romanum 1954; PRE55_RULES.md I.7">
+    <transferRule id="annunciation" feastId="annunciation" when="occurs_in_holy_week" target="first_day_after_easter_octave" resolved="true" sourceRef="Missale Romanum 1954" />
+    <transferRule id="joseph" feastId="st_joseph" when="occurs_in_holy_week" target="next_free_day_after_passiontide" resolved="true" sourceRef="Missale Romanum 1954" />
+    <transferRule id="peter_nolasco" feastId="st_peter_nolasco" when="occurs_with_greater_sunday" target="next_free_day_after_occurrence" resolved="true" sourceRef="Missale Romanum 1954" />
+  </transfer_rules>
+</temporal>

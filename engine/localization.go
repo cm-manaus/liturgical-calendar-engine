@@ -75,6 +75,7 @@ func (lm *LocalizationManager) loadAll(dataDir string) {
 		"es":    "values-es",
 		"fr":    "values-fr",
 		"de":    "values-de",
+		"la":    "values-la",
 		"pt-br": "values-pt-rBR",
 	}
 

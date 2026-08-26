@@ -1,0 +1,330 @@
+{
+  "contract": "liturgy-calendar/1954",
+  "schemaVersion": 1,
+  "calendar": "divino_afflatu_1954",
+  "edition": {
+    "title": "Missale Romanum",
+    "edition": "editio sexta post typicam",
+    "year": 1954,
+    "authority": "primary",
+    "records": [
+      "https://openlibrary.org/works/OL43532481W/Missale_romanum",
+      "https://www.yumpu.com/la/document/view/21431392/missale-romanum-typical-of-1954"
+    ]
+  },
+  "sources": [
+    {
+      "id": "missale-1954",
+      "role": "primary calendar and Mass-text authority",
+      "citation": "Missale Romanum, editio sexta post typicam (1954)",
+      "verification": "edition recorded; page-by-page collation remains a release gate"
+    },
+    {
+      "id": "missale-1920",
+      "role": "primary general-rubric cross-check",
+      "citation": "Missale Romanum 1920, Benedict XV, editio typica",
+      "url": "https://archive.org/details/MissaleRomanum1920"
+    },
+    {
+      "id": "pre55-rules",
+      "role": "repository audit inventory",
+      "path": "PRE55_RULES.md",
+      "sha256": "354e4b5ffd5e4c260a7ce93c162044d2eecdb0879ba858f2cc9448a8222d92ac"
+    },
+    {
+      "id": "do-1939",
+      "role": "Divino Afflatu baseline delta input (not runtime data)",
+      "url": "https://raw.githubusercontent.com/DivinumOfficium/divinum-officium/master/web/www/Tabulae/Kalendaria/1939.txt",
+      "blobSha": "813c36411a4c9c246b1b1ad88a948187d7814522",
+      "note": "file declares differences to Tridentine 1906; merged before shipping"
+    },
+    {
+      "id": "do-1954",
+      "role": "1954 delta input (not runtime data)",
+      "url": "https://raw.githubusercontent.com/DivinumOfficium/divinum-officium/master/web/www/Tabulae/Kalendaria/1954.txt",
+      "blobSha": "27b4988417fe0fa41eb84ba0b85df34a79a19fd5",
+      "note": "file declares differences to Divino Afflatu 1939; never loaded directly"
+    },
+    {
+      "id": "do-latin-sancti",
+      "role": "cross-check for fixed-date names, rank decimals, readings",
+      "url": "https://github.com/DivinumOfficium/divinum-officium/tree/master/web/www/horas/Latin/Sancti",
+      "note": "unmarked [Rank] blocks are used for pre-1960 profile; rubrica 196 blocks are excluded"
+    },
+    {
+      "id": "fssp",
+      "role": "secondary octave corroboration",
+      "url": "https://fssp.com/",
+      "note": "cannot override Missal"
+    },
+    {
+      "id": "restore54-ordo-2026-08-23",
+      "role": "external 1954 rank verification",
+      "url": "https://ordo.restorethe54.com/ordo/2026/8/23/",
+      "machineReadableUrl": "https://ordo.restorethe54.com/ordo/2026/8/23/index.json",
+      "verification": "The Ordo record reports the 23 August 2026 Sunday as Semidouble."
+    },
+    {
+      "id": "corredentora-calendar",
+      "role": "Portuguese calendar cross-check supplied by the user",
+      "url": "https://app.corredentora.com.br/calendario-liturgico",
+      "verification": "The requested route currently serves the Apostolado campaign page; no calendar record was exposed at this URL."
+    }
+  ],
+  "assembly": {
+    "baseline": "Divinum Officium Divino Afflatu 1939 calendar plus the complete universal date records shipped locally; 1954 delta applied at build time",
+    "deltaEntries": [
+      "05-31",
+      "06-01",
+      "08-15",
+      "08-22",
+      "09-03"
+    ],
+    "runtimePolicy": "assets are complete; no delta reconstruction or network access at runtime",
+    "removed1962Only": [
+      "St. Joseph the Worker (01 May; introduced after 1954)",
+      "Sts. Philip and James duplicate (11 May; DO 1954 retains the feast on 01 May)"
+    ],
+    "added1954Delta": {
+      "05-31": "Beatae Mariae Virginis Regina",
+      "06-01": "S. Angelae Mericiae Virginis",
+      "08-15": "Assumptione Beatae Mariae Virginis",
+      "08-22": "Festum Immaculati Cordis Beatae Mariae Virginis",
+      "09-03": "S. Pius X Papae Confessoris"
+    },
+    "inventoryAudit": {
+      "source": "https://github.com/DivinumOfficium/divinum-officium/tree/master/web/www/horas/Latin/Sancti",
+      "scope": "Restored fixed feasts, commemorations, vigils, and octave records absent from the shipped 1954 asset inventory.",
+      "representativeRestorations": [
+        "01-18 Chair of St. Peter at Rome",
+        "05-03 Invention of the Holy Cross",
+        "05-08 Apparition of St. Michael",
+        "06-28 St. Irenaeus and St. John the Baptist octave",
+        "08-01 St. Peter in Chains",
+        "08-22 Ss. Timothy, Hippolytus and Symphorian",
+        "11-08 Octave Day of All Saints",
+        "12-15 Octave Day of the Immaculate Conception"
+      ]
+    }
+  },
+  "verificationMatrix": {
+    "status": "deterministic asset and engine matrix complete; page-level scan remains open",
+    "scope": "Every 1954 rule family exercised by the focused profile, engine, serialization, overlay, and provider tests is listed with its representative date and source references.",
+    "entries": [
+      {
+        "ruleFamily": "1954 calendar delta",
+        "representativeDates": ["2026-08-22"],
+        "assetReference": "assets/data/1954/sanctoral.xml#the_immaculate_heart_of_the_b_v_m",
+        "test": "test/unit/dual_calendar_verification_test.dart::1954 delta entry keeps its pre-55 rank and Mass data",
+        "primary": {"sourceId": "missale-1954", "reference": "Missale Romanum 1954; 22 August proper"},
+        "secondary": [
+          {"sourceId": "do-1954", "reference": "https://raw.githubusercontent.com/DivinumOfficium/divinum-officium/master/web/www/Tabulae/Kalendaria/1954.txt#08-22"},
+          {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#II.11"}
+        ],
+        "assertedFields": ["main id", "pre55 rank", "color", "source rank", "Gloria", "Credo", "preface", "readings"]
+      },
+      {
+        "ruleFamily": "Semidouble and Simple rank hierarchy",
+        "representativeDates": ["2026-01-22", "2026-01-23", "2026-01-25"],
+        "assetReference": "assets/data/1954/sanctoral.xml#st_raymond_of_pe_afort_confessor",
+        "test": "test/unit/dual_calendar_verification_test.dart::1954 Semidouble and Simple ranks preserve occurrence order; test/unit/calendar_profile_test.dart::resolves January Holy Name, ranks, and Ember windows",
+        "primary": {"sourceId": "missale-1954", "reference": "Missale Romanum 1954; 23 January proper and commemoration"},
+        "secondary": [
+          {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#I.1"},
+          {"sourceId": "do-latin-sancti", "reference": "https://github.com/DivinumOfficium/divinum-officium/tree/master/web/www/horas/Latin/Sancti#23-January"}
+        ],
+        "assertedFields": ["SD main", "S commemoration", "rank precedence", "color", "Gloria", "Credo"]
+      },
+      {
+        "ruleFamily": "Colors and Mass attributes",
+        "representativeDates": ["2026-01-22", "2026-01-23", "2026-01-25", "2026-08-22"],
+        "assetReference": "assets/data/1954/{sanctoral.xml#st_raymond_of_pe_afort_confessor,sanctoral.xml#the_immaculate_heart_of_the_b_v_m}",
+        "test": "test/unit/dual_calendar_verification_test.dart::1954 Semidouble and Simple ranks preserve occurrence order; test/unit/calendar_profile_test.dart::resolves January Holy Name, ranks, and Ember windows; 1954 delta entry keeps its pre-55 rank and Mass data",
+        "primary": {"sourceId": "missale-1954", "reference": "Missale Romanum 1954; proper Mass entries for 23 January and 22 August"},
+        "secondary": [
+          {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#I.2"},
+          {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#I.3"},
+          {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#I.4"},
+          {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#I.5"}
+        ],
+        "assertedFields": ["color", "Gloria", "Credo", "preface", "epistle", "gospel"]
+      },
+      {
+        "ruleFamily": "Privileged and common vigils",
+        "representativeDates": ["2026-01-05"],
+        "assetReference": "assets/data/1954/temporal.xml#vigil_of_epiphany",
+        "test": "test/unit/dual_calendar_verification_test.dart::1954 privileged vigil has violet, no Gloria, and no Credo",
+        "primary": {"sourceId": "missale-1954", "reference": "Missale Romanum 1954; Vigil of Epiphany"},
+        "secondary": [
+          {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#II.3"},
+          {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#I.7"}
+        ],
+        "assertedFields": ["vigil kind", "privileged flag", "rank", "color", "Gloria", "Credo", "preface", "readings"]
+      },
+      {
+        "ruleFamily": "Epiphany octave and days within an octave",
+        "representativeDates": ["2026-01-07"],
+        "assetReference": "assets/data/1954/temporal.xml#2nd_day_within_the_octave_of_the_epiphany",
+        "test": "test/unit/dual_calendar_verification_test.dart::1954 Epiphany octave day uses Semidouble Mass attributes",
+        "primary": {"sourceId": "missale-1954", "reference": "Missale Romanum 1954; 7 January, day within the Octave of Epiphany"},
+        "secondary": [
+          {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#II.3"},
+          {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#I.8"}
+        ],
+        "assertedFields": ["octave id", "octave day/status", "SD rank", "color", "Gloria", "Credo", "preface", "readings"]
+      },
+      {
+        "ruleFamily": "Sanctoral octave and day-within-octave metadata",
+        "representativeDates": ["2026-08-18"],
+        "assetReference": "assets/data/1954/sanctoral.xml#08-18",
+        "test": "test/unit/calendar_profile_test.dart::loads every normalized 1954 Sunday rule with dynamic metadata",
+        "primary": {"sourceId": "missale-1954", "reference": "Missale Romanum 1954; 18 August octave/day-within-octave entries"},
+        "secondary": [
+          {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#I.8"},
+          {"sourceId": "do-latin-sancti", "reference": "https://github.com/DivinumOfficium/divinum-officium/tree/master/web/www/horas/Latin/Sancti#18-August"}
+        ],
+        "assertedFields": ["octave status", "rank", "color", "epistle", "gospel", "sanctoral occurrence"]
+      },
+      {
+        "ruleFamily": "Early January and Holy Name window",
+        "representativeDates": ["2026-01-02", "2026-01-03", "2026-01-04"],
+        "assetReference": "assets/data/1954/temporal.xml#holy_name_of_jesus",
+        "test": "test/unit/calendar_profile_test.dart::resolves January Holy Name, ranks, and Ember windows",
+        "primary": {"sourceId": "missale-1954", "reference": "Missale Romanum 1954; Most Holy Name of Jesus movable Sunday"},
+        "secondary": [
+          {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#II.2"},
+          {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#III.1"}
+        ],
+        "assertedFields": ["fallback date", "Holy Name id", "rank", "profile season", "preface", "readings"]
+      },
+      {
+        "ruleFamily": "Privileged feria and Ember windows",
+        "representativeDates": ["2026-12-16", "2026-09-16"],
+        "assetReference": "assets/data/1954/temporal.xml#{ember_wednesday_advent,ember_wednesday_september}",
+        "test": "test/unit/dual_calendar_verification_test.dart::1954 privileged Advent Ember feria suppresses lower observances; test/unit/calendar_profile_test.dart::resolves January Holy Name, ranks, and Ember windows",
+        "primary": {"sourceId": "missale-1954", "reference": "Missale Romanum 1954; Ember Wednesday of Advent and September"},
+        "secondary": [
+          {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#II.1"},
+          {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#II.12"}
+        ],
+        "assertedFields": ["feria rank", "privileged flag", "suppression", "violet color", "Gloria", "Credo", "preface", "readings"]
+      },
+      {
+        "ruleFamily": "Transfers",
+        "representativeDates": ["2024-03-25", "2024-04-08"],
+        "assetReference": "assets/data/1954/temporal.xml#transfer_rules;assets/data/1954/sanctoral.xml#annunciation_of_the_b_v_m",
+        "test": "test/unit/dual_calendar_verification_test.dart::1954 transfers Annunciation after the Easter octave",
+        "primary": {"sourceId": "missale-1954", "reference": "Missale Romanum 1954; Annunciation transfer in Holy Week"},
+        "secondary": [
+          {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#I.7"},
+          {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#III.3"}
+        ],
+        "assertedFields": ["source omission", "target date", "transfer status", "rank", "color", "Gloria", "Credo", "readings"]
+      },
+      {
+        "ruleFamily": "Late Sundays and displaced Epiphany Sundays",
+        "representativeDates": ["2026-11-15", "2026-11-22"],
+        "assetReference": "assets/data/1954/temporal.xml#sunday_rules",
+        "test": "test/unit/calendar_profile_test.dart::resolves 1954 late Sundays and Christ the King without 1962 data",
+        "primary": {"sourceId": "missale-1954", "reference": "Missale Romanum 1954; Sundays after Pentecost"},
+        "secondary": [
+          {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#II.11"},
+          {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#II.A"}
+        ],
+        "assertedFields": ["inserted Sunday id", "profile season", "calendar provenance"]
+      },
+      {
+        "ruleFamily": "Christ the King",
+        "representativeDates": ["2026-10-25"],
+        "assetReference": "assets/data/1954/temporal.xml#christ_the_king",
+        "test": "test/unit/calendar_profile_test.dart::resolves 1954 late Sundays and Christ the King without 1962 data",
+        "primary": {"sourceId": "missale-1954", "reference": "Missale Romanum 1954; last Sunday of October"},
+        "secondary": [
+          {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#II.10"}
+        ],
+        "assertedFields": ["main id", "occurring Sunday commemoration", "rank", "color", "preface", "readings"]
+      },
+      {
+        "ruleFamily": "Profile-aware serialization",
+        "representativeDates": ["2026-01-07", "2026-06-13"],
+        "assetReference": "lib/liturgical_engine/models.dart#LiturgicalResult.toDict;lib/liturgical_engine/models.dart#LiturgicalDay._toPre55Dict",
+        "test": "test/unit/dual_calendar_verification_test.dart::1954 serialization uses rank/profile season and no 1962 fields; Brazilian-winning result still serializes the 1954 profile season",
+        "primary": {"sourceId": "missale-1954", "reference": "Missale Romanum 1954; profile season and rank data carried by normalized entries"},
+        "secondary": [
+          {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#I.1"},
+          {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#I.5"}
+        ],
+        "assertedFields": ["calendar version", "profile season", "rank code", "absence of class fields", "localized preface"]
+      },
+      {
+        "ruleFamily": "Brazilian local-proper overlay boundary",
+        "representativeDates": ["2026-05-03", "2026-06-12", "2026-06-13", "2026-06-23", "2026-10-12"],
+        "assetReference": "lib/liturgical_engine/local_proper_overlay.dart;assets/data/brazilian_sanctoral.xml",
+        "test": "test/unit/brazilian_overlay_test.dart::1954 Brazilian overlay resolves representative local conflicts; Brazilian overlay precedence remains explicit in 1962 mode",
+        "primary": {"sourceId": "missale-1954", "reference": "Universal 1954 calendar entries for the same dates; local proper is not substituted for universal source"},
+        "secondary": [
+          {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#I.6"},
+          {"sourceId": "do-1939", "reference": "https://raw.githubusercontent.com/DivinumOfficium/divinum-officium/master/web/www/Tabulae/Kalendaria/1939.txt"}
+        ],
+        "assertedFields": ["includeBrazilian precedence", "calendar provenance", "rank/class separation", "includeBrazilian false behavior"]
+      }
+    ],
+    "auditLimits": {
+      "pageLevelScan": "not_performed",
+      "remaining": "The primary 1954 scan was not collated page by page for every reading and rubric. Matrix entries prove the deterministic asset fields and exercised engine behavior only; they do not claim page-level verification.",
+      "unsupportedData": [
+        "Individual primary-source page numbers are not encoded because the page-level scan is still outstanding.",
+        "A separate 1954 Brazilian national proper is not modeled; the existing Brazilian local-proper layer remains intentionally separate from the universal 1954 profile."
+      ]
+    }
+  },
+  "audit": {
+    "rubricInventory": [
+      "six pre-55 grades",
+      "privileged ferias",
+      "vigils",
+      "octaves",
+      "transfers",
+      "occurrence/concurrence",
+      "colors",
+      "Gloria",
+      "Credo",
+      "prefaces",
+      "readings"
+    ],
+    "decisions": [
+      "pre-55 grade is explicit; no 1962 class attribute is emitted",
+      "BLUE is normalized to pre-1955 WHITE; five-color plus rose vocabulary only",
+      "every entry carries explicit transfer, octave, vigil, Mass, and reading metadata",
+      "sourceRank retains DO decimal precedence so intermediate values are not lost",
+      "temporal sunday_rules carry the complete Advent, Epiphany, and post-Pentecost Sunday propers with Easter offsets where applicable"
+    ],
+    "prefaceAudit": {
+      "status": "complete",
+      "changedEntries": {
+        "sanctoral": 106,
+        "temporalPrefaceCorrections": 11,
+        "temporalPatronageEntries": 8
+      },
+      "sources": [
+        "https://raw.githubusercontent.com/DivinumOfficium/divinum-officium/master/web/www/missa/Latin/Ordo/Prefationes.txt",
+        "https://raw.githubusercontent.com/DivinumOfficium/divinum-officium/master/web/www/Tabulae/Kalendaria/1954.txt",
+        "https://www.yumpu.com/la/document/view/11122125/missale-romanum-typical-of-1954/66",
+        "https://www.yumpu.com/la/document/view/11122125/missale-romanum-typical-of-1954/216",
+        "https://raw.githubusercontent.com/DivinumOfficium/divinum-officium/master/web/www/missa/Latin/Tempora/Pasc2-3.txt",
+        "https://www.osjusa.org/st-joseph-in-liturgy"
+      ],
+      "rules": [
+        "Saint Joseph is limited to the March 19 feast; other Joseph saints use Common.",
+        "B.V.M. proper and octave entries use BlessedVirginMary; unrelated female saints use Common.",
+        "Apostles and Evangelists use Apostles; apostolic vigils remain Common; Christmas octave precedence uses Christmas.",
+        "St John the Baptist feast and octave use JohnBaptist.",
+        "Holy Cross, Precious Blood, All Souls, and church dedications use their proper prefaces.",
+        "Septuagesima Sundays use Trinity; the Epiphany vigil uses Christmas; Good Friday has no preface; Ascension vigil uses Easter."
+      ]
+    },
+    "unresolvedEvidenceGaps": [
+      "The generated normalized XML has been contract-validated and cross-checked against the DO 1939/1954 machine-readable inputs and PRE55_RULES.md. A page-by-page comparison of every reading against the 1954 scan remains for the phase-6 verification matrix."
+    ]
+  }
+}

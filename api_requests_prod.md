@@ -1,13 +1,13 @@
 # Guia de Requisições da API em Produção (SalveMaria) 🌐
 
-Este documento contém exemplos práticos de requisições (`curl`) para os endpoints da API do Calendário Litúrgico e Santo do Dia hospedados em produção.
+Este documento contém exemplos práticos de requisições (`curl`) para os endpoints da API do Calendário Litúrgico (1962 e 1954 Pré-55) hospedados em produção.
 
 **URL Base de Produção:** `https://api.salvemaria.xyz`
 
 ---
 
 ## 1. Status da API (Root)
-Verifica a conectividade e retorna a lista de endpoints ativos.
+Verifica a conectividade, calendários suportados e lista os endpoints ativos.
 
 * **Método:** `GET`
 * **Path:** `/`
@@ -22,148 +22,161 @@ curl -s -X GET https://api.salvemaria.xyz/
 {
   "message": "Welcome to the Go Liturgical Day API",
   "docs_url": "/docs",
+  "calendars": [
+    {
+      "id": "1962",
+      "name": "1962 (Tridentine)"
+    },
+    {
+      "id": "1954",
+      "name": "1954 (Divino Afflatu / Pre-55)"
+    }
+  ],
   "endpoints": {
     "liturgical_day": "/api/v1/liturgical-day",
-    "marian_saints": "/api/v1/marian-saints",
-    "saint_of_the_day": "/api/v1/saint-of-the-day"
+    "liturgical_month": "/api/v1/liturgical-month"
   }
 }
 ```
 
 ---
 
-## 2. Calendário Litúrgico (Dia Litúrgico)
-Retorna a classificação litúrgica de 1962 de uma data específica (Cor, Classe, Solenidades e Comemorações), incluindo o Próprio do Brasil por padrão.
+## 2. Calendário Litúrgico 1962 (Padrão)
+Retorna o dia litúrgico segundo as rubricas de 1962 (Missal de João XXIII).
 
 * **Métodos:** `GET` e `POST`
 * **Paths:** `/api/v1/liturgical-day` e `/liturgical-day`
 
 ### Parâmetros (GET - Query Params):
-* `date` *(opcional)*: Data no formato `YYYY-MM-DD`. Padrão: data local de hoje.
-* `lang` *(opcional)*: Idioma da tradução. Valores aceitos: `pt-br`, `pt`, `en`, `es`, `fr`, `de`. Padrão: usa o cabeçalho `Accept-Language` ou cai para `en`.
+* `date` *(opcional)*: Data no formato `YYYY-MM-DD`. Padrão: hoje.
+* `lang` *(opcional)*: Idioma da tradução. Valores aceitos: `pt-br`, `pt`, `en`, `es`, `fr`, `de`, `la`. Padrão: `en` ou `Accept-Language`.
+* `calendar` *(opcional)*: `1962` (padrão) ou `1954`.
 * `include_brazilian` *(opcional)*: Exclui festas brasileiras se for `false`. Padrão: `true`.
 
-### Exemplo de Requisição GET (curl):
+### Exemplo de Requisição GET 1962 (curl):
 ```bash
-curl -s -X GET "https://api.salvemaria.xyz/api/v1/liturgical-day?date=2026-06-21&lang=pt-br"
-```
-
-### Exemplo de Requisição POST (curl):
-```bash
-curl -s -X POST https://api.salvemaria.xyz/api/v1/liturgical-day \
-  -H "Content-Type: application/json" \
-  -d '{
-    "date": "2026-06-21",
-    "lang": "pt-br",
-    "include_brazilian": true
-  }'
+curl -s -X GET "https://api.salvemaria.xyz/api/v1/liturgical-day?date=2026-10-12&lang=pt-br"
 ```
 
 ### Exemplo de Resposta (JSON):
 ```json
 {
   "main_day": {
-    "name": "4º Domingo depois de Pentecostes",
-    "class_code": "II",
-    "class_name": "II Classe",
-    "color": "GREEN",
-    "is_lord_feast": false
-  },
-  "commemorations": [
-    {
-      "name": "S. Luís Gonzaga, Confessor",
-      "class_code": "III",
-      "class_name": "III Classe",
-      "color": "WHITE",
-      "is_lord_feast": false
+    "name": "Nossa Senhora da Conceição Aparecida, Padroeira do Brasil",
+    "id": "our_lady_aparecida",
+    "name_res_id": "our_lady_aparecida",
+    "observance_key": "res:our_lady_aparecida:",
+    "calendar_version": "tridentine_1962",
+    "calendar_name": "1962",
+    "class_code": "I",
+    "class_name": "I Classe",
+    "color": "BLUE",
+    "is_lord_feast": false,
+    "date": "10-12",
+    "liturgy": {
+      "gloria": "Glória",
+      "credo": "Credo",
+      "preface": "Prefácio de Nossa Senhora",
+      "epistle": "Eclo 24,17-21",
+      "gospel": "Lc 11,27-28"
     }
-  ],
-  "date": "2026-06-21",
+  },
+  "commemorations": [],
+  "date": "2026-10-12",
   "requested_lang": "pt-br",
   "resolved_lang": "pt-br",
+  "calendar_version": "tridentine_1962",
+  "calendar_name": "1962",
   "include_brazilian": true
 }
 ```
 
 ---
 
-## 3. Santo do Dia (Congregados Marianos com IA)
-Sorteia o Santo do Dia da base estática dos 126 congregados marianos, chamando a IA (Gemini 2.5 Flash) para formatar a biografia e sugerir uma resolução espiritual em português.
+## 3. Calendário Litúrgico 1954 (Divino Afflatu / Pré-55)
+Retorna o dia litúrgico segundo as rubricas anteriores à reforma de 1955, incluindo graus de festa (*Duplex I/II Classis, Duplex Maius, Duplex, Semiduplex, Simplex*), tipos de oitava, comemorações múltiplas e liturgia da Missa (Gloria, Credo, Prefácio, Epístola e Evangelho).
 
 * **Métodos:** `GET` e `POST`
-* **Path:** `/api/v1/saint-of-the-day`
+* **Paths:** `/api/v1/liturgical-day?calendar=1954`
 
-### Parâmetros (GET - Query Params):
-* `date` *(opcional)*: Data no formato `YYYY-MM-DD`. Padrão: hoje.
-* `exclude` *(opcional, repetível)*: Nome exato de santos a serem excluídos do sorteio (útil para evitar repetição).
-* `force_saint` *(opcional)*: Nome (completo ou parte) de um santo para gerar sua biografia imediatamente.
-
-### Exemplo de Requisição GET (curl):
+### Exemplo de Requisição GET 1954 (curl):
 ```bash
-curl -s -X GET "https://api.salvemaria.xyz/api/v1/saint-of-the-day?date=2026-06-21"
+curl -s -X GET "https://api.salvemaria.xyz/api/v1/liturgical-day?date=2026-01-06&calendar=1954&lang=pt-br"
 ```
 
-### Exemplo de Requisição GET com Exclusão e Forçamento de Santo:
+### Exemplo de Requisição POST 1954 (curl):
 ```bash
-# Excluindo São Luís Gonzaga
-curl -s -X GET "https://api.salvemaria.xyz/api/v1/saint-of-the-day?date=2026-06-21&exclude=S.%20Lu%C3%ADs%20Gonzaga"
-
-# Forçando a biografia de São José de Anchieta
-curl -s -X GET "https://api.salvemaria.xyz/api/v1/saint-of-the-day?force_saint=Anchieta"
-```
-
-### Exemplo de Requisição POST (curl):
-```bash
-curl -s -X POST https://api.salvemaria.xyz/api/v1/saint-of-the-day \
+curl -s -X POST https://api.salvemaria.xyz/api/v1/liturgical-day \
   -H "Content-Type: application/json" \
   -d '{
-    "date": "2026-06-21",
-    "exclude": ["S. Luís Gonzaga", "S. Afonso Rodrigues"],
-    "force_saint": ""
+    "date": "2026-01-06",
+    "calendar": "1954",
+    "lang": "pt-br",
+    "include_brazilian": true
   }'
 ```
 
-### Exemplo de Resposta (JSON):
+### Exemplo de Resposta 1954 (JSON):
 ```json
 {
-  "date": "2026-06-21",
-  "saint": {
-    "name": "S. Luís Gonzaga",
-    "feast": "21/jun",
-    "context": "Confessor, declarado pela Igreja 'Padroeiro da Juventude'. Congregado em Roma, Itália."
+  "main_day": {
+    "name": "Epifania de Nosso Senhor Jesus Cristo",
+    "id": "the_epiphany_of_our_lord",
+    "name_res_id": "epiphany",
+    "observance_key": "res:epiphany:",
+    "calendar_version": "divino_afflatu_1954",
+    "calendar_name": "1954 (Divino Afflatu)",
+    "pre55_grade": "D1Cl",
+    "rank_code": "D1Cl",
+    "rank_name": "Duplex I Classis",
+    "octave_type_name": "Oitava Privilegiada de 2ª Ordem",
+    "color": "WHITE",
+    "is_lord_feast": true,
+    "date": "01-06",
+    "liturgy": {
+      "gloria": "Glória",
+      "credo": "Credo",
+      "preface": "Prefácio da Epifania",
+      "epistle": "Is 60,1-6",
+      "gospel": "Mt 2,1-12"
+    },
+    "observance_kind": "feast",
+    "season": "Epiphany",
+    "privileged": false,
+    "precedence": 6.5,
+    "first_vespers": true,
+    "occurrence": "commemorate_or_transfer",
+    "concurrence": "first_vespers",
+    "octave_id": "Epiphany",
+    "octave_day": 0,
+    "octave_status": "day_within",
+    "transfer_status": "none"
   },
-  "biography": "São Luís Gonzaga, nascido Luigi Gonzaga em 9 de março de 1568...",
-  "resolution": "Inspirado pela pureza, desapego e serviço de São Luís Gonzaga...",
-  "is_fallback": false
+  "commemorations": [],
+  "date": "2026-01-06",
+  "requested_lang": "pt-br",
+  "resolved_lang": "pt-br",
+  "calendar_version": "divino_afflatu_1954",
+  "calendar_name": "1954 (Divino Afflatu)",
+  "include_brazilian": true
 }
 ```
 
 ---
 
-## 4. Base de Dados Completa dos Santos Marianos
-Retorna a lista JSON completa de todos os 126 Santos e Beatos Congregados Marianos cadastrados localmente no backend. Útil para o cliente Flutter baixar em cache e posicionar marcadores de festa nos dias do calendário de forma offline.
+## 4. Calendário Mensal (Mês Completo)
+Retorna a lista de todos os dias de um determinado mês em uma única chamada.
 
 * **Método:** `GET`
-* **Path:** `/api/v1/marian-saints`
+* **Path:** `/api/v1/liturgical-month`
+
+### Parâmetros (GET - Query Params):
+* `year` *(opcional)*: Ano (ex: `2026`). Padrão: ano atual.
+* `month` *(opcional)*: Mês de 1 a 12. Padrão: mês atual.
+* `calendar` *(opcional)*: `1962` (padrão) ou `1954`.
+* `lang` *(opcional)*: Idioma da tradução (`pt-br`, `pt`, `en`, `es`, `fr`, `de`, `la`).
 
 ### Exemplo de Requisição (curl):
 ```bash
-curl -s -X GET https://api.salvemaria.xyz/api/v1/marian-saints
-```
-
-### Exemplo de Resposta (JSON):
-```json
-[
-  {
-    "name": "S. Afonso Maria de Liguori",
-    "feast": "2/ago",
-    "context": "Bispo e Doutor da Igreja. Fundador dos Missionários Redentoristas, grande incentivador das CC.MM. Congregado em Nápoles, Itália."
-  },
-  {
-    "name": "S. Afonso Rodrigues",
-    "feast": "30/out",
-    "context": "Confessor e Religioso (jesuíta). Diretor de CM na ilha de Maiorca, Espanha."
-  }
-  // ... mais 124 santos
-]
+curl -s -X GET "https://api.salvemaria.xyz/api/v1/liturgical-month?year=2026&month=8&calendar=1954&lang=pt-br"
 ```

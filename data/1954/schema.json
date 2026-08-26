@@ -1,0 +1,176 @@
+{
+  "schemaId": "liturgy-calendar/1954",
+  "schemaVersion": 1,
+  "calendar": "divino_afflatu_1954",
+  "assetFiles": [
+    "temporal.xml",
+    "sanctoral.xml"
+  ],
+  "offline": true,
+  "grades": {
+    "D1Cl": {
+      "label": "Duplex I Classis",
+      "precedence": 6.5
+    },
+    "D2Cl": {
+      "label": "Duplex II Classis",
+      "precedence": 5.0
+    },
+    "DMaj": {
+      "label": "Duplex Maius",
+      "precedence": 4.0
+    },
+    "D": {
+      "label": "Duplex",
+      "precedence": 3.0
+    },
+    "SD": {
+      "label": "Semiduplex",
+      "precedence": 2.2
+    },
+    "S": {
+      "label": "Simplex",
+      "precedence": 1.2
+    }
+  },
+  "feriaRanks": {
+    "FeriaPrivilegiata": {
+      "label": "Feria Privilegiata",
+      "precedence": 7.0
+    },
+    "FeriaMajor": {
+      "label": "Feria Major",
+      "precedence": 1.1
+    },
+    "Feria": {
+      "label": "Feria",
+      "precedence": 1.0
+    }
+  },
+  "octaveTypes": {
+    "privileged_i": "Oitava Privilegiada de 1ª Ordem",
+    "privileged_ii": "Oitava Privilegiada de 2ª Ordem",
+    "privileged_iii": "Oitava Privilegiada de 3ª Ordem",
+    "common": "Oitava Comum",
+    "simple": "Oitava Simples"
+  },
+  "observanceKinds": [
+    "feast",
+    "sunday",
+    "feria",
+    "vigil",
+    "octave_day",
+    "within_octave",
+    "commemoration"
+  ],
+  "colors": [
+    "WHITE",
+    "RED",
+    "GREEN",
+    "VIOLET",
+    "BLACK",
+    "ROSE"
+  ],
+  "requiredEntryAttributes": [
+    "id",
+    "name",
+    "observanceKind",
+    "pre55Grade",
+    "season",
+    "color",
+    "privileged",
+    "sourceRef",
+    "sourceRank"
+  ],
+  "sundayRuleAttributes": [
+    "id",
+    "name",
+    "cycle",
+    "week",
+    "season",
+    "window",
+    "observanceKind",
+    "pre55Grade",
+    "color",
+    "privileged",
+    "sourceRef",
+    "sourceRank"
+  ],
+  "feriaRuleAttributes": [
+    "id",
+    "observanceKind",
+    "pre55Grade",
+    "season",
+    "color",
+    "privileged",
+    "sourceRef",
+    "weekday",
+    "window"
+  ],
+  "sundayRuleCycles": [
+    "advent",
+    "after_epiphany",
+    "after_pentecost",
+    "christmas_octave",
+    "christ_the_king",
+    "holy_name"
+  ],
+  "feriaRuleWindows": [
+    "after_advent_iii",
+    "after_september_14"
+  ],
+  "requiredChildren": {
+    "precedence": [
+      "rank",
+      "numeric",
+      "firstVespers",
+      "occurrence",
+      "concurrence"
+    ],
+    "octave": [
+      "id",
+      "day",
+      "status"
+    ],
+    "vigil": [
+      "kind",
+      "privileged",
+      "anticipated"
+    ],
+    "transfer": [
+      "status",
+      "transferable",
+      "target"
+    ],
+    "mass": [
+      "color",
+      "gloria",
+      "credo",
+      "preface"
+    ],
+    "readings": [
+      "epistle",
+      "gospel",
+      "source"
+    ]
+  },
+  "requiredTransferRuleAttributes": [
+    "id",
+    "feastId",
+    "when",
+    "target",
+    "resolved",
+    "sourceRef"
+  ],
+  "forbiddenMarkers": [
+    "class",
+    "class_i",
+    "class_ii",
+    "class_iii",
+    "class_iv",
+    "fallback_1962",
+    "1962-only",
+    "use-1962"
+  ],
+  "datePattern": "^(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$"
+}

@@ -1,0 +1,531 @@
+<?xml version='1.0' encoding='utf-8'?>
+<temporal>
+    <easter_cycle>
+        <day offset="-63" name="Septuagesima Sunday" nameResId="septuagesima_sunday" class="II" color="VIOLET" season="Septuagesima">
+            <liturgia>
+                <gloria>Sem Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Santíssima Trindade</preface>
+                <epistle>1Co 9,24-27; 10,1-5</epistle>
+                <gospel>Mt 20,1-16</gospel>
+            </liturgia>
+        </day>
+        <day offset="-56" name="Sexagesima Sunday" nameResId="sexagesima_sunday" class="II" color="VIOLET" season="Septuagesima">
+            <liturgia>
+                <gloria>Sem Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Santíssima Trindade</preface>
+                <epistle>2Co 11,19-33; 12,1-9</epistle>
+                <gospel>Lc 8,4-15</gospel>
+            </liturgia>
+        </day>
+        <day offset="-49" name="Quinquagesima Sunday" nameResId="quinquagesima_sunday" class="II" color="VIOLET" season="Septuagesima">
+            <liturgia>
+                <gloria>Sem Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Santíssima Trindade</preface>
+                <epistle>1Co 13,1-13</epistle>
+                <gospel>Lc 18,31-43</gospel>
+            </liturgia>
+        </day>
+        <day offset="-46" name="Ash Wednesday" nameResId="ash_wednesday" class="I" color="VIOLET" season="Quaresma">
+            <liturgia>
+                <gloria>Sem Glória</gloria>
+                <credo>Sem Credo</credo>
+                <preface>Prefácio da Quaresma</preface>
+                <epistle>Jl 2,12-19</epistle>
+                <gospel>Mt 6,16-21</gospel>
+            </liturgia>
+        </day>
+        <day offset="-42" name="1st Sunday of Lent" nameResId="lent_sunday" nameArg="1" class="I" color="VIOLET" season="Quaresma">
+            <liturgia>
+                <gloria>Sem Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Quaresma</preface>
+                <epistle>2Co 6,1-10</epistle>
+                <gospel>Mt 4,1-11</gospel>
+            </liturgia>
+        </day>
+        <day offset="-39" name="Ember Wednesday of Lent" nameResId="ember_wednesday" nameArg="of_lent" class="II" color="VIOLET" season="Quaresma">
+            <liturgia>
+                <gloria>Sem Glória</gloria>
+                <credo>Sem Credo</credo>
+                <preface>Prefácio da Quaresma</preface>
+                <epistle>Ex 24,12-18; 3Rs 19,3-8</epistle>
+                <gospel>Mt 12,38-52</gospel>
+            </liturgia>
+        </day>
+        <day offset="-37" name="Ember Friday of Lent" nameResId="ember_friday" nameArg="of_lent" class="II" color="VIOLET" season="Quaresma">
+            <liturgia>
+                <gloria>Sem Glória</gloria>
+                <credo>Sem Credo</credo>
+                <preface>Prefácio da Quaresma</preface>
+                <epistle>Ez 18,20-28</epistle>
+                <gospel>Jo 5,1-15</gospel>
+            </liturgia>
+        </day>
+        <day offset="-36" name="Ember Saturday of Lent" nameResId="ember_saturday" nameArg="of_lent" class="II" color="VIOLET" season="Quaresma">
+            <liturgia>
+                <gloria>Sem Glória</gloria>
+                <credo>Sem Credo</credo>
+                <preface>Prefácio da Quaresma</preface>
+                <epistle>Dt 26,12-19; Dt 11,22-25; 2Mac 1,23-26; 1,27; Eclo 36,1-10; Dn 3,47-51; 3,52-59; 1Ts 5,14-23</epistle>
+                <gospel>Mt 17,1-9</gospel>
+            </liturgia>
+        </day>
+        <day offset="-35" name="2nd Sunday of Lent" nameResId="lent_sunday" nameArg="2" class="I" color="VIOLET" season="Quaresma">
+            <liturgia>
+                <gloria>Sem Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Quaresma</preface>
+                <epistle>1Ts 4,1-7</epistle>
+                <gospel>Mt 17,1-9</gospel>
+            </liturgia>
+        </day>
+        <day offset="-28" name="3rd Sunday of Lent" nameResId="lent_sunday" nameArg="3" class="I" color="VIOLET" season="Quaresma">
+            <liturgia>
+                <gloria>Sem Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Quaresma</preface>
+                <epistle>Ef 5,1-8</epistle>
+                <gospel>Lc 11,14-28</gospel>
+            </liturgia>
+        </day>
+        <day offset="-21" name="4th Sunday of Lent" nameResId="lent_sunday_laetare" nameArg="4" class="I" color="ROSE" season="Quaresma">
+            <liturgia>
+                <gloria>Sem Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Quaresma</preface>
+                <epistle>Gl 4,22-31</epistle>
+                <gospel>Jo 6,1-15</gospel>
+            </liturgia>
+        </day>
+        <day offset="-14" name="1st Sunday of Passiontide" nameResId="passion_sunday_1" class="I" color="VIOLET" season="Quaresma">
+            <liturgia>
+                <gloria>Sem Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Quaresma</preface>
+                <epistle>Hb 9,11-15</epistle>
+                <gospel>Jo 8,46-59</gospel>
+            </liturgia>
+        </day>
+        <day offset="-7" name="Palm Sunday" nameResId="palm_sunday_passion" class="I" color="VIOLET" season="Quaresma">
+            <liturgia>
+                <gloria>Sem Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Santa Cruz</preface>
+                <epistle>Fl 2,5-11</epistle>
+                <gospel>Mt 26,1-27,66</gospel>
+            </liturgia>
+        </day>
+        <day offset="-6" name="Monday of Holy Week" nameResId="monday_holy_week" class="I" color="VIOLET" season="Quaresma">
+            <liturgia>
+                <gloria>Sem Glória</gloria>
+                <credo>Sem Credo</credo>
+                <preface>Prefácio da Santa Cruz</preface>
+                <epistle>Is 62,11—63,7</epistle>
+                <gospel>Jo 12,1-11</gospel>
+            </liturgia>
+        </day>
+        <day offset="-5" name="Tuesday of Holy Week" nameResId="tuesday_holy_week" class="I" color="VIOLET" season="Quaresma">
+            <liturgia>
+                <gloria>Sem Glória</gloria>
+                <credo>Sem Credo</credo>
+                <preface>Prefácio da Santa Cruz</preface>
+                <epistle>Jr 11,18-20</epistle>
+                <gospel>Jo 13,21-33; 13,36-38</gospel>
+            </liturgia>
+        </day>
+        <day offset="-4" name="Wednesday of Holy Week" nameResId="wednesday_holy_week" class="I" color="VIOLET" season="Quaresma">
+            <liturgia>
+                <gloria>Sem Glória</gloria>
+                <credo>Sem Credo</credo>
+                <preface>Prefácio da Santa Cruz</preface>
+                <epistle>Is 62,11—63,7</epistle>
+                <gospel>Mt 26,14-25</gospel>
+            </liturgia>
+        </day>
+        <day offset="-3" name="Holy Thursday" nameResId="holy_thursday" class="I" color="WHITE" season="Quaresma">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Santa Cruz</preface>
+                <epistle>1Co 11,20-32</epistle>
+                <gospel>Jo 13,1-15</gospel>
+            </liturgia>
+        </day>
+        <day offset="-2" name="Good Friday" nameResId="good_friday" class="I" color="BLACK" season="Quaresma">
+            <liturgia>
+                <gloria>Sem Glória</gloria>
+                <credo>Sem Credo</credo>
+                <preface>Sem Prefácio</preface>
+                <epistle>Os 6,1-6; Ex 12,1-11</epistle>
+                <gospel>Jo 18,1-19,42</gospel>
+            </liturgia>
+        </day>
+        <day offset="-1" name="Holy Saturday" nameResId="holy_saturday" class="I" color="WHITE" season="Páscoa">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Páscoa</preface>
+                <epistle>1Co 5,1-7</epistle>
+                <gospel>Mt 28,1-7</gospel>
+            </liturgia>
+        </day>
+        <day offset="0" name="Easter Sunday" nameResId="easter_sunday" class="I" color="WHITE" isLordFeast="true" season="Páscoa">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Páscoa</preface>
+                <epistle>1Co 5,7-8</epistle>
+                <gospel>Mc 16,1-7</gospel>
+            </liturgia>
+        </day>
+        <day offset="1" name="Easter Monday" nameResId="easter_monday" class="I" color="WHITE" season="Páscoa">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Páscoa</preface>
+                <epistle>At 10,37-43</epistle>
+                <gospel>Lc 24,13-35</gospel>
+            </liturgia>
+        </day>
+        <day offset="2" name="Easter Tuesday" nameResId="easter_tuesday" class="I" color="WHITE" season="Páscoa">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Páscoa</preface>
+                <epistle>At 13,16; 13,26-33</epistle>
+                <gospel>Lc 24,36-47</gospel>
+            </liturgia>
+        </day>
+        <day offset="3" name="Easter Wednesday" nameResId="easter_wednesday" class="I" color="WHITE" season="Páscoa">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Páscoa</preface>
+                <epistle>At 3,13-15; 3,17-19</epistle>
+                <gospel>Jo 21,1-14</gospel>
+            </liturgia>
+        </day>
+        <day offset="4" name="Easter Thursday" nameResId="easter_thursday" class="I" color="WHITE" season="Páscoa">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Páscoa</preface>
+                <epistle>At 8,26-40</epistle>
+                <gospel>Jo 20,11-18</gospel>
+            </liturgia>
+        </day>
+        <day offset="5" name="Easter Friday" nameResId="easter_friday" class="I" color="WHITE" season="Páscoa">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Páscoa</preface>
+                <epistle>1Pe 3,18-22</epistle>
+                <gospel>Mt 28,16-20</gospel>
+            </liturgia>
+        </day>
+        <day offset="6" name="Easter Saturday" nameResId="easter_saturday" class="I" color="WHITE" season="Páscoa">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Páscoa</preface>
+                <epistle>1Pe 2,1-10</epistle>
+                <gospel>Jo 20,1-9</gospel>
+            </liturgia>
+        </day>
+        <day offset="7" name="Low Sunday (Quasimodo)" nameResId="low_sunday" class="I" color="WHITE" season="Páscoa">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Páscoa</preface>
+                <epistle>1Jo 5,4-10</epistle>
+                <gospel>Jo 20,19-31</gospel>
+            </liturgia>
+        </day>
+        <day offset="14" name="2nd Sunday after Easter (Good Shepherd Sunday)" nameResId="sunday_after_easter_good_shepherd" class="II" color="WHITE" season="Páscoa">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Páscoa</preface>
+                <epistle>1Pe 2,11-19</epistle>
+                <gospel>Jo 10,1-10</gospel>
+            </liturgia>
+        </day>
+        <day offset="21" name="3rd Sunday after Easter" nameResId="sunday_after_easter" nameArg="3" class="II" color="WHITE" season="Páscoa">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Páscoa</preface>
+                <epistle>1Pe 2,11-19</epistle>
+                <gospel>Jo 16,5-14</gospel>
+            </liturgia>
+        </day>
+        <day offset="28" name="4th Sunday after Easter" nameResId="sunday_after_easter" nameArg="4" class="II" color="WHITE" season="Páscoa">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Páscoa</preface>
+                <epistle>Tg 1,1-12</epistle>
+                <gospel>Jo 16,16-22</gospel>
+            </liturgia>
+        </day>
+        <day offset="35" name="5th Sunday after Easter" nameResId="sunday_after_easter" nameArg="5" class="II" color="WHITE" season="Páscoa">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Páscoa</preface>
+                <epistle>Tg 1,1-12</epistle>
+                <gospel>Jo 16,23-30</gospel>
+            </liturgia>
+        </day>
+        <day offset="38" name="Vigil of the Ascension" nameResId="vigil_ascension" class="II" color="WHITE" season="Páscoa">
+            <liturgia>
+                <gloria>Sem Glória</gloria>
+                <credo>Sem Credo</credo>
+                <preface>Prefácio comum</preface>
+                <epistle>Ef 4,7-13</epistle>
+                <gospel>Jo 17,1-11</gospel>
+            </liturgia>
+        </day>
+        <day offset="39" name="Ascension of Our Lord" nameResId="ascension" class="I" color="WHITE" isLordFeast="true" season="Páscoa">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Ascensão</preface>
+                <epistle>At 1,1-11</epistle>
+                <gospel>Mc 16,14-20</gospel>
+            </liturgia>
+        </day>
+        <day offset="42" name="Sunday after Ascension" nameResId="sunday_after_ascension" class="II" color="WHITE" season="Páscoa">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Páscoa</preface>
+                <epistle>1Pe 4,7-11</epistle>
+                <gospel>Jo 15,26—16,4</gospel>
+            </liturgia>
+        </day>
+        <day offset="48" name="Vigil of Pentecost" nameResId="vigil_pentecost" class="I" color="RED" season="Páscoa">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio de Pentecostes</preface>
+                <epistle>At 2,1-11</epistle>
+                <gospel>Jo 15,26—16,4</gospel>
+            </liturgia>
+        </day>
+        <day offset="49" name="Pentecost Sunday" nameResId="pentecost" class="I" color="RED" isLordFeast="true" season="Páscoa">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio de Pentecostes</preface>
+                <epistle>At 2,1-11</epistle>
+                <gospel>Jo 14,23-29</gospel>
+            </liturgia>
+        </day>
+        <day offset="50" name="Pentecost Monday" nameResId="pentecost_monday" class="I" color="RED" season="Depois de Pentecostes">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio de Pentecostes</preface>
+                <epistle>At 2,1-11</epistle>
+                <gospel>Jo 14,23-29</gospel>
+            </liturgia>
+        </day>
+        <day offset="51" name="Pentecost Tuesday" nameResId="pentecost_tuesday" class="I" color="RED" season="Depois de Pentecostes">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio de Pentecostes</preface>
+                <epistle>At 2,1-11</epistle>
+                <gospel>Jo 14,23-29</gospel>
+            </liturgia>
+        </day>
+        <day offset="52" name="Quarta-feira das Têmporas de Pentecostes" nameResId="ember_wednesday" nameArg="of_pentecost" class="I" color="RED" season="Depois de Pentecostes">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio de Pentecostes</preface>
+                <epistle>At 2,14-21; At 5,12-16</epistle>
+                <gospel>Jo 6,44-52</gospel>
+            </liturgia>
+        </day>
+        <day offset="53" name="Pentecost Thursday" nameResId="pentecost_thursday" class="I" color="RED" season="Depois de Pentecostes">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio de Pentecostes</preface>
+                <epistle>At 2,1-11</epistle>
+                <gospel>Jo 14,23-29</gospel>
+            </liturgia>
+        </day>
+        <day offset="54" name="Sexta-feira das Têmporas de Pentecostes" nameResId="ember_friday" nameArg="of_pentecost" class="I" color="RED" season="Depois de Pentecostes">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio de Pentecostes</preface>
+                <epistle>Jl 2,23-24; 2,26-27</epistle>
+                <gospel>Lc 5,17-26</gospel>
+            </liturgia>
+        </day>
+        <day offset="55" name="Sábado das Têmporas de Pentecostes" nameResId="ember_saturday" nameArg="of_pentecost" class="I" color="RED" season="Depois de Pentecostes">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio de Pentecostes</preface>
+                <epistle>Jl 2,28-32; Lv 23,9-11; 23,15-17; 23,21; Dt 26,1-3; 26,7-11; Lv 26,3-12; Dn 3,47-51; 3,52-59; Rm 5,1-5</epistle>
+                <gospel>Lc 4,38-44</gospel>
+            </liturgia>
+        </day>
+        <day offset="56" name="Trinity Sunday" nameResId="trinity_sunday" class="I" color="WHITE" isLordFeast="true" season="Depois de Pentecostes">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Santíssima Trindade</preface>
+                <epistle>Rm 11,33-36</epistle>
+                <gospel>Mt 28,18-20</gospel>
+            </liturgia>
+        </day>
+        <day offset="60" name="Corpus Christi" nameResId="corpus_christi" class="I" color="WHITE" isLordFeast="true" season="Depois de Pentecostes">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio comum</preface>
+                <epistle>1Co 11,23-29</epistle>
+                <gospel>Jo 6,56-59</gospel>
+            </liturgia>
+        </day>
+        <day offset="68" name="Sacred Heart of Jesus" nameResId="sacred_heart" class="I" color="WHITE" isLordFeast="true" season="Depois de Pentecostes">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio do Sagrado Coração</preface>
+                <epistle>Rm 5,1-5</epistle>
+                <gospel>Jo 19,25-27</gospel>
+            </liturgia>
+        </day>
+    </easter_cycle>
+    <christmas_cycle>
+        <day date="12-24" name="Vigil of the Nativity" nameResId="vigil_christmas" class="I" color="VIOLET" season="Advento">
+            <liturgia>
+                <gloria>Sem Glória</gloria>
+                <credo>Sem Credo</credo>
+                <preface>Prefácio comum</preface>
+                <epistle>Rm 1,1-6</epistle>
+                <gospel>Mt 1,1-16</gospel>
+            </liturgia>
+        </day>
+        <day date="12-25" name="Christmas Day" nameResId="christmas" class="I" color="WHITE" isLordFeast="true" season="Natal">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio do Natal</preface>
+                <epistle>Tt 2,11-14</epistle>
+                <gospel>Lc 2,1-14</gospel>
+            </liturgia>
+        </day>
+        <day date="12-26" name="St. Stephen, Protomartyr" nameResId="st_stephen" class="II" color="RED" season="Natal">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio do Natal</preface>
+                <epistle>At 6,1-7</epistle>
+                <gospel>Mt 23,34-39</gospel>
+            </liturgia>
+        </day>
+        <day date="12-27" name="St. John, Apostle and Evangelist" nameResId="st_john_apostle" class="II" color="WHITE" season="Natal">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio do Natal</preface>
+                <epistle>Eclo 15,1-6</epistle>
+                <gospel>Jo 21,19-24</gospel>
+            </liturgia>
+        </day>
+        <day date="12-28" name="The Holy Innocents, Martyrs" nameResId="holy_innocents" class="II" color="RED" season="Natal">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio do Natal</preface>
+                <epistle>Ap 14,1-5</epistle>
+                <gospel>Mt 2,13-18</gospel>
+            </liturgia>
+        </day>
+        <day date="12-29" name="5th Day within the Octave of the Nativity" nameResId="day_octave_nativity" class="II" color="WHITE" season="Natal">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio do Natal</preface>
+                <epistle>Tt 3,4-7</epistle>
+                <gospel>Lc 2,15-20</gospel>
+            </liturgia>
+        </day>
+        <day date="12-30" name="6th Day within the Octave of the Nativity" nameResId="day_octave_nativity" class="II" color="WHITE" season="Natal">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio do Natal</preface>
+                <epistle>Tt 3,4-7</epistle>
+                <gospel>Lc 2,15-20</gospel>
+            </liturgia>
+        </day>
+        <day date="12-31" name="7th Day within the Octave of the Nativity" nameResId="day_octave_nativity" class="II" color="WHITE" season="Natal">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio do Natal</preface>
+                <epistle>Tt 3,4-7</epistle>
+                <gospel>Lc 2,15-20</gospel>
+            </liturgia>
+        </day>
+        <day date="01-01" name="Circumcision of Our Lord" nameResId="circumcision_lord" class="I" color="WHITE" isLordFeast="true" season="Natal">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio do Natal</preface>
+                <epistle>Tt 2,11-15</epistle>
+                <gospel>Lc 2,21</gospel>
+            </liturgia>
+        </day>
+        <day date="01-06" name="The Epiphany of Our Lord" nameResId="epiphany" class="I" color="WHITE" isLordFeast="true" season="Epifania">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Epifania</preface>
+                <epistle>Is 60,1-6</epistle>
+                <gospel>Mt 2,1-12</gospel>
+            </liturgia>
+        </day>
+        <day date="01-13" name="Commemoration of the Baptism of Our Lord" nameResId="baptism_lord" class="II" color="WHITE" isLordFeast="true" season="Epifania">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio comum</preface>
+                <epistle>Is 60,1-6</epistle>
+                <gospel>Jo 1,29-34</gospel>
+            </liturgia>
+        </day>
+    </christmas_cycle>
+    <ferias>
+        <day key="feria" name="Feria" nameResId="feria" class="IV" color="GREEN">
+            <liturgia>
+                <gloria>Sem Glória</gloria>
+                <credo>Sem Credo</credo>
+                <preface>Prefácio comum</preface>
+                <epistle>Rm 8,1-11</epistle>
+                <gospel>Mt 8,1-13</gospel>
+            </liturgia>
+        </day>
+        <day key="feria_easter" name="Feria of Easter Time" nameResId="feria" class="IV" color="WHITE">
+            <liturgia>
+                <gloria>Sem Glória</gloria>
+                <credo>Sem Credo</credo>
+                <preface>Prefácio da Páscoa</preface>
+                <epistle>1Pe 2,1-10</epistle>
+                <gospel>Jo 20,1-9</gospel>
+            </liturgia>
+        </day>
+    </ferias>
+</temporal>
