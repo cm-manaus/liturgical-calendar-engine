@@ -1,20 +1,21 @@
-# Guia de Requisições da API em Produção (SalveMaria) 🌐
+# Guia Completo de Requisições da API em Produção (SalveMaria) 🌐
 
-Este documento contém exemplos práticos de requisições (`curl`) para os endpoints da API do Calendário Litúrgico (1962 e 1954 Pré-55) hospedados em produção.
+Este documento contém exemplos práticos de requisições (`curl`) para todos os endpoints da API do Calendário Litúrgico (1962 e 1954 Pré-55) hospedados em produção.
 
-**URL Base de Produção:** `https://api.salvemaria.xyz`
+**URL Base de Produção:** `https://api.salvemaria.xyz`  
+**URL Base Local (Dev):** `http://localhost:8080`
 
 ---
 
-## 1. Status da API (Root)
-Verifica a conectividade, calendários suportados e lista os endpoints ativos.
+## 1. Status da API & Metadados (Root)
+Verifica a integridade do serviço, lista as rotas ativas e os calendários disponíveis.
 
 * **Método:** `GET`
 * **Path:** `/`
 
-### Exemplo de Requisição (curl):
+### Requisição cURL:
 ```bash
-curl -s -X GET https://api.salvemaria.xyz/
+curl -s -X GET "https://api.salvemaria.xyz/"
 ```
 
 ### Exemplo de Resposta (JSON):
@@ -41,21 +42,32 @@ curl -s -X GET https://api.salvemaria.xyz/
 
 ---
 
-## 2. Calendário Litúrgico 1962 (Padrão)
-Retorna o dia litúrgico segundo as rubricas de 1962 (Missal de João XXIII).
+## 2. Dia Litúrgico — Calendário de 1962 (Tridentino / João XXIII)
+Calcula o dia litúrgico segundo as rubricas de 1960/1962 (sistema de 4 classes).
 
 * **Métodos:** `GET` e `POST`
 * **Paths:** `/api/v1/liturgical-day` e `/liturgical-day`
 
-### Parâmetros (GET - Query Params):
-* `date` *(opcional)*: Data no formato `YYYY-MM-DD`. Padrão: hoje.
-* `lang` *(opcional)*: Idioma da tradução. Valores aceitos: `pt-br`, `pt`, `en`, `es`, `fr`, `de`, `la`. Padrão: `en` ou `Accept-Language`.
-* `calendar` *(opcional)*: `1962` (padrão) ou `1954`.
-* `include_brazilian` *(opcional)*: Exclui festas brasileiras se for `false`. Padrão: `true`.
-
-### Exemplo de Requisição GET 1962 (curl):
+### A. Dia Atual (Padrão em Português):
 ```bash
-curl -s -X GET "https://api.salvemaria.xyz/api/v1/liturgical-day?date=2026-10-12&lang=pt-br"
+curl -s -X GET "https://api.salvemaria.xyz/api/v1/liturgical-day?lang=pt-br"
+```
+
+### B. Data Específica com Leituras (Glória, Credo, Epístola e Evangelho):
+```bash
+curl -s -X GET "https://api.salvemaria.xyz/api/v1/liturgical-day?date=2026-10-12&calendar=1962&lang=pt-br"
+```
+
+### C. Consulta via `POST` com JSON:
+```bash
+curl -s -X POST "https://api.salvemaria.xyz/api/v1/liturgical-day" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "date": "2026-12-25",
+    "calendar": "1962",
+    "lang": "pt-br",
+    "include_brazilian": true
+  }'
 ```
 
 ### Exemplo de Resposta (JSON):
@@ -93,23 +105,28 @@ curl -s -X GET "https://api.salvemaria.xyz/api/v1/liturgical-day?date=2026-10-12
 
 ---
 
-## 3. Calendário Litúrgico 1954 (Divino Afflatu / Pré-55)
-Retorna o dia litúrgico segundo as rubricas anteriores à reforma de 1955, incluindo graus de festa (*Duplex I/II Classis, Duplex Maius, Duplex, Semiduplex, Simplex*), tipos de oitava, comemorações múltiplas e liturgia da Missa (Gloria, Credo, Prefácio, Epístola e Evangelho).
+## 3. Dia Litúrgico — Calendário de 1954 (Divino Afflatu / Pré-55)
+Calcula o dia litúrgico segundo as rubricas clássicas de São Pio X com graus de festa (*Duplex I/II Classis, Duplex Maius, Duplex, Semiduplex, Simplex*), tipos de oitava, regras de concorrência e comemorações múltiplas.
 
 * **Métodos:** `GET` e `POST`
 * **Paths:** `/api/v1/liturgical-day?calendar=1954`
 
-### Exemplo de Requisição GET 1954 (curl):
+### A. Dia Atual no Pré-55:
+```bash
+curl -s -X GET "https://api.salvemaria.xyz/api/v1/liturgical-day?calendar=1954&lang=pt-br"
+```
+
+### B. Solenidade com Oitava Pré-55 (Ex: Epifania):
 ```bash
 curl -s -X GET "https://api.salvemaria.xyz/api/v1/liturgical-day?date=2026-01-06&calendar=1954&lang=pt-br"
 ```
 
-### Exemplo de Requisição POST 1954 (curl):
+### C. Consulta via `POST` com JSON:
 ```bash
-curl -s -X POST https://api.salvemaria.xyz/api/v1/liturgical-day \
+curl -s -X POST "https://api.salvemaria.xyz/api/v1/liturgical-day" \
   -H "Content-Type: application/json" \
   -d '{
-    "date": "2026-01-06",
+    "date": "2026-08-15",
     "calendar": "1954",
     "lang": "pt-br",
     "include_brazilian": true
@@ -164,19 +181,36 @@ curl -s -X POST https://api.salvemaria.xyz/api/v1/liturgical-day \
 
 ---
 
-## 4. Calendário Mensal (Mês Completo)
-Retorna a lista de todos os dias de um determinado mês em uma única chamada.
+## 4. Mês Litúrgico Completo (`/api/v1/liturgical-month`)
+Retorna a lista de todos os dias de um determinado mês em uma única requisição com alto desempenho.
 
 * **Método:** `GET`
 * **Path:** `/api/v1/liturgical-month`
 
-### Parâmetros (GET - Query Params):
-* `year` *(opcional)*: Ano (ex: `2026`). Padrão: ano atual.
-* `month` *(opcional)*: Mês de 1 a 12. Padrão: mês atual.
-* `calendar` *(opcional)*: `1962` (padrão) ou `1954`.
-* `lang` *(opcional)*: Idioma da tradução (`pt-br`, `pt`, `en`, `es`, `fr`, `de`, `la`).
+### A. Mês Atual em 1962:
+```bash
+curl -s -X GET "https://api.salvemaria.xyz/api/v1/liturgical-month?lang=pt-br"
+```
 
-### Exemplo de Requisição (curl):
+### B. Mês Específico no Pré-55 (Ex: Agosto de 2026 em 1954):
 ```bash
 curl -s -X GET "https://api.salvemaria.xyz/api/v1/liturgical-month?year=2026&month=8&calendar=1954&lang=pt-br"
 ```
+
+### C. Mês em Latim Clássico (`lang=la`):
+```bash
+curl -s -X GET "https://api.salvemaria.xyz/api/v1/liturgical-month?year=2026&month=8&calendar=1962&lang=la"
+```
+
+---
+
+## 5. Tabela Completa de Parâmetros
+
+| Parâmetro | Local | Tipo | Valores Aceitos | Padrão | Descrição |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `calendar` | Query / JSON | `string` | `1962`, `1954` | `1962` | Motor de cálculo das rubricas litúrgicas |
+| `date` | Query / JSON | `string` | `YYYY-MM-DD` | Dia atual | Data para a consulta do dia litúrgico |
+| `year` | Query | `int` | `1900` a `2100` | Ano atual | Ano para a consulta do mês litúrgico |
+| `month` | Query | `int` | `1` a `12` | Mês atual | Mês para a consulta do mês litúrgico |
+| `lang` | Query / JSON | `string` | `pt-br`, `pt`, `en`, `es`, `fr`, `de`, `la` | `pt-br` ou `en` | Idioma de tradução dos nomes e festas |
+| `include_brazilian`| Query / JSON | `bool` | `true`, `false` | `true` | Inclui festas e solenidades próprias do Brasil |

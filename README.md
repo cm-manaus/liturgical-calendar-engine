@@ -118,6 +118,51 @@ Para rodar em ambiente de produção com segurança, o contêiner do backend no 
 
 ---
 
+## 📡 Guia de Requisições cURL da API
+
+A API está disponível publicamente em **`https://api.salvemaria.xyz`** (ou `http://localhost:8080` em desenvolvimento local).
+
+### 1. Status & Metadados
+```bash
+curl -s -X GET "https://api.salvemaria.xyz/"
+```
+
+### 2. Dia Litúrgico (1962 - Tridentino)
+```bash
+# Dia atual em português
+curl -s -X GET "https://api.salvemaria.xyz/api/v1/liturgical-day?lang=pt-br"
+
+# Data específica (com leituras da Missa)
+curl -s -X GET "https://api.salvemaria.xyz/api/v1/liturgical-day?date=2026-10-12&calendar=1962&lang=pt-br"
+
+# Via POST com JSON
+curl -s -X POST "https://api.salvemaria.xyz/api/v1/liturgical-day" \
+  -H "Content-Type: application/json" \
+  -d '{"date": "2026-12-25", "calendar": "1962", "lang": "pt-br"}'
+```
+
+### 3. Dia Litúrgico (1954 - Divino Afflatu / Pré-55)
+```bash
+# Dia atual pré-55 com graus clássicos (Duplex, Semiduplex, Simplex)
+curl -s -X GET "https://api.salvemaria.xyz/api/v1/liturgical-day?calendar=1954&lang=pt-br"
+
+# Festa com Oitava e Leituras
+curl -s -X GET "https://api.salvemaria.xyz/api/v1/liturgical-day?date=2026-01-06&calendar=1954&lang=pt-br"
+```
+
+### 4. Mês Completo
+```bash
+# Mês atual (1962)
+curl -s -X GET "https://api.salvemaria.xyz/api/v1/liturgical-month?lang=pt-br"
+
+# Mês específico em 1954 (Agosto de 2026)
+curl -s -X GET "https://api.salvemaria.xyz/api/v1/liturgical-month?year=2026&month=8&calendar=1954&lang=pt-br"
+```
+
+*Para a lista completa de parâmetros e exemplos de respostas JSON, consulte o [`api_requests_prod.md`](api_requests_prod.md).*
+
+---
+
 ## 🚀 Como fazer o Deploy e Testar
 
 ```bash
@@ -133,3 +178,4 @@ ssh matheus@100.92.173.88 "cd /home/matheus/tesouro-backend-go && sudo docker lo
 ```
 
 *Para instruções completas de rollback de emergência, consulte o [`DEPLOY.md`](DEPLOY.md).*
+
