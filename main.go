@@ -2,12 +2,16 @@ package main
 
 import (
 	"bufio"
+	"context"
 	"encoding/json"
 	"fmt"
+	"log/slog"
 	"net/http"
 	"os"
+	"os/signal"
 	"strconv"
 	"strings"
+	"syscall"
 	"time"
 
 	"tesouro-backend/engine"
@@ -33,8 +37,9 @@ type LiturgicalResponse struct {
 }
 
 var (
-	litEngine *engine.LiturgicalEngine
-	locMgr    *engine.LocalizationManager
+	litEngine       *engine.LiturgicalEngine
+	locMgr          *engine.LocalizationManager
+	serverStartTime time.Time
 )
 
 func loadDotEnv(path string) {
@@ -62,51 +67,72 @@ func loadDotEnv(path string) {
 	}
 }
 
-func main() {
-	// Load environment variables
-	loadDotEnv(".env")
+type statusRecorder struct {
+	http.ResponseWriter
+	statusCode   int
+	bytesWritten int64
+}
 
-	// Determine data directory
-	dataDir := os.Getenv("DATA_DIR")
-	if dataDir == "" {
-		dataDir = "./data"
-	}
+func (r *statusRecorder) WriteHeader(code int) {
+	r.statusCode = code
+	r.ResponseWriter.WriteHeader(code)
+}
 
-	// Initialize engine and localization
-	litEngine = engine.NewLiturgicalEngine(dataDir)
-	locMgr = engine.NewLocalizationManager(dataDir)
+func (r *statusRecorder) Write(b []byte) (int, error) {
+	n, err := r.ResponseWriter.Write(b)
+	r.bytesWritten += int64(n)
+	return n, err
+}
 
-	mux := http.NewServeMux()
+func loggingMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		start := time.Now()
+		rec := &statusRecorder{ResponseWriter: w, statusCode: http.StatusOK}
+		next.ServeHTTP(rec, r)
 
-	// Endpoints
-	mux.HandleFunc("GET /", handleRoot)
+		// Do not log spammy /healthz checks if 200 OK
+		if r.URL.Path == "/healthz" && rec.statusCode == http.StatusOK {
+			return
+		}
 
-	mux.HandleFunc("GET /liturgical-day", handleGetLiturgicalDay)
-	mux.HandleFunc("POST /liturgical-day", handlePostLiturgicalDay)
-	mux.HandleFunc("GET /api/v1/liturgical-day", handleGetLiturgicalDay)
-	mux.HandleFunc("POST /api/v1/liturgical-day", handlePostLiturgicalDay)
-	mux.HandleFunc("GET /api/v1/liturgical-month", handleGetLiturgicalMonth)
+		slog.Info("http_request",
+			"method", r.Method,
+			"path", r.URL.Path,
+			"status", rec.statusCode,
+			"duration_ms", time.Since(start).Milliseconds(),
+			"remote_addr", r.RemoteAddr,
+			"bytes", rec.bytesWritten,
+		)
+	})
+}
 
-	// PORT configuration
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080"
-	}
-
-	// Start server with CORS
-	fmt.Printf("Go Liturgical Backend listening on port %s...\n", port)
-	err := http.ListenAndServe(":"+port, corsMiddleware(mux))
-	if err != nil {
-		fmt.Printf("Error starting server: %v\n", err)
-	}
+func recoveryMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		defer func() {
+			if rec := recover(); rec != nil {
+				slog.Error("panic_recovered",
+					"panic", fmt.Sprintf("%v", rec),
+					"path", r.URL.Path,
+					"method", r.Method,
+				)
+				w.Header().Set("Content-Type", "application/json")
+				w.WriteHeader(http.StatusInternalServerError)
+				_ = json.NewEncoder(w).Encode(map[string]string{
+					"error":   "internal_server_error",
+					"message": "An unexpected server error occurred",
+				})
+			}
+		}()
+		next.ServeHTTP(w, r)
+	})
 }
 
 func corsMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Access-Control-Allow-Origin", "*")
-		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
 		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization, Accept-Language")
-		if r.Method == "OPTIONS" {
+		if r.Method == http.MethodOptions {
 			w.WriteHeader(http.StatusOK)
 			return
 		}
@@ -114,9 +140,107 @@ func corsMiddleware(next http.Handler) http.Handler {
 	})
 }
 
+func setupRoutes() *http.ServeMux {
+	mux := http.NewServeMux()
+
+	mux.HandleFunc("GET /", handleRoot)
+	mux.HandleFunc("GET /healthz", handleHealthz)
+	mux.HandleFunc("GET /api/v1/healthz", handleHealthz)
+
+	mux.HandleFunc("GET /liturgical-day", handleGetLiturgicalDay)
+	mux.HandleFunc("POST /liturgical-day", handlePostLiturgicalDay)
+	mux.HandleFunc("GET /api/v1/liturgical-day", handleGetLiturgicalDay)
+	mux.HandleFunc("POST /api/v1/liturgical-day", handlePostLiturgicalDay)
+	mux.HandleFunc("GET /api/v1/liturgical-month", handleGetLiturgicalMonth)
+
+	return mux
+}
+
+func main() {
+	serverStartTime = time.Now()
+
+	// Initialize structured JSON logging (Google/Enterprise standard)
+	logger := slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{
+		Level: slog.LevelInfo,
+	}))
+	slog.SetDefault(logger)
+
+	loadDotEnv(".env")
+
+	dataDir := os.Getenv("DATA_DIR")
+	if dataDir == "" {
+		dataDir = "./data"
+	}
+
+	slog.Info("initializing_engine", "data_dir", dataDir)
+	litEngine = engine.NewLiturgicalEngine(dataDir)
+	locMgr = engine.NewLocalizationManager(dataDir)
+
+	mux := setupRoutes()
+	handler := corsMiddleware(recoveryMiddleware(loggingMiddleware(mux)))
+
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	// P0: Protected HTTP Server with explicit connection timeouts (Anti-Slowloris)
+	server := &http.Server{
+		Addr:              ":" + port,
+		Handler:           handler,
+		ReadHeaderTimeout: 3 * time.Second,
+		ReadTimeout:       10 * time.Second,
+		WriteTimeout:      15 * time.Second,
+		IdleTimeout:       60 * time.Second,
+		MaxHeaderBytes:    1 << 20, // 1MB header limit
+	}
+
+	// P0: Graceful Shutdown listener
+	stop := make(chan os.Signal, 1)
+	signal.Notify(stop, os.Interrupt, syscall.SIGTERM, syscall.SIGINT)
+
+	go func() {
+		slog.Info("server_listening", "port", port, "version", "2.1.0")
+		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+			slog.Error("server_listen_error", "error", err)
+			os.Exit(1)
+		}
+	}()
+
+	<-stop
+	slog.Info("shutting_down_server_gracefully")
+
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	if err := server.Shutdown(ctx); err != nil {
+		slog.Error("server_shutdown_failed", "error", err)
+	} else {
+		slog.Info("server_stopped_cleanly")
+	}
+}
+
+func handleHealthz(w http.ResponseWriter, r *http.Request) {
+	if litEngine == nil || locMgr == nil {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusServiceUnavailable)
+		_ = json.NewEncoder(w).Encode(map[string]string{"status": "unhealthy", "reason": "engine_not_initialized"})
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	_ = json.NewEncoder(w).Encode(map[string]any{
+		"status":         "healthy",
+		"uptime_seconds": int(time.Since(serverStartTime).Seconds()),
+		"version":        "2.1.0",
+		"calendars":      []string{"1962", "1954"},
+	})
+}
+
 func handleRoot(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(map[string]any{
+	_ = json.NewEncoder(w).Encode(map[string]any{
 		"message":  "Welcome to the Go Liturgical Day API",
 		"docs_url": "/docs",
 		"calendars": []map[string]string{
@@ -124,6 +248,7 @@ func handleRoot(w http.ResponseWriter, r *http.Request) {
 			{"id": "1954", "name": "1954 (Divino Afflatu / Pre-55)"},
 		},
 		"endpoints": map[string]string{
+			"health":           "/healthz",
 			"liturgical_day":   "/api/v1/liturgical-day",
 			"liturgical_month": "/api/v1/liturgical-month",
 		},
@@ -143,7 +268,6 @@ func resolveLiturgicalDay(dateStr, lang, acceptLanguage, calendarStr string, inc
 		targetDate = time.Now()
 	}
 
-	// Resolve language
 	selectedLang := "en"
 	if lang != "" {
 		selectedLang = lang
@@ -204,7 +328,7 @@ func handleGetLiturgicalDay(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(resp)
+	_ = json.NewEncoder(w).Encode(resp)
 }
 
 func handleGetLiturgicalMonth(w http.ResponseWriter, r *http.Request) {
@@ -248,7 +372,6 @@ func handleGetLiturgicalMonth(w http.ResponseWriter, r *http.Request) {
 		month = int(time.Now().Month())
 	}
 
-	// Calculate number of days in that month
 	tNext := time.Date(year, time.Month(month+1), 0, 0, 0, 0, 0, time.UTC)
 	daysInMonth := tNext.Day()
 
@@ -264,7 +387,7 @@ func handleGetLiturgicalMonth(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(results)
+	_ = json.NewEncoder(w).Encode(results)
 }
 
 func handlePostLiturgicalDay(w http.ResponseWriter, r *http.Request) {
@@ -293,5 +416,5 @@ func handlePostLiturgicalDay(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(resp)
+	_ = json.NewEncoder(w).Encode(resp)
 }

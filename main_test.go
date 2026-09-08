@@ -19,15 +19,29 @@ func setupTestServer() http.Handler {
 	litEngine = engine.NewLiturgicalEngine(dataDir)
 	locMgr = engine.NewLocalizationManager(dataDir)
 
-	mux := http.NewServeMux()
-	mux.HandleFunc("GET /", handleRoot)
-	mux.HandleFunc("GET /liturgical-day", handleGetLiturgicalDay)
-	mux.HandleFunc("POST /liturgical-day", handlePostLiturgicalDay)
-	mux.HandleFunc("GET /api/v1/liturgical-day", handleGetLiturgicalDay)
-	mux.HandleFunc("POST /api/v1/liturgical-day", handlePostLiturgicalDay)
-	mux.HandleFunc("GET /api/v1/liturgical-month", handleGetLiturgicalMonth)
+	mux := setupRoutes()
+	return corsMiddleware(recoveryMiddleware(loggingMiddleware(mux)))
+}
 
-	return corsMiddleware(mux)
+func TestHTTPHealthz(t *testing.T) {
+	handler := setupTestServer()
+
+	req := httptest.NewRequest("GET", "/healthz", nil)
+	w := httptest.NewRecorder()
+	handler.ServeHTTP(w, req)
+
+	if w.Code != http.StatusOK {
+		t.Fatalf("Expected status 200, got %d", w.Code)
+	}
+
+	var body map[string]any
+	if err := json.NewDecoder(w.Body).Decode(&body); err != nil {
+		t.Fatalf("Failed to decode response: %v", err)
+	}
+
+	if body["status"] != "healthy" {
+		t.Errorf("Expected status healthy, got %v", body["status"])
+	}
 }
 
 func TestHTTPRoot(t *testing.T) {

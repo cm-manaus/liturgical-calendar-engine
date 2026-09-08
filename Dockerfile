@@ -51,7 +51,8 @@ USER appuser
 
 EXPOSE 8080
 
-ENV DATA_DIR="/app/data" \
-    GOMEMLIMIT="100MiB"
+# P1: Container Health Check (Docker & Watchtower monitor container readiness)
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD wget --no-verbose --tries=1 --spider http://localhost:8080/healthz || exit 1
 
 CMD ["/app/app"]

@@ -28,6 +28,11 @@ jobs:
       - name: Run unit tests
         run: go test -v -race ./...
 
+      - name: Security Vulnerability Scan (govulncheck)
+        run: |
+          go install golang.org/x/vuln/cmd/govulncheck@latest
+          govulncheck ./...
+
   build-and-push:
     name: Build & Push Multi-Arch Image
     needs: test
