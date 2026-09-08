@@ -30,6 +30,7 @@ func NewHandler(eng *engine.LiturgicalEngine, loc *engine.LocalizationManager) *
 // HandleRoot provides API metadata, supported calendars, and route documentation.
 func (h *Handler) HandleRoot(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Cache-Control", "public, max-age=3600")
 	_ = json.NewEncoder(w).Encode(map[string]any{
 		"message":  "Welcome to the Go Liturgical Day API",
 		"docs_url": "/docs",
@@ -39,6 +40,8 @@ func (h *Handler) HandleRoot(w http.ResponseWriter, r *http.Request) {
 		},
 		"endpoints": map[string]string{
 			"health":           "/healthz",
+			"docs":             "/docs",
+			"openapi":          "/openapi.json",
 			"liturgical_day":   "/api/v1/liturgical-day",
 			"liturgical_month": "/api/v1/liturgical-month",
 		},
@@ -47,14 +50,15 @@ func (h *Handler) HandleRoot(w http.ResponseWriter, r *http.Request) {
 
 // HandleHealthz reports system health and readiness to Docker, orchestrators, and monitoring agents.
 func (h *Handler) HandleHealthz(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Cache-Control", "no-cache, no-store, must-revalidate")
+
 	if h.engine == nil || h.locMgr == nil {
-		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusServiceUnavailable)
 		_ = json.NewEncoder(w).Encode(map[string]string{"status": "unhealthy", "reason": "engine_not_initialized"})
 		return
 	}
 
-	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	_ = json.NewEncoder(w).Encode(map[string]any{
 		"status":         "healthy",
@@ -90,6 +94,11 @@ func (h *Handler) HandleGetLiturgicalDay(w http.ResponseWriter, r *http.Request)
 	}
 
 	w.Header().Set("Content-Type", "application/json")
+	if dateStr != "" {
+		w.Header().Set("Cache-Control", "public, max-age=604800, stale-while-revalidate=86400, stale-if-error=2592000")
+	} else {
+		w.Header().Set("Cache-Control", "public, max-age=300, stale-while-revalidate=60, stale-if-error=3600")
+	}
 	_ = json.NewEncoder(w).Encode(resp)
 }
 
@@ -180,6 +189,11 @@ func (h *Handler) HandleGetLiturgicalMonth(w http.ResponseWriter, r *http.Reques
 	}
 
 	w.Header().Set("Content-Type", "application/json")
+	if yearStr != "" && monthStr != "" {
+		w.Header().Set("Cache-Control", "public, max-age=604800, stale-while-revalidate=86400, stale-if-error=2592000")
+	} else {
+		w.Header().Set("Cache-Control", "public, max-age=3600, stale-while-revalidate=300, stale-if-error=86400")
+	}
 	_ = json.NewEncoder(w).Encode(results)
 }
 

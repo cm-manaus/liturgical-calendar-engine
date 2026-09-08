@@ -18,6 +18,12 @@ func NewRouter(h *Handler) http.Handler {
 	mux.HandleFunc("POST /api/v1/liturgical-day", h.HandlePostLiturgicalDay)
 	mux.HandleFunc("GET /api/v1/liturgical-month", h.HandleGetLiturgicalMonth)
 
+	// Interactive Documentation (Scalar / OpenAPI)
+	mux.HandleFunc("GET /docs", h.HandleDocs)
+	mux.HandleFunc("GET /openapi.json", h.HandleOpenAPISpec)
+	mux.HandleFunc("GET /swagger", h.HandleSwaggerRedirect)
+	mux.HandleFunc("GET /swagger/", h.HandleSwaggerRedirect)
+
 	// Middleware execution chain: CORS -> Panic Recovery -> Request Logging -> Router
 	return CorsMiddleware(RecoveryMiddleware(LoggingMiddleware(mux)))
 }

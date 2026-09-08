@@ -196,3 +196,75 @@ func TestPanicRecovery(t *testing.T) {
 		t.Errorf("Expected error internal_server_error, got %s", body["error"])
 	}
 }
+
+func TestDocsAndOpenAPI(t *testing.T) {
+	router := setupTestRouter(t)
+
+	// Test GET /docs (Scalar interactive UI)
+	reqDocs := httptest.NewRequest("GET", "/docs", nil)
+	wDocs := httptest.NewRecorder()
+	router.ServeHTTP(wDocs, reqDocs)
+
+	if wDocs.Code != http.StatusOK {
+		t.Fatalf("Expected status 200 for /docs, got %d", wDocs.Code)
+	}
+	if !bytes.Contains(wDocs.Body.Bytes(), []byte("@scalar/api-reference")) {
+		t.Errorf("Expected /docs to include Scalar script reference")
+	}
+
+	// Test GET /openapi.json
+	reqOpenAPI := httptest.NewRequest("GET", "/openapi.json", nil)
+	wOpenAPI := httptest.NewRecorder()
+	router.ServeHTTP(wOpenAPI, reqOpenAPI)
+
+	if wOpenAPI.Code != http.StatusOK {
+		t.Fatalf("Expected status 200 for /openapi.json, got %d", wOpenAPI.Code)
+	}
+	var spec map[string]any
+	if err := json.NewDecoder(wOpenAPI.Body).Decode(&spec); err != nil {
+		t.Fatalf("Failed to parse OpenAPI JSON: %v", err)
+	}
+	if spec["openapi"] != "3.1.0" {
+		t.Errorf("Expected OpenAPI version 3.1.0, got %v", spec["openapi"])
+	}
+
+	// Test GET /swagger redirect
+	reqSwagger := httptest.NewRequest("GET", "/swagger", nil)
+	wSwagger := httptest.NewRecorder()
+	router.ServeHTTP(wSwagger, reqSwagger)
+
+	if wSwagger.Code != http.StatusMovedPermanently {
+		t.Fatalf("Expected status 301 for /swagger redirect, got %d", wSwagger.Code)
+	}
+	if loc := wSwagger.Header().Get("Location"); loc != "/docs" {
+		t.Errorf("Expected redirect to /docs, got %s", loc)
+	}
+}
+
+func TestCacheControlHeaders(t *testing.T) {
+	router := setupTestRouter(t)
+
+	// Explicit date should have long cache with stale-if-error
+	reqExplicit := httptest.NewRequest("GET", "/api/v1/liturgical-day?date=2026-09-08", nil)
+	wExplicit := httptest.NewRecorder()
+	router.ServeHTTP(wExplicit, reqExplicit)
+
+	ccExplicit := wExplicit.Header().Get("Cache-Control")
+	if !bytes.Contains([]byte(ccExplicit), []byte("max-age=604800")) {
+		t.Errorf("Expected max-age=604800 for explicit date, got: %s", ccExplicit)
+	}
+	if !bytes.Contains([]byte(ccExplicit), []byte("stale-if-error")) {
+		t.Errorf("Expected stale-if-error header for edge resilience, got: %s", ccExplicit)
+	}
+
+	// Healthz should never be cached
+	reqHealthz := httptest.NewRequest("GET", "/healthz", nil)
+	wHealthz := httptest.NewRecorder()
+	router.ServeHTTP(wHealthz, reqHealthz)
+
+	ccHealthz := wHealthz.Header().Get("Cache-Control")
+	if ccHealthz != "no-cache, no-store, must-revalidate" {
+		t.Errorf("Expected no-cache for /healthz, got: %s", ccHealthz)
+	}
+}
+

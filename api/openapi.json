@@ -1,0 +1,448 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Tesouro Litúrgico API",
+    "version": "2.1.0",
+    "description": "API de alta performance para cálculo e resolução do calendário litúrgico católico tradicional nos ritos tridentino (1962) e pré-1955 (Divino Afflatu 1954), incluindo proprium sanctorum brasileiro, concorrências, comemorações e textos das leituras.",
+    "contact": {
+      "name": "Tesouro da Tradição",
+      "url": "https://salvemaria.xyz"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.salvemaria.xyz",
+      "description": "Servidor de Produção (Cloudflare Edge CDN & SSL)"
+    },
+    {
+      "url": "http://localhost:8080",
+      "description": "Ambiente Local de Desenvolvimento"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Liturgia",
+      "description": "Resolução de dias e meses litúrgicos para 1962 e 1954"
+    },
+    {
+      "name": "Diagnóstico",
+      "description": "Verificação de saúde e metadados do serviço"
+    }
+  ],
+  "paths": {
+    "/api/v1/liturgical-day": {
+      "get": {
+        "tags": ["Liturgia"],
+        "summary": "Consultar Dia Litúrgico (GET)",
+        "description": "Calcula e resolve dinamicamente a liturgia para o dia informado, combinando ciclos Temporal e Santoral, comemorações, cores litúrgicas e textos sagrados.",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "query",
+            "required": false,
+            "description": "Data no formato YYYY-MM-DD. Se omitido, resolve o dia de hoje.",
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "example": "2026-09-08"
+            }
+          },
+          {
+            "name": "calendar",
+            "in": "query",
+            "required": false,
+            "description": "Versão do calendário litúrgico ('1962' ou '1954'). Padrão: 1962.",
+            "schema": {
+              "type": "string",
+              "enum": ["1962", "1954"],
+              "default": "1962"
+            }
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "required": false,
+            "description": "Idioma desejado para os títulos e rubricas litúrgicas.",
+            "schema": {
+              "type": "string",
+              "enum": ["pt-br", "la", "es", "en"],
+              "default": "pt-br"
+            }
+          },
+          {
+            "name": "include_brazilian",
+            "in": "query",
+            "required": false,
+            "description": "Se verdadeiro, aplica as festas próprias do calendário litúrgico aprovado para o Brasil.",
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dia litúrgico resolvido com sucesso",
+            "headers": {
+              "Cache-Control": {
+                "description": "Diretiva de cache de borda (7 dias para datas explícitas com stale-if-error de 30 dias)",
+                "schema": {
+                  "type": "string",
+                  "example": "public, max-age=604800, stale-while-revalidate=86400, stale-if-error=2592000"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LiturgicalResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Requisição inválida (ex: formato de data malformado)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "example": "invalid date format. Expected YYYY-MM-DD"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Liturgia"],
+        "summary": "Consultar Dia Litúrgico (POST Payload)",
+        "description": "Resolve a liturgia através de corpo JSON (útil para clientes com chamadas estruturadas).",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LiturgicalDayRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Dia litúrgico resolvido com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LiturgicalResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Corpo de requisição inválido"
+          }
+        }
+      }
+    },
+    "/api/v1/liturgical-month": {
+      "get": {
+        "tags": ["Liturgia"],
+        "summary": "Consultar Mês Litúrgico Completo",
+        "description": "Resolve em lote (batch) todos os dias de um mês específico, ideal para renderizar grades mensais em aplicativos móveis.",
+        "parameters": [
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "description": "Ano gregoriano (ex: 2026). Padrão: ano corrente.",
+            "schema": {
+              "type": "integer",
+              "example": 2026
+            }
+          },
+          {
+            "name": "month",
+            "in": "query",
+            "required": false,
+            "description": "Mês numérico (1 a 12). Padrão: mês corrente.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 12,
+              "example": 9
+            }
+          },
+          {
+            "name": "calendar",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["1962", "1954"],
+              "default": "1962"
+            }
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["pt-br", "la", "es", "en"],
+              "default": "pt-br"
+            }
+          },
+          {
+            "name": "include_brazilian",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array contendo a liturgia de cada dia do mês",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LiturgicalResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/healthz": {
+      "get": {
+        "tags": ["Diagnóstico"],
+        "summary": "Healthcheck e Verificação de Prontidão",
+        "description": "Utilizado pelo Docker HEALTHCHECK, Cloudflare e agentes de monitoramento para validar a disponibilidade e saúde dos motores.",
+        "responses": {
+          "200": {
+            "description": "Instância saudável",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Motores de dados não inicializados"
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "tags": ["Diagnóstico"],
+        "summary": "Metadados da API e Rotas",
+        "description": "Retorna o mapa de boas-vindas, versões de calendário disponíveis e links para documentação.",
+        "responses": {
+          "200": {
+            "description": "Metadados da API",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string" },
+                    "docs_url": { "type": "string", "example": "/docs" },
+                    "calendars": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": { "type": "string" },
+                          "name": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "LiturgicalResponse": {
+        "type": "object",
+        "required": [
+          "main_day",
+          "commemorations",
+          "date",
+          "requested_lang",
+          "resolved_lang",
+          "calendar_version",
+          "calendar_name",
+          "include_brazilian"
+        ],
+        "properties": {
+          "main_day": {
+            "$ref": "#/components/schemas/LiturgicalDayJSON"
+          },
+          "commemorations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LiturgicalDayJSON"
+            }
+          },
+          "date": {
+            "type": "string",
+            "format": "date",
+            "example": "2026-09-08"
+          },
+          "requested_lang": {
+            "type": "string",
+            "example": "pt-br"
+          },
+          "resolved_lang": {
+            "type": "string",
+            "example": "pt-br"
+          },
+          "calendar_version": {
+            "type": "string",
+            "example": "tridentine_1962"
+          },
+          "calendar_name": {
+            "type": "string",
+            "example": "1962 (Tridentine)"
+          },
+          "include_brazilian": {
+            "type": "boolean",
+            "example": true
+          }
+        }
+      },
+      "LiturgicalDayJSON": {
+        "type": "object",
+        "required": ["name", "color", "is_lord_feast"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Natividade de Nossa Senhora"
+          },
+          "id": {
+            "type": "string",
+            "example": "sanctorale_0908_nativity_bmv"
+          },
+          "observance_key": {
+            "type": "string",
+            "example": "nativitas_bmv"
+          },
+          "calendar_version": {
+            "type": "string",
+            "example": "tridentine_1962"
+          },
+          "class_code": {
+            "type": "string",
+            "example": "II"
+          },
+          "class_name": {
+            "type": "string",
+            "example": "Segunda Classe"
+          },
+          "pre55_grade": {
+            "type": "string",
+            "example": "Duplex II. classis"
+          },
+          "rank_code": {
+            "type": "string",
+            "example": "D2Cl"
+          },
+          "rank_name": {
+            "type": "string",
+            "example": "Duplex II. classis"
+          },
+          "color": {
+            "type": "string",
+            "enum": ["white", "red", "green", "violet", "black", "rose", "blue"],
+            "example": "white"
+          },
+          "is_lord_feast": {
+            "type": "boolean",
+            "example": false
+          },
+          "date": {
+            "type": "string",
+            "format": "date",
+            "example": "2026-09-08"
+          },
+          "liturgy": {
+            "$ref": "#/components/schemas/LiturgyInfo"
+          }
+        }
+      },
+      "LiturgyInfo": {
+        "type": "object",
+        "properties": {
+          "mass_title": {
+            "type": "string",
+            "example": "Missa Salve, Sancta Parens"
+          },
+          "introit": { "type": "string" },
+          "epistle": { "type": "string" },
+          "gospel": { "type": "string" },
+          "communion": { "type": "string" }
+        }
+      },
+      "LiturgicalDayRequest": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date",
+            "example": "2026-09-08"
+          },
+          "lang": {
+            "type": "string",
+            "example": "pt-br"
+          },
+          "calendar": {
+            "type": "string",
+            "enum": ["1962", "1954"],
+            "example": "1962"
+          },
+          "include_brazilian": {
+            "type": "boolean",
+            "example": true
+          }
+        }
+      },
+      "HealthResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "healthy"
+          },
+          "uptime_seconds": {
+            "type": "integer",
+            "example": 3600
+          },
+          "version": {
+            "type": "string",
+            "example": "2.1.0"
+          },
+          "calendars": {
+            "type": "array",
+            "items": { "type": "string" },
+            "example": ["1962", "1954"]
+          }
+        }
+      }
+    }
+  }
+}
