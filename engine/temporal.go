@@ -428,17 +428,13 @@ func (tc *TemporalCycle) GetDay(date time.Time) *LiturgicalDay {
 		}
 	}
 
-	// 7. Ember Days of September
-	sept1 := time.Date(year, 9, 1, 0, 0, 0, 0, time.UTC)
-	var septSunday1 time.Time
-	if sept1.Weekday() == time.Sunday {
-		septSunday1 = sept1
-	} else {
-		septSunday1 = sept1.AddDate(0, 0, 7-int(sept1.Weekday()))
-	}
-	septSunday3 := septSunday1.AddDate(0, 0, 14)
+	// 7. Ember Days of September (First Wednesday, Friday, Saturday after Holy Cross Sept 14)
+	september14 := time.Date(year, 9, 14, 0, 0, 0, 0, time.UTC)
+	emberWednesday := nextWeekdayAfter(september14, int(time.Wednesday))
+	emberFriday := nextWeekdayAfter(september14, int(time.Friday))
+	emberSaturday := nextWeekdayAfter(september14, int(time.Saturday))
 
-	if date.Equal(septSunday3.AddDate(0, 0, 3)) {
+	if date.Equal(emberWednesday) {
 		return &LiturgicalDay{
 			ID:              "ember_wednesday_september",
 			Name:            "Ember Wednesday of September",
@@ -446,10 +442,12 @@ func (tc *TemporalCycle) GetDay(date time.Time) *LiturgicalDay {
 			NameArgs:        []any{"of_september"},
 			LiturgicalClass: ClassII,
 			Color:           ColorViolet,
+			Epistle:         "Am 9,13-15; Ne 8,1-10",
+			Gospel:          "Mc 9,16-28",
 			CalendarVersion: Calendar1962,
 		}
 	}
-	if date.Equal(septSunday3.AddDate(0, 0, 5)) {
+	if date.Equal(emberFriday) {
 		return &LiturgicalDay{
 			ID:              "ember_friday_september",
 			Name:            "Ember Friday of September",
@@ -457,10 +455,12 @@ func (tc *TemporalCycle) GetDay(date time.Time) *LiturgicalDay {
 			NameArgs:        []any{"of_september"},
 			LiturgicalClass: ClassII,
 			Color:           ColorViolet,
+			Epistle:         "Os 14,2-10",
+			Gospel:          "Lc 7,36-50",
 			CalendarVersion: Calendar1962,
 		}
 	}
-	if date.Equal(septSunday3.AddDate(0, 0, 6)) {
+	if date.Equal(emberSaturday) {
 		return &LiturgicalDay{
 			ID:              "ember_saturday_september",
 			Name:            "Ember Saturday of September",
@@ -468,6 +468,8 @@ func (tc *TemporalCycle) GetDay(date time.Time) *LiturgicalDay {
 			NameArgs:        []any{"of_september"},
 			LiturgicalClass: ClassII,
 			Color:           ColorViolet,
+			Epistle:         "Lv 23,26-32; Lv 23,39-43; Miq 7,14; 7,16; 7,18-20; Za 8,14-19; Dn 3,47-51; 3,52-59; Hb 9,2-12",
+			Gospel:          "Lc 13,6-17",
 			CalendarVersion: Calendar1962,
 		}
 	}
@@ -544,6 +546,8 @@ func (tc *TemporalCycle) GetDay(date time.Time) *LiturgicalDay {
 						NameArgs:        []any{"of_advent"},
 						LiturgicalClass: ClassII,
 						Color:           ColorViolet,
+						Epistle:         "Is 2,2-5; Is 7,10-15",
+						Gospel:          "Lc 1,26-38",
 						CalendarVersion: Calendar1962,
 					}
 				} else if dow == time.Friday {
@@ -554,6 +558,8 @@ func (tc *TemporalCycle) GetDay(date time.Time) *LiturgicalDay {
 						NameArgs:        []any{"of_advent"},
 						LiturgicalClass: ClassII,
 						Color:           ColorViolet,
+						Epistle:         "Is 11,1-5",
+						Gospel:          "Lc 1,39-47",
 						CalendarVersion: Calendar1962,
 					}
 				} else if dow == time.Saturday {
@@ -564,6 +570,8 @@ func (tc *TemporalCycle) GetDay(date time.Time) *LiturgicalDay {
 						NameArgs:        []any{"of_advent"},
 						LiturgicalClass: ClassII,
 						Color:           ColorViolet,
+						Epistle:         "Is 19,20-22; Is 35,1-7; Is 40,9-11; Is 45,1-8; Dn 3,47-51; 3,52-59; 2Ts 2,1-8",
+						Gospel:          "Lc 3,1-6",
 						CalendarVersion: Calendar1962,
 					}
 				}
@@ -586,4 +594,12 @@ func getEnglishOrdinal(n int) string {
 		return "4th"
 	}
 	return strconv.Itoa(n) + "th"
+}
+
+func nextWeekdayAfter(val time.Time, weekday int) time.Time {
+	target := val.AddDate(0, 0, 1)
+	for int(target.Weekday()) != weekday {
+		target = target.AddDate(0, 0, 1)
+	}
+	return target
 }

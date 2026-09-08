@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Brazilian national proper layer for the 1954 (Divino Afflatu) profile.
+  Source: Ordo MMXXVI, Juxta rubricas Sancti Pii X (Pela Fé Católica, 2025),
+  pp. 16 and daily Brazilian/Latin-American proper notes.
+  This file is local data, never part of the universal 1954 sanctorale.
+-->
+<sanctorale calendar="brazilian_proper_1954" schemaVersion="1"
+    sourceSet="ordo-mmxxvi-2026-brazilian-propers">
+  <feast id="st_john_brito_brazil_1954"
+      name="St. John de Brito, Martyr" nameResId="st_john_brito"
+      date="02-13" observanceKind="local_proper" pre55Grade="D"
+      season="Brazilian Proper" color="RED" privileged="false"
+      sourceRank="3" sourceRef="Ordo-MMXXVI-2026#p16-02-13">
+    <precedence rank="D" numeric="3" firstVespers="false"
+        occurrence="commemorate_or_transfer" concurrence="none" />
+    <octave id="none" day="0" status="none" />
+    <vigil kind="none" privileged="false" anticipated="false" />
+    <transfer status="none" transferable="false" target="" />
+    <mass color="RED" gloria="true" credo="false" preface="Common" />
+    <readings epistle="Sb 3,1-8" gospel="Lc 21,9-19"
+        source="Ordo-MMXXVI-2026#p16-02-13" />
+  </feast>
+
+  <feast id="st_turibius_brazil_1954"
+      name="St. Turibius of Mogrovejo, Bishop and Confessor"
+      nameResId="st_turibius" date="04-27" observanceKind="local_proper"
+      pre55Grade="D2Cl" season="Brazilian Proper" color="WHITE"
+      privileged="false" sourceRank="5"
+      sourceRef="Ordo-MMXXVI-2026#p16-04-27">
+    <precedence rank="D2Cl" numeric="5" firstVespers="true"
+        occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+    <octave id="none" day="0" status="none" />
+    <vigil kind="none" privileged="false" anticipated="false" />
+    <transfer status="none" transferable="false" target="" />
+    <mass color="WHITE" gloria="true" credo="true" preface="Common" />
+    <readings epistle="Eclo 44,10-15" gospel="Mt 25,14-23"
+        source="Missale Romanum 1954, Common of a Bishop Confessor" />
+  </feast>
+
+  <feast id="finding_cross_brazil_1954"
+      name="Finding of the Holy Cross" nameResId="finding_cross"
+      date="05-03" observanceKind="local_proper" pre55Grade="D1Cl"
+      season="Brazilian Proper" color="RED" isLordFeast="true"
+      privileged="false" sourceRank="6.5"
+      sourceRef="Ordo-MMXXVI-2026#p16-05-03">
+    <precedence rank="D1Cl" numeric="6.5" firstVespers="true"
+        occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+    <octave id="BrazilianFindingCross" day="0" status="day_within"
+        type="common" endOffset="7" />
+    <vigil kind="none" privileged="false" anticipated="false" />
+    <transfer status="none" transferable="false" target="" />
+    <mass color="RED" gloria="true" credo="true" preface="HolyCross" />
+    <readings epistle="Flp 2,5-11" gospel="Jo 3,1-15"
+        source="Missale Romanum 1954, Invention of the Holy Cross" />
+  </feast>
+
+  <feast id="dedication_own_church_brazil_1954"
+      name="Dedication of the Own Church" nameResId="dedication_own_church"
+      date="06-01" observanceKind="local_proper" pre55Grade="D1Cl"
+      season="Brazilian Proper" color="WHITE" privileged="false"
+      sourceRank="6.5"
+      sourceRef="Ordo-MMXXVI-2026#p16-06-01" scope="consecrated-churches">
+    <precedence rank="D1Cl" numeric="6.5" firstVespers="true"
+        occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+    <octave id="BrazilianDedication" day="0" status="day_within"
+        type="common" endOffset="7" />
+    <vigil kind="none" privileged="false" anticipated="false" />
+    <transfer status="none" transferable="false" target="" />
+    <mass color="WHITE" gloria="true" credo="true" preface="Common" />
+    <readings epistle="1Co 3,9-11.16-17" gospel="Lc 19,1-10"
+        source="Missale Romanum 1954, Dedication of a Church" />
+  </feast>
+
+  <!-- The May 31 Queenship is transferred in churches observing the local dedication. -->
+  <feast id="queenship_bvm_brazil_1954"
+      name="Queenship of the B.V.M. (transferred)" nameResId="queenship_bvm"
+      date="06-02" observanceKind="local_proper" pre55Grade="D2Cl"
+      season="Brazilian Proper" color="WHITE" privileged="false"
+      sourceRank="5" sourceRef="Ordo-MMXXVI-2026#p69-06-02"
+      scope="consecrated-churches">
+    <precedence rank="D2Cl" numeric="5" firstVespers="true"
+        occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+    <octave id="none" day="0" status="none" />
+    <vigil kind="none" privileged="false" anticipated="false" />
+    <transfer status="transferred" transferable="true" target="06-02" />
+    <mass color="WHITE" gloria="true" credo="true"
+        preface="BlessedVirginMary" />
+    <readings epistle="Eclo 24,14-16" gospel="Lc 11,27-28"
+        source="Missale Romanum 1954, Queenship of the B.V.M." />
+  </feast>
+
+  <feast id="st_anthony_padua_brazil_1954"
+      name="St. Anthony of Padua, Confessor and Doctor"
+      nameResId="st_anthony" date="06-13" observanceKind="local_proper"
+      pre55Grade="D2Cl" season="Brazilian Proper" color="WHITE"
+      privileged="false" sourceRank="5"
+      sourceRef="Ordo-MMXXVI-2026#p16-06-13">
+    <precedence rank="D2Cl" numeric="5" firstVespers="true"
+        occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+    <octave id="none" day="0" status="none" />
+    <vigil kind="none" privileged="false" anticipated="false" />
+    <transfer status="none" transferable="false" target="" />
+    <mass color="WHITE" gloria="true" credo="true" preface="Common" />
+    <readings epistle="2Tm 4,1-8" gospel="Mt 5,13-19"
+        source="Missale Romanum 1954, St. Anthony of Padua" />
+  </feast>
+
+  <feast id="eucharistic_heart_brazil_1954"
+      name="Eucharistic Heart of Jesus" nameResId="eucharistic_heart"
+      relativeTo="sacred_heart" offsetDays="6"
+      observanceKind="local_proper" pre55Grade="DMaj"
+      season="Brazilian Proper" color="WHITE" isLordFeast="true"
+      privileged="false" sourceRank="4"
+      sourceRef="Ordo-MMXXVI-2026#p16-eucharistic-heart">
+    <precedence rank="DMaj" numeric="4" firstVespers="false"
+        occurrence="commemorate_or_transfer" concurrence="none" />
+    <octave id="none" day="0" status="none" />
+    <vigil kind="none" privileged="false" anticipated="false" />
+    <transfer status="none" transferable="false" target="" />
+    <mass color="WHITE" gloria="true" credo="true" preface="SacredHeart" />
+    <readings epistle="Ef 3,8-12.14-19" gospel="Lc 22,15-20"
+        source="Missale Romanum 1954, Eucharistic Heart of Jesus" />
+  </feast>
+
+  <feast id="our_lady_queen_peace_brazil_1954"
+      name="Our Lady, Queen of Peace" nameResId="our_lady_queen_peace"
+      date="07-09" observanceKind="local_proper" pre55Grade="DMaj"
+      season="Brazilian Proper" color="WHITE" privileged="false"
+      sourceRank="4" sourceRef="Ordo-MMXXVI-2026#p16-07-09">
+    <precedence rank="DMaj" numeric="4" firstVespers="false"
+        occurrence="commemorate_or_transfer" concurrence="none" />
+    <octave id="none" day="0" status="none" />
+    <vigil kind="none" privileged="false" anticipated="false" />
+    <transfer status="none" transferable="false" target="" />
+    <mass color="WHITE" gloria="true" credo="true"
+        preface="BlessedVirginMary" />
+    <readings epistle="Eclo 24,14-16" gospel="Lc 11,27-28"
+        source="Missale Romanum 1954, Our Lady Queen of Peace" />
+  </feast>
+
+  <feast id="bl_ignatius_azevedo_brazil_1954"
+      name="Blessed Ignatius of Azevedo and Companions, Martyrs"
+      nameResId="bl_ignatius_azevedo" date="07-15"
+      observanceKind="local_proper" pre55Grade="DMaj"
+      season="Brazilian Proper" color="RED" privileged="false"
+      sourceRank="4" sourceRef="Ordo-MMXXVI-2026#p16-07-15">
+    <precedence rank="DMaj" numeric="4" firstVespers="false"
+        occurrence="commemorate_or_transfer" concurrence="none" />
+    <octave id="none" day="0" status="none" />
+    <vigil kind="none" privileged="false" anticipated="false" />
+    <transfer status="none" transferable="false" target="" />
+    <mass color="RED" gloria="true" credo="false" preface="Common" />
+    <readings epistle="Sb 3,1-8" gospel="Lc 21,9-19"
+        source="Missale Romanum 1954, Common of Martyrs" />
+  </feast>
+
+  <feast id="st_rose_lima_brazil_1954"
+      name="St. Rose of St. Mary of Lima, Virgin"
+      nameResId="st_rose_lima" date="08-30" observanceKind="local_proper"
+      pre55Grade="D1Cl" season="Brazilian Proper" color="WHITE"
+      privileged="false" sourceRank="6.5"
+      sourceRef="Ordo-MMXXVI-2026#p16-08-30" scope="latin-america">
+    <precedence rank="D1Cl" numeric="6.5" firstVespers="true"
+        occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+    <octave id="BrazilianRoseLima" day="0" status="day_within"
+        type="common" endOffset="7" />
+    <vigil kind="none" privileged="false" anticipated="false" />
+    <transfer status="none" transferable="false" target="" />
+    <mass color="WHITE" gloria="true" credo="true" preface="Common" />
+    <readings epistle="2Co 10,17-18;11,1-2" gospel="Mt 25,1-13"
+        source="Missale Romanum 1954, St. Rose of Lima" />
+  </feast>
+
+  <feast id="exaltation_cross_brazil_1954"
+      name="Exaltation of the Holy Cross" nameResId="exaltation_cross"
+      date="09-14" observanceKind="local_proper" pre55Grade="D2Cl"
+      season="Brazilian Proper" color="RED" isLordFeast="true"
+      privileged="false" sourceRank="5"
+      sourceRef="Ordo-MMXXVI-2026#p16-09-14">
+    <precedence rank="D2Cl" numeric="5" firstVespers="true"
+        occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+    <octave id="none" day="0" status="none" />
+    <vigil kind="none" privileged="false" anticipated="false" />
+    <transfer status="none" transferable="false" target="" />
+    <mass color="RED" gloria="true" credo="true" preface="HolyCross" />
+    <readings epistle="Gal 6,14-18" gospel="Jo 12,31-36"
+        source="Missale Romanum 1954, Exaltation of the Holy Cross" />
+  </feast>
+
+  <feast id="bvm_mediatrix_brazil_1954"
+      name="Blessed Virgin Mary, Mediatrix of All Graces"
+      nameResId="bvm_mediatrix" date="10-01" observanceKind="local_proper"
+      pre55Grade="DMaj" season="Brazilian Proper" color="WHITE"
+      privileged="false" sourceRank="4"
+      sourceRef="Ordo-MMXXVI-2026#p16-10-01">
+    <precedence rank="DMaj" numeric="4" firstVespers="false"
+        occurrence="commemorate_or_transfer" concurrence="none" />
+    <octave id="none" day="0" status="none" />
+    <vigil kind="none" privileged="false" anticipated="false" />
+    <transfer status="none" transferable="false" target="" />
+    <mass color="WHITE" gloria="true" credo="true"
+        preface="BlessedVirginMary" />
+    <readings epistle="Eclo 24,14-16" gospel="Lc 11,27-28"
+        source="Missale Romanum 1954, Mediatrix of All Graces" />
+  </feast>
+
+  <feast id="our_lady_aparecida_brazil_1954"
+      name="Our Lady of the Immaculate Conception of Aparecida"
+      nameResId="our_lady_aparecida" date="10-12"
+      observanceKind="local_proper" pre55Grade="D1Cl"
+      season="Brazilian Proper" color="WHITE" privileged="false"
+      sourceRank="6.5" sourceRef="Ordo-MMXXVI-2026#p16-10-12">
+    <precedence rank="D1Cl" numeric="6.5" firstVespers="true"
+        occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+    <octave id="BrazilianAparecida" day="0" status="day_within"
+        type="common" endOffset="7" />
+    <vigil kind="none" privileged="false" anticipated="false" />
+    <transfer status="none" transferable="false" target="" />
+    <mass color="WHITE" gloria="true" credo="true"
+        preface="BlessedVirginMary" />
+    <readings epistle="Eclo 24,17-21" gospel="Lc 11,27-28"
+        source="Missale Romanum 1954, Our Lady of Aparecida" />
+  </feast>
+
+  <feast id="st_peter_alcantara_brazil_1954"
+      name="St. Peter of Alcantara, Confessor"
+      nameResId="st_peter_alcantara" date="10-19"
+      observanceKind="local_proper" pre55Grade="D1Cl"
+      season="Brazilian Proper" color="WHITE" privileged="false"
+      sourceRank="6.5" sourceRef="Ordo-MMXXVI-2026#p16-10-19">
+    <precedence rank="D1Cl" numeric="6.5" firstVespers="true"
+        occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+    <octave id="BrazilianPeterAlcantara" day="0" status="day_within"
+        type="common" endOffset="7" />
+    <vigil kind="none" privileged="false" anticipated="false" />
+    <transfer status="none" transferable="false" target="" />
+    <mass color="WHITE" gloria="true" credo="true" preface="Common" />
+    <readings epistle="Flp 3,7-12" gospel="Lc 12,32-34"
+        source="Missale Romanum 1954, St. Peter of Alcantara" />
+  </feast>
+
+  <feast id="holy_relics_brazil_1954"
+      name="Holy Relics Preserved in Brazilian Churches"
+      nameResId="holy_relics" date="11-05" observanceKind="local_proper"
+      pre55Grade="DMaj" season="Brazilian Proper" color="RED"
+      privileged="false" sourceRank="4"
+      sourceRef="Ordo-MMXXVI-2026#p16-11-05">
+    <precedence rank="DMaj" numeric="4" firstVespers="false"
+        occurrence="commemorate_or_transfer" concurrence="none" />
+    <octave id="none" day="0" status="none" />
+    <vigil kind="none" privileged="false" anticipated="false" />
+    <transfer status="none" transferable="false" target="" />
+    <mass color="RED" gloria="true" credo="true" preface="Common" />
+    <readings epistle="Eclo 44,10-15" gospel="Lc 6,17-23"
+        source="Missale Romanum 1954, Holy Relics" />
+  </feast>
+
+  <feast id="bl_roque_gonzalez_brazil_1954"
+      name="Blessed Roque Gonzalez and Companions, Martyrs"
+      nameResId="bl_roque_gonzalez" date="11-17"
+      observanceKind="local_proper" pre55Grade="DMaj"
+      season="Brazilian Proper" color="RED" privileged="false"
+      sourceRank="4" sourceRef="Ordo-MMXXVI-2026#p16-11-17">
+    <precedence rank="DMaj" numeric="4" firstVespers="false"
+        occurrence="commemorate_or_transfer" concurrence="none" />
+    <octave id="none" day="0" status="none" />
+    <vigil kind="none" privileged="false" anticipated="false" />
+    <transfer status="none" transferable="false" target="" />
+    <mass color="RED" gloria="true" credo="false" preface="Common" />
+    <readings epistle="Sb 3,1-8" gospel="Lc 21,9-19"
+        source="Missale Romanum 1954, Common of Martyrs" />
+  </feast>
+
+  <feast id="our_lady_guadalupe_brazil_1954"
+      name="Our Lady of Guadalupe" nameResId="our_lady_guadalupe"
+      date="12-12" observanceKind="local_proper" pre55Grade="D1Cl"
+      season="Brazilian Proper" color="WHITE" privileged="false"
+      sourceRank="6.5" sourceRef="Ordo-MMXXVI-2026#p16-12-12"
+      scope="latin-america">
+    <precedence rank="D1Cl" numeric="6.5" firstVespers="true"
+        occurrence="commemorate_or_transfer" concurrence="first_vespers" />
+    <!-- The Ordo suspends particular octaves from December 17 through Christmas Eve. -->
+    <octave id="BrazilianGuadalupe" day="0" status="day_within"
+        type="common" endOffset="4" />
+    <vigil kind="none" privileged="false" anticipated="false" />
+    <transfer status="none" transferable="false" target="" />
+    <mass color="WHITE" gloria="true" credo="true"
+        preface="BlessedVirginMary" />
+    <readings epistle="Eclo 24,23-31" gospel="Lc 1,39-47"
+        source="Missale Romanum 1954, Our Lady of Guadalupe" />
+  </feast>
+</sanctorale>

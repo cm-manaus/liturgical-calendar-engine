@@ -4,7 +4,8 @@
   "calendar": "divino_afflatu_1954",
   "assetFiles": [
     "temporal.xml",
-    "sanctoral.xml"
+    "sanctoral.xml",
+    "brazilian_sanctoral.xml"
   ],
   "offline": true,
   "grades": {

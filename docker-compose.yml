@@ -3,13 +3,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      network: host
-    image: tesouro-backend-go-liturgical-backend:latest
+    image: ghcr.io/mathvdias/tesouro-backend-go:latest
     ports:
-      - "8082:8080"
+      - "127.0.0.1:8082:8080"
     environment:
       - PORT=8080
     restart: unless-stopped
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
     # Security hardening settings
     read_only: true
     tmpfs:
@@ -18,6 +19,11 @@ services:
       - ALL
     security_opt:
       - no-new-privileges:true
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 128M
 
   # Cloudflare Tunnel Agent
   cloudflared:
@@ -26,3 +32,25 @@ services:
     environment:
       - TUNNEL_TOKEN=${CLOUDFLARE_TUNNEL_TOKEN}
     restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 128M
+
+  # Automated lightweight CD agent (monitors and auto-updates liturgical-backend)
+  watchtower:
+    image: containrrr/watchtower:latest
+    container_name: watchtower-tesouro
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_POLL_INTERVAL=300
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_LABEL_ENABLE=true
+    deploy:
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 32M

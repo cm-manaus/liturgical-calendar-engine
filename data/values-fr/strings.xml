@@ -245,7 +245,7 @@
     <string name="monday_holy_week">Lundi de Semaine Sainte</string>
     <string name="tuesday_holy_week">Mardi de Semaine Sainte</string>
     <string name="wednesday_holy_week">Mercredi de Semaine Sainte</string>
-    <string name="holy_family">Holy Famille de Jesus, Mary et Joseph</string>
+    <string name="holy_family">Sainte Famille de Jésus, Marie et Joseph</string>
     <string name="vigil_christmas">Vigile de Noël</string>
     <string name="vigil_st_john_baptist">Vigile de St John Baptist</string>
     <string name="vigil_sts_peter_paul">Vigile de Sts Peter Paul</string>
@@ -253,6 +253,7 @@
     <string name="vigil_assumption">Vigile de Assumption</string>
     <string name="vigil_ascension">Vigile de Ascension</string>
     <string name="vigil_pentecost">Vigile de Pentecost</string>
+    <string name="friday_before_pentecost_vigil">Vendredi avant la Vigile de la Pentecôte</string>
     <string name="st_paul_hermit">Saint Paul, the First Ermite</string>
     <string name="st_marcellus">Saint Marcellus</string>
     <string name="sts_vincent_anastasius">Saints Vincent Anastasius</string>
@@ -319,8 +320,8 @@
     <string name="st_apollinaris">Saint Apollinaris</string>
     <string name="sts_nazarius_celsus">Saints Nazarius Celsus</string>
     <string name="st_cajetan">Saint Cajetan</string>
-    <string name="st_hyacinth">Saint Hyacinth</string>
-    <string name="st_john_eudes">Saint John Eudes</string>
+    <string name="st_hyacinth">Saint Hyacinthe, confesseur</string>
+    <string name="st_john_eudes">Saint Jean Eudes, confesseur</string>
     <string name="st_philip_benizi">Saint Philip Benizi</string>
     <string name="st_joseph_calasanctius">Saint Joseph Calasanctius</string>
     <string name="st_raymond_nonnatus">Saint Raymond Nonnatus</string>
@@ -654,4 +655,33 @@
     <string name="day_octave_epiphany">%1$s jour dans l’Octave de l’Épiphanie</string>
     <string name="patronage_st_joseph_octave">%1$s jour dans l’Octave du Patronage de saint Joseph</string>
     <string name="sunday_within_christmas_octave">Dimanche dans l’Octave de Noël</string>
+    <string name="rogation_monday">Lundi des Rogations</string>
+    <string name="rogation_tuesday">Mardi des Rogations</string>
+    <string name="rogation_wednesday">Mercredi des Rogations</string>
+    <string name="day_octave_ascension">%1$s jour dans l’Octave de l’Ascension</string>
+    <string name="day_octave_corpus_christi">%1$s jour dans l’Octave de la Fête-Dieu</string>
+    <string name="day_octave_sacred_heart">%1$s jour dans l’Octave du Sacré-Cœur</string>
+    <string name="day_octave_assumption">%1$s jour dans l’Octave de l’Assomption</string>
+    <string name="octave_day_st_stephen">Octave de saint Étienne, protomartyr</string>
+    <string name="octave_day_st_john_apostle">Octave de saint Jean, apôtre et évangéliste</string>
+    <string name="octave_day_holy_innocents">Octave des Saints Innocents</string>
+    <string name="day_octave_st_john_baptist">%1$s jour dans l’Octave de saint Jean-Baptiste</string>
+    <string name="day_octave_peter_paul">%1$s jour dans l’Octave de saint Pierre et saint Paul</string>
+    <string name="day_octave_nativity_bvm">%1$s jour dans l’Octave de la Nativité de la B.V.M.</string>
+    <string name="day_octave_all_saints">%1$s jour dans l’Octave de la Toussaint</string>
+    <string name="day_octave_immaculate_conception">%1$s jour dans l’Octave de l’Immaculée Conception</string>
+    <string name="octave_day_st_lawrence">Octave de saint Laurent, martyr</string>
+    <string name="octave_day_st_john_baptist">Octave de saint Jean-Baptiste</string>
+    <string name="octave_day_peter_paul">Octave de saint Pierre et saint Paul</string>
+    <string name="octave_day_nativity_bvm">Octave de la Nativité de la B.V.M.</string>
+    <string name="octave_day_all_saints">Octave de la Toussaint</string>
+    <string name="octave_day_immaculate_conception">Octave de l’Immaculée Conception</string>
+    <string name="octave_day_nativity">Jour octave de la Nativité (Circoncision de Notre-Seigneur)</string>
+    <string name="octave_day_epiphany">Jour octave de l’Épiphanie (Commémoraison du Baptême de Notre-Seigneur)</string>
+
+    <string name="ss_cyprian_and_justina_martyrs">Saints Cyprien et Justine, Martyrs</string>
+    <string name="st_barbara_virgin_and_martyr">Sainte Barbe, Vierge et Martyre</string>
+    <string name="dedication_own_church">Dédicace de l’église propre</string>
+    <string name="brazilian_octave_day">%1$s jour dans l’Octave de %2$s</string>
+    <string name="brazilian_octave_day_8">Jour de l’Octave de %1$s</string>
 </resources>

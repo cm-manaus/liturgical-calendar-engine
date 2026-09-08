@@ -1,5 +1,8 @@
 # Stage 1: Build binary
-FROM golang:1.22-alpine AS builder
+FROM --platform=$BUILDPLATFORM golang:1.22-alpine AS builder
+
+ARG TARGETOS
+ARG TARGETARCH
 
 WORKDIR /src
 
@@ -11,8 +14,8 @@ RUN go mod download
 COPY main.go ./
 COPY engine/ ./engine/
 
-# Build static binary
-RUN CGO_ENABLED=0 go build -ldflags="-s -w" -o /bin/app main.go
+# Build static binary using Go's fast native cross-compilation
+RUN CGO_ENABLED=0 GOOS=${TARGETOS:-linux} GOARCH=${TARGETARCH:-arm64} go build -ldflags="-s -w" -o /bin/app main.go
 
 # Stage 2: Final minimal image
 FROM alpine:3.19

@@ -286,6 +286,7 @@
     <string name="vigil_assumption">Vigil of Assumption</string>
     <string name="vigil_ascension">Vigil of Ascension</string>
     <string name="vigil_pentecost">Vigil of Pentecost</string>
+    <string name="friday_before_pentecost_vigil">Friday before the Pentecost Vigil</string>
     <string name="st_paul_hermit">St. Paul, the First Hermit</string>
     <string name="st_marcellus">St. Marcellus</string>
     <string name="sts_vincent_anastasius">Sts. Vincent Anastasius</string>
@@ -352,8 +353,8 @@
     <string name="st_apollinaris">St. Apollinaris</string>
     <string name="sts_nazarius_celsus">Sts. Nazarius Celsus</string>
     <string name="st_cajetan">St. Cajetan</string>
-    <string name="st_hyacinth">St. Hyacinth</string>
-    <string name="st_john_eudes">St. John Eudes</string>
+    <string name="st_hyacinth">St. Hyacinth, Confessor</string>
+    <string name="st_john_eudes">St. John Eudes, Confessor</string>
     <string name="st_philip_benizi">St. Philip Benizi</string>
     <string name="st_joseph_calasanctius">St. Joseph Calasanctius</string>
     <string name="st_raymond_nonnatus">St. Raymond Nonnatus</string>
@@ -654,4 +655,33 @@
     <string name="day_octave_epiphany">%1$s day within the Octave of the Epiphany</string>
     <string name="patronage_st_joseph_octave">%1$s day within the Octave of the Patronage of St. Joseph</string>
     <string name="sunday_within_christmas_octave">Sunday within the Octave of Christmas</string>
+    <string name="rogation_monday">Rogation Monday</string>
+    <string name="rogation_tuesday">Rogation Tuesday</string>
+    <string name="rogation_wednesday">Rogation Wednesday</string>
+    <string name="day_octave_ascension">%1$s day within the Octave of the Ascension</string>
+    <string name="day_octave_corpus_christi">%1$s day within the Octave of Corpus Christi</string>
+    <string name="day_octave_sacred_heart">%1$s day within the Octave of the Sacred Heart</string>
+    <string name="day_octave_assumption">%1$s day within the Octave of the Assumption</string>
+    <string name="octave_day_st_stephen">Octave Day of St. Stephen, Protomartyr</string>
+    <string name="octave_day_st_john_apostle">Octave Day of St. John, Apostle and Evangelist</string>
+    <string name="octave_day_holy_innocents">Octave Day of the Holy Innocents</string>
+    <string name="day_octave_st_john_baptist">%1$s day within the Octave of St. John the Baptist</string>
+    <string name="day_octave_peter_paul">%1$s day within the Octave of Ss. Peter and Paul</string>
+    <string name="day_octave_nativity_bvm">%1$s day within the Octave of the Nativity of the B.V.M.</string>
+    <string name="day_octave_all_saints">%1$s day within the Octave of All Saints</string>
+    <string name="day_octave_immaculate_conception">%1$s day within the Octave of the Immaculate Conception</string>
+    <string name="octave_day_st_lawrence">Octave Day of St. Lawrence, Martyr</string>
+    <string name="octave_day_st_john_baptist">Octave Day of St. John the Baptist</string>
+    <string name="octave_day_peter_paul">Octave Day of Ss. Peter and Paul</string>
+    <string name="octave_day_nativity_bvm">Octave Day of the Nativity of the B.V.M.</string>
+    <string name="octave_day_all_saints">Octave Day of All Saints</string>
+    <string name="octave_day_immaculate_conception">Octave Day of the Immaculate Conception</string>
+    <string name="octave_day_nativity">Octave Day of the Nativity (Circumcision of Our Lord)</string>
+    <string name="octave_day_epiphany">Octave Day of the Epiphany (Commemoration of the Baptism of Our Lord)</string>
+
+    <string name="ss_cyprian_and_justina_martyrs">Sts. Cyprian and Justina, Martyrs</string>
+    <string name="st_barbara_virgin_and_martyr">St. Barbara, Virgin and Martyr</string>
+    <string name="dedication_own_church">Dedication of the Own Church</string>
+    <string name="brazilian_octave_day">%1$s day within the Octave of %2$s</string>
+    <string name="brazilian_octave_day_8">Octave Day of %1$s</string>
 </resources>

@@ -167,6 +167,29 @@ func (d LiturgicalDay) isJosephFeast() bool {
 
 func (d LiturgicalDay) isMarianFeast(localizedName string) bool {
 	lowerName := strings.ToLower(localizedName)
+	saintNamePrefixes := []string{
+		"st. ",
+		"st ",
+		"sts. ",
+		"sts ",
+		"s. ",
+		"ss. ",
+		"saint ",
+		"saints ",
+		"san ",
+		"santa ",
+		"santo ",
+		"sainte ",
+		"ste. ",
+		"sta. ",
+		"hl. ",
+	}
+	for _, prefix := range saintNamePrefixes {
+		if strings.HasPrefix(lowerName, prefix) {
+			return false
+		}
+	}
+
 	isVirginNamedMaria := strings.Contains(lowerName, "maria") &&
 		(strings.Contains(lowerName, "virgem") || strings.Contains(lowerName, "virgin")) &&
 		!strings.Contains(lowerName, "nossa senhora") &&
@@ -190,17 +213,22 @@ func (d LiturgicalDay) isMarianFeast(localizedName string) bool {
 		return false
 	}
 
-	return strings.Contains(lowerName, "mary") ||
-		strings.Contains(lowerName, "our lady") ||
+	return strings.Contains(lowerName, "our lady") ||
 		strings.Contains(lowerName, "bem-aventurada virgem maria") ||
 		strings.Contains(lowerName, "nossa senhora") ||
 		strings.Contains(lowerName, "b.m.v.") ||
 		strings.Contains(lowerName, "b.v.m.") ||
 		strings.Contains(lowerName, "bvm") ||
-		strings.Contains(lowerName, "maria") ||
+		strings.Contains(lowerName, "holy name of mary") ||
+		strings.Contains(lowerName, "name of mary") ||
+		strings.Contains(lowerName, "nome de maria") ||
+		strings.Contains(lowerName, "nombre de mar") ||
+		strings.Contains(lowerName, "nom de marie") ||
+		strings.Contains(lowerName, "mariä namen") ||
 		strings.Contains(lowerName, "immaculate") ||
 		strings.Contains(lowerName, "assumption") ||
 		strings.Contains(lowerName, "annunciation") ||
+		strings.Contains(lowerName, "maria") ||
 		strings.Contains(lowerName, "marian")
 }
 

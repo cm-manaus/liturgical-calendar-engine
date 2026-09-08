@@ -244,7 +244,7 @@
     <string name="monday_holy_week">Montag von Karwoche</string>
     <string name="tuesday_holy_week">Dienstag von Karwoche</string>
     <string name="wednesday_holy_week">Mittwoch von Karwoche</string>
-    <string name="holy_family">Holy Familie von Jesus, Mary und Joseph</string>
+    <string name="holy_family">Heilige Familie von Jesus, Maria und Josef</string>
     <string name="vigil_christmas">Vigil von Weihnachten</string>
     <string name="vigil_st_john_baptist">Vigil von St John Baptist</string>
     <string name="vigil_sts_peter_paul">Vigil von Sts Peter Paul</string>
@@ -252,6 +252,7 @@
     <string name="vigil_assumption">Vigil von Assumption</string>
     <string name="vigil_ascension">Vigil von Ascension</string>
     <string name="vigil_pentecost">Vigil von Pentecost</string>
+    <string name="friday_before_pentecost_vigil">Freitag vor der Pfingstvigil</string>
     <string name="st_paul_hermit">Hl. Paul, the First Eremit</string>
     <string name="st_marcellus">Hl. Marcellus</string>
     <string name="sts_vincent_anastasius">Hl. Vincent Anastasius</string>
@@ -318,8 +319,8 @@
     <string name="st_apollinaris">Hl. Apollinaris</string>
     <string name="sts_nazarius_celsus">Hl. Nazarius Celsus</string>
     <string name="st_cajetan">Hl. Cajetan</string>
-    <string name="st_hyacinth">Hl. Hyacinth</string>
-    <string name="st_john_eudes">Hl. John Eudes</string>
+    <string name="st_hyacinth">Hl. Hyazinth, Bekenner</string>
+    <string name="st_john_eudes">Hl. Johannes Eudes, Bekenner</string>
     <string name="st_philip_benizi">Hl. Philip Benizi</string>
     <string name="st_joseph_calasanctius">Hl. Joseph Calasanctius</string>
     <string name="st_raymond_nonnatus">Hl. Raymond Nonnatus</string>
@@ -647,4 +648,33 @@
     <string name="day_octave_epiphany">%1$s Tag innerhalb der Oktav der Erscheinung des Herrn</string>
     <string name="patronage_st_joseph_octave">%1$s Tag innerhalb der Oktav des Patronats des heiligen Josef</string>
     <string name="sunday_within_christmas_octave">Sonntag innerhalb der Weihnachtsoktav</string>
+    <string name="rogation_monday">Montag der Bitttage</string>
+    <string name="rogation_tuesday">Dienstag der Bitttage</string>
+    <string name="rogation_wednesday">Mittwoch der Bitttage</string>
+    <string name="day_octave_ascension">%1$s Tag der Himmelfahrtsoktav</string>
+    <string name="day_octave_corpus_christi">%1$s Tag der Fronleichnamsoktav</string>
+    <string name="day_octave_sacred_heart">%1$s Tag der Herz-Jesu-Oktav</string>
+    <string name="day_octave_assumption">%1$s Tag innerhalb der Assumptionsoktav</string>
+    <string name="octave_day_st_stephen">Oktavtag des hl. Stephanus, Protomärtyrer</string>
+    <string name="octave_day_st_john_apostle">Oktavtag des hl. Johannes, Apostel und Evangelist</string>
+    <string name="octave_day_holy_innocents">Oktavtag der Unschuldigen Kinder</string>
+    <string name="day_octave_st_john_baptist">%1$s Tag innerhalb der Oktav des hl. Johannes des Täufers</string>
+    <string name="day_octave_peter_paul">%1$s Tag innerhalb der Oktav der hl. Apostel Petrus und Paulus</string>
+    <string name="day_octave_nativity_bvm">%1$s Tag innerhalb der Oktav der Geburt Mariens</string>
+    <string name="day_octave_all_saints">%1$s Tag innerhalb der Oktav von Allerheiligen</string>
+    <string name="day_octave_immaculate_conception">%1$s Tag innerhalb der Oktav der Unbefleckten Empfängnis</string>
+    <string name="octave_day_st_lawrence">Oktavtag des hl. Laurentius, Märtyrer</string>
+    <string name="octave_day_st_john_baptist">Oktavtag des hl. Johannes des Täufers</string>
+    <string name="octave_day_peter_paul">Oktavtag der hl. Apostel Petrus und Paulus</string>
+    <string name="octave_day_nativity_bvm">Oktavtag der Geburt Mariens</string>
+    <string name="octave_day_all_saints">Oktavtag von Allerheiligen</string>
+    <string name="octave_day_immaculate_conception">Oktavtag der Unbefleckten Empfängnis</string>
+    <string name="octave_day_nativity">Oktavtag der Geburt des Herrn (Beschneidung unseres Herrn)</string>
+    <string name="octave_day_epiphany">Oktavtag der Erscheinung des Herrn (Gedenken der Taufe des Herrn)</string>
+
+    <string name="ss_cyprian_and_justina_martyrs">Hll. Cyprian und Justina, Märtyrer</string>
+    <string name="st_barbara_virgin_and_martyr">Hl. Barbara, Jungfrau und Märtyrerin</string>
+    <string name="dedication_own_church">Kirchweih der eigenen Kirche</string>
+    <string name="brazilian_octave_day">%1$s Tag innerhalb der Oktav von %2$s</string>
+    <string name="brazilian_octave_day_8">Oktavtag von %1$s</string>
 </resources>

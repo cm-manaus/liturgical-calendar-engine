@@ -6,6 +6,37 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [2.1.0] - 2026-09-07
+
+### 🔄 Sincronização e Correções de Calendário (LiturgyCalendarApp)
+- **Próprio do Brasil de 1954 (`data/1954/brazilian_sanctoral.xml`)**:
+  - Adicionada a base canônica com festas próprias brasileiras e expansão de oitavas para o rito pré-55.
+  - Implementado o parser `Brazilian1954ProperCalendar` em `engine/brazilian_1954_proper.go` com suporte a oitavas comuns (ex.: São José, Sagrado Coração) e festas relativas.
+  - Refinadas as precedências em `engine/profile_1954.go` e `engine/pre55_rank.go` para resolução harmoniosa entre o calendário universal e o próprio nacional.
+  - Adicionado cálculo de prefácio de oitava e Credo para dias dentro de oitava.
+- **Correção da Cor de Festas de Santos (`engine/models.go`)**:
+  - Ajustada a verificação `isMarianFeast` para ignorar prefixos de santidade (`Santa`, `St.`, `San`, etc.), prevenindo que santas como Santa Rosa de Lima sejam incorretamente classificadas como marianas (mantendo a cor canônica `WHITE` em vez de `BLUE`).
+- **Têmporas de Setembro e Advento (`engine/temporal.go`)**:
+  - Corrigido o cálculo das Têmporas de Setembro para a regra tradicional pós-Exaltação da Santa Cruz (primeira quarta, sexta e sábado após 14 de setembro).
+  - Adicionadas as leituras próprias de Epístola e Evangelho para os dias de Têmporas de Setembro e Advento.
+- **Internacionalização (`data/values*/strings.xml`)**:
+  - Atualizados os dicionários com ordinais e nomes de festas em Português (`values`, `pt-rBR`), Inglês (`en`), Espanhol (`es`), Francês (`fr`), Alemão (`de`) e Latim (`la`).
+
+### 🚀 Automação de CI/CD e Infraestrutura Leve
+- **Pipeline no GitHub Actions (`.github/workflows/deploy.yml`)**:
+  - Testes unitários com detector de concorrência (`go test -v -race ./...`) em cada push e pull request.
+  - Build automatizado de imagem Docker multi-arquitetura (`linux/arm64` nativo para Raspberry Pi e `linux/amd64`) via Docker Buildx com compilação cruzada nativa em Go (sem overhead de QEMU no compilador).
+  - Publicação automática da imagem para o GitHub Container Registry (`ghcr.io/mathvdias/tesouro-backend-go:latest`).
+  - Cache de camadas com GitHub Actions Cache (`type=gha`) para builds em poucos segundos.
+- **Deploy Zero-Touch com Watchtower no Raspberry Pi**:
+  - Adicionado serviço `watchtower` ao `docker-compose.yml` configurado com `--interval 300`, `--cleanup` e `--label-enable`.
+  - Consumo ultraleve de recursos (~15MB RAM, ~0% CPU), sem necessidade de abrir portas SSH públicas no Raspberry Pi nem de instalar runners pesados.
+  - Limpeza automática de imagens antigas após atualização (`docker image prune`).
+- **Script de Deploy Instantâneo (`scripts/deploy.sh`)**:
+  - Permite disparar a atualização imediata no Raspberry Pi via SSH com 1 comando, sem precisar aguardar o intervalo do Watchtower.
+
+---
+
 ## [2.0.0] - 2026-08-26
 
 ### 🚀 Novas Funcionalidades (Dual Calendar Engine)

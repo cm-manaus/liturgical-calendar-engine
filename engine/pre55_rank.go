@@ -309,3 +309,47 @@ func Pre55OctaveTypeFromOctaveID(octaveID string) (Pre55OctaveType, bool) {
 		return "", false
 	}
 }
+
+// EffectivePrecedence computes the effective precedence for arbitration between feasts, Sundays, and octaves.
+func EffectivePrecedence(rank Pre55Rank, declaredPrecedence *float64, ordinarySunday bool, normalizeGrade bool) float64 {
+	value := rank.Info().Rank
+	if declaredPrecedence != nil {
+		value = *declaredPrecedence
+	}
+	if normalizeGrade && value < rank.Info().Rank {
+		value = rank.Info().Rank
+	}
+	if ordinarySunday && rank == RankSD && value <= RankSD.Info().Rank {
+		return RankDMaj.Info().Rank
+	}
+	return value
+}
+
+// PrecedenceIndexFor maps a decimal precedence value to an explicit runtime precedence index.
+func PrecedenceIndexFor(value float64) int {
+	if value >= RankFeriaPrivilegiata.Info().Rank {
+		return RankFeriaPrivilegiata.PrecedenceIndex()
+	}
+	if value >= RankD1Cl.Info().Rank {
+		return RankD1Cl.PrecedenceIndex()
+	}
+	if value >= RankD2Cl.Info().Rank {
+		return RankD2Cl.PrecedenceIndex()
+	}
+	if value >= RankDMaj.Info().Rank {
+		return RankDMaj.PrecedenceIndex()
+	}
+	if value >= RankD.Info().Rank {
+		return RankD.PrecedenceIndex()
+	}
+	if value >= RankSD.Info().Rank {
+		return RankSD.PrecedenceIndex()
+	}
+	if value >= RankS.Info().Rank {
+		return RankS.PrecedenceIndex()
+	}
+	if value >= RankFeriaMajor.Info().Rank {
+		return RankFeriaMajor.PrecedenceIndex()
+	}
+	return RankFeriaMinor.PrecedenceIndex()
+}

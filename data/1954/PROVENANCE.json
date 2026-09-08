@@ -29,7 +29,7 @@
       "id": "pre55-rules",
       "role": "repository audit inventory",
       "path": "PRE55_RULES.md",
-      "sha256": "354e4b5ffd5e4c260a7ce93c162044d2eecdb0879ba858f2cc9448a8222d92ac"
+      "sha256": "a8f761477e8058744e03a016fd83999c26fb37fdaba3c1aab8ac328a5aa74591"
     },
     {
       "id": "do-1939",
@@ -46,10 +46,41 @@
       "note": "file declares differences to Divino Afflatu 1939; never loaded directly"
     },
     {
+      "id": "brazilian-proper-ordo-2026",
+      "role": "Brazilian and Latin-American local proper for the 1954 profile",
+      "citation": "SANCTA MISSA ORDO MMXXVI, Juxta rubricas Sancti Pii X",
+      "path": "assets/data/1954/brazilian_sanctoral.xml",
+      "verification": "Local proper grades, dates, octave notes, transfers, Mass flags, and preface choices were transcribed from the supplied Ordo diário 2026 PDF; the source list is pp. 16 and the dated Brazilian/Latin-American proper entries."
+    },
+    {
       "id": "do-latin-sancti",
       "role": "cross-check for fixed-date names, rank decimals, readings",
       "url": "https://github.com/DivinumOfficium/divinum-officium/tree/master/web/www/horas/Latin/Sancti",
       "note": "unmarked [Rank] blocks are used for pre-1960 profile; rubrica 196 blocks are excluded"
+    },
+    {
+      "id": "do-latin-tempora",
+      "role": "cross-check for temporal octave ranks, days, and readings",
+      "url": "https://github.com/DivinumOfficium/divinum-officium/tree/master/web/www/missa/Latin/Tempora",
+      "note": "unmarked [Officium], [Rank], and [Rule] blocks are used for the pre-1955 profile; rubrica 196 blocks are excluded"
+    },
+    {
+      "id": "engine-1962-temporal-ember",
+      "role": "local 1962 engine source for Ember dates and readings",
+      "paths": [
+        "assets/data/temporal.xml",
+        "lib/liturgical_engine/temporal.dart"
+      ],
+      "verification": "The 1962 temporal parser reads nested liturgia readings, and the September Ember calculation uses the first Wednesday, Friday, and Saturday after September 14."
+    },
+    {
+      "id": "do-live-1954-2026",
+      "role": "full-year live Divinum Officium Mass calendar audit",
+      "url": "https://divinumofficium.com/cgi-bin/horas/kalendar.pl?format=ical_comm&version=Divino%20Afflatu%20-%201954&dioecesis=Generale&officium=missa.pl",
+      "massUrl": "https://divinumofficium.com/cgi-bin/missa/missa.pl",
+      "retrieved": "2026-08-28",
+      "coverage": "365 Gregorian dates in 2026",
+      "verification": "Compared normalized 1954 main observances and Mass commemorations; targeted Mass-page checks resolved Office-only descriptions and the I-class Pentecost and Christmas vigils."
     },
     {
       "id": "fssp",
@@ -59,10 +90,46 @@
     },
     {
       "id": "restore54-ordo-2026-08-23",
-      "role": "external 1954 rank verification",
+      "role": "external 1954 rank and vigil verification",
       "url": "https://ordo.restorethe54.com/ordo/2026/8/23/",
       "machineReadableUrl": "https://ordo.restorethe54.com/ordo/2026/8/23/index.json",
-      "verification": "The Ordo record reports the 23 August 2026 Sunday as Semidouble."
+      "verification": "The Ordo record reports the 23 August 2026 Sunday as Semidouble and lists the Vigil of St. Bartholomew among its commemorations."
+    },
+    {
+      "id": "restore54-ordo-2026-08-25",
+      "role": "external pre-55 Ordo verification for the August 2026 audit",
+      "url": "https://ordo.restorethe54.com/ordo/2026/8/25/",
+      "machineReadableUrl": "https://ordo.restorethe54.com/ordo/2026/8/25/index.json",
+      "verification": "The Ordo record reports St. Louis on 25 August 2026 as Semidouble; adjacent August pages were used to verify the corrected rank, Mass, octave, and vigil behavior."
+    },
+    {
+      "id": "restore54-ordo-2023-08-27",
+      "role": "external source verification for Sunday Aug 27 occurrence",
+      "url": "https://ordo.restorethe54.com/ordo/2023/8/27/",
+      "machineReadableUrl": "https://ordo.restorethe54.com/ordo/2023/8/27/index.json",
+      "verification": "The Ordo record reports Aug 27, 2023 as a Semidouble Sunday and commemorates St. Joseph Calasanctius."
+    },
+    {
+      "id": "restore54-ordo-2026-08-27",
+      "role": "external source verification for weekday Aug 27 proper",
+      "url": "https://ordo.restorethe54.com/ordo/2026/8/27/",
+      "machineReadableUrl": "https://ordo.restorethe54.com/ordo/2026/8/27/index.json",
+      "verification": "The Ordo record reports St. Joseph Calasanz on Aug 27, 2026 as Double, with no commemorations."
+    },
+    {
+      "id": "restore54-ordo-2028-08-27",
+      "role": "external source verification for Sunday Aug 27 recurrence",
+      "url": "https://ordo.restorethe54.com/ordo/2028/8/27/",
+      "machineReadableUrl": "https://ordo.restorethe54.com/ordo/2028/8/27/index.json",
+      "verification": "The Ordo record reports Aug 27, 2028 as a Semidouble Sunday and commemorates St. Joseph Calasanz."
+    },
+    {
+      "id": "restore54-ordo-2026-full-year",
+      "role": "external 1954 annual rank, Mass, octave, and vigil verification",
+      "url": "https://ordo.restorethe54.com/ordo/2026/5/22/",
+      "machineReadableUrl": "https://ordo.restorethe54.com/ordo/2026/5/22/index.json",
+      "coverage": "All 365 daily machine-readable records under the /ordo/2026/{month}/{day}/index.json endpoint pattern were fetched.",
+      "verification": "The full-year comparison covered source grade, Mass flags, preface, octave metadata, fixed-date inventory, and every 2026 vigil record; the linked page is the representative Friday-before-Pentecost-vigil case."
     },
     {
       "id": "corredentora-calendar",
@@ -108,9 +175,107 @@
     }
   },
   "verificationMatrix": {
-    "status": "deterministic asset and engine matrix complete; page-level scan remains open",
+    "status": "deterministic asset and engine matrix complete; full-year 2026 Divinum Officium Mass source, octave, and locale scans complete",
     "scope": "Every 1954 rule family exercised by the focused profile, engine, serialization, overlay, and provider tests is listed with its representative date and source references.",
     "entries": [
+      {
+        "ruleFamily": "August 2026 Ordo rank, Mass, octave, and vigil corrections",
+        "representativeDates": [
+          "2026-08-04",
+          "2026-08-05",
+          "2026-08-08",
+          "2026-08-09",
+          "2026-08-14",
+          "2026-08-16",
+          "2026-08-17",
+          "2026-08-22",
+          "2026-08-23",
+          "2026-08-25",
+          "2026-08-29"
+        ],
+        "assetReference": "assets/data/1954/sanctoral.xml#{st_dominic_confessor,our_lady_of_the_snows,vigil_of_the_assumption_of_the_b_v_m,st_louis_king_confessor,beheading_of_st_john_the_baptist};lib/liturgical_engine/calendar_profile.dart#_markAnticipatedVigil",
+        "test": "test/unit/calendar_profile_test.dart::matches 2026 August Ordo ranks, Mass data, and vigil rules",
+        "primary": {"sourceId": "missale-1954", "reference": "Missale Romanum 1954; August proper and octave rubrics"},
+        "secondary": [
+          {"sourceId": "restore54-ordo-2026-08-23", "reference": "https://ordo.restorethe54.com/ordo/2026/8/23/"},
+          {"sourceId": "restore54-ordo-2026-08-25", "reference": "https://ordo.restorethe54.com/ordo/2026/8/25/"}
+        ],
+        "assertedFields": ["rank", "Gloria", "Credo", "preface", "octave metadata", "anticipated vigil", "Sunday vigil commemoration"]
+      },
+      {
+        "ruleFamily": "Recurring Aug 27 Sunday occurrence",
+        "representativeDates": [
+          "2023-08-27",
+          "2026-08-27",
+          "2028-08-27"
+        ],
+        "assetReference": "assets/data/1954/sanctoral.xml#st_joseph_calasanctius_confessor;assets/data/1954/temporal.xml#13th_sunday_after_pentecost,12th_sunday_after_pentecost;lib/liturgical_engine/calendar_profile.dart#_compareCandidates",
+        "test": "test/unit/ordo_2026_profile_test.dart::matches Restore 54 Aug 27 weekday and Sunday ranks",
+        "primary": {"sourceId": "missale-1954", "reference": "Missale Romanum 1954; Aug 27 St. Joseph Calasanctius proper"},
+        "secondary": [
+          {"sourceId": "restore54-ordo-2023-08-27", "reference": "https://ordo.restorethe54.com/ordo/2023/8/27/"},
+          {"sourceId": "restore54-ordo-2026-08-27", "reference": "https://ordo.restorethe54.com/ordo/2026/8/27/"}
+        ],
+        "assertedFields": ["Sunday Semidouble rank", "St. Joseph commemoration", "weekday Double rank"]
+      },
+      {
+        "ruleFamily": "Full-year 2026 Ordo rank, Mass, octave, and vigil audit",
+        "representativeDates": [
+          "2026-01-05",
+          "2026-01-31",
+          "2026-02-27",
+          "2026-03-27",
+          "2026-04-23",
+          "2026-05-11",
+          "2026-05-13",
+          "2026-05-21",
+          "2026-05-22",
+          "2026-06-05",
+          "2026-07-01",
+          "2026-08-25",
+          "2026-09-17",
+          "2026-11-01",
+          "2026-12-08",
+          "2026-12-19",
+          "2026-12-30"
+        ],
+        "assetReference": "assets/data/1954/{temporal.xml, sanctoral.xml};lib/liturgical_engine/calendar_profile.dart",
+        "test": "test/unit/ordo_2026_profile_test.dart; test/unit/calendar_profile_test.dart::handles vigils dated on Sundays by precedence and anticipation",
+        "primary": {"sourceId": "missale-1954", "reference": "Missale Romanum 1954; annual temporal and sanctoral proper"},
+        "secondary": [
+          {"sourceId": "restore54-ordo-2026-full-year", "reference": "https://ordo.restorethe54.com/ordo/2026/5/22/"},
+          {"sourceId": "do-1954", "reference": "https://raw.githubusercontent.com/DivinumOfficium/divinum-officium/master/web/www/Tabulae/Kalendaria/1954.txt"}
+        ],
+        "assertedFields": ["source grade", "effective precedence", "main observance", "color", "Gloria", "Credo", "preface", "octave metadata", "fixed inventory", "Sunday-dated vigils", "anticipated vigils"]
+      },
+      {
+        "ruleFamily": "1954 octave boundaries, occurrences, and localized titles",
+        "representativeDates": [
+          "2026-01-02",
+          "2026-01-04",
+          "2026-03-19",
+          "2026-04-25",
+          "2026-05-17",
+          "2026-06-27",
+          "2026-06-30",
+          "2026-07-02",
+          "2026-07-06",
+          "2026-08-18",
+          "2026-11-02",
+          "2026-12-09",
+          "2026-12-15"
+        ],
+        "assetReference": "assets/data/1954/{temporal.xml, sanctoral.xml};assets/data/values*/strings.xml;lib/liturgical_engine/calendar_profile.dart",
+        "test": "test/unit/ordo_2026_profile_test.dart::source octave boundaries and ferial commemorations are preserved; test/unit/ordo_2026_profile_test.dart::renders octave titles in every locale; test/unit/localization_test.dart::every locale resolves every octave title key; test/unit/calendar_data_validator_test.dart::octave metadata invariants",
+        "primary": {"sourceId": "do-latin-tempora", "reference": "Divinum Officium Latin Tempora octave records"},
+        "secondary": [
+          {"sourceId": "do-latin-sancti", "reference": "https://github.com/DivinumOfficium/divinum-officium/tree/master/web/www/horas/Latin/Sancti"},
+          {"sourceId": "restore54-ordo-2026-full-year", "reference": "https://ordo.restorethe54.com/ordo/2026/6/27/"},
+          {"sourceId": "restore54-ordo-2026-full-year", "reference": "https://ordo.restorethe54.com/ordo/2026/12/9/"},
+          {"sourceId": "restore54-ordo-2026-full-year", "reference": "https://ordo.restorethe54.com/ordo/2026/11/2/"}
+        ],
+        "assertedFields": ["octave id", "octave day", "octave status", "source occurrence", "Mass commemoration", "readings", "nameResId", "ordinal template", "all seven locale dictionaries"]
+      },
       {
         "ruleFamily": "1954 calendar delta",
         "representativeDates": ["2026-08-22"],
@@ -153,7 +318,7 @@
         "ruleFamily": "Privileged and common vigils",
         "representativeDates": ["2026-01-05"],
         "assetReference": "assets/data/1954/temporal.xml#vigil_of_epiphany",
-        "test": "test/unit/dual_calendar_verification_test.dart::1954 privileged vigil has violet, no Gloria, and no Credo",
+        "test": "test/unit/dual_calendar_verification_test.dart::1954 privileged Epiphany vigil uses the Nativity preface; test/unit/ordo_2026_profile_test.dart::matches source Mass context and octave behavior",
         "primary": {"sourceId": "missale-1954", "reference": "Missale Romanum 1954; Vigil of Epiphany"},
         "secondary": [
           {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#II.3"},
@@ -257,24 +422,95 @@
         "assertedFields": ["calendar version", "profile season", "rank code", "absence of class fields", "localized preface"]
       },
       {
-        "ruleFamily": "Brazilian local-proper overlay boundary",
-        "representativeDates": ["2026-05-03", "2026-06-12", "2026-06-13", "2026-06-23", "2026-10-12"],
-        "assetReference": "lib/liturgical_engine/local_proper_overlay.dart;assets/data/brazilian_sanctoral.xml",
-        "test": "test/unit/brazilian_overlay_test.dart::1954 Brazilian overlay resolves representative local conflicts; Brazilian overlay precedence remains explicit in 1962 mode",
-        "primary": {"sourceId": "missale-1954", "reference": "Universal 1954 calendar entries for the same dates; local proper is not substituted for universal source"},
-        "secondary": [
-          {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#I.6"},
-          {"sourceId": "do-1939", "reference": "https://raw.githubusercontent.com/DivinumOfficium/divinum-officium/master/web/www/Tabulae/Kalendaria/1939.txt"}
+        "ruleFamily": "Brazilian 1954 local proper overlay",
+        "representativeDates": [
+          "2026-02-13",
+          "2026-04-27",
+          "2026-05-03",
+          "2026-06-13",
+          "2026-06-18",
+          "2026-08-30",
+          "2026-09-14",
+          "2026-10-01",
+          "2026-10-12",
+          "2026-10-19",
+          "2026-11-05",
+          "2026-11-17",
+          "2026-12-12"
         ],
-        "assertedFields": ["includeBrazilian precedence", "calendar provenance", "rank/class separation", "includeBrazilian false behavior"]
+        "assetReference": "assets/data/1954/brazilian_sanctoral.xml;lib/liturgical_engine/brazilian_1954_proper.dart;lib/liturgical_engine/local_proper_overlay.dart",
+        "test": "test/unit/brazilian_overlay_test.dart::1954 Brazilian propers retain source grades, metadata, and octave expansion; Brazilian overlay precedence remains explicit in 1962 mode",
+        "primary": {"sourceId": "brazilian-proper-ordo-2026", "reference": "SANCTA MISSA ORDO MMXXVI, supplied PDF, Brazilian and Latin-American proper entries"},
+        "secondary": [
+          {"sourceId": "missale-1954", "reference": "Missale Romanum 1954 common Mass readings and preface vocabulary"},
+          {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#I.6"}
+        ],
+        "assertedFields": ["local source asset", "pre-55 grade", "calendar provenance", "octave metadata", "Mass flags", "readings", "includeBrazilian false behavior"]
+      },
+      {
+        "ruleFamily": "Divinum Officium full-year Mass occurrence corrections",
+        "representativeDates": [
+          "2026-01-04",
+          "2026-02-18",
+          "2026-04-12",
+          "2026-04-26",
+          "2026-05-23",
+          "2026-06-07",
+          "2026-08-22",
+          "2026-09-19",
+          "2026-09-26",
+          "2026-10-04",
+          "2026-11-08",
+          "2026-12-05",
+          "2026-12-19",
+          "2026-12-24",
+          "2026-12-30"
+        ],
+        "assetReference": "assets/data/1954/{temporal.xml, sanctoral.xml};assets/data/values*/strings.xml;lib/liturgical_engine/calendar_profile.dart#_commemorations",
+        "test": "test/unit/ordo_2026_profile_test.dart::matches audited Divinum Officium ranks and Mass occurrences; external full-year audit inventory recorded 365 dates on 2026-08-28",
+        "primary": {"sourceId": "do-live-1954-2026", "reference": "Live Divinum Officium 1954 full-year Mass calendar and targeted Mass pages"},
+        "secondary": [
+          {"sourceId": "do-latin-sancti", "reference": "https://github.com/DivinumOfficium/divinum-officium/tree/master/web/www/horas/Latin/Sancti"},
+          {"sourceId": "do-latin-tempora", "reference": "https://github.com/DivinumOfficium/divinum-officium/tree/master/web/www/horas/Latin/Tempora"},
+          {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#divinum-officium-1954-full-year-audit-2026"}
+        ],
+        "assertedFields": ["full-year main rank", "fixed feast rank", "Mass-only occurrence", "Office-only suppression", "vigil anticipation", "octave commemoration", "locale keys"]
+      },
+      {
+        "ruleFamily": "All-season Ember dates and readings",
+        "representativeDates": [
+          "2026-02-25",
+          "2026-02-27",
+          "2026-02-28",
+          "2026-05-27",
+          "2026-05-29",
+          "2026-05-30",
+          "2026-09-16",
+          "2026-09-18",
+          "2026-09-19",
+          "2026-12-16",
+          "2026-12-18",
+          "2026-12-19"
+        ],
+        "assetReference": "assets/data/1954/temporal.xml;assets/data/temporal.xml;lib/liturgical_engine/temporal.dart",
+        "test": "test/unit/liturgical_engine_test.dart::all Ember Days expose their readings through the 1962 engine; test/unit/ordo_2026_profile_test.dart::1954 Ember records retain complete source readings",
+        "primary": {"sourceId": "engine-1962-temporal-ember", "reference": "The local 1962 TemporalCycle source and resolver"},
+        "secondary": [
+          {"sourceId": "do-latin-tempora", "reference": "https://github.com/DivinumOfficium/divinum-officium/tree/master/web/www/horas/Latin/Tempora"},
+          {"sourceId": "pre55-rules", "reference": "PRE55_RULES.md#II.1"}
+        ],
+        "assertedFields": ["four Ember seasons", "date selection", "Epistle", "Gospel", "1954 source retention", "1962 engine output"]
       }
     ],
     "auditLimits": {
-      "pageLevelScan": "not_performed",
-      "remaining": "The primary 1954 scan was not collated page by page for every reading and rubric. Matrix entries prove the deterministic asset fields and exercised engine behavior only; they do not claim page-level verification.",
+      "pageLevelScan": "All 365 daily 2026 records using the live Divinum Officium 1954 Mass iCalendar endpoint, with targeted Mass-page checks for source occurrence semantics",
+      "remaining": "Other years and full primary-source page collation remain open; this audit does not claim that the entire profile is page-perfect.",
+      "knownSourceAnomalies": [
+        "2026-02-16: Restore the 54 displays Credo for the feria, while the primary Divinum Officium Quad5-1 Mass record has no Credo rule; the profile follows the primary record.",
+        "2026-03-08: Restore the 54 displays Gloria and no Credo for the Third Sunday of Lent, while the primary Divinum Officium Quad3-0 record has no Gloria and Credo; the profile follows the primary record."
+      ],
       "unsupportedData": [
-        "Individual primary-source page numbers are not encoded because the page-level scan is still outstanding.",
-        "A separate 1954 Brazilian national proper is not modeled; the existing Brazilian local-proper layer remains intentionally separate from the universal 1954 profile."
+        "Individual primary-source page numbers are not encoded; the annual scan used machine-readable Ordo records and did not collate Missale page references."
       ]
     }
   },
@@ -297,7 +533,14 @@
       "BLUE is normalized to pre-1955 WHITE; five-color plus rose vocabulary only",
       "every entry carries explicit transfer, octave, vigil, Mass, and reading metadata",
       "sourceRank retains DO decimal precedence so intermediate values are not lost",
-      "temporal sunday_rules carry the complete Advent, Epiphany, and post-Pentecost Sunday propers with Easter offsets where applicable"
+      "temporal sunday_rules carry the complete Advent, Epiphany, and post-Pentecost Sunday propers with Easter offsets where applicable",
+      "octave metadata is attached only to source-confirmed octave members; Mass-only or Vespers-only octave references remain non-commemorated at Mass",
+      "all octave-bearing entries carry explicit nameResId keys in each of the seven locale dictionaries, with ordinal placeholders checked",
+      "the movable Patronage octave days are generic commemoration records; the 2026 St. Mark conflict is an explicit direct-Mass omission",
+      "major Advent/Lenten ferias outrank Simplex feasts when the source orders the feria as the Mass",
+      "direct Mass-page occurrence labels override Office-level iCalendar descriptions when the two differ",
+      "Brazilian propers are stored in a separate 1954 local asset; an explicit local rank replaces a universal record with the same observance identity.",
+      "Sunday common vigils are suppressed at Mass except for the explicit transferred Vigil of St. Thomas"
     ],
     "prefaceAudit": {
       "status": "complete",
@@ -315,10 +558,9 @@
         "https://www.osjusa.org/st-joseph-in-liturgy"
       ],
       "rules": [
-        "Saint Joseph is limited to the March 19 feast; other Joseph saints use Common.",
+        "Saint Joseph uses SaintJoseph for the March 19 feast and the movable Patronage feast and octave; other Joseph saints use Common.",
         "B.V.M. proper and octave entries use BlessedVirginMary; unrelated female saints use Common.",
-        "Apostles and Evangelists use Apostles; apostolic vigils remain Common; Christmas octave precedence uses Christmas.",
-        "St John the Baptist feast and octave use JohnBaptist.",
+        "St John the Baptist feast and common octave use Common, matching the checked 2026 Ordo records.",
         "Holy Cross, Precious Blood, All Souls, and church dedications use their proper prefaces.",
         "Septuagesima Sundays use Trinity; the Epiphany vigil uses Christmas; Good Friday has no preface; Ascension vigil uses Easter."
       ]

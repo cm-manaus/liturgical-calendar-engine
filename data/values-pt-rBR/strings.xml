@@ -261,6 +261,7 @@
     <string name="vigil_assumption">Véspera da Assunção da Bem-aventurada Virgem Maria</string>
     <string name="vigil_ascension">Véspera da Ascensão de Nosso Senhor</string>
     <string name="vigil_pentecost">Véspera de Pentecostes</string>
+    <string name="friday_before_pentecost_vigil">Sexta-feira antes da Vigília de Pentecostes</string>
     <string name="st_paul_hermit">S. Paulo, o Primeiro Eremita, Confessor</string>
     <string name="st_marcellus">S. Marcelo I, Papa e Mártir</string>
     <string name="sts_vincent_anastasius">S. Vicente e S. Anastácio, Mártires</string>
@@ -641,4 +642,33 @@
     <string name="day_octave_epiphany">%1$s dia dentro da Oitava da Epifania</string>
     <string name="patronage_st_joseph_octave">%1$s dia dentro da Oitava do Patrocínio de São José</string>
     <string name="sunday_within_christmas_octave">Domingo dentro da Oitava do Natal</string>
+    <string name="rogation_monday">Segunda-feira das Rogações</string>
+    <string name="rogation_tuesday">Terça-feira das Rogações</string>
+    <string name="rogation_wednesday">Quarta-feira das Rogações</string>
+    <string name="day_octave_ascension">%1$s dia dentro da Oitava da Ascensão</string>
+    <string name="day_octave_corpus_christi">%1$s dia dentro da Oitava de Corpus Christi</string>
+    <string name="day_octave_sacred_heart">%1$s dia dentro da Oitava do Sagrado Coração</string>
+    <string name="day_octave_assumption">%1$s dia dentro da Oitava da Assunção</string>
+    <string name="octave_day_st_stephen">Dia da Oitava de Santo Estêvão, Protomártir</string>
+    <string name="octave_day_st_john_apostle">Dia da Oitava de São João, Apóstolo e Evangelista</string>
+    <string name="octave_day_holy_innocents">Dia da Oitava dos Santos Inocentes</string>
+    <string name="day_octave_st_john_baptist">%1$s dia dentro da Oitava de São João Batista</string>
+    <string name="day_octave_peter_paul">%1$s dia dentro da Oitava de São Pedro e São Paulo</string>
+    <string name="day_octave_nativity_bvm">%1$s dia dentro da Oitava da Natividade da Bem-aventurada Virgem Maria</string>
+    <string name="day_octave_all_saints">%1$s dia dentro da Oitava de Todos os Santos</string>
+    <string name="day_octave_immaculate_conception">%1$s dia dentro da Oitava da Imaculada Conceição</string>
+    <string name="octave_day_st_lawrence">Dia da Oitava de São Lourenço, Mártir</string>
+    <string name="octave_day_st_john_baptist">Dia da Oitava de São João Batista</string>
+    <string name="octave_day_peter_paul">Dia da Oitava de São Pedro e São Paulo</string>
+    <string name="octave_day_nativity_bvm">Dia da Oitava da Natividade da Bem-aventurada Virgem Maria</string>
+    <string name="octave_day_all_saints">Dia da Oitava de Todos os Santos</string>
+    <string name="octave_day_immaculate_conception">Dia da Oitava da Imaculada Conceição</string>
+    <string name="octave_day_nativity">Dia da Oitava da Natividade (Circuncisão de Nosso Senhor)</string>
+    <string name="octave_day_epiphany">Dia da Oitava da Epifania (Comemoração do Batismo de Nosso Senhor)</string>
+
+    <string name="ss_cyprian_and_justina_martyrs">S. Cipriano e S. Justina, Mártires</string>
+    <string name="st_barbara_virgin_and_martyr">S. Bárbara, Virgem e Mártir</string>
+    <string name="dedication_own_church">Dedicação da própria igreja</string>
+    <string name="brazilian_octave_day">%1$s dia dentro da Oitava de %2$s</string>
+    <string name="brazilian_octave_day_8">Dia da Oitava de %1$s</string>
 </resources>

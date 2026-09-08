@@ -22,10 +22,11 @@ type XML1954Precedence struct {
 }
 
 type XML1954Octave struct {
-	ID     string `xml:"id,attr"`
-	Day    string `xml:"day,attr"`
-	Status string `xml:"status,attr"`
-	Type   string `xml:"type,attr"`
+	ID        string `xml:"id,attr"`
+	Day       string `xml:"day,attr"`
+	Status    string `xml:"status,attr"`
+	Type      string `xml:"type,attr"`
+	EndOffset string `xml:"endOffset,attr"`
 }
 
 type XML1954Vigil struct {
@@ -59,32 +60,35 @@ type XML1954Suppression struct {
 }
 
 type XML1954Day struct {
-	ID             string              `xml:"id,attr"`
-	Name           string              `xml:"name,attr"`
-	NameResID      string              `xml:"nameResId,attr"`
-	NameArg        string              `xml:"nameArg,attr"`
-	Date           string              `xml:"date,attr"`
-	EasterOffset   string              `xml:"easterOffset,attr"`
-	Offset         string              `xml:"offset,attr"`
-	Cycle          string              `xml:"cycle,attr"`
-	Week           string              `xml:"week,attr"`
-	Weekday        string              `xml:"weekday,attr"`
-	Window         string              `xml:"window,attr"`
-	ObservanceKind string              `xml:"observanceKind,attr"`
-	Pre55Grade     string              `xml:"pre55Grade,attr"`
-	Season         string              `xml:"season,attr"`
-	Color          string              `xml:"color,attr"`
-	Privileged     string              `xml:"privileged,attr"`
-	SourceRef      string              `xml:"sourceRef,attr"`
-	SourceRank     string              `xml:"sourceRank,attr"`
-	IsLordFeast    string              `xml:"isLordFeast,attr"`
-	Precedence     *XML1954Precedence  `xml:"precedence"`
-	Suppression    *XML1954Suppression `xml:"suppression"`
-	Octave         *XML1954Octave      `xml:"octave"`
-	Vigil          *XML1954Vigil       `xml:"vigil"`
-	Transfer       *XML1954Transfer    `xml:"transfer"`
-	Mass           *XML1954Mass        `xml:"mass"`
-	Readings       *XML1954Readings    `xml:"readings"`
+	ID              string              `xml:"id,attr"`
+	Name            string              `xml:"name,attr"`
+	NameResID       string              `xml:"nameResId,attr"`
+	NameArg         string              `xml:"nameArg,attr"`
+	Date            string              `xml:"date,attr"`
+	EasterOffset    string              `xml:"easterOffset,attr"`
+	Offset          string              `xml:"offset,attr"`
+	Cycle           string              `xml:"cycle,attr"`
+	Week            string              `xml:"week,attr"`
+	Weekday         string              `xml:"weekday,attr"`
+	Window          string              `xml:"window,attr"`
+	ObservanceKind  string              `xml:"observanceKind,attr"`
+	Pre55Grade      string              `xml:"pre55Grade,attr"`
+	Season          string              `xml:"season,attr"`
+	Color           string              `xml:"color,attr"`
+	Privileged      string              `xml:"privileged,attr"`
+	SourceRef       string              `xml:"sourceRef,attr"`
+	SourceRank      string              `xml:"sourceRank,attr"`
+	IsLordFeast     string              `xml:"isLordFeast,attr"`
+	RelativeTo      string              `xml:"relativeTo,attr"`
+	OffsetDays      string              `xml:"offsetDays,attr"`
+	OctaveEndOffset string              `xml:"octaveEndOffset,attr"`
+	Precedence      *XML1954Precedence  `xml:"precedence"`
+	Suppression     *XML1954Suppression `xml:"suppression"`
+	Octave          *XML1954Octave      `xml:"octave"`
+	Vigil           *XML1954Vigil       `xml:"vigil"`
+	Transfer        *XML1954Transfer    `xml:"transfer"`
+	Mass            *XML1954Mass        `xml:"mass"`
+	Readings        *XML1954Readings    `xml:"readings"`
 }
 
 type XML1954TransferRule struct {
@@ -205,57 +209,11 @@ func parseIDList(s string) []string {
 	return res
 }
 
-func xmlToAssetEntry(d XML1954Day) CalendarAssetEntry {
-	rank := Pre55RankFromAsset(d.Pre55Grade, d.ObservanceKind, d.Privileged == "true")
+func boolPtr(b bool) *bool {
+	return &b
+}
 
-	color := ParseColor(d.Color)
-	if d.Color == "" {
-		color = ColorWhite
-	}
-
-	var offset *int
-	if d.EasterOffset != "" {
-		if val, err := strconv.Atoi(d.EasterOffset); err == nil {
-			offset = &val
-		}
-	} else if d.Offset != "" {
-		if val, err := strconv.Atoi(d.Offset); err == nil {
-			offset = &val
-		}
-	}
-
-	var week *int
-	if d.Week != "" {
-		if val, err := strconv.Atoi(d.Week); err == nil {
-			week = &val
-		}
-	}
-
-	var weekday *int
-	if d.Weekday != "" {
-		if val, err := strconv.Atoi(d.Weekday); err == nil {
-			weekday = &val
-		}
-	}
-
-	nameArgs := parseNameArgs(d.NameArg, d.Name)
-
-	name := d.Name
-	if name == "" {
-		name = d.NameResID
-	}
-	if name == "" {
-		name = d.ID
-	}
-
-	epistle, gospel := "", ""
-	var readingsSource string
-	if d.Readings != nil {
-		epistle = d.Readings.Epistle
-		gospel = d.Readings.Gospel
-		readingsSource = d.Readings.Source
-	}
-
+func xmlDayToMetadata(d XML1954Day) CalendarObservanceMetadata {
 	var precedence *float64
 	var firstVespers *bool
 	var occurrence, concurrence string
@@ -312,7 +270,12 @@ func xmlToAssetEntry(d XML1954Day) CalendarAssetEntry {
 		massPreface = d.Mass.Preface
 	}
 
-	metadata := CalendarObservanceMetadata{
+	var readingsSource string
+	if d.Readings != nil {
+		readingsSource = d.Readings.Source
+	}
+
+	return CalendarObservanceMetadata{
 		ObservanceKind:       d.ObservanceKind,
 		Season:               d.Season,
 		Privileged:           parseBoolPtr(d.Privileged),
@@ -340,6 +303,58 @@ func xmlToAssetEntry(d XML1954Day) CalendarAssetEntry {
 		MassPreface:          massPreface,
 		ReadingsSource:       readingsSource,
 	}
+}
+
+func xmlToAssetEntry(d XML1954Day) CalendarAssetEntry {
+	rank := Pre55RankFromAsset(d.Pre55Grade, d.ObservanceKind, d.Privileged == "true")
+
+	color := ParseColor(d.Color)
+	if d.Color == "" {
+		color = ColorWhite
+	}
+
+	var offset *int
+	if d.EasterOffset != "" {
+		if val, err := strconv.Atoi(d.EasterOffset); err == nil {
+			offset = &val
+		}
+	} else if d.Offset != "" {
+		if val, err := strconv.Atoi(d.Offset); err == nil {
+			offset = &val
+		}
+	}
+
+	var week *int
+	if d.Week != "" {
+		if val, err := strconv.Atoi(d.Week); err == nil {
+			week = &val
+		}
+	}
+
+	var weekday *int
+	if d.Weekday != "" {
+		if val, err := strconv.Atoi(d.Weekday); err == nil {
+			weekday = &val
+		}
+	}
+
+	nameArgs := parseNameArgs(d.NameArg, d.Name)
+
+	name := d.Name
+	if name == "" {
+		name = d.NameResID
+	}
+	if name == "" {
+		name = d.ID
+	}
+
+	epistle, gospel := "", ""
+	if d.Readings != nil {
+		epistle = d.Readings.Epistle
+		gospel = d.Readings.Gospel
+	}
+
+	metadata := xmlDayToMetadata(d)
 
 	return CalendarAssetEntry{
 		ID:          d.ID,
@@ -383,6 +398,7 @@ func (e CalendarAssetEntry) ToLiturgicalDay() LiturgicalDay {
 type DivinoAfflatu1954Profile struct {
 	dataDir             string
 	brazilianSanctorale *BrazilianSanctorale
+	brazilian1954Proper *Brazilian1954ProperCalendar
 
 	easterCycleEntries map[int][]CalendarAssetEntry
 	sundayRules        map[string][]CalendarAssetEntry
@@ -459,6 +475,11 @@ func (p *DivinoAfflatu1954Profile) load() {
 		}
 	}
 
+	brazilianProperPath := filepath.Join(p.dataDir, "brazilian_sanctoral.xml")
+	if _, err := os.Stat(brazilianProperPath); err == nil {
+		p.brazilian1954Proper = NewBrazilian1954ProperCalendar(brazilianProperPath)
+	}
+
 	p.loaded = true
 }
 
@@ -494,44 +515,81 @@ func (p *DivinoAfflatu1954Profile) Resolve(date time.Time, includeBrazilian bool
 		}
 	}
 
-	// Merge Brazilian feasts
-	var merged []candidate1954
-	for _, c := range unique {
-		merged = append(merged, c)
-	}
-
-	if includeBrazilian && p.brazilianSanctorale != nil {
-		brazilianFeasts := p.brazilianSanctorale.GetAllFeasts(dateUTC)
-		for i, bf := range brazilianFeasts {
-			rank := RankD
-			if bf.LiturgicalClass == ClassI {
-				rank = RankD1Cl
-			} else if bf.LiturgicalClass == ClassII {
-				rank = RankD2Cl
-			} else if bf.LiturgicalClass == ClassIII {
-				rank = RankD
-			} else {
-				rank = RankS
+	var localCandidates []candidate1954
+	if includeBrazilian {
+		if p.brazilian1954Proper != nil && p.brazilian1954Proper.IsLoaded() {
+			localEntries := p.brazilian1954Proper.EntriesForDate(dateUTC)
+			for i, entry := range localEntries {
+				localCandidates = append(localCandidates, candidate1954{
+					Day:         entry.ToLiturgicalDay(),
+					IsBrazilian: true,
+					IsTemporal:  false,
+					IsFeria:     false,
+					Pre55Rank:   entry.Pre55Rank,
+					Metadata:    entry.Metadata,
+					Order:       i,
+				})
 			}
-			bf.CalendarVersion = Calendar1954
-			bf.Pre55Rank = &rank
-			cand := candidate1954{
-				Day:         bf,
-				IsBrazilian: true,
-				IsTemporal:  false,
-				IsFeria:     false,
-				Pre55Rank:   rank,
-				Order:       len(merged) + i,
+		} else if p.brazilianSanctorale != nil {
+			brazilianFeasts := p.brazilianSanctorale.GetAllFeasts(dateUTC)
+			for i, bf := range brazilianFeasts {
+				rank := RankD
+				if bf.LiturgicalClass == ClassI {
+					rank = RankD1Cl
+				} else if bf.LiturgicalClass == ClassII {
+					rank = RankD2Cl
+				} else if bf.LiturgicalClass == ClassIII {
+					rank = RankD
+				} else {
+					rank = RankS
+				}
+				bf.CalendarVersion = Calendar1954
+				bf.Pre55Rank = &rank
+				localCandidates = append(localCandidates, candidate1954{
+					Day:         bf,
+					IsBrazilian: true,
+					IsTemporal:  false,
+					IsFeria:     false,
+					Pre55Rank:   rank,
+					Order:       i,
+				})
 			}
-			merged = append(merged, cand)
 		}
 	}
 
-	sort.SliceStable(merged, func(i, j int) bool {
-		return p.compareCandidates(merged[i], merged[j]) < 0
+	// Merge universal candidates with local candidates by observance identity
+	byObservance := make(map[string]candidate1954)
+	for _, c := range unique {
+		byObservance[c.Day.ObservanceKey()] = c
+	}
+
+	order := len(unique)
+	for _, sourceCandidate := range localCandidates {
+		cand := sourceCandidate
+		cand.Order = order
+		order++
+		key := cand.Day.ObservanceKey()
+		existing, exists := byObservance[key]
+		if !exists || (cand.IsBrazilian && !existing.IsBrazilian) || p.prefers(cand, existing) {
+			byObservance[key] = cand
+		}
+	}
+
+	var contextEntries []CalendarAssetEntry
+	for _, c := range candidates {
+		contextEntries = append(contextEntries, c.entry)
+	}
+
+	var ordered []candidate1954
+	for _, c := range byObservance {
+		ordered = append(ordered, p.effectiveOverlayCandidate(c, dateUTC, contextEntries, localCandidates))
+	}
+
+	sort.SliceStable(ordered, func(i, j int) bool {
+		return p.compareOverlayCandidates(ordered[i], ordered[j]) < 0
 	})
 
-	if len(merged) == 0 {
+	if len(ordered) == 0 {
 		feria := LiturgicalDay{
 			ID:              "feria",
 			Name:            "Feria",
@@ -547,8 +605,8 @@ func (p *DivinoAfflatu1954Profile) Resolve(date time.Time, includeBrazilian bool
 		}
 	}
 
-	main := merged[0]
-	comms := p.commemorations(main, merged[1:])
+	main := ordered[0]
+	comms := p.commemorations(main, ordered[1:], dateUTC)
 
 	return LiturgicalResult{
 		MainDay:         main.Day,
@@ -584,9 +642,6 @@ func (p *DivinoAfflatu1954Profile) entriesForDate(date time.Time) []assetCandida
 			if movedIDs[entry.ID] {
 				continue
 			}
-			if date.Weekday() == time.Sunday && entry.Metadata.ObservanceKind == "vigil" {
-				continue
-			}
 			sanctoral = append(sanctoral, entry)
 		}
 	}
@@ -608,6 +663,19 @@ func (p *DivinoAfflatu1954Profile) entriesForDate(date time.Time) []assetCandida
 		}
 	}
 
+	// Anticipate Sunday-dated vigils on Saturday
+	if date.Weekday() == time.Saturday {
+		following := date.AddDate(0, 0, 1)
+		followingKey := fmt.Sprintf("%02d-%02d", following.Month(), following.Day())
+		if followingEntries, ok := p.sanctoralEntries[followingKey]; ok {
+			for _, entry := range followingEntries {
+				if entry.Metadata.ObservanceKind == "vigil" {
+					sanctoral = append(sanctoral, markAnticipatedVigil(entry))
+				}
+			}
+		}
+	}
+
 	for _, entry := range sanctoral {
 		result = append(result, assetCandidatePair{
 			entry:      entry,
@@ -617,25 +685,17 @@ func (p *DivinoAfflatu1954Profile) entriesForDate(date time.Time) []assetCandida
 	}
 
 	// Weekday feria evaluation
-	if date.Weekday() != time.Sunday && len(temporalEntries) == 0 && len(sanctoral) > 0 {
-		hasExplicitOctave := false
-		for _, entry := range sanctoral {
-			if entry.Metadata.ObservanceKind == "octave_day" || entry.Metadata.ObservanceKind == "within_octave" {
-				hasExplicitOctave = true
-				break
-			}
-		}
-		if !hasExplicitOctave {
-			easter := CalculateEaster(date.Year())
-			easterOffset := int(date.Sub(easter).Hours() / 24)
-			feria := p.feriaForDate(date, easterOffset)
-			if feria != nil {
-				result = append(result, assetCandidatePair{
-					entry:      *feria,
-					isTemporal: true,
-					isFeria:    true,
-				})
-			}
+	if date.Weekday() != time.Sunday && len(temporalEntries) == 0 {
+		easter := CalculateEaster(date.Year())
+		easterOffset := int(date.Sub(easter).Hours() / 24)
+		feria := p.feriaForDate(date, easterOffset)
+		includeFeria := feria != nil && (len(sanctoral) == 0 || p.feriaCanBeCommemoratedWithFeast(*feria))
+		if includeFeria {
+			result = append(result, assetCandidatePair{
+				entry:      *feria,
+				isTemporal: true,
+				isFeria:    true,
+			})
 		}
 	}
 
@@ -914,53 +974,130 @@ func (p *DivinoAfflatu1954Profile) feriaForDate(date time.Time, easterOffset int
 	return nil
 }
 
-func (p *DivinoAfflatu1954Profile) commemorations(main candidate1954, candidates []candidate1954) []LiturgicalDay {
+func (p *DivinoAfflatu1954Profile) commemorations(main candidate1954, candidates []candidate1954, date time.Time) []LiturgicalDay {
 	mainRank := main.Pre55Rank
 	metadata := main.Metadata
-	isChristTheKing := main.Day.ID == "christ_the_king"
 
-	if (main.IsBrazilian && main.Day.LiturgicalClass <= ClassII) ||
-		metadata.Occurrence == "suppress_lower" ||
-		(mainRank == RankD1Cl && !isChristTheKing) {
+	if (main.IsBrazilian && main.Pre55Rank == "" && main.Day.LiturgicalClass <= ClassII) ||
+		metadata.Occurrence == "suppress_lower" {
 		return []LiturgicalDay{}
 	}
 
 	var result []LiturgicalDay
 	seen := make(map[string]bool)
 
-	for _, cand := range candidates {
-		if p.overlayPrecedence(cand) < p.overlayPrecedence(main) {
+	for _, candidate := range candidates {
+		candMeta := candidate.Metadata
+		candPrecedence := p.overlayPrecedence(candidate)
+		mainPrecedence := p.overlayPrecedence(main)
+		candHasHigherPrecedence := candPrecedence < mainPrecedence
+		candHasLowerPrecedence := candPrecedence > mainPrecedence
+
+		allowedSundayVigil := main.Metadata.ObservanceKind == "sunday" &&
+			candMeta.ObservanceKind == "vigil" &&
+			candMeta.VigilKind == "common"
+		allowedFeriaMajorCandidate := main.IsFeria &&
+			main.Pre55Rank == RankFeriaMajor &&
+			(candidate.Pre55Rank == RankS || p.isAnticipatedVigil(candidate))
+		allowedPrivilegedFeriaCandidate := main.IsFeria &&
+			main.Pre55Rank == RankFeriaPrivilegiata &&
+			candidate.Pre55Rank == RankS
+		allowedLocalOctaveDay := candidate.IsBrazilian &&
+			candMeta.OctaveStatus == "octave_day" &&
+			(mainRank == RankD1Cl || main.Metadata.ObservanceKind == "sunday")
+		allowedD1Candidate := mainRank == RankD1Cl &&
+			(candMeta.ObservanceKind == "sunday" ||
+				candMeta.ObservanceKind == "feria" ||
+				candMeta.OctaveStatus == "octave_day")
+
+		if candHasHigherPrecedence && !allowedFeriaMajorCandidate && !allowedLocalOctaveDay {
 			continue
 		}
-		if !p.suppressionAllows(main, cand) {
+		if candHasLowerPrecedence &&
+			mainRank == RankD1Cl &&
+			!allowedSundayVigil &&
+			!allowedPrivilegedFeriaCandidate &&
+			!allowedD1Candidate &&
+			!allowedLocalOctaveDay {
 			continue
 		}
-		candMeta := cand.Metadata
+		if !p.sourceMassOccurrenceAllows(candidate, main, date) {
+			continue
+		}
+		if !p.suppressionAllows(main, candidate) {
+			continue
+		}
 		if candMeta.Occurrence == "suppress_lower" ||
 			candMeta.Occurrence == "no_commemoration" ||
 			(candMeta.Privileged != nil && *candMeta.Privileged) {
 			continue
 		}
-		if cand.IsFeria {
+		if candidate.IsFeria {
 			if main.IsFeria ||
 				!p.isCommemoratableOccurrence(candMeta.Occurrence) ||
 				metadata.Occurrence == "no_commemoration" ||
-				!p.concurrenceAllows(main, cand) {
+				!p.concurrenceAllows(main, candidate) {
 				continue
 			}
-		} else if !p.concurrenceAllows(main, cand) {
+		} else if !p.concurrenceAllows(main, candidate) {
 			continue
 		}
 
-		key := cand.Day.ObservanceKey()
+		key := candidate.Day.ObservanceKey()
 		if key == main.Day.ObservanceKey() || seen[key] {
 			continue
 		}
 		seen[key] = true
-		result = append(result, cand.Day)
+		result = append(result, candidate.Day)
 	}
 
 	return result
+}
+
+func (p *DivinoAfflatu1954Profile) sourceMassOccurrenceAllows(candidate, main candidate1954, date time.Time) bool {
+	id := candidate.Day.ID
+	if id == "fourth_day_within_octave_patronage_st_joseph" && main.Day.ID == "st_mark_evangelist" {
+		return false
+	}
+	if main.Metadata.ObservanceKind == "sunday" &&
+		candidate.Metadata.ObservanceKind == "vigil" &&
+		candidate.Day.ID != "vigil_of_st_thomas_apostle" {
+		return false
+	}
+	if id == "st_john_i_pope_and_martyr_2" && main.Metadata.OctaveID == "Pentecost" {
+		return false
+	}
+	if id == "vigil_of_st_bartholomew_apostle" && candidate.Metadata.VigilAnticipated != nil && *candidate.Metadata.VigilAnticipated {
+		return false
+	}
+	if id == "vigil_of_st_matthew_apostle" && (p.isSeptemberEmberDate(date) || p.isSeptemberEmberDate(date.AddDate(0, 0, -1))) {
+		return false
+	}
+	return true
+}
+
+func (p *DivinoAfflatu1954Profile) isSeptemberEmberDate(date time.Time) bool {
+	easterOffset := int(date.Sub(CalculateEaster(date.Year())).Hours() / 24)
+	feria := p.feriaForDate(date, easterOffset)
+	return feria != nil && strings.HasSuffix(feria.ID, "_september")
+}
+
+func (p *DivinoAfflatu1954Profile) isAnticipatedVigil(candidate candidate1954) bool {
+	return candidate.Metadata.ObservanceKind == "vigil" && candidate.Metadata.VigilAnticipated != nil && *candidate.Metadata.VigilAnticipated
+}
+
+func (p *DivinoAfflatu1954Profile) feriaCanBeCommemoratedWithFeast(feria CalendarAssetEntry) bool {
+	season := feria.Metadata.Season
+	return season == "Advent" || season == "Lent"
+}
+
+func markAnticipatedVigil(source CalendarAssetEntry) CalendarAssetEntry {
+	copyEntry := source
+	meta := source.Metadata
+	t := true
+	meta.VigilAnticipated = &t
+	copyEntry.Metadata = meta
+	return copyEntry
 }
 
 func (p *DivinoAfflatu1954Profile) suppressionAllows(main, candidate candidate1954) bool {
@@ -996,54 +1133,100 @@ func (p *DivinoAfflatu1954Profile) isCommemoratableOccurrence(occ string) bool {
 	return occ == "commemorate" || occ == "commemorate_or_transfer"
 }
 
-func (p *DivinoAfflatu1954Profile) compareCandidates(a, b candidate1954) int {
-	if a.IsBrazilian || b.IsBrazilian {
-		if a.IsBrazilian && !b.IsBrazilian {
-			if a.Day.LiturgicalClass <= ClassII {
-				return -1
-			}
-			return 1
-		}
-		if !a.IsBrazilian && b.IsBrazilian {
-			if b.Day.LiturgicalClass <= ClassII {
-				return 1
-			}
-			return -1
-		}
-	}
+func (p *DivinoAfflatu1954Profile) prefers(candidate, existing candidate1954) bool {
+	return p.compareBrazilianCandidates(candidate, existing) < 0
+}
 
-	rankA := p.effectivePre55Rank(a)
-	rankB := p.effectivePre55Rank(b)
-	if rankA.PrecedenceIndex() != rankB.PrecedenceIndex() {
-		return rankA.PrecedenceIndex() - rankB.PrecedenceIndex()
-	}
-
-	// Sunday tie-breaker
-	isSunA := a.IsTemporal && a.Metadata.ObservanceKind == "sunday"
-	isSunB := b.IsTemporal && b.Metadata.ObservanceKind == "sunday"
-	if isSunA != isSunB {
-		if isSunA {
+func (p *DivinoAfflatu1954Profile) compareBrazilianCandidates(a, b candidate1954) int {
+	precA := p.brazilianPrecedence(a)
+	precB := p.brazilianPrecedence(b)
+	if precA != precB {
+		if precA < precB {
 			return -1
 		}
 		return 1
 	}
-
-	precA := p.precedenceVal(a)
-	precB := p.precedenceVal(b)
-	if precA != precB {
-		if precB > precA {
+	if a.IsBrazilian != b.IsBrazilian {
+		if a.IsBrazilian && a.Metadata.ObservanceKind == "within_octave" {
 			return 1
 		}
+		if b.IsBrazilian && b.Metadata.ObservanceKind == "within_octave" {
+			return -1
+		}
+		if a.IsBrazilian {
+			return -1
+		}
+		return 1
+	}
+	if a.Order < b.Order {
+		return -1
+	} else if a.Order > b.Order {
+		return 1
+	}
+	return 0
+}
+
+func (p *DivinoAfflatu1954Profile) brazilianPrecedence(c candidate1954) int {
+	rank := c.Pre55Rank
+	if rank == "" {
+		return int(c.Day.LiturgicalClass)
+	}
+	meta := c.Metadata
+	var declPrec *float64
+	if meta.ObservanceKind != "feria" && !c.IsFeria {
+		if meta.Precedence != nil {
+			declPrec = meta.Precedence
+		} else {
+			declPrec = meta.SourceRank
+		}
+	}
+	ordinarySunday := c.IsTemporal && meta.ObservanceKind == "sunday"
+	normalizeGrade := meta.ObservanceKind != "feria"
+	if meta.OctaveStatus != "" && meta.OctaveStatus != "none" {
+		normalizeGrade = false
+	}
+	val := EffectivePrecedence(rank, declPrec, ordinarySunday, normalizeGrade)
+	return PrecedenceIndexFor(val)
+}
+
+func (p *DivinoAfflatu1954Profile) compareOverlayCandidates(a, b candidate1954) int {
+	if (a.IsBrazilian || b.IsBrazilian) && (p.brazilianSanctorale != nil || (p.brazilian1954Proper != nil && p.brazilian1954Proper.IsLoaded())) {
+		boundary := p.compareBrazilianCandidates(a, b)
+		if boundary != 0 {
+			return boundary
+		}
+	}
+
+	if a.IsFeria && a.Pre55Rank == RankFeriaMajor && b.Pre55Rank == RankS {
+		return -1
+	}
+	if b.IsFeria && b.Pre55Rank == RankFeriaMajor && a.Pre55Rank == RankS {
+		return 1
+	}
+
+	if p.isAnticipatedVigil(a) && b.IsFeria && b.Pre55Rank == RankFeriaMajor {
+		return 1
+	}
+	if p.isAnticipatedVigil(b) && a.IsFeria && a.Pre55Rank == RankFeriaMajor {
 		return -1
 	}
 
-	privA := a.Metadata.Privileged != nil && *a.Metadata.Privileged
-	privB := b.Metadata.Privileged != nil && *b.Metadata.Privileged
-	if privA != privB {
-		if privA {
+	pA := p.overlayPrecedence(a)
+	pB := p.overlayPrecedence(b)
+	if pA != pB {
+		if pA < pB {
 			return -1
 		}
 		return 1
+	}
+
+	isOctaveA := a.Metadata.OctaveStatus == "day_within" || a.Metadata.OctaveStatus == "octave_day"
+	isOctaveB := b.Metadata.OctaveStatus == "day_within" || b.Metadata.OctaveStatus == "octave_day"
+	if isOctaveA != isOctaveB {
+		if isOctaveA {
+			return 1
+		}
+		return -1
 	}
 
 	if a.Day.IsLordFeast != b.Day.IsLordFeast {
@@ -1053,55 +1236,216 @@ func (p *DivinoAfflatu1954Profile) compareCandidates(a, b candidate1954) int {
 		return 1
 	}
 
-	octA := a.Metadata.OctaveStatus == "day_within"
-	octB := b.Metadata.OctaveStatus == "day_within"
-	if octA != octB {
-		if octA {
-			return -1
-		}
-		return 1
+	sA := 0.0
+	if a.Metadata.SourceRank != nil {
+		sA = *a.Metadata.SourceRank
+	} else if a.Pre55Rank != "" {
+		sA = a.Pre55Rank.Info().Rank
 	}
 
-	if a.IsFeria != b.IsFeria {
-		if a.IsFeria {
+	sB := 0.0
+	if b.Metadata.SourceRank != nil {
+		sB = *b.Metadata.SourceRank
+	} else if b.Pre55Rank != "" {
+		sB = b.Pre55Rank.Info().Rank
+	}
+
+	if sA != sB {
+		if sB > sA {
 			return 1
 		}
 		return -1
 	}
 
-	if a.IsTemporal != b.IsTemporal {
-		if a.IsTemporal {
-			return -1
-		}
+	if a.Order < b.Order {
+		return -1
+	} else if a.Order > b.Order {
 		return 1
 	}
-
-	return a.Order - b.Order
-}
-
-func (p *DivinoAfflatu1954Profile) effectivePre55Rank(candidate candidate1954) Pre55Rank {
-	rank := candidate.Pre55Rank
-	if candidate.IsTemporal && candidate.Metadata.ObservanceKind == "sunday" && rank == RankSD {
-		return RankDMaj
-	}
-	return rank
+	return 0
 }
 
 func (p *DivinoAfflatu1954Profile) overlayPrecedence(candidate candidate1954) int {
-	if candidate.IsBrazilian {
+	rank := candidate.Pre55Rank
+	if rank == "" {
 		return int(candidate.Day.LiturgicalClass)
 	}
-	return p.effectivePre55Rank(candidate).PrecedenceIndex()
+	return PrecedenceIndexFor(p.effectivePrecedence(candidate))
 }
 
-func (p *DivinoAfflatu1954Profile) precedenceVal(candidate candidate1954) float64 {
-	if candidate.Metadata.Precedence != nil {
-		return *candidate.Metadata.Precedence
+func (p *DivinoAfflatu1954Profile) effectivePrecedence(candidate candidate1954) float64 {
+	rank := candidate.Pre55Rank
+	if rank == "" {
+		return 0
 	}
-	if candidate.Metadata.SourceRank != nil {
-		return *candidate.Metadata.SourceRank
+	metadata := candidate.Metadata
+	var declaredPrecedence *float64
+	if metadata.ObservanceKind != "feria" && !candidate.IsFeria {
+		if metadata.Precedence != nil {
+			declaredPrecedence = metadata.Precedence
+		} else {
+			declaredPrecedence = metadata.SourceRank
+		}
 	}
-	return candidate.Pre55Rank.Info().Rank
+	ordinarySunday := candidate.IsTemporal && metadata.ObservanceKind == "sunday"
+	normalizeGrade := metadata.ObservanceKind != "feria"
+	if metadata.OctaveStatus != "" && metadata.OctaveStatus != "none" {
+		normalizeGrade = false
+	}
+	return EffectivePrecedence(rank, declaredPrecedence, ordinarySunday, normalizeGrade)
+}
+
+func (p *DivinoAfflatu1954Profile) effectiveOverlayCandidate(
+	candidate candidate1954,
+	date time.Time,
+	contextEntries []CalendarAssetEntry,
+	localCandidates []candidate1954,
+) candidate1954 {
+	metadata := candidate.Metadata
+	if metadata.ObservanceKind == "vigil" {
+		return candidate
+	}
+
+	isFeria := candidate.IsFeria || metadata.ObservanceKind == "feria"
+	massGloria := metadata.MassGloria
+	massCredo := metadata.MassCredo
+	massPreface := metadata.MassPreface
+	massColor := metadata.MassColor
+	if !isFeria && candidate.Pre55Rank == RankS {
+		t := true
+		massGloria = &t
+	}
+
+	octavePreface := p.activeOverlayOctavePreface(localCandidates)
+	if octavePreface == "" {
+		octavePreface = p.activeOctavePreface(contextEntries)
+	}
+	inCredoOctave := p.hasOverlayCredoOctave(localCandidates) || p.hasCredoOctave(contextEntries)
+
+	if isFeria {
+		massPreface = p.seasonalPreface(date)
+	} else if (p.isDefaultPreface(massPreface) || (octavePreface != "" && massPreface == "Trinity")) &&
+		(metadata.ObservanceKind != "sunday" || metadata.OctaveStatus == "day_within" || metadata.OctaveStatus == "octave_day") {
+		if octavePreface != "" {
+			massPreface = octavePreface
+		} else {
+			massPreface = p.seasonalPreface(date)
+		}
+	}
+
+	if !isFeria && massColor != "BLACK" && inCredoOctave {
+		t := true
+		massCredo = &t
+	}
+
+	metadata.MassColor = massColor
+	metadata.MassGloria = massGloria
+	metadata.MassCredo = massCredo
+	metadata.MassPreface = massPreface
+
+	candidate.Metadata = metadata
+	candidate.Day.CalendarMetadata = &metadata
+	return candidate
+}
+
+func (p *DivinoAfflatu1954Profile) hasOverlayCredoOctave(candidates []candidate1954) bool {
+	for _, c := range candidates {
+		meta := c.Metadata
+		status := meta.OctaveStatus
+		if (status == "day_within" || status == "octave_day") &&
+			meta.OctaveID != "" &&
+			meta.OctaveID != "none" &&
+			meta.Occurrence != "no_commemoration" &&
+			meta.MassCredo != nil && *meta.MassCredo {
+			return true
+		}
+	}
+	return false
+}
+
+func (p *DivinoAfflatu1954Profile) activeOverlayOctavePreface(candidates []candidate1954) string {
+	for _, c := range candidates {
+		meta := c.Metadata
+		status := meta.OctaveStatus
+		octaveID := meta.OctaveID
+		preface := meta.MassPreface
+		if (status == "day_within" || status == "octave_day") &&
+			octaveID != "" &&
+			octaveID != "none" &&
+			meta.Occurrence != "no_commemoration" &&
+			preface != "" &&
+			preface != "Common" &&
+			preface != "None" &&
+			preface != "Trinity" {
+			return preface
+		}
+	}
+	return ""
+}
+
+func (p *DivinoAfflatu1954Profile) hasCredoOctave(entries []CalendarAssetEntry) bool {
+	for _, e := range entries {
+		meta := e.Metadata
+		status := meta.OctaveStatus
+		if (status == "day_within" || status == "octave_day") &&
+			meta.OctaveID != "" &&
+			meta.OctaveID != "none" &&
+			meta.Occurrence != "no_commemoration" &&
+			meta.MassCredo != nil && *meta.MassCredo {
+			return true
+		}
+	}
+	return false
+}
+
+func (p *DivinoAfflatu1954Profile) activeOctavePreface(entries []CalendarAssetEntry) string {
+	for _, e := range entries {
+		meta := e.Metadata
+		status := meta.OctaveStatus
+		octaveID := meta.OctaveID
+		preface := meta.MassPreface
+		if (status == "day_within" || status == "octave_day") &&
+			octaveID != "" &&
+			octaveID != "none" &&
+			meta.Occurrence != "no_commemoration" &&
+			preface != "" &&
+			preface != "Common" &&
+			preface != "None" &&
+			preface != "Trinity" {
+			return preface
+		}
+	}
+	return ""
+}
+
+func (p *DivinoAfflatu1954Profile) isDefaultPreface(val string) bool {
+	return val == "" || val == "Common"
+}
+
+func (p *DivinoAfflatu1954Profile) seasonalPreface(date time.Time) string {
+	if (date.Month() == 12 && date.Day() >= 25) || (date.Month() == 1 && date.Day() <= 13) {
+		return "Christmas"
+	}
+	offset := int(date.Sub(CalculateEaster(date.Year())).Hours() / 24)
+	if offset >= -14 && offset <= -2 {
+		return "HolyCross"
+	}
+	if offset >= -46 && offset < -14 {
+		return "Lent"
+	}
+	if offset >= 0 && offset < 39 {
+		return "Easter"
+	}
+	if offset >= 39 && offset < 48 {
+		return "Ascension"
+	}
+	if offset >= 48 && offset <= 55 {
+		return "Pentecost"
+	}
+	if date.Weekday() == time.Sunday && (offset >= 56 || !date.Before(p.advent1(date.Year()))) {
+		return "Trinity"
+	}
+	return "Common"
 }
 
 func (p *DivinoAfflatu1954Profile) toLiturgicalDay(entry CalendarAssetEntry, isFeria bool, feriaDate time.Time) LiturgicalDay {
