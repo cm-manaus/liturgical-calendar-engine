@@ -13,6 +13,7 @@ RUN go mod download
 # Copy source code
 COPY main.go ./
 COPY engine/ ./engine/
+COPY api/ ./api/
 
 # Build static binary using Go's fast native cross-compilation with BuildKit cache
 RUN --mount=type=cache,target=/root/.cache/go-build \
