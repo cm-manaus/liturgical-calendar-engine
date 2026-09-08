@@ -17,7 +17,7 @@ Este guia documenta o pipeline de integração contínua (CI/CD), publicação n
 │    - Compilação cruzada nativa em Go (sem QEMU lento)   │
 │ 3. Push para GitHub Container Registry (GHCR)          │
 └──────────────────────────┬─────────────────────────────┘
-                           │ ghcr.io/mathvdias/tesouro-backend-go:latest
+                           │ ghcr.io/cm-manaus/tesouro-backend:latest
                            ▼
 ┌────────────────────────────────────────────────────────┐
 │ Raspberry Pi (100.92.173.88)                           │
@@ -50,7 +50,7 @@ Com o pipeline configurado, você **não precisa compilar localmente, nem salvar
    git commit -m "feat: suas alteracoes"
    git push origin main
    ```
-2. O **GitHub Actions** executa os testes, compila o container para `linux/arm64` nativamente e publica em `ghcr.io/mathvdias/tesouro-backend-go:latest`.
+2. O **GitHub Actions** executa os testes, compila o container para `linux/arm64` nativamente e publica em `ghcr.io/cm-manaus/tesouro-backend:latest`.
 3. O **Watchtower** no Raspberry Pi detecta a nova imagem automaticamente em até 5 minutos, atualiza o container e limpa a imagem antiga.
 
 ---
@@ -105,7 +105,7 @@ Como o repositório é privado, para que o Docker no Raspberry Pi consiga baixar
 
 ### Opção A: Tornar o Pacote do Container Público (Mais simples e recomendado)
 O código compilado não contém chaves de API nem segredos. Você pode tornar apenas o pacote Docker público:
-1. Acesse: `https://github.com/users/Mathvdias/packages/container/package/tesouro-backend-go`
+1. Acesse: `https://github.com/orgs/cm-manaus/packages/container/package/tesouro-backend`
 2. Clique em **Package settings** (barra lateral direita).
 3. Role até **Danger Zone** -> **Change visibility** -> Selecione **Public**.
 *Pronto! Qualquer pull funcionará sem requerer senhas no Raspberry Pi.*
