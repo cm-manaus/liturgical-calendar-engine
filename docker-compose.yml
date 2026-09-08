@@ -45,7 +45,10 @@ services:
     restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - /home/matheus/.docker/config.json:/config.json:ro
+      - /home/matheus/.docker/config.json:/root/.docker/config.json:ro
     environment:
+      - DOCKER_CONFIG=/
       - WATCHTOWER_POLL_INTERVAL=300
       - WATCHTOWER_CLEANUP=true
       - WATCHTOWER_LABEL_ENABLE=true
