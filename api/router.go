@@ -6,10 +6,11 @@ import "net/http"
 func NewRouter(h *Handler) http.Handler {
 	mux := http.NewServeMux()
 
-	// System / Diagnostic routes
+	// System / Diagnostic & Observability routes
 	mux.HandleFunc("GET /", h.HandleRoot)
 	mux.HandleFunc("GET /healthz", h.HandleHealthz)
 	mux.HandleFunc("GET /api/v1/healthz", h.HandleHealthz)
+	mux.HandleFunc("GET /metrics", h.HandleMetrics)
 
 	// Liturgical Day & Month endpoints
 	mux.HandleFunc("GET /liturgical-day", h.HandleGetLiturgicalDay)

@@ -263,3 +263,28 @@ func TestStJosephPatronageOctave1954(t *testing.T) {
 	}
 }
 
+func BenchmarkEasterCalculation(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		_ = CalculateEaster(2026)
+	}
+}
+
+func Benchmark1962Resolution(b *testing.B) {
+	eng := NewLiturgicalEngine(getTestDataDir())
+	d := time.Date(2026, 10, 12, 0, 0, 0, 0, time.UTC)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		_ = eng.Resolve(d, Calendar1962, true)
+	}
+}
+
+func Benchmark1954Resolution(b *testing.B) {
+	eng := NewLiturgicalEngine(getTestDataDir())
+	d := time.Date(2026, 4, 25, 0, 0, 0, 0, time.UTC)
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		_ = eng.Resolve(d, Calendar1954, false)
+	}
+}
+
+

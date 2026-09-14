@@ -268,3 +268,36 @@ func TestCacheControlHeaders(t *testing.T) {
 	}
 }
 
+func TestMetricsEndpoint(t *testing.T) {
+	router := setupTestRouter(t)
+
+	// Issue a sample request to increment metrics
+	reqSample := httptest.NewRequest("GET", "/healthz", nil)
+	wSample := httptest.NewRecorder()
+	router.ServeHTTP(wSample, reqSample)
+
+	// Fetch /metrics
+	reqMetrics := httptest.NewRequest("GET", "/metrics", nil)
+	wMetrics := httptest.NewRecorder()
+	router.ServeHTTP(wMetrics, reqMetrics)
+
+	if wMetrics.Code != http.StatusOK {
+		t.Fatalf("Expected status 200 for /metrics, got %d", wMetrics.Code)
+	}
+
+	body := wMetrics.Body.String()
+	requiredSubstrings := []string{
+		"tesouro_http_requests_total",
+		"go_goroutines",
+		"go_memstats_alloc_bytes",
+		"tesouro_uptime_seconds",
+	}
+
+	for _, sub := range requiredSubstrings {
+		if !bytes.Contains([]byte(body), []byte(sub)) {
+			t.Errorf("Expected /metrics output to contain %q", sub)
+		}
+	}
+}
+
+

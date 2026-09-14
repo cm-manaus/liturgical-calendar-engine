@@ -32,8 +32,11 @@ func LoggingMiddleware(next http.Handler) http.Handler {
 		rec := &statusRecorder{ResponseWriter: w, statusCode: http.StatusOK}
 		next.ServeHTTP(rec, r)
 
+		duration := time.Since(start)
+		DefaultMetrics.Record(rec.statusCode, duration)
+
 		// Suppress spammy successful health checks from logs
-		if (r.URL.Path == "/healthz" || r.URL.Path == "/api/v1/healthz") && rec.statusCode == http.StatusOK {
+		if (r.URL.Path == "/healthz" || r.URL.Path == "/api/v1/healthz" || r.URL.Path == "/metrics") && rec.statusCode == http.StatusOK {
 			return
 		}
 
@@ -41,7 +44,7 @@ func LoggingMiddleware(next http.Handler) http.Handler {
 			"method", r.Method,
 			"path", r.URL.Path,
 			"status", rec.statusCode,
-			"duration_ms", time.Since(start).Milliseconds(),
+			"duration_ms", duration.Milliseconds(),
 			"remote_addr", r.RemoteAddr,
 			"bytes", rec.bytesWritten,
 		)
