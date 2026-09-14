@@ -1,12 +1,18 @@
 # ⚜️ tesouro-backend-go
 
-Este repositório contém o **Motor Litúrgico Tradicional (1962 e 1954 Pré-55)** em Go que alimenta a plataforma **Salve Maria**. O projeto foi estruturado para obter máxima performance, baixíssimo consumo de recursos e segurança em contêineres Docker no Raspberry Pi.
+[![CI/CD Pipeline](https://github.com/cm-manaus/tesouro-backend/actions/workflows/deploy.yml/badge.svg)](https://github.com/cm-manaus/tesouro-backend/actions/workflows/deploy.yml)
+![Go Version](https://img.shields.io/badge/Go-1.24-00ADD8.svg?logo=go)
+![Observability](https://img.shields.io/badge/Prometheus-ready-E6522C.svg?logo=prometheus)
+![Resolution](https://img.shields.io/badge/Resolution-1.85µs-brightgreen)
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
+
+Este repositório contém o **Motor Litúrgico Tradicional (1962 e 1954 Pré-55)** em Go que alimenta a plataforma **Salve Maria**. O projeto foi estruturado para obter máxima performance, baixíssimo consumo de recursos e segurança em contêineres Docker no Raspberry Pi e clusters bare-metal.
 
 ---
 
 ## 🗺️ Arquitetura do Sistema e Design de Infraestrutura
 
-O diagrama abaixo ilustra o fluxo completo, desde o desenvolvimento e compilação no Mac (Apple Silicon), passando pela esteira de deploy simplificada, até a execução no Raspberry Pi em Manaus e a exposição pública via Cloudflare Tunnels:
+O diagrama abaixo ilustra o ciclo de vida completo: esteira de CI/CD automatizada com compilação multi-arquitetura, distribuição contínua para o nó bare-metal, exposição Zero Trust via Cloudflare Tunnels e coleta de métricas em tempo real com Prometheus:
 
 ```mermaid
 graph TD
@@ -16,14 +22,15 @@ graph TD
     classDef container fill:#2d3748,stroke:#38b2ac,stroke-width:2px,color:#fff;
     classDef cloud fill:#2d3748,stroke:#ed8936,stroke-width:2px,color:#fff;
     classDef client fill:#2d3748,stroke:#4a5568,stroke-width:2px,color:#fff;
+    classDef obs fill:#1f2937,stroke:#e6522c,stroke-width:2px,color:#fff;
 
-    subgraph local_dev ["💻 Ambiente de Desenvolvimento (Mac M-Series ARM64)"]
-        A["Código Fonte Go & XMLs"]:::dev
-        B["Docker / Colima"]:::dev
-        C["Imagem Exportada (.tar) <br> (8.2 MB)"]:::dev
-        
-        A -->|1. Build Local| B
-        B -->|2. Export| C
+    subgraph dev_pipeline ["🚀 Esteira de CI/CD (GitHub Actions)"]
+        A["Git Push (main)"]:::dev
+        B["Testes Automatizados<br/>• go test -v -race<br/>• govulncheck"]:::dev
+        C["Docker Buildx Multi-Arch<br/>(linux/arm64, linux/amd64)"]:::dev
+        D["GitHub Container Registry<br/>(ghcr.io/cm-manaus/tesouro-backend:latest)"]:::dev
+
+        A --> B --> C --> D
     end
 
     subgraph cloudflare_edge ["☁️ Borda do Cloudflare"]
@@ -31,30 +38,32 @@ graph TD
         J["Filtros WAF / DDoS Mitigation"]:::cloud
         K["Cloudflare Edge Network"]:::cloud
         
-        I --> J
-        J --> K
+        I --> J --> K
     end
 
-    subgraph home_server ["🍓 Raspberry Pi (Manaus - ARM64)"]
+    subgraph home_server ["🍓 Bare-Metal Node (Raspberry Pi / OptiPlex)"]
         subgraph docker_compose ["Docker Compose Stack"]
-            F["liturgical-backend (Go App) <br> Port: 8080"]:::container
+            F["liturgical-backend (Go App)<br/>• Port: 8080<br/>• Latência: ~1.85µs/op"]:::container
             G["cloudflared (Cloudflare Tunnel Client)"]:::container
+            W["Watchtower (Automated CD)"]:::container
             
             G <-->|Conexão Segura Interna| F
+            W -.->|Pull & Deploy Contínuo| D
+            W -.->|Atualização Automática| F
         end
-        
-        D["Tailscale IP: 100.92.173.88"]:::server
-        E["Host OS (Alpine/Debian)"]:::server
+
+        subgraph observability ["📊 Observabilidade SRE"]
+            P["Prometheus Engine"]:::obs
+            H["Grafana Dashboard"]:::obs
+            
+            P -->|Scrape GET /metrics a cada 15s| F
+            H -->|Query Métricas & Alertas| P
+        end
     end
 
-    %% Deploy Flow
-    C -->|"3. rsync / SSH <br> via Tailscale"| E
-    E -->|4. docker load| docker_compose
-    E -->|5. Cleanup Source & Tar| E
-
     %% Client Request Flow
-    L["Cliente / App Salve Maria"]:::client -->|6. GET /api/v1/liturgical-day| I
-    K <-->|"7. Túnel Reverso Seguro <br> (Sem Port Forwarding)"| G
+    L["Clientes & Aplicativos Mobile"]:::client -->|GET /api/v1/liturgical-day| I
+    K <-->|"Túnel Reverso Seguro (Zero Trust / Sem Port Forwarding)"| G
 ```
 
 ---
@@ -157,6 +166,10 @@ curl -s -X GET "https://api.salvemaria.xyz/api/v1/liturgical-month?lang=pt-br"
 
 # Mês específico em 1954 (Agosto de 2026)
 curl -s -X GET "https://api.salvemaria.xyz/api/v1/liturgical-month?year=2026&month=8&calendar=1954&lang=pt-br"
+### 5. Métricas e Observabilidade SRE (Prometheus)
+```bash
+# Scrape de métricas em texto puro padrão OpenMetrics/Prometheus
+curl -s -X GET "https://api.salvemaria.xyz/metrics"
 ```
 
 *Para a lista completa de parâmetros e exemplos de respostas JSON, consulte o [`api_requests_prod.md`](api_requests_prod.md).*

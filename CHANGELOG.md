@@ -6,6 +6,26 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
 
 ---
 
+## [2.2.0] - 2026-09-14
+
+### 📊 Observabilidade & Padrão Google SRE
+- **Métricas Nativas do Prometheus (`api/metrics.go`)**:
+  - Implementado o endpoint `GET /metrics` em conformidade com o padrão OpenMetrics/Prometheus em texto puro.
+  - Telemetria de tráfego em tempo real categorizada por classe de status HTTP (`2xx`, `4xx`, `5xx`, `all`) e latência acumulada usando contadores atômicos (`sync/atomic`), livre de data races.
+  - Exposição de métricas de runtime do Go (`go_goroutines`, `go_memstats_alloc_bytes`, `go_memstats_sys_bytes`, `go_memstats_num_gc`, `tesouro_uptime_seconds`).
+  - Zero dependências externas (implementado 100% com pacotes padrão do Go).
+- **Integração no LoggingMiddleware (`api/middleware.go`)**:
+  - Registro de telemetria atômica em cada requisição antes do despacho de logs estruturados em JSON via `log/slog`.
+- **Suíte de Benchmarks Automatizados (`engine/engine_test.go`)**:
+  - `BenchmarkEasterCalculation`: Algoritmo computacional de Páscoa rodando a **12.57 ns/op** com 0 alocações.
+  - `Benchmark1962Resolution`: Resolução completa do calendário litúrgico de 1962 a **1.85 µs/op** (~540k ops/seg).
+  - `Benchmark1954Resolution`: Resolução pré-55 com oitavas e concorrências a **471 µs/op**.
+- **Testes de Concorrência e Validação**:
+  - Adicionado teste de integração `TestMetricsEndpoint` em `api/api_test.go`.
+  - Verificação de concorrência estrita via `go test -race ./...` com 100% de aprovação.
+
+---
+
 ## [2.1.0] - 2026-09-07
 
 ### 🔄 Sincronização e Correções de Calendário (LiturgyCalendarApp)
