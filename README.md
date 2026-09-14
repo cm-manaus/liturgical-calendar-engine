@@ -178,16 +178,24 @@ curl -s -X GET "https://api.salvemaria.xyz/metrics"
 
 ## 🚀 Como fazer o Deploy e Testar
 
+### 1. Testes e Benchmarks Locais
 ```bash
-# Rodar testes localmente
-go test -v ./...
+# Executar todos os testes com detector de race conditions
+go test -v -race ./...
 
-# Linha única de deploy no Raspberry Pi
-go test ./... && \
-docker compose build && \
-docker save -o tesouro-backend-go-liturgical-backend.tar tesouro-backend-go-liturgical-backend:latest && \
-rsync -avz --exclude .git --exclude .venv --exclude .DS_Store --exclude .env ./ matheus@100.92.173.88:/home/matheus/tesouro-backend-go/ && \
-ssh matheus@100.92.173.88 "cd /home/matheus/tesouro-backend-go && sudo docker load -i tesouro-backend-go-liturgical-backend.tar && sudo docker compose down --remove-orphans && sudo docker compose up -d && rm -rf engine/ data/ main.go Dockerfile go.mod tesouro-backend-go-liturgical-backend.tar"
+# Executar benchmarks de resolução e consumo de memória
+go test -bench=. -benchmem ./engine
+```
+
+### 2. Deploy Automatizado (GitOps / CI/CD)
+O deploy é 100% automatizado via GitHub Actions. Qualquer push na branch `main` executa a suíte de testes, gera a imagem multi-arch e distribui continuamente:
+```bash
+git push origin main
+```
+
+### 3. Execução Local ou Self-Hosted via Docker Compose
+```bash
+docker compose up -d
 ```
 
 *Para instruções completas de rollback de emergência, consulte o [`DEPLOY.md`](DEPLOY.md).*

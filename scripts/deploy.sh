@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
-PI_HOST="${PI_HOST:-matheus@100.92.173.88}"
-PI_DIR="${PI_DIR:-/home/matheus/tesouro-backend-go}"
+PI_HOST="${PI_HOST:-raspberrypi.local}"
+PI_DIR="${PI_DIR:-~/tesouro-backend-go}"
 
 echo "=========================================="
 echo "🚀 Deploying tesouro-backend-go to Raspberry Pi"

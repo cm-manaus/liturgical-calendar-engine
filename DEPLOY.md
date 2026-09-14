@@ -1,6 +1,6 @@
 # Guia de CI/CD, Deploy Automatizado e Monitoramento no Raspberry Pi 🚀
 
-Este guia documenta o pipeline de integração contínua (CI/CD), publicação no GitHub Container Registry (GHCR), deploy automatizado e rollback para o backend em Go (`tesouro-backend-go`) rodando no Raspberry Pi (`100.92.173.88`) com Docker Compose e Cloudflare Tunnels (`https://api.salvemaria.xyz`).
+Este guia documenta o pipeline de integração contínua (CI/CD), publicação no GitHub Container Registry (GHCR), deploy automatizado e rollback para o backend em Go (`tesouro-backend-go`) rodando no Raspberry Pi com Docker Compose e Cloudflare Tunnels (`https://api.salvemaria.xyz`).
 
 ---
 
@@ -20,7 +20,7 @@ Este guia documenta o pipeline de integração contínua (CI/CD), publicação n
                            │ ghcr.io/cm-manaus/tesouro-backend:latest
                            ▼
 ┌────────────────────────────────────────────────────────┐
-│ Raspberry Pi (100.92.173.88)                           │
+│ Bare-Metal Node (Raspberry Pi / Tailscale)             │
 │ - Opção A (Automático): Watchtower atualiza a cada 5m  │
 │ - Opção B (Instantâneo): ./scripts/deploy.sh           │
 │ - Zero portas públicas expostas (Tailscale + Tunnels)  │
@@ -80,28 +80,28 @@ Em vez disso, use as ferramentas nativas do terminal que consom **0 MB** de RAM 
 
 ### Ver uso de CPU e Memória em Tempo Real:
 ```bash
-# No seu Mac, execute via SSH:
-ssh matheus@100.92.173.88 "docker stats"
+# No seu computador de desenvolvimento, execute via SSH:
+ssh <USER>@<NODE_IP> "docker stats"
 
 # Ou apenas uma foto estática:
-ssh matheus@100.92.173.88 "docker stats --no-stream"
+ssh <USER>@<NODE_IP> "docker stats --no-stream"
 ```
 
 ### Ver status e portas de todos os containers:
 ```bash
-ssh matheus@100.92.173.88 "docker ps"
+ssh <USER>@<NODE_IP> "docker ps"
 ```
 
 ### Ver logs em tempo real do backend:
 ```bash
-ssh matheus@100.92.173.88 "cd /home/matheus/tesouro-backend-go && docker compose logs -f liturgical-backend"
+ssh <USER>@<NODE_IP> "cd ~/tesouro-backend-go && docker compose logs -f liturgical-backend"
 ```
 
 ---
 
 ## 🔑 6. Configuração de Acesso ao GHCR no Raspberry Pi (Executar uma única vez)
 
-Como o repositório é privado, para que o Docker no Raspberry Pi consiga baixar a imagem do GHCR, existem duas opções:
+Como a imagem é publicada no GHCR, para que o Docker no nó bare-metal consiga baixar a imagem:
 
 ### Opção A: Tornar o Pacote do Container Público (Mais simples e recomendado)
 O código compilado não contém chaves de API nem segredos. Você pode tornar apenas o pacote Docker público:
@@ -115,7 +115,7 @@ Se preferir manter o pacote privado:
 1. No GitHub: gere um Personal Access Token (Classic) com permissão `read:packages` em `https://github.com/settings/tokens`.
 2. Conecte no Raspberry Pi e faça login:
    ```bash
-   echo "SEU_GITHUB_PAT" | docker login ghcr.io -u Mathvdias --password-stdin
+   echo "SEU_GITHUB_PAT" | docker login ghcr.io -u <SEU_USER> --password-stdin
    ```
 
 ---
@@ -124,10 +124,10 @@ Se preferir manter o pacote privado:
 
 Caso uma atualização quebre em produção, reverta em segundos:
 
-### Opção A: Reverter para a Tag Anterior do Docker (Instantâneo no Pi)
+### Opção A: Reverter para a Tag Anterior do Docker (Instantâneo no Nó)
 No Raspberry Pi ou via SSH, edite o `docker-compose.yml` para apontar para a tag de SHA anterior (ou tag estável) e reinicie:
 ```bash
-ssh matheus@100.92.173.88 "cd /home/matheus/tesouro-backend-go && docker compose down liturgical-backend && docker compose up -d liturgical-backend"
+ssh <USER>@<NODE_IP> "cd ~/tesouro-backend-go && docker compose down liturgical-backend && docker compose up -d liturgical-backend"
 ```
 
 ### Opção B: Reverter via Git no Mac

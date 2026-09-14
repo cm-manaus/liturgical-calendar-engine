@@ -104,4 +104,4 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.
   - `main_test.go`: Testes de integração de todas as rotas HTTP e serializações JSON.
 - Criada a tag de segurança e rollback `v1.0.0-1962-baseline`.
 - Atualizado o guia de deploy e rollback com comandos testados em `DEPLOY.md`.
-- Imagem Docker no Raspberry Pi (`100.92.173.88`) protegida com backup estável `tesouro-backend-go-liturgical-backend:backup-stable`.
+- Imagem Docker no nó bare-metal protegida com backup estável `tesouro-backend-go-liturgical-backend:backup-stable`.
