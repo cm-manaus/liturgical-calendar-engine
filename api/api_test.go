@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"tesouro-backend/engine"
+	"github.com/cm-manaus/liturgical-calendar-engine/engine"
 )
 
 func setupTestRouter(t *testing.T) http.Handler {

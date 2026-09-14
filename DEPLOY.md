@@ -1,156 +1,138 @@
-# Guia de CI/CD, Deploy Automatizado e Monitoramento no Raspberry Pi 🚀
+# Deployment, CI/CD, and Observability Guide
 
-Este guia documenta o pipeline de integração contínua (CI/CD), publicação no GitHub Container Registry (GHCR), deploy automatizado e rollback para o backend em Go (`tesouro-backend-go`) rodando no Raspberry Pi com Docker Compose e Cloudflare Tunnels (`https://api.salvemaria.xyz`).
+This document covers the Continuous Integration / Continuous Deployment (CI/CD) pipeline, GitHub Container Registry (GHCR) packaging, automated rollout, and rollback procedures for `liturgical-calendar-engine`.
 
 ---
 
-## 🏗️ 1. Arquitetura do CI/CD
+## 1. CI/CD Architecture
 
-```
-  [ Dev Mac ]
-      │  git push origin main
-      ▼
-┌────────────────────────────────────────────────────────┐
-│ GitHub Actions (.github/workflows/deploy.yml)          │
-│ 1. go test -v -race ./... (Validação completa)         │
-│ 2. Docker Buildx multi-arch (linux/arm64, linux/amd64) │
-│    - Compilação cruzada nativa em Go (sem QEMU lento)   │
-│ 3. Push para GitHub Container Registry (GHCR)          │
-└──────────────────────────┬─────────────────────────────┘
-                           │ ghcr.io/cm-manaus/tesouro-backend:latest
-                           ▼
-┌────────────────────────────────────────────────────────┐
-│ Bare-Metal Node (Raspberry Pi / Tailscale)             │
-│ - Opção A (Automático): Watchtower atualiza a cada 5m  │
-│ - Opção B (Instantâneo): ./scripts/deploy.sh           │
-│ - Zero portas públicas expostas (Tailscale + Tunnels)  │
-│ - Consumo de memória: ~7.5MB (Go) + ~12MB (Watchtower) │
-└────────────────────────────────────────────────────────┘
+```mermaid
+flowchart LR
+    Dev["Developer Workstation"] -->|git push origin main| GHA["GitHub Actions"]
+    subgraph Pipeline ["GitHub Actions (.github/workflows/deploy.yml)"]
+        Test["1. go test -v -race ./..."]
+        Audit["2. govulncheck ./..."]
+        Build["3. Docker Buildx (linux/arm64, linux/amd64)"]
+        Push["4. Push to GHCR"]
+        Test --> Audit --> Build --> Push
+    end
+    GHA --> Pipeline
+    Pipeline --> GHCR["ghcr.io/cm-manaus/liturgical-calendar-engine:latest"]
+    GHCR --> Node["Bare-Metal Host (Raspberry Pi / OptiPlex)"]
+    subgraph Host ["Host Operations"]
+        Watchtower["Watchtower (Automated CD)"]
+        DeployScript["Manual Trigger (./scripts/deploy.sh)"]
+    end
+    Node --> Host
 ```
 
 ---
 
-## 🧪 2. Validação Local Antes do Push
+## 2. Pre-Push Local Verification
 
-Antes de subir commits para a branch `main`, execute a suíte de testes unitários localmente:
+Before pushing commits to `main`, execute the test suite locally with the race detector enabled:
 
 ```bash
 go test -v -race ./...
 ```
 
----
-
-## 🚀 3. Fluxo de Deploy 100% Automatizado (Zero-Touch)
-
-Com o pipeline configurado, você **não precisa compilar localmente, nem salvar .tar, nem fazer rsync**:
-
-1. Faça o commit e dê push para a branch `main`:
-   ```bash
-   git add .
-   git commit -m "feat: suas alteracoes"
-   git push origin main
-   ```
-2. O **GitHub Actions** executa os testes, compila o container para `linux/arm64` nativamente e publica em `ghcr.io/cm-manaus/tesouro-backend:latest`.
-3. O **Watchtower** no Raspberry Pi detecta a nova imagem automaticamente em até 5 minutos, atualiza o container e limpa a imagem antiga.
-
----
-
-## ⚡ 4. Deploy Instantâneo (Sem Esperar o Watchtower)
-
-Se você acabou de dar push e quer que a produção atualize imediatamente:
+To run performance microbenchmarks:
 
 ```bash
+go test -bench=. -benchmem ./engine
+```
+
+---
+
+## 3. Automated Deployment (Zero-Touch GitOps)
+
+The primary deployment mechanism is automated through GitHub Actions and Watchtower:
+
+1. Commit and push changes to `main`:
+   ```bash
+   git add .
+   git commit -m "feat: description of change"
+   git push origin main
+   ```
+2. **GitHub Actions** runs the test suite, performs static vulnerability analysis via `govulncheck`, compiles multi-architecture Docker binaries (`linux/arm64`, `linux/amd64`), and pushes the tagged image to `ghcr.io/cm-manaus/liturgical-calendar-engine:latest`.
+3. **Watchtower** running on the host polls the registry every 5 minutes, pulls updated digest layers, gracefully restarts the container, and removes dangling images.
+
+---
+
+## 4. Manual Deployment Trigger
+
+If immediate rollout is required without waiting for the Watchtower polling interval:
+
+```bash
+# Uses PI_HOST env var or defaults to raspberrypi.local
 ./scripts/deploy.sh
 ```
 
-O script:
-- Conecta via SSH ao Raspberry Pi.
-- Executa `docker compose pull liturgical-backend` baixando a imagem nova do GHCR.
-- Reinicia o serviço `liturgical-backend` em ~2 segundos.
-- Remove imagens órfãs (`docker image prune -f`) para economizar o cartão SD/SSD.
-- Executa um teste de fumaça na URL pública `https://api.salvemaria.xyz/`.
+The script:
+1. Connects to the host node over SSH.
+2. Executes `docker compose pull liturgical-backend` to fetch the latest digest.
+3. Restarts the service with zero unnecessary downtime (`docker compose up -d liturgical-backend`).
+4. Prunes obsolete image layers (`docker image prune -f`).
+5. Executes an end-to-end smoke test against the live production endpoint.
 
 ---
 
-## 📊 5. Visualização de Containers e Recursos no Terminal (Substituto do Portainer)
+## 5. Host Metrics and Container Inspection
 
-Como o Raspberry Pi tem recursos limitados (CPU e RAM), o Portainer consumiria 150MB+ de memória RAM permanentemente. 
+To inspect runtime metrics directly on the host without high-overhead web dashboards:
 
-Em vez disso, use as ferramentas nativas do terminal que consom **0 MB** de RAM adicional:
-
-### Ver uso de CPU e Memória em Tempo Real:
+### Live Resource Consumption (CPU & RAM)
 ```bash
-# No seu computador de desenvolvimento, execute via SSH:
-ssh <USER>@<NODE_IP> "docker stats"
-
-# Ou apenas uma foto estática:
 ssh <USER>@<NODE_IP> "docker stats --no-stream"
 ```
 
-### Ver status e portas de todos os containers:
+### Container Status
 ```bash
-ssh <USER>@<NODE_IP> "docker ps"
+ssh <USER>@<NODE_IP> "docker ps --filter name=liturgical-backend"
 ```
 
-### Ver logs em tempo real do backend:
+### Service Logs
 ```bash
-ssh <USER>@<NODE_IP> "cd ~/tesouro-backend-go && docker compose logs -f liturgical-backend"
+ssh <USER>@<NODE_IP> "cd ~/liturgical-calendar-engine && docker compose logs -f --tail=100 liturgical-backend"
 ```
 
 ---
 
-## 🔑 6. Configuração de Acesso ao GHCR no Raspberry Pi (Executar uma única vez)
+## 6. Emergency Rollback Procedures
 
-Como a imagem é publicada no GHCR, para que o Docker no nó bare-metal consiga baixar a imagem:
+### Option A: Pinning a Previous Image Digest (Fastest)
+On the target host, modify `docker-compose.yml` to specify a previous Git SHA tag (e.g. `sha-xxxxxxx`) and recreate the container:
 
-### Opção A: Tornar o Pacote do Container Público (Mais simples e recomendado)
-O código compilado não contém chaves de API nem segredos. Você pode tornar apenas o pacote Docker público:
-1. Acesse: `https://github.com/orgs/cm-manaus/packages/container/package/tesouro-backend`
-2. Clique em **Package settings** (barra lateral direita).
-3. Role até **Danger Zone** -> **Change visibility** -> Selecione **Public**.
-*Pronto! Qualquer pull funcionará sem requerer senhas no Raspberry Pi.*
-
-### Opção B: Autenticar o Docker no Raspberry Pi com Personal Access Token (PAT)
-Se preferir manter o pacote privado:
-1. No GitHub: gere um Personal Access Token (Classic) com permissão `read:packages` em `https://github.com/settings/tokens`.
-2. Conecte no Raspberry Pi e faça login:
-   ```bash
-   echo "SEU_GITHUB_PAT" | docker login ghcr.io -u <SEU_USER> --password-stdin
-   ```
-
----
-
-## 🛡️ 7. Procedimento de Rollback de Emergência
-
-Caso uma atualização quebre em produção, reverta em segundos:
-
-### Opção A: Reverter para a Tag Anterior do Docker (Instantâneo no Nó)
-No Raspberry Pi ou via SSH, edite o `docker-compose.yml` para apontar para a tag de SHA anterior (ou tag estável) e reinicie:
 ```bash
-ssh <USER>@<NODE_IP> "cd ~/tesouro-backend-go && docker compose down liturgical-backend && docker compose up -d liturgical-backend"
+ssh <USER>@<NODE_IP> "cd ~/liturgical-calendar-engine && docker compose up -d liturgical-backend"
 ```
 
-### Opção B: Reverter via Git no Mac
-1. Reverta o commit no git:
-   ```bash
-   git revert HEAD
-   git push origin main
-   ```
-2. O CI/CD irá compilar e aplicar a versão anterior automaticamente.
+### Option B: Git Revert (Full Pipeline Audit Trail)
+Revert the faulty commit on your workstation and push to `main`:
+
+```bash
+git revert HEAD
+git push origin main
+```
+
+The CI/CD pipeline will rebuild and redeploy the previous stable state automatically.
 
 ---
 
-## 🔍 8. Verificação de Saúde Pós-Deploy (Smoke Test)
+## 7. Post-Deployment Smoke Testing
 
-Após qualquer deploy, teste os endpoints diretamente na produção:
+Verify HTTP responses across the primary calendar endpoints:
 
 ```bash
-# 1. Status da API
-curl -s https://api.salvemaria.xyz/
+# 1. Health check endpoint
+curl -s -i "https://api.salvemaria.xyz/healthz"
 
-# 2. Calendário 1962 (Tridentino)
-curl -s "https://api.salvemaria.xyz/api/v1/liturgical-day?date=2026-08-26&lang=pt-br"
+# 2. 1962 Liturgical Day resolution
+curl -s "https://api.salvemaria.xyz/api/v1/liturgical-day?date=2026-08-26&calendar=1962&lang=pt-br"
 
-# 3. Calendário 1954 (Divino Afflatu / Pré-55 com Próprio do Brasil)
+# 3. 1954 Pre-1955 Liturgical Day resolution
 curl -s "https://api.salvemaria.xyz/api/v1/liturgical-day?date=2026-08-26&calendar=1954&lang=pt-br"
+
+# 4. Prometheus metrics exposition
+curl -s "https://api.salvemaria.xyz/metrics" | grep liturgical_requests_total
 ```

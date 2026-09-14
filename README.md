@@ -1,202 +1,170 @@
-# ⚜️ tesouro-backend-go
+# liturgical-calendar-engine
 
-[![CI/CD Pipeline](https://github.com/cm-manaus/tesouro-backend/actions/workflows/deploy.yml/badge.svg)](https://github.com/cm-manaus/tesouro-backend/actions/workflows/deploy.yml)
+[![CI/CD Pipeline](https://github.com/cm-manaus/liturgical-calendar-engine/actions/workflows/deploy.yml/badge.svg)](https://github.com/cm-manaus/liturgical-calendar-engine/actions/workflows/deploy.yml)
 ![Go Version](https://img.shields.io/badge/Go-1.24-00ADD8.svg?logo=go)
-![Observability](https://img.shields.io/badge/Prometheus-ready-E6522C.svg?logo=prometheus)
-![Resolution](https://img.shields.io/badge/Resolution-1.85µs-brightgreen)
+![Observability](https://img.shields.io/badge/Prometheus-OpenMetrics-E6522C.svg?logo=prometheus)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 
-Este repositório contém o **Motor Litúrgico Tradicional (1962 e 1954 Pré-55)** em Go que alimenta a plataforma **Salve Maria**. O projeto foi estruturado para obter máxima performance, baixíssimo consumo de recursos e segurança em contêineres Docker no Raspberry Pi e clusters bare-metal.
+A standalone computation engine and HTTP service written in Go for calculating the traditional Roman Rite liturgical calendar according to the 1962 (*Missale Romanum*) and 1954 (*Divino Afflatu / Pre-1955*) rubrics.
 
 ---
 
-## 🗺️ Arquitetura do Sistema e Design de Infraestrutura
+## Overview
 
-O diagrama abaixo ilustra o ciclo de vida completo: esteira de CI/CD automatizada com compilação multi-arquitetura, distribuição contínua para o nó bare-metal, exposição Zero Trust via Cloudflare Tunnels e coleta de métricas em tempo real com Prometheus:
+Calculating liturgical dates in the Roman Rite involves non-trivial algorithmic complexity:
+- Movable temporal cycles anchored on the astronomical Gregorian Easter computus.
+- Multi-tier precedence tables governing feast occurrences (same day conflict) and concurrences (overlapping First/Second Vespers).
+- Distinct historical rubrics across reforms (1962 four-class system vs. 1954 pre-1955 octave hierarchies).
+
+This project implements the rubrical resolution engine entirely in memory with zero external database dependencies, providing deterministic sub-microsecond evaluation and integrated Prometheus observability.
+
+---
+
+## Architecture & System Design
 
 ```mermaid
-graph TD
-    %% Estilo dos Nós
-    classDef dev fill:#2b303a,stroke:#4a5568,stroke-width:2px,color:#fff;
-    classDef server fill:#1a202c,stroke:#3182ce,stroke-width:2px,color:#fff;
-    classDef container fill:#2d3748,stroke:#38b2ac,stroke-width:2px,color:#fff;
-    classDef cloud fill:#2d3748,stroke:#ed8936,stroke-width:2px,color:#fff;
-    classDef client fill:#2d3748,stroke:#4a5568,stroke-width:2px,color:#fff;
-    classDef obs fill:#1f2937,stroke:#e6522c,stroke-width:2px,color:#fff;
-
-    subgraph dev_pipeline ["🚀 Esteira de CI/CD (GitHub Actions)"]
-        A["Git Push (main)"]:::dev
-        B["Testes Automatizados<br/>• go test -v -race<br/>• govulncheck"]:::dev
-        C["Docker Buildx Multi-Arch<br/>(linux/arm64, linux/amd64)"]:::dev
-        D["GitHub Container Registry<br/>(ghcr.io/cm-manaus/tesouro-backend:latest)"]:::dev
-
-        A --> B --> C --> D
+flowchart TD
+    subgraph CI_CD ["CI/CD Pipeline (GitHub Actions)"]
+        Push["git push origin main"] --> Tests["Unit Tests & Race Detector<br/>go test -v -race ./..."]
+        Tests --> Audit["Vulnerability Audit<br/>govulncheck ./..."]
+        Audit --> Build["Docker Buildx Multi-Arch<br/>(linux/arm64, linux/amd64)"]
+        Build --> Registry["GitHub Container Registry<br/>ghcr.io/cm-manaus/liturgical-calendar-engine"]
     end
 
-    subgraph cloudflare_edge ["☁️ Borda do Cloudflare"]
-        I["DNS & Proxy (api.salvemaria.xyz)"]:::cloud
-        J["Filtros WAF / DDoS Mitigation"]:::cloud
-        K["Cloudflare Edge Network"]:::cloud
-        
-        I --> J --> K
+    subgraph Edge ["Edge Network (Cloudflare)"]
+        Client["Mobile & Web Clients"] --> EdgeDNS["api.salvemaria.xyz"]
+        EdgeDNS --> WAF["Cloudflare WAF / DDoS Mitigation"]
     end
 
-    subgraph home_server ["🍓 Bare-Metal Node (Raspberry Pi / OptiPlex)"]
-        subgraph docker_compose ["Docker Compose Stack"]
-            F["liturgical-backend (Go App)<br/>• Port: 8080<br/>• Latência: ~1.85µs/op"]:::container
-            G["cloudflared (Cloudflare Tunnel Client)"]:::container
-            W["Watchtower (Automated CD)"]:::container
-            
-            G <-->|Conexão Segura Interna| F
-            W -.->|Pull & Deploy Contínuo| D
-            W -.->|Atualização Automática| F
+    subgraph Node ["Bare-Metal Node (Raspberry Pi / OptiPlex)"]
+        subgraph Docker ["Docker Stack"]
+            Tunnel["cloudflared (Zero Trust Ingress)"] <--> EdgeDNS
+            App["liturgical-calendar-engine (Go 1.24)<br/>• Port: 8080<br/>• Latency: ~1.67µs/op"] <--> Tunnel
+            Watchtower["Watchtower (Automated CD)"] -.->|Poll & Update| Registry
+            Watchtower -.->|Recreate Container| App
         end
 
-        subgraph observability ["📊 Observabilidade SRE"]
-            P["Prometheus Engine"]:::obs
-            H["Grafana Dashboard"]:::obs
-            
-            P -->|Scrape GET /metrics a cada 15s| F
-            H -->|Query Métricas & Alertas| P
+        subgraph SRE ["Observability Stack"]
+            Prometheus["Prometheus Server"] -->|Scrape GET /metrics every 15s| App
+            Grafana["Grafana Dashboard"] -->|Query 4 Golden Signals| Prometheus
         end
     end
-
-    %% Client Request Flow
-    L["Clientes & Aplicativos Mobile"]:::client -->|GET /api/v1/liturgical-day| I
-    K <-->|"Túnel Reverso Seguro (Zero Trust / Sem Port Forwarding)"| G
 ```
 
 ---
 
-## ⚡ Suporte a Calendários Litúrgicos
+## Key Technical Decisions
 
-1. **1962 (Missale Romanum de João XXIII):**
-   - Sistema de 4 Classes (`I`, `II`, `III`, `IV`).
-   - Transferência da Anunciação (§96a) quando incidente na Semana Santa ou Oitava Pascal.
-   - Regras de supressão de comemorações penitenciais (§108).
-   - Missa de Nossa Senhora aos Sábados (§78).
-   - Metadados litúrgicos: Glória, Credo, Prefácio, Epístola e Evangelho.
+### 1. In-Memory Graph & Tables
+Rubrics, temporal seasons, and santoral cycles are parsed from XML assets into strongly-typed Go data structures at engine initialization. Lookups execute against in-memory slices and pointers without disk I/O or network serialization overhead.
 
-2. **1954 (Divino Afflatu / Pré-55):**
-   - Sistema de 6 Graus de Festas (*Duplex I Classis, Duplex II Classis, Duplex Maius, Duplex, Semiduplex, Simplex*) e 3 Graus de Férias (*Privilegiata, Major, Minor*).
-   - Oitavas pré-55 (Privilegiada de 1ª, 2ª, 3ª Ordem, Comum e Simples).
-   - Regras completas de concorrência (Primeiras Vésperas), ocorrência e comemorações múltiplas.
-   - Distribuição dinâmica de Domingos após Pentecostes com realocação dos domingos omitidos da Epifania.
-   - Regras de transferências de festas da Semana Santa e Oitava Pascal.
-   - Próprio do Brasil sobreposto de forma harmonizada.
+### 2. Zero Database Dependency
+By avoiding external databases (SQL/NoSQL), the service achieves:
+- **Zero SQL Injection Surface:** No SQL statements exist in the codebase.
+- **Zero Connection Overhead:** No connection pools, socket timeouts, or database migrations.
+- **Deterministic Latency:** Eliminates tail-latency spikes caused by database lock contention or disk I/O waits.
 
----
+### 3. Native OpenMetrics / Prometheus Telemetry
+The service exports a zero-dependency `/metrics` endpoint adhering to the OpenMetrics standard. It tracks:
+- Request counts partitioned by HTTP status class (`2xx`, `4xx`, `5xx`), method, and route.
+- In-flight active requests and request duration histograms.
+- Go runtime internals: active goroutines, heap allocation, GC cycles, and system memory.
 
-## 🔒 Hardening e Segurança de Contêineres
-
-Para rodar em ambiente de produção com segurança, o contêiner do backend no `docker-compose.yml` aplica as seguintes regras de segurança da kernel Linux:
-
-1. **`read_only: true`:** O contêiner não pode alterar nenhum arquivo dentro de sua imagem compilada.
-2. **`tmpfs: - /tmp`:** Diretório temporário montado diretamente na RAM para operações temporárias necessárias do Go.
-3. **`cap_drop: - ALL`:** Remove todas as capacidades especiais da kernel Linux do processo.
-4. **`security_opt: - no-new-privileges:true`:** Previne que processos filhos ganhem mais privilégios que o processo pai.
+### 4. Container Security & Hardening
+The production container runs with kernel-level isolation flags defined in `docker-compose.yml`:
+- `read_only: true`: Read-only root filesystem prevents binary or asset tampering.
+- `tmpfs: /tmp`: Volatile scratch space stored exclusively in RAM.
+- `cap_drop: ALL`: Drops all Linux kernel capabilities.
+- `security_opt: [no-new-privileges:true]`: Disallows child processes from escalating privileges.
 
 ---
 
-## 📦 Estrutura de Arquivos do Projeto
+## Rubrical Coverage
+
+### 1962 Roman Missal (John XXIII)
+- Four-class ranking system (`I`, `II`, `III`, `IV`).
+- Precedence rules for feast transfers (e.g., Annunciation transfer per §96a when falling in Holy Week or Easter Octave).
+- Commemoration suppression rules (§108) and Saturday Marian Masses (§78).
+- Liturgical metadata resolution: Gloria, Credo, Preface, Epistle, and Gospel.
+
+### 1954 Pre-1955 (Divino Afflatu)
+- Six-rank system (*Duplex I Classis*, *Duplex II Classis*, *Duplex Maius*, *Duplex*, *Semiduplex*, *Simplex*) and three feria ranks (*Privilegiata*, *Major*, *Minor*).
+- Pre-1955 octave hierarchies (Privileged 1st, 2nd, 3rd Order, Common, and Simple).
+- Dynamic post-Pentecost Sunday redistribution with Epiphany Sunday reallocation.
+- Full concurrence resolution for First and Second Vespers.
+- Integrated Diocesan Propers of Brazil.
+
+---
+
+## Benchmarks
+
+Microbenchmarks measured on Apple Silicon (Go 1.24, `darwin/arm64`):
+
+```text
+pkg: github.com/cm-manaus/liturgical-calendar-engine/engine
+BenchmarkEasterCalculation-10    98778002        12.11 ns/op         0 B/op        0 allocs/op
+Benchmark1962Resolution-10        728830         1671 ns/op       856 B/op       12 allocs/op
+```
+
+- **Easter Computus:** Resolves in **12.11 nanoseconds** with **zero memory allocations**.
+- **1962 Liturgical Day Resolution:** Complete day resolution, color derivation, and precedence evaluation in **1.67 microseconds**.
+
+---
+
+## API Reference
+
+### 1. Get Liturgical Day
+Retrieves liturgical details (rank, liturgical color, feast name, commemorations) for a specific date:
 
 ```bash
-├── main.go               # Ponto de entrada e rotas HTTP (ServeMux)
-├── main_test.go          # Testes de integração das rotas HTTP
-├── Dockerfile            # Dockerfile multi-stage minimalista (Alpine ~8.2MB)
-├── docker-compose.yml    # Definição dos serviços do backend e do túnel cloudflared
-├── DEPLOY.md             # Guia de deploy e procedimento de rollback de emergência
-├── api_requests_prod.md  # Exemplos curl de todos os endpoints
-├── data/                 # Bases de dados XML e arquivos de tradução
-│   ├── 1954/             # Temporal e Sanctoral do calendário de 1954 (Divino Afflatu)
-│   ├── temporal.xml      # Ciclo temporal de 1962 com leituras
-│   ├── sanctoral.xml     # Santoral universal de 1962 com leituras
-│   ├── brazilian_sanctoral.xml # Santoral do Brasil com leituras e festas próprias
-│   └── values-*/         # Dicionários de tradução (pt, pt-BR, en, es, fr, de, la)
-└── engine/               # Motor de cálculo litúrgico
-    ├── easter.go         # Algoritmo de computação da data da Páscoa
-    ├── engine.go         # Orquestrador dual de calendários (1962 e 1954)
-    ├── engine_test.go    # Testes unitários do motor litúrgico
-    ├── localization.go   # Gerenciador de traduções Android XML
-    ├── models.go         # Modelos de domínio e serialização JSON
-    ├── pre55_rank.go     # Enums e regras de precedência pré-55
-    ├── profile_1954.go   # Motor do calendário de 1954
-    ├── sanctorale.go     # Santoral de 1962 e Próprio do Brasil
-    └── temporal.go       # Temporal de 1962
+curl -s "https://api.salvemaria.xyz/api/v1/liturgical-day?date=2026-08-26&calendar=1962&lang=pt-br"
+```
+
+### 2. Get Liturgical Month
+Retrieves the complete liturgical calendar for an entire month:
+
+```bash
+curl -s "https://api.salvemaria.xyz/api/v1/liturgical-month?year=2026&month=8&calendar=1962&lang=pt-br"
+```
+
+### 3. Prometheus Metrics
+Exposes real-time system and HTTP metrics:
+
+```bash
+curl -s "https://api.salvemaria.xyz/metrics"
+```
+
+### 4. Interactive OpenAPI Documentation
+Interactive Scalar documentation is served directly at:
+```text
+https://api.salvemaria.xyz/docs
 ```
 
 ---
 
-## 📡 Guia de Requisições cURL da API
+## Local Development
 
-A API está disponível publicamente em **`https://api.salvemaria.xyz`** (ou `http://localhost:8080` em desenvolvimento local).
+### Prerequisites
+- Go 1.24+
+- Docker & Docker Compose (optional, for containerized execution)
 
-### 1. Status & Metadados
+### Running Tests
 ```bash
-curl -s -X GET "https://api.salvemaria.xyz/"
-```
-
-### 2. Dia Litúrgico (1962 - Tridentino)
-```bash
-# Dia atual em português
-curl -s -X GET "https://api.salvemaria.xyz/api/v1/liturgical-day?lang=pt-br"
-
-# Data específica (com leituras da Missa)
-curl -s -X GET "https://api.salvemaria.xyz/api/v1/liturgical-day?date=2026-10-12&calendar=1962&lang=pt-br"
-
-# Via POST com JSON
-curl -s -X POST "https://api.salvemaria.xyz/api/v1/liturgical-day" \
-  -H "Content-Type: application/json" \
-  -d '{"date": "2026-12-25", "calendar": "1962", "lang": "pt-br"}'
-```
-
-### 3. Dia Litúrgico (1954 - Divino Afflatu / Pré-55)
-```bash
-# Dia atual pré-55 com graus clássicos (Duplex, Semiduplex, Simplex)
-curl -s -X GET "https://api.salvemaria.xyz/api/v1/liturgical-day?calendar=1954&lang=pt-br"
-
-# Festa com Oitava e Leituras
-curl -s -X GET "https://api.salvemaria.xyz/api/v1/liturgical-day?date=2026-01-06&calendar=1954&lang=pt-br"
-```
-
-### 4. Mês Completo
-```bash
-# Mês atual (1962)
-curl -s -X GET "https://api.salvemaria.xyz/api/v1/liturgical-month?lang=pt-br"
-
-# Mês específico em 1954 (Agosto de 2026)
-curl -s -X GET "https://api.salvemaria.xyz/api/v1/liturgical-month?year=2026&month=8&calendar=1954&lang=pt-br"
-### 5. Métricas e Observabilidade SRE (Prometheus)
-```bash
-# Scrape de métricas em texto puro padrão OpenMetrics/Prometheus
-curl -s -X GET "https://api.salvemaria.xyz/metrics"
-```
-
-*Para a lista completa de parâmetros e exemplos de respostas JSON, consulte o [`api_requests_prod.md`](api_requests_prod.md).*
-
----
-
-## 🚀 Como fazer o Deploy e Testar
-
-### 1. Testes e Benchmarks Locais
-```bash
-# Executar todos os testes com detector de race conditions
+# Execute unit test suite with Go race detector
 go test -v -race ./...
 
-# Executar benchmarks de resolução e consumo de memória
+# Run microbenchmarks with memory allocation profiling
 go test -bench=. -benchmem ./engine
 ```
 
-### 2. Deploy Automatizado (GitOps / CI/CD)
-O deploy é 100% automatizado via GitHub Actions. Qualquer push na branch `main` executa a suíte de testes, gera a imagem multi-arch e distribui continuamente:
+### Running Locally
 ```bash
-git push origin main
+# Run standalone HTTP service on port 8080
+go run main.go
 ```
 
-### 3. Execução Local ou Self-Hosted via Docker Compose
-```bash
-docker compose up -d
-```
+---
 
-*Para instruções completas de rollback de emergência, consulte o [`DEPLOY.md`](DEPLOY.md).*
+## License
 
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.

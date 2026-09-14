@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: ghcr.io/cm-manaus/tesouro-backend:latest
+    image: ghcr.io/cm-manaus/liturgical-calendar-engine:latest
     ports:
       - "127.0.0.1:8082:8080"
     environment:
@@ -41,7 +41,7 @@ services:
   # Automated lightweight CD agent (monitors and auto-updates liturgical-backend)
   watchtower:
     image: containrrr/watchtower:latest
-    container_name: watchtower-tesouro
+    container_name: watchtower-liturgical-engine
     restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock

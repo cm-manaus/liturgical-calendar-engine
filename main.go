@@ -11,8 +11,8 @@ import (
 	"syscall"
 	"time"
 
-	"tesouro-backend/api"
-	"tesouro-backend/engine"
+	"github.com/cm-manaus/liturgical-calendar-engine/api"
+	"github.com/cm-manaus/liturgical-calendar-engine/engine"
 )
 
 func loadDotEnv(path string) {

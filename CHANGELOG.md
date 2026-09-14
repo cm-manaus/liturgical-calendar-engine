@@ -1,4 +1,4 @@
-# 📜 Changelog - tesouro-backend-go
+# Changelog - liturgical-calendar-engine
 
 Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 

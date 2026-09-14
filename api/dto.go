@@ -1,6 +1,6 @@
 package api
 
-import "tesouro-backend/engine"
+import "github.com/cm-manaus/liturgical-calendar-engine/engine"
 
 // LiturgicalDayRequest represents the incoming JSON payload for POST requests.
 type LiturgicalDayRequest struct {

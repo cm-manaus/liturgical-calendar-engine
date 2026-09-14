@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"tesouro-backend/engine"
+	"github.com/cm-manaus/liturgical-calendar-engine/engine"
 )
 
 // Handler encapsulates HTTP endpoints and dependencies with clean dependency injection.
