@@ -293,23 +293,47 @@
         ],
         "responses": {
           "200": {
-            "description": "Arquivo .xls formatado para download ou documento HTML",
+            "description": "Calendário mensal gerado com sucesso em 4 colunas formatadas (Dia, Calendário Litúrgico, Calendário Mariano e Liturgia)",
+            "headers": {
+              "Content-Disposition": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "attachment; filename=\"calendario_10_2026.xls\" (quando format=xls)"
+              }
+            },
             "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string",
+                  "description": "Documento HTML completo com tabela estilizada em 4 colunas, cores litúrgicas e tipografia responsiva."
+                },
+                "example": "<!DOCTYPE html>\n<html lang=\"pt-br\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Calendário Litúrgico e Mariano - Outubro de 2026</title>\n  <style>\n    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }\n    table { width: 100%; border-collapse: collapse; }\n    th, td { border: 1px solid #cbd5e1; padding: 10px; }\n    th { background: #0f172a; color: #ffffff; }\n    .color-white { background: #ffffff; color: #0f172a; }\n    .color-green { background: #dcfce7; color: #14532d; }\n    .color-red { background: #fee2e2; color: #7f1d1d; }\n    .badge-abstinence { background: #fee2e2; color: #991b1b; padding: 2px 6px; border-radius: 4px; font-weight: bold; }\n  </style>\n</head>\n<body>\n  <h1>Calendário Litúrgico e Mariano - Outubro de 2026</h1>\n  <table>\n    <thead>\n      <tr>\n        <th>Dia</th>\n        <th>Calendário Litúrgico</th>\n        <th>Calendário Mariano</th>\n        <th>Liturgia</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr>\n        <td>1 de Outubro<br><b>Quinta-feira</b></td>\n        <td><b>Santa Teresinha do Menino Jesus, Virgem</b><br><small>3ª Classe</small></td>\n        <td>Sem abstinência de carne</td>\n        <td class=\"color-white\">Branco<br>Glória • Prefácio Comum<br><small>Epístola: Is 66, 12-14 • Evangelho: Mt 18, 1-4</small></td>\n      </tr>\n      <tr>\n        <td>2 de Outubro<br><b>Sexta-feira</b></td>\n        <td><b>Santos Anjos da Guarda</b><br><small>3ª Classe</small></td>\n        <td><span class=\"badge-abstinence\">🐟 Abstinência de carne</span><br>Primeira Sexta-feira do Mês</td>\n        <td class=\"color-white\">Branco<br>Glória • Prefácio dos Santos Anjos<br><small>Epístola: Ex 23, 20-23 • Evangelho: Mt 18, 1-10</small></td>\n      </tr>\n    </tbody>\n  </table>\n</body>\n</html>"
+              },
               "application/vnd.ms-excel": {
                 "schema": {
                   "type": "string",
-                  "format": "binary"
-                }
-              },
-              "text/html": {
-                "schema": {
-                  "type": "string"
+                  "format": "binary",
+                  "description": "Arquivo Excel (.xls) pré-formatado com tabela de 4 colunas, paleta litúrgica e metadados de impressão prontos para abertura direta no Microsoft Excel e LibreOffice Calc."
                 }
               }
             }
           },
           "400": {
-            "description": "Parâmetro inválido de ano ou mês"
+            "description": "Parâmetro inválido de ano ou mês",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": { "type": "string" }
+                  }
+                },
+                "example": {
+                  "error": "invalid month: must be between 1 and 12"
+                }
+              }
+            }
           }
         }
       }
