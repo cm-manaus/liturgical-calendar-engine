@@ -9,7 +9,7 @@
     "authority": "primary",
     "records": [
       "https://openlibrary.org/works/OL43532481W/Missale_romanum",
-      "https://www.yumpu.com/la/document/view/21431392/missale-romanum-typical-of-1954"
+      "https://www.yumpu.com/la/document/view/21512821/missale-romanum-typical-of-1954"
     ]
   },
   "sources": [
@@ -71,7 +71,7 @@
         "assets/data/temporal.xml",
         "lib/liturgical_engine/temporal.dart"
       ],
-      "verification": "The 1962 temporal parser reads nested liturgia readings, and the September Ember calculation uses the first Wednesday, Friday, and Saturday after September 14."
+      "verification": "The 1962 temporal parser reads nested liturgia readings, and the September Ember calculation uses the first Wednesday, Friday, and Saturday after the third Sunday of September."
     },
     {
       "id": "do-live-1954-2026",

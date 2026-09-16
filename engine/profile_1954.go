@@ -1088,7 +1088,10 @@ func (p *DivinoAfflatu1954Profile) isAnticipatedVigil(candidate candidate1954) b
 
 func (p *DivinoAfflatu1954Profile) feriaCanBeCommemoratedWithFeast(feria CalendarAssetEntry) bool {
 	season := feria.Metadata.Season
-	return season == "Advent" || season == "Lent"
+	return season == "Advent" ||
+		season == "Lent" ||
+		strings.HasPrefix(feria.ID, "ember_") ||
+		strings.HasPrefix(feria.ID, "feria_ember_")
 }
 
 func markAnticipatedVigil(source CalendarAssetEntry) CalendarAssetEntry {
@@ -1323,7 +1326,9 @@ func (p *DivinoAfflatu1954Profile) effectiveOverlayCandidate(
 	inCredoOctave := p.hasOverlayCredoOctave(localCandidates) || p.hasCredoOctave(contextEntries)
 
 	if isFeria {
-		massPreface = p.seasonalPreface(date)
+		if p.isDefaultPreface(massPreface) {
+			massPreface = p.seasonalPreface(date)
+		}
 	} else if (p.isDefaultPreface(massPreface) || (octavePreface != "" && massPreface == "Trinity")) &&
 		(metadata.ObservanceKind != "sunday" || metadata.OctaveStatus == "day_within" || metadata.OctaveStatus == "octave_day") {
 		if octavePreface != "" {

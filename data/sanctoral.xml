@@ -228,8 +228,8 @@
     <feast date="09-14" name="Exaltation of the Holy Cross" nameResId="exaltation_cross" class="II" color="RED" isLordFeast="true" ><epistle>Gal 6,14-18</epistle><gospel>Jo 12,31-36</gospel></feast>
     <feast date="09-15" name="Seven Sorrows of the B.V.M." nameResId="seven_sorrows_bvm" class="II" color="BLUE" ><epistle>Hb 10,4-7</epistle><gospel>Lc 2,33-35</gospel></feast>
     <feast date="09-15" name="St. Nicomedes, Martyr" nameResId="nicomedes_martyr" class="IV" color="RED" ><epistle>2Tm 4,1-8</epistle><gospel>Lc 9,23-26</gospel></feast>
-    <feast date="09-16" name="SS. Cornelius and Cyprian, Martyrs" nameResId="sts_cornelius_cyprian" class="III" color="RED"><epistle>2 Cor 4, 7-15</epistle><gospel>Jo 17, 11-19</gospel></feast>
-    <feast date="09-16" name="SS. Euphemia, Lucy and Geminian, Martyrs" nameResId="euphemia_lucy_and_geminian_martyrs" class="IV" color="RED"><epistle>2 Cor 4, 7-15</epistle><gospel>Jo 17, 11-19</gospel></feast>
+    <feast date="09-16" name="SS. Cornelius and Cyprian, Martyrs" nameResId="sts_cornelius_cyprian" class="III" color="RED"><epistle>Sb 3,1-8</epistle><gospel>Lc 21,9-19</gospel></feast>
+    <feast date="09-16" name="SS. Euphemia, Lucy and Geminian, Martyrs" nameResId="euphemia_lucy_and_geminian_martyrs" class="IV" color="RED"><epistle>Sb 3,1-8</epistle><gospel>Lc 21,9-19</gospel></feast>
     <feast date="09-17" name="Impression of the Stigmata of St. Francis" nameResId="impression_of_the_stigmata_of_st_francis" class="IV" color="WHITE"><epistle>Gal 6, 14-18</epistle><gospel>Mt 16, 24-27</gospel></feast>
     <feast date="09-18" name="St. Joseph of Cupertino, Confessor" nameResId="st_joseph_cupertino" class="III" color="WHITE"><epistle>1 Cor 13, 1-13</epistle><gospel>Mt 9, 9-13</gospel></feast>
     <feast date="09-19" name="SS. Januarius and Companions, Martyrs" nameResId="sts_januarius_companions" class="III" color="RED"><epistle>Heb 10, 32-38</epistle><gospel>Mt 24, 3-13</gospel></feast>
@@ -241,7 +241,7 @@
     <feast date="09-23" name="St. Thecla, Virgin and Martyr" nameResId="thecla_virgin_and_martyr" class="IV" color="RED" ><epistle>Eclo 51,1-8;51,12</epistle><gospel>Mt 25,1-13</gospel></feast>
     <feast date="09-24" name="Our Lady of Ransom" nameResId="our_lady_ransom" class="III" color="BLUE"><epistle>Eclo 24, 14-16</epistle><gospel>Lc 11, 27-28</gospel></feast>
     <feast date="09-26" name="SS. Isaac Jogues, John de Brebeuf &amp; Companions" nameResId="sts_north_american_martyrs" class="III" color="RED"><epistle>Heb 10, 32-38</epistle><gospel>Mt 24, 3-13</gospel></feast>
-    <feast date="09-27" name="SS. Cosmas and Damian, Martyrs" nameResId="sts_cosmas_damian" class="III" color="RED"><epistle>2 Cor 4, 7-15</epistle><gospel>Jo 17, 11-19</gospel></feast>
+    <feast date="09-27" name="SS. Cosmas and Damian, Martyrs" nameResId="sts_cosmas_damian" class="III" color="RED"><epistle>Sb 5,16-20</epistle><gospel>Lc 6,17-23</gospel></feast>
     <feast date="09-28" name="St. Wenceslaus, Duke, Martyr" nameResId="st_wenceslaus" class="III" color="RED"><epistle>Sb 10, 10-14</epistle><gospel>Mt 10, 34-42</gospel></feast>
     <feast date="09-29" name="Dedication of St. Michael the Archangel" nameResId="st_michael" class="I" color="WHITE"><epistle>Ap 1, 1-5</epistle><gospel>Mt 18, 1-10</gospel></feast>
     <feast date="09-30" name="St. Jerome, Confessor and Doctor" nameResId="st_jerome" class="III" color="WHITE"><epistle>2 Tim 4, 1-8</epistle><gospel>Mt 5, 13-19</gospel></feast>

@@ -58,7 +58,7 @@
       <vigil kind="none" privileged="false" anticipated="false" />
       <transfer status="none" transferable="false" target="" />
       <mass color="VIOLET" gloria="false" credo="false" preface="Lent" />
-      <readings epistle="Ex 24,12-18; 3Rs 19,3-8" gospel="Mt 12,38-52" source="Missale Romanum 1954" />
+      <readings epistle="Ex 24,12-18; 3Rs 19,3-8" gospel="Mt 12,38-50" source="Missale Romanum 1954" />
     </day>
     <day id="ember_friday_of_lent" name="Ember Friday of Lent" observanceKind="feria" pre55Grade="S" season="Lent" color="VIOLET" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="1.2" offset="-37" nameResId="ember_friday" nameArg="of_lent">
       <precedence rank="S" numeric="1.2" firstVespers="false" occurrence="commemorate" concurrence="none" />
@@ -154,7 +154,7 @@
       <vigil kind="none" privileged="false" anticipated="false" />
       <transfer status="none" transferable="false" target="" />
       <mass color="BLACK" gloria="false" credo="false" preface="None" />
-      <readings epistle="Os 6,1-6; Ex 12,1-11" gospel="Jo 18,1-19,42" source="Missale Romanum 1954" />
+      <readings epistle="Os 6,1-6; Ex 12,1-11" gospel="Jo 18,1-40;19,1-42" source="Missale Romanum 1954" />
     </day>
     <day id="holy_saturday" name="Holy Saturday (Easter Vigil)" observanceKind="vigil" pre55Grade="D1Cl" season="Easter" color="VIOLET" privileged="true" sourceRef="assets/data/1954/PROVENANCE.json#temporal" sourceRank="6.5" offset="-1" nameResId="holy_saturday">
       <precedence rank="D1Cl" numeric="6.5" firstVespers="false" occurrence="suppress_lower" concurrence="none" />
@@ -460,7 +460,7 @@
       <vigil kind="none" privileged="false" anticipated="false" />
       <transfer status="none" transferable="false" target="" />
       <mass color="VIOLET" gloria="false" credo="false" preface="Easter" />
-      <readings epistle="ferial" gospel="ferial" source="PRE55_RULES.md#II.7" />
+      <readings epistle="Tg 5,16-20" gospel="Lc 11,5-13" source="Missale Romanum 1954" />
     </day>
     <day id="rogation_tuesday" name="Rogation Tuesday" observanceKind="feria" pre55Grade="S" season="Easter" color="VIOLET" privileged="false" sourceRef="PRE55_RULES.md#II.7" sourceRank="1.2" offset="37" nameResId="rogation_tuesday">
       <precedence rank="S" numeric="1.2" firstVespers="false" occurrence="no_commemoration" concurrence="none" />
@@ -468,7 +468,7 @@
       <vigil kind="none" privileged="false" anticipated="false" />
       <transfer status="none" transferable="false" target="" />
       <mass color="VIOLET" gloria="false" credo="false" preface="Easter" />
-      <readings epistle="ferial" gospel="ferial" source="PRE55_RULES.md#II.7" />
+      <readings epistle="Tg 5,16-20" gospel="Lc 11,5-13" source="Missale Romanum 1954" />
     </day>
     <day id="rogation_wednesday" name="Rogation Wednesday" observanceKind="feria" pre55Grade="S" season="Easter" color="VIOLET" privileged="false" sourceRef="PRE55_RULES.md#II.7" sourceRank="1.2" offset="38" nameResId="rogation_wednesday">
       <precedence rank="S" numeric="1.2" firstVespers="false" occurrence="no_commemoration" concurrence="none" />
@@ -476,7 +476,7 @@
       <vigil kind="none" privileged="false" anticipated="false" />
       <transfer status="none" transferable="false" target="" />
       <mass color="VIOLET" gloria="false" credo="false" preface="Easter" />
-      <readings epistle="ferial" gospel="ferial" source="PRE55_RULES.md#II.7" />
+      <readings epistle="Ef 4,7-13" gospel="Jo 17,1-11" source="Missale Romanum 1954" />
     </day>
     <day id="first_day_within_octave_ascension" name="1st Day within the Octave of the Ascension" observanceKind="within_octave" pre55Grade="SD" season="Easter" color="WHITE" privileged="false" sourceRef="assets/data/1954/PROVENANCE.json#DO-1954-Pasc5-5" sourceRank="2.1" offset="40" nameResId="day_octave_ascension">
       <precedence rank="SD" numeric="1.1" firstVespers="false" occurrence="commemorate" concurrence="none" />
@@ -1083,7 +1083,7 @@
       <vigil kind="none" privileged="false" anticipated="false" />
       <transfer status="none" transferable="false" target="" />
       <mass color="VIOLET" gloria="false" credo="false" preface="Common" />
-      <readings epistle="ferial" gospel="ferial" source="Missale Romanum 1954" />
+      <readings epistle="" gospel="" inheritance="previous_sunday" source="Missale Romanum 1954; General Rubrics" />
     </feriaRule>
     <feriaRule id="christmas" observanceKind="feria" pre55Grade="SD" season="Christmas" color="WHITE" privileged="false" sourceRef="Missale Romanum 1954">
       <precedence rank="SD" numeric="2.2" firstVespers="false" occurrence="commemorate" concurrence="none" />
@@ -1091,7 +1091,7 @@
       <vigil kind="none" privileged="false" anticipated="false" />
       <transfer status="none" transferable="false" target="" />
       <mass color="WHITE" gloria="false" credo="false" preface="Christmas" />
-      <readings epistle="ferial" gospel="ferial" source="Missale Romanum 1954" />
+      <readings epistle="" gospel="" inheritance="previous_sunday" source="Missale Romanum 1954; General Rubrics" />
     </feriaRule>
     <feriaRule id="epiphany" observanceKind="feria" pre55Grade="SD" season="Epiphany" color="GREEN" privileged="false" sourceRef="Missale Romanum 1954">
       <precedence rank="SD" numeric="2.2" firstVespers="false" occurrence="commemorate" concurrence="none" />
@@ -1099,7 +1099,7 @@
       <vigil kind="none" privileged="false" anticipated="false" />
       <transfer status="none" transferable="false" target="" />
       <mass color="GREEN" gloria="false" credo="false" preface="Epiphany" />
-      <readings epistle="ferial" gospel="ferial" source="Missale Romanum 1954" />
+      <readings epistle="" gospel="" inheritance="previous_sunday" source="Missale Romanum 1954; General Rubrics" />
     </feriaRule>
     <feriaRule id="septuagesima" observanceKind="feria" pre55Grade="S" season="Septuagesima" color="VIOLET" privileged="false" sourceRef="Missale Romanum 1954">
       <precedence rank="S" numeric="1.2" firstVespers="false" occurrence="commemorate" concurrence="none" />
@@ -1107,7 +1107,7 @@
       <vigil kind="none" privileged="false" anticipated="false" />
       <transfer status="none" transferable="false" target="" />
       <mass color="VIOLET" gloria="false" credo="false" preface="Common" />
-      <readings epistle="ferial" gospel="ferial" source="Missale Romanum 1954" />
+      <readings epistle="" gospel="" inheritance="previous_sunday" source="Missale Romanum 1954; General Rubrics" />
     </feriaRule>
     <feriaRule id="lent" observanceKind="feria" pre55Grade="S" season="Lent" color="VIOLET" privileged="false" sourceRef="Missale Romanum 1954">
       <precedence rank="S" numeric="1.2" firstVespers="false" occurrence="commemorate" concurrence="none" />
@@ -1115,7 +1115,7 @@
       <vigil kind="none" privileged="false" anticipated="false" />
       <transfer status="none" transferable="false" target="" />
       <mass color="VIOLET" gloria="false" credo="false" preface="Lent" />
-      <readings epistle="ferial" gospel="ferial" source="Missale Romanum 1954" />
+      <readings epistle="" gospel="" inheritance="previous_sunday" source="Missale Romanum 1954; General Rubrics" />
     </feriaRule>
     <feriaRule id="easter" observanceKind="feria" pre55Grade="SD" season="Easter" color="WHITE" privileged="false" sourceRef="Missale Romanum 1954">
       <precedence rank="SD" numeric="2.2" firstVespers="false" occurrence="commemorate" concurrence="none" />
@@ -1123,7 +1123,7 @@
       <vigil kind="none" privileged="false" anticipated="false" />
       <transfer status="none" transferable="false" target="" />
       <mass color="WHITE" gloria="true" credo="false" preface="Easter" />
-      <readings epistle="ferial" gospel="ferial" source="Missale Romanum 1954" />
+      <readings epistle="" gospel="" inheritance="previous_sunday" source="Missale Romanum 1954; General Rubrics" />
     </feriaRule>
     <feriaRule id="pentecost" observanceKind="feria" pre55Grade="SD" season="Pentecost" color="RED" privileged="false" sourceRef="Missale Romanum 1954">
       <precedence rank="SD" numeric="2.2" firstVespers="false" occurrence="commemorate" concurrence="none" />
@@ -1131,7 +1131,7 @@
       <vigil kind="none" privileged="false" anticipated="false" />
       <transfer status="none" transferable="false" target="" />
       <mass color="RED" gloria="false" credo="false" preface="Pentecost" />
-      <readings epistle="ferial" gospel="ferial" source="Missale Romanum 1954" />
+      <readings epistle="" gospel="" inheritance="previous_sunday" source="Missale Romanum 1954; General Rubrics" />
     </feriaRule>
     <feriaRule id="after_pentecost" observanceKind="feria" pre55Grade="SD" season="AfterPentecost" color="GREEN" privileged="false" sourceRef="Missale Romanum 1954">
       <precedence rank="SD" numeric="2.2" firstVespers="false" occurrence="no_commemoration" concurrence="none" />
@@ -1139,7 +1139,7 @@
       <vigil kind="none" privileged="false" anticipated="false" />
       <transfer status="none" transferable="false" target="" />
       <mass color="GREEN" gloria="false" credo="false" preface="Common" />
-      <readings epistle="ferial" gospel="ferial" source="Missale Romanum 1954" />
+      <readings epistle="" gospel="" inheritance="previous_sunday" source="Missale Romanum 1954; General Rubrics" />
     </feriaRule>
     <feriaRule id="ember_wednesday_advent" name="Ember Wednesday of Advent" nameResId="ember_wednesday" nameArg="of_advent" weekday="3" window="after_advent_iii" observanceKind="feria" pre55Grade="S" season="Advent" color="VIOLET" privileged="false" sourceRef="PRE55_RULES.md#II.1" sourceRank="1.2">
       <precedence rank="S" numeric="1.2" firstVespers="false" occurrence="commemorate" concurrence="none" />

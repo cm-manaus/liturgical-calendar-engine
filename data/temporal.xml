@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<temporal>
+<temporal sourceSet="Missale Romanum 1962">
     <easter_cycle>
         <day offset="-63" name="Septuagesima Sunday" nameResId="septuagesima_sunday" class="II" color="VIOLET" season="Septuagesima">
             <liturgia>
@@ -46,13 +46,13 @@
                 <gospel>Mt 4,1-11</gospel>
             </liturgia>
         </day>
-        <day offset="-39" name="Ember Wednesday of Lent" nameResId="ember_wednesday" nameArg="of_lent" class="II" color="VIOLET" season="Quaresma">
+        <day offset="-39" name="Ember Wednesday of Lent" nameResId="ember_wednesday" nameArg="of_lent" class="II" color="VIOLET" season="Quaresma" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Sem Glória</gloria>
                 <credo>Sem Credo</credo>
                 <preface>Prefácio da Quaresma</preface>
                 <epistle>Ex 24,12-18; 3Rs 19,3-8</epistle>
-                <gospel>Mt 12,38-52</gospel>
+                <gospel>Mt 12,38-50</gospel>
             </liturgia>
         </day>
         <day offset="-37" name="Ember Friday of Lent" nameResId="ember_friday" nameArg="of_lent" class="II" color="VIOLET" season="Quaresma">
@@ -118,31 +118,31 @@
                 <gospel>Mt 26,1-27,66</gospel>
             </liturgia>
         </day>
-        <day offset="-6" name="Monday of Holy Week" nameResId="monday_holy_week" class="I" color="VIOLET" season="Quaresma">
+        <day offset="-6" name="Monday of Holy Week" nameResId="monday_holy_week" class="I" color="VIOLET" season="Quaresma" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Sem Glória</gloria>
                 <credo>Sem Credo</credo>
                 <preface>Prefácio da Santa Cruz</preface>
-                <epistle>Is 62,11—63,7</epistle>
-                <gospel>Jo 12,1-11</gospel>
+                <epistle>Is 50,5-10</epistle>
+                <gospel>Jo 12,1-9</gospel>
             </liturgia>
         </day>
-        <day offset="-5" name="Tuesday of Holy Week" nameResId="tuesday_holy_week" class="I" color="VIOLET" season="Quaresma">
+        <day offset="-5" name="Tuesday of Holy Week" nameResId="tuesday_holy_week" class="I" color="VIOLET" season="Quaresma" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Sem Glória</gloria>
                 <credo>Sem Credo</credo>
                 <preface>Prefácio da Santa Cruz</preface>
                 <epistle>Jr 11,18-20</epistle>
-                <gospel>Jo 13,21-33; 13,36-38</gospel>
+                <gospel>Mc 14,32-72; 15,1-46</gospel>
             </liturgia>
         </day>
-        <day offset="-4" name="Wednesday of Holy Week" nameResId="wednesday_holy_week" class="I" color="VIOLET" season="Quaresma">
+        <day offset="-4" name="Wednesday of Holy Week" nameResId="wednesday_holy_week" class="I" color="VIOLET" season="Quaresma" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Sem Glória</gloria>
                 <credo>Sem Credo</credo>
                 <preface>Prefácio da Santa Cruz</preface>
-                <epistle>Is 62,11—63,7</epistle>
-                <gospel>Mt 26,14-25</gospel>
+                <epistle>Is 63,1-7; Is 53,1-12</epistle>
+                <gospel>Lc 22,39-71; 23,1-53</gospel>
             </liturgia>
         </day>
         <day offset="-3" name="Holy Thursday" nameResId="holy_thursday" class="I" color="WHITE" season="Quaresma">
@@ -154,22 +154,22 @@
                 <gospel>Jo 13,1-15</gospel>
             </liturgia>
         </day>
-        <day offset="-2" name="Good Friday" nameResId="good_friday" class="I" color="BLACK" season="Quaresma">
+        <day offset="-2" name="Good Friday" nameResId="good_friday" class="I" color="BLACK" season="Quaresma" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Sem Glória</gloria>
                 <credo>Sem Credo</credo>
                 <preface>Sem Prefácio</preface>
                 <epistle>Os 6,1-6; Ex 12,1-11</epistle>
-                <gospel>Jo 18,1-19,42</gospel>
+                <gospel>Jo 18,1-40; 19,1-42</gospel>
             </liturgia>
         </day>
-        <day offset="-1" name="Holy Saturday" nameResId="holy_saturday" class="I" color="WHITE" season="Páscoa">
+        <day offset="-1" name="Holy Saturday" nameResId="holy_saturday" class="I" color="WHITE" season="Páscoa" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Glória</gloria>
                 <credo>Credo</credo>
                 <preface>Prefácio da Páscoa</preface>
-                <epistle>1Co 5,1-7</epistle>
-                <gospel>Mt 28,1-7</gospel>
+                <epistle>Gn 1,1-31; 2,1-2; Ex 14,24-31; 15,1; Is 4,2-6; Dt 31,22-30</epistle>
+                <gospel>Cl 3,1-4</gospel>
             </liturgia>
         </day>
         <day offset="0" name="Easter Sunday" nameResId="easter_sunday" class="I" color="WHITE" isLordFeast="true" season="Páscoa">
@@ -181,7 +181,7 @@
                 <gospel>Mc 16,1-7</gospel>
             </liturgia>
         </day>
-        <day offset="1" name="Easter Monday" nameResId="easter_monday" class="I" color="WHITE" season="Páscoa">
+        <day offset="1" name="Easter Monday" nameResId="easter_monday" class="I" color="WHITE" season="Páscoa" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Glória</gloria>
                 <credo>Credo</credo>
@@ -190,25 +190,25 @@
                 <gospel>Lc 24,13-35</gospel>
             </liturgia>
         </day>
-        <day offset="2" name="Easter Tuesday" nameResId="easter_tuesday" class="I" color="WHITE" season="Páscoa">
+        <day offset="2" name="Easter Tuesday" nameResId="easter_tuesday" class="I" color="WHITE" season="Páscoa" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Glória</gloria>
                 <credo>Credo</credo>
                 <preface>Prefácio da Páscoa</preface>
-                <epistle>At 13,16; 13,26-33</epistle>
+                <epistle>At 13,16; 26-33</epistle>
                 <gospel>Lc 24,36-47</gospel>
             </liturgia>
         </day>
-        <day offset="3" name="Easter Wednesday" nameResId="easter_wednesday" class="I" color="WHITE" season="Páscoa">
+        <day offset="3" name="Easter Wednesday" nameResId="easter_wednesday" class="I" color="WHITE" season="Páscoa" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Glória</gloria>
                 <credo>Credo</credo>
                 <preface>Prefácio da Páscoa</preface>
-                <epistle>At 3,13-15; 3,17-19</epistle>
+                <epistle>At 3,13-15; 17-19</epistle>
                 <gospel>Jo 21,1-14</gospel>
             </liturgia>
         </day>
-        <day offset="4" name="Easter Thursday" nameResId="easter_thursday" class="I" color="WHITE" season="Páscoa">
+        <day offset="4" name="Easter Thursday" nameResId="easter_thursday" class="I" color="WHITE" season="Páscoa" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Glória</gloria>
                 <credo>Credo</credo>
@@ -217,7 +217,7 @@
                 <gospel>Jo 20,11-18</gospel>
             </liturgia>
         </day>
-        <day offset="5" name="Easter Friday" nameResId="easter_friday" class="I" color="WHITE" season="Páscoa">
+        <day offset="5" name="Easter Friday" nameResId="easter_friday" class="I" color="WHITE" season="Páscoa" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Glória</gloria>
                 <credo>Credo</credo>
@@ -226,7 +226,7 @@
                 <gospel>Mt 28,16-20</gospel>
             </liturgia>
         </day>
-        <day offset="6" name="Easter Saturday" nameResId="easter_saturday" class="I" color="WHITE" season="Páscoa">
+        <day offset="6" name="Easter Saturday" nameResId="easter_saturday" class="I" color="WHITE" season="Páscoa" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Glória</gloria>
                 <credo>Credo</credo>
@@ -244,39 +244,39 @@
                 <gospel>Jo 20,19-31</gospel>
             </liturgia>
         </day>
-        <day offset="14" name="2nd Sunday after Easter (Good Shepherd Sunday)" nameResId="sunday_after_easter_good_shepherd" class="II" color="WHITE" season="Páscoa">
+        <day offset="14" name="2nd Sunday after Easter (Good Shepherd Sunday)" nameResId="sunday_after_easter_good_shepherd" class="II" color="WHITE" season="Páscoa" source="Missale Romanum 1962">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Páscoa</preface>
+                <epistle>1Pe 2,21-25</epistle>
+                <gospel>Jo 10,11-16</gospel>
+            </liturgia>
+        </day>
+        <day offset="21" name="3rd Sunday after Easter" nameResId="sunday_after_easter" nameArg="3" class="II" color="WHITE" season="Páscoa" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Glória</gloria>
                 <credo>Credo</credo>
                 <preface>Prefácio da Páscoa</preface>
                 <epistle>1Pe 2,11-19</epistle>
-                <gospel>Jo 10,1-10</gospel>
-            </liturgia>
-        </day>
-        <day offset="21" name="3rd Sunday after Easter" nameResId="sunday_after_easter" nameArg="3" class="II" color="WHITE" season="Páscoa">
-            <liturgia>
-                <gloria>Glória</gloria>
-                <credo>Credo</credo>
-                <preface>Prefácio da Páscoa</preface>
-                <epistle>1Pe 2,11-19</epistle>
-                <gospel>Jo 16,5-14</gospel>
-            </liturgia>
-        </day>
-        <day offset="28" name="4th Sunday after Easter" nameResId="sunday_after_easter" nameArg="4" class="II" color="WHITE" season="Páscoa">
-            <liturgia>
-                <gloria>Glória</gloria>
-                <credo>Credo</credo>
-                <preface>Prefácio da Páscoa</preface>
-                <epistle>Tg 1,1-12</epistle>
                 <gospel>Jo 16,16-22</gospel>
             </liturgia>
         </day>
-        <day offset="35" name="5th Sunday after Easter" nameResId="sunday_after_easter" nameArg="5" class="II" color="WHITE" season="Páscoa">
+        <day offset="28" name="4th Sunday after Easter" nameResId="sunday_after_easter" nameArg="4" class="II" color="WHITE" season="Páscoa" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Glória</gloria>
                 <credo>Credo</credo>
                 <preface>Prefácio da Páscoa</preface>
-                <epistle>Tg 1,1-12</epistle>
+                <epistle>Tg 1,17-21</epistle>
+                <gospel>Jo 16,5-14</gospel>
+            </liturgia>
+        </day>
+        <day offset="35" name="5th Sunday after Easter" nameResId="sunday_after_easter" nameArg="5" class="II" color="WHITE" season="Páscoa" source="Missale Romanum 1962">
+            <liturgia>
+                <gloria>Glória</gloria>
+                <credo>Credo</credo>
+                <preface>Prefácio da Páscoa</preface>
+                <epistle>Tg 1,22-27</epistle>
                 <gospel>Jo 16,23-30</gospel>
             </liturgia>
         </day>
@@ -307,40 +307,40 @@
                 <gospel>Jo 15,26—16,4</gospel>
             </liturgia>
         </day>
-        <day offset="48" name="Vigil of Pentecost" nameResId="vigil_pentecost" class="I" color="RED" season="Páscoa">
+        <day offset="48" name="Vigil of Pentecost" nameResId="vigil_pentecost" class="I" color="RED" season="Páscoa" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Glória</gloria>
                 <credo>Credo</credo>
                 <preface>Prefácio de Pentecostes</preface>
-                <epistle>At 2,1-11</epistle>
-                <gospel>Jo 15,26—16,4</gospel>
+                <epistle>At 19,1-8</epistle>
+                <gospel>Jo 14,15-21</gospel>
             </liturgia>
         </day>
-        <day offset="49" name="Pentecost Sunday" nameResId="pentecost" class="I" color="RED" isLordFeast="true" season="Páscoa">
+        <day offset="49" name="Pentecost Sunday" nameResId="pentecost" class="I" color="RED" isLordFeast="true" season="Páscoa" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Glória</gloria>
                 <credo>Credo</credo>
                 <preface>Prefácio de Pentecostes</preface>
                 <epistle>At 2,1-11</epistle>
-                <gospel>Jo 14,23-29</gospel>
+                <gospel>Jo 14,23-31</gospel>
             </liturgia>
         </day>
-        <day offset="50" name="Pentecost Monday" nameResId="pentecost_monday" class="I" color="RED" season="Depois de Pentecostes">
+        <day offset="50" name="Pentecost Monday" nameResId="pentecost_monday" class="I" color="RED" season="Depois de Pentecostes" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Glória</gloria>
                 <credo>Credo</credo>
                 <preface>Prefácio de Pentecostes</preface>
-                <epistle>At 2,1-11</epistle>
-                <gospel>Jo 14,23-29</gospel>
+                <epistle>At 10,34; 42-48</epistle>
+                <gospel>Jo 3,16-21</gospel>
             </liturgia>
         </day>
-        <day offset="51" name="Pentecost Tuesday" nameResId="pentecost_tuesday" class="I" color="RED" season="Depois de Pentecostes">
+        <day offset="51" name="Pentecost Tuesday" nameResId="pentecost_tuesday" class="I" color="RED" season="Depois de Pentecostes" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Glória</gloria>
                 <credo>Credo</credo>
                 <preface>Prefácio de Pentecostes</preface>
-                <epistle>At 2,1-11</epistle>
-                <gospel>Jo 14,23-29</gospel>
+                <epistle>At 8,14-17</epistle>
+                <gospel>Jo 10,1-10</gospel>
             </liturgia>
         </day>
         <day offset="52" name="Quarta-feira das Têmporas de Pentecostes" nameResId="ember_wednesday" nameArg="of_pentecost" class="I" color="RED" season="Depois de Pentecostes">
@@ -352,13 +352,13 @@
                 <gospel>Jo 6,44-52</gospel>
             </liturgia>
         </day>
-        <day offset="53" name="Pentecost Thursday" nameResId="pentecost_thursday" class="I" color="RED" season="Depois de Pentecostes">
+        <day offset="53" name="Pentecost Thursday" nameResId="pentecost_thursday" class="I" color="RED" season="Depois de Pentecostes" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Glória</gloria>
                 <credo>Credo</credo>
                 <preface>Prefácio de Pentecostes</preface>
-                <epistle>At 2,1-11</epistle>
-                <gospel>Jo 14,23-29</gospel>
+                <epistle>At 8,5-8</epistle>
+                <gospel>Lc 9,1-6</gospel>
             </liturgia>
         </day>
         <day offset="54" name="Sexta-feira das Têmporas de Pentecostes" nameResId="ember_friday" nameArg="of_pentecost" class="I" color="RED" season="Depois de Pentecostes">
@@ -408,34 +408,34 @@
         </day>
     </easter_cycle>
     <christmas_cycle>
-        <day date="12-24" name="Vigil of the Nativity" nameResId="vigil_christmas" class="I" color="VIOLET" season="Advento">
+        <day date="12-24" name="Vigil of the Nativity" nameResId="vigil_christmas" class="I" color="VIOLET" season="Advento" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Sem Glória</gloria>
                 <credo>Sem Credo</credo>
                 <preface>Prefácio comum</preface>
                 <epistle>Rm 1,1-6</epistle>
-                <gospel>Mt 1,1-16</gospel>
+                <gospel>Mt 1,18-21</gospel>
             </liturgia>
         </day>
-        <day date="12-25" name="Christmas Day" nameResId="christmas" class="I" color="WHITE" isLordFeast="true" season="Natal">
+        <day date="12-25" name="Christmas Day" nameResId="christmas" class="I" color="WHITE" isLordFeast="true" season="Natal" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Glória</gloria>
                 <credo>Credo</credo>
                 <preface>Prefácio do Natal</preface>
-                <epistle>Tt 2,11-14</epistle>
+                <epistle>Tt 2,11-15</epistle>
                 <gospel>Lc 2,1-14</gospel>
             </liturgia>
         </day>
-        <day date="12-26" name="St. Stephen, Protomartyr" nameResId="st_stephen" class="II" color="RED" season="Natal">
+        <day date="12-26" name="St. Stephen, Protomartyr" nameResId="st_stephen" class="II" color="RED" season="Natal" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Glória</gloria>
                 <credo>Credo</credo>
                 <preface>Prefácio do Natal</preface>
-                <epistle>At 6,1-7</epistle>
+                <epistle>At 6,8-10; 7,54-59</epistle>
                 <gospel>Mt 23,34-39</gospel>
             </liturgia>
         </day>
-        <day date="12-27" name="St. John, Apostle and Evangelist" nameResId="st_john_apostle" class="II" color="WHITE" season="Natal">
+        <day date="12-27" name="St. John, Apostle and Evangelist" nameResId="st_john_apostle" class="II" color="WHITE" season="Natal" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Glória</gloria>
                 <credo>Credo</credo>
@@ -444,7 +444,7 @@
                 <gospel>Jo 21,19-24</gospel>
             </liturgia>
         </day>
-        <day date="12-28" name="The Holy Innocents, Martyrs" nameResId="holy_innocents" class="II" color="RED" season="Natal">
+        <day date="12-28" name="The Holy Innocents, Martyrs" nameResId="holy_innocents" class="II" color="RED" season="Natal" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Glória</gloria>
                 <credo>Credo</credo>
@@ -453,7 +453,7 @@
                 <gospel>Mt 2,13-18</gospel>
             </liturgia>
         </day>
-        <day date="12-29" name="5th Day within the Octave of the Nativity" nameResId="day_octave_nativity" class="II" color="WHITE" season="Natal">
+        <day date="12-29" name="5th Day within the Octave of the Nativity" nameResId="day_octave_nativity" class="II" color="WHITE" season="Natal" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Glória</gloria>
                 <credo>Credo</credo>
@@ -462,7 +462,7 @@
                 <gospel>Lc 2,15-20</gospel>
             </liturgia>
         </day>
-        <day date="12-30" name="6th Day within the Octave of the Nativity" nameResId="day_octave_nativity" class="II" color="WHITE" season="Natal">
+        <day date="12-30" name="6th Day within the Octave of the Nativity" nameResId="day_octave_nativity" class="II" color="WHITE" season="Natal" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Glória</gloria>
                 <credo>Credo</credo>
@@ -471,7 +471,7 @@
                 <gospel>Lc 2,15-20</gospel>
             </liturgia>
         </day>
-        <day date="12-31" name="7th Day within the Octave of the Nativity" nameResId="day_octave_nativity" class="II" color="WHITE" season="Natal">
+        <day date="12-31" name="7th Day within the Octave of the Nativity" nameResId="day_octave_nativity" class="II" color="WHITE" season="Natal" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Glória</gloria>
                 <credo>Credo</credo>
@@ -480,7 +480,7 @@
                 <gospel>Lc 2,15-20</gospel>
             </liturgia>
         </day>
-        <day date="01-01" name="Circumcision of Our Lord" nameResId="circumcision_lord" class="I" color="WHITE" isLordFeast="true" season="Natal">
+        <day date="01-01" name="Circumcision of Our Lord" nameResId="circumcision_lord" class="I" color="WHITE" isLordFeast="true" season="Natal" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Glória</gloria>
                 <credo>Credo</credo>
@@ -489,7 +489,7 @@
                 <gospel>Lc 2,21</gospel>
             </liturgia>
         </day>
-        <day date="01-06" name="The Epiphany of Our Lord" nameResId="epiphany" class="I" color="WHITE" isLordFeast="true" season="Epifania">
+        <day date="01-06" name="The Epiphany of Our Lord" nameResId="epiphany" class="I" color="WHITE" isLordFeast="true" season="Epifania" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Glória</gloria>
                 <credo>Credo</credo>
@@ -498,7 +498,7 @@
                 <gospel>Mt 2,1-12</gospel>
             </liturgia>
         </day>
-        <day date="01-13" name="Commemoration of the Baptism of Our Lord" nameResId="baptism_lord" class="II" color="WHITE" isLordFeast="true" season="Epifania">
+        <day date="01-13" name="Commemoration of the Baptism of Our Lord" nameResId="baptism_lord" class="II" color="WHITE" isLordFeast="true" season="Epifania" source="Missale Romanum 1962">
             <liturgia>
                 <gloria>Glória</gloria>
                 <credo>Credo</credo>
