@@ -7,6 +7,7 @@ import (
 	"net/http/httptest"
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 
 	"github.com/cm-manaus/liturgical-calendar-engine/engine"
@@ -297,6 +298,101 @@ func TestMetricsEndpoint(t *testing.T) {
 		if !bytes.Contains([]byte(body), []byte(sub)) {
 			t.Errorf("Expected /metrics output to contain %q", sub)
 		}
+	}
+}
+
+func TestCalendarExportXLS(t *testing.T) {
+	router := setupTestRouter(t)
+
+	req := httptest.NewRequest("GET", "/api/v1/calendar/export?year=2026&month=10&format=xls", nil)
+	w := httptest.NewRecorder()
+	router.ServeHTTP(w, req)
+
+	if w.Code != http.StatusOK {
+		t.Fatalf("Expected status 200 for export xls, got %d: %s", w.Code, w.Body.String())
+	}
+
+	ct := w.Header().Get("Content-Type")
+	if !strings.Contains(ct, "application/vnd.ms-excel") {
+		t.Errorf("Expected Content-Type application/vnd.ms-excel, got %s", ct)
+	}
+
+	cd := w.Header().Get("Content-Disposition")
+	if !strings.Contains(cd, "calendario_outubro_2026.xls") {
+		t.Errorf("Expected Content-Disposition containing calendario_outubro_2026.xls, got %s", cd)
+	}
+
+	body := w.Body.String()
+	expectedSubstrings := []string{
+		"Calendário Litúrgico Tradicional — Outubro de 2026",
+		"Calendário litúrgico e mariano",
+		"Dia",
+		"Calendário Litúrgico",
+		"Calendário Mariano",
+		"Liturgia",
+		"Nossa Senhora Medianeira de Todas as Graças",
+		"Abstinência de carne",
+		"Primeira sexta do mês",
+		"Primeiro sábado do mês",
+		"Branco",
+		"Verde",
+		"Glória",
+		"Prefácio",
+	}
+
+	for _, sub := range expectedSubstrings {
+		if !strings.Contains(body, sub) {
+			t.Errorf("Expected export body to contain %q", sub)
+		}
+	}
+}
+
+func TestCalendarExportHTML(t *testing.T) {
+	router := setupTestRouter(t)
+
+	req := httptest.NewRequest("GET", "/api/v1/calendar/export?year=2026&month=10&format=html", nil)
+	w := httptest.NewRecorder()
+	router.ServeHTTP(w, req)
+
+	if w.Code != http.StatusOK {
+		t.Fatalf("Expected status 200 for export html, got %d: %s", w.Code, w.Body.String())
+	}
+
+	ct := w.Header().Get("Content-Type")
+	if !strings.Contains(ct, "text/html") {
+		t.Errorf("Expected Content-Type text/html, got %s", ct)
+	}
+
+	cd := w.Header().Get("Content-Disposition")
+	if cd != "" {
+		t.Errorf("Expected empty Content-Disposition for html format, got %s", cd)
+	}
+
+	body := w.Body.String()
+	if !strings.Contains(body, "<!DOCTYPE html>") {
+		t.Errorf("Expected HTML doctype in response")
+	}
+}
+
+func TestCalendarExportValidation(t *testing.T) {
+	router := setupTestRouter(t)
+
+	// Invalid month
+	reqBadMonth := httptest.NewRequest("GET", "/api/v1/calendar/export?year=2026&month=13", nil)
+	wBadMonth := httptest.NewRecorder()
+	router.ServeHTTP(wBadMonth, reqBadMonth)
+
+	if wBadMonth.Code != http.StatusBadRequest {
+		t.Errorf("Expected status 400 for month=13, got %d", wBadMonth.Code)
+	}
+
+	// Invalid year
+	reqBadYear := httptest.NewRequest("GET", "/api/v1/calendar/export?year=abc&month=10", nil)
+	wBadYear := httptest.NewRecorder()
+	router.ServeHTTP(wBadYear, reqBadYear)
+
+	if wBadYear.Code != http.StatusBadRequest {
+		t.Errorf("Expected status 400 for year=abc, got %d", wBadYear.Code)
 	}
 }
 
