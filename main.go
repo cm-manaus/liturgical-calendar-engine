@@ -82,7 +82,7 @@ func main() {
 	signal.Notify(stop, os.Interrupt, syscall.SIGTERM, syscall.SIGINT)
 
 	go func() {
-		slog.Info("server_listening", "port", port, "version", "2.1.0")
+		slog.Info("server_listening", "port", port, "version", "2.4.0")
 		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 			slog.Error("server_listen_error", "error", err)
 			os.Exit(1)

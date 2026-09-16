@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Tesouro Litúrgico API",
-    "version": "2.1.0",
+    "version": "2.4.0",
     "description": "API de alta performance para cálculo e resolução do calendário litúrgico católico tradicional nos ritos tridentino (1962) e pré-1955 (Divino Afflatu 1954), incluindo proprium sanctorum brasileiro, concorrências, comemorações e textos das leituras.",
     "contact": {
       "name": "Tesouro da Tradição",
@@ -219,6 +219,101 @@
         }
       }
     },
+    "/api/v1/calendar/export": {
+      "get": {
+        "tags": ["Liturgia"],
+        "summary": "Exportar Calendário Litúrgico e Mariano (.xls / .html)",
+        "description": "Gera e exporta uma tabela padronizada de 4 colunas (Dia, Calendário Litúrgico, Calendário Mariano e Liturgia) no formato Microsoft Excel (.xls) ou página Web standalone (.html), perfeitamente compatível com planilhas e upload para portais.",
+        "parameters": [
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "description": "Ano gregoriano (ex: 2026). Padrão: ano corrente.",
+            "schema": {
+              "type": "integer",
+              "example": 2026
+            }
+          },
+          {
+            "name": "month",
+            "in": "query",
+            "required": false,
+            "description": "Mês numérico (1 a 12). Padrão: mês corrente.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 12,
+              "example": 10
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "required": false,
+            "description": "Formato de exportação: 'xls' (planilha Excel formatada para download) ou 'html' (código HTML para visualização web). Padrão: xls.",
+            "schema": {
+              "type": "string",
+              "enum": ["xls", "html"],
+              "default": "xls"
+            }
+          },
+          {
+            "name": "calendar",
+            "in": "query",
+            "required": false,
+            "description": "Versão do calendário litúrgico ('1962' ou '1954'). Padrão: 1962.",
+            "schema": {
+              "type": "string",
+              "enum": ["1962", "1954"],
+              "default": "1962"
+            }
+          },
+          {
+            "name": "lang",
+            "in": "query",
+            "required": false,
+            "description": "Idioma desejado para os textos e rubricas.",
+            "schema": {
+              "type": "string",
+              "enum": ["pt-br", "la", "es", "en"],
+              "default": "pt-br"
+            }
+          },
+          {
+            "name": "include_brazilian",
+            "in": "query",
+            "required": false,
+            "description": "Incluir festas e próprios do Brasil (ex: N. Sra. Aparecida, N. Sra. Medianeira). Padrão: true.",
+            "schema": {
+              "type": "boolean",
+              "default": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Arquivo .xls formatado para download ou documento HTML",
+            "content": {
+              "application/vnd.ms-excel": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Parâmetro inválido de ano ou mês"
+          }
+        }
+      }
+    },
     "/healthz": {
       "get": {
         "tags": ["Diagnóstico"],
@@ -323,12 +418,22 @@
           "include_brazilian": {
             "type": "boolean",
             "example": true
+          },
+          "has_abstinence": {
+            "type": "boolean",
+            "description": "Whether Catholic abstinence from meat applies on this date (Friday rule or Ash Wednesday).",
+            "example": true
+          },
+          "is_abstinence_dispensed": {
+            "type": "boolean",
+            "description": "Whether Friday abstinence was dispensed due to a coinciding Feast of the I Class / Solemnity.",
+            "example": false
           }
         }
       },
       "LiturgicalDayJSON": {
         "type": "object",
-        "required": ["name", "color", "is_lord_feast"],
+        "required": ["name", "color", "is_lord_feast", "has_abstinence"],
         "properties": {
           "name": {
             "type": "string",
@@ -337,6 +442,16 @@
           "id": {
             "type": "string",
             "example": "sanctorale_0908_nativity_bmv"
+          },
+          "has_abstinence": {
+            "type": "boolean",
+            "description": "Whether Catholic abstinence from meat applies to this observance.",
+            "example": true
+          },
+          "is_abstinence_dispensed": {
+            "type": "boolean",
+            "description": "Whether Friday abstinence was dispensed due to a coinciding Feast of the I Class / Solemnity.",
+            "example": false
           },
           "observance_key": {
             "type": "string",
