@@ -5,14 +5,27 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
+	"sync"
 	"time"
 )
+
+type snapshotKey struct {
+	year             int
+	version          CalendarVersion
+	includeBrazilian bool
+}
+
+type yearSnapshot [367]*LiturgicalResult
 
 type LiturgicalEngine struct {
 	temporalCycle       *TemporalCycle
 	sanctorale          *Sanctorale
 	brazilianSanctorale *BrazilianSanctorale
 	profile1954         *DivinoAfflatu1954Profile
+
+	// DDIA Chapter 3 & 10: In-Memory Materialized Snapshots for O(1) Zero-Allocation Lookups
+	cacheMu   sync.RWMutex
+	snapshots map[snapshotKey]*yearSnapshot
 }
 
 func NewLiturgicalEngine(dataDir string) *LiturgicalEngine {
@@ -31,12 +44,20 @@ func NewLiturgicalEngine(dataDir string) *LiturgicalEngine {
 	brazilian := NewBrazilianSanctorale(brazilianPath)
 	profile1954Dir := filepath.Join(dataDir, "1954")
 
-	return &LiturgicalEngine{
+	eng := &LiturgicalEngine{
 		temporalCycle:       NewTemporalCycle(temporalPath),
 		sanctorale:          NewSanctorale(universalPath),
 		brazilianSanctorale: brazilian,
 		profile1954:         NewDivinoAfflatu1954Profile(profile1954Dir, brazilian),
+		snapshots:           make(map[snapshotKey]*yearSnapshot),
 	}
+
+	// Precompute the current and upcoming years on startup for zero-latency queries
+	currYear := time.Now().Year()
+	eng.PrecomputeYear(currYear, Calendar1962, true)
+	eng.PrecomputeYear(currYear+1, Calendar1962, true)
+
+	return eng
 }
 
 var annunciation1962 = LiturgicalDay{
@@ -49,11 +70,75 @@ var annunciation1962 = LiturgicalDay{
 	CalendarVersion: Calendar1962,
 }
 
-func (le *LiturgicalEngine) Resolve(date time.Time, version CalendarVersion, includeBrazilian bool) LiturgicalResult {
-	if version == Calendar1954 {
-		return le.profile1954.Resolve(date, includeBrazilian)
+// PrecomputeYear pre-calculates and materializes all days of a given year into memory.
+func (le *LiturgicalEngine) PrecomputeYear(year int, version CalendarVersion, includeBrazilian bool) {
+	key := snapshotKey{year: year, version: version, includeBrazilian: includeBrazilian}
+	snap := &yearSnapshot{}
+
+	start := time.Date(year, time.January, 1, 0, 0, 0, 0, time.UTC)
+	daysInYear := 365
+	if (year%4 == 0 && year%100 != 0) || (year%400 == 0) {
+		daysInYear = 366
 	}
-	return le.resolve1962(date, includeBrazilian)
+
+	for day := 0; day < daysInYear; day++ {
+		curDate := start.AddDate(0, 0, day)
+		var res LiturgicalResult
+		if version == Calendar1954 {
+			res = le.profile1954.Resolve(curDate, includeBrazilian)
+		} else {
+			res = le.resolve1962(curDate, includeBrazilian)
+		}
+		resCopy := res
+		snap[curDate.YearDay()] = &resCopy
+	}
+
+	le.cacheMu.Lock()
+	if le.snapshots == nil {
+		le.snapshots = make(map[snapshotKey]*yearSnapshot)
+	}
+	le.snapshots[key] = snap
+	le.cacheMu.Unlock()
+}
+
+func (le *LiturgicalEngine) Resolve(date time.Time, version CalendarVersion, includeBrazilian bool) LiturgicalResult {
+	dateUTC := time.Date(date.Year(), date.Month(), date.Day(), 0, 0, 0, 0, time.UTC)
+	dayOfYear := dateUTC.YearDay()
+	key := snapshotKey{year: dateUTC.Year(), version: version, includeBrazilian: includeBrazilian}
+
+	// 1. Fast path: Read Lock O(1) array index
+	le.cacheMu.RLock()
+	if snap := le.snapshots[key]; snap != nil {
+		if res := snap[dayOfYear]; res != nil {
+			le.cacheMu.RUnlock()
+			return *res
+		}
+	}
+	le.cacheMu.RUnlock()
+
+	// 2. Slow path: Calculate day on-demand
+	var res LiturgicalResult
+	if version == Calendar1954 {
+		res = le.profile1954.Resolve(dateUTC, includeBrazilian)
+	} else {
+		res = le.resolve1962(dateUTC, includeBrazilian)
+	}
+
+	// 3. Write lock: Cache in snapshot
+	le.cacheMu.Lock()
+	if le.snapshots == nil {
+		le.snapshots = make(map[snapshotKey]*yearSnapshot)
+	}
+	snap := le.snapshots[key]
+	if snap == nil {
+		snap = &yearSnapshot{}
+		le.snapshots[key] = snap
+	}
+	resCopy := res
+	snap[dayOfYear] = &resCopy
+	le.cacheMu.Unlock()
+
+	return res
 }
 
 func (le *LiturgicalEngine) resolve1962(date time.Time, includeBrazilian bool) LiturgicalResult {

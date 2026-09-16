@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Tesouro Litúrgico API",
-    "version": "2.4.0",
+    "version": "2.5.0",
     "description": "API de alta performance para cálculo e resolução do calendário litúrgico católico tradicional nos ritos tridentino (1962) e pré-1955 (Divino Afflatu 1954), incluindo proprium sanctorum brasileiro, concorrências, comemorações e textos das leituras.",
     "contact": {
       "name": "Tesouro da Tradição",
@@ -266,6 +266,16 @@
             }
           },
           {
+            "name": "annual",
+            "in": "query",
+            "required": false,
+            "description": "Se verdadeiro ('true' ou '1'), exporta o calendário anual consolidado completo (365/366 dias). Pode ser acionado também via 'month=0' ou 'month=all'.",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
             "name": "format",
             "in": "query",
             "required": false,
@@ -374,6 +384,25 @@
           },
           "503": {
             "description": "Motores de dados não inicializados"
+          }
+        }
+      }
+    },
+    "/metrics": {
+      "get": {
+        "tags": ["Diagnóstico"],
+        "summary": "Métricas Prometheus & SRE Golden Signals",
+        "description": "Exporta telemetria no formato oficial Prometheus (OpenMetrics). Inclui histogramas de latência HTTP (p50/p95/p99), contadores de requisições por rota e status code, medidor de requisições em voo e saturação de runtime Go.",
+        "responses": {
+          "200": {
+            "description": "Métricas de telemetria Prometheus",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       }

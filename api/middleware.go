@@ -28,12 +28,15 @@ func (r *statusRecorder) Write(b []byte) (int, error) {
 // LoggingMiddleware logs all inbound HTTP requests using slog with execution duration and response metadata.
 func LoggingMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		DefaultMetrics.IncInFlight()
+		defer DefaultMetrics.DecInFlight()
+
 		start := time.Now()
 		rec := &statusRecorder{ResponseWriter: w, statusCode: http.StatusOK}
 		next.ServeHTTP(rec, r)
 
 		duration := time.Since(start)
-		DefaultMetrics.Record(rec.statusCode, duration)
+		DefaultMetrics.Record(r.Method, r.URL.Path, rec.statusCode, duration)
 
 		// Suppress spammy successful health checks from logs
 		if (r.URL.Path == "/healthz" || r.URL.Path == "/api/v1/healthz" || r.URL.Path == "/metrics") && rec.statusCode == http.StatusOK {

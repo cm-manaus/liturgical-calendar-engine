@@ -289,6 +289,10 @@ func TestMetricsEndpoint(t *testing.T) {
 	body := wMetrics.Body.String()
 	requiredSubstrings := []string{
 		"tesouro_http_requests_total",
+		"tesouro_http_requests_in_flight",
+		"tesouro_http_request_duration_seconds_bucket",
+		"tesouro_http_request_duration_seconds_sum",
+		"tesouro_http_route_requests_total",
 		"go_goroutines",
 		"go_memstats_alloc_bytes",
 		"tesouro_uptime_seconds",
@@ -502,6 +506,42 @@ func TestOctoberReferenceAlignment(t *testing.T) {
 	for _, a := range assertions {
 		if !strings.Contains(body, a.expected) {
 			t.Errorf("Assertion failed for %s: body does not contain %q", a.desc, a.expected)
+		}
+	}
+}
+
+func TestAnnualCalendarExport(t *testing.T) {
+	router := setupTestRouter(t)
+
+	// Test annual export via query parameter ?year=2026&annual=true
+	req := httptest.NewRequest("GET", "/api/v1/calendar/export?year=2026&annual=true&format=xls", nil)
+	w := httptest.NewRecorder()
+	router.ServeHTTP(w, req)
+
+	if w.Code != http.StatusOK {
+		t.Fatalf("Expected status 200 for annual export, got %d", w.Code)
+	}
+
+	disposition := w.Header().Get("Content-Disposition")
+	if !strings.Contains(disposition, `filename="calendario_anual_2026.xls"`) {
+		t.Errorf("Expected Content-Disposition to have annual filename, got %s", disposition)
+	}
+
+	body := w.Body.String()
+	if !strings.Contains(body, "Calendário Litúrgico Tradicional — Ano de 2026") {
+		t.Errorf("Expected title to be for Ano de 2026")
+	}
+
+	// Verify dates from various months across the year
+	keyDates := []string{
+		"1 de Janeiro",
+		"25 de Março",
+		"12 de Outubro",
+		"25 de Dezembro",
+	}
+	for _, kd := range keyDates {
+		if !strings.Contains(body, kd) {
+			t.Errorf("Expected annual calendar to contain date %s", kd)
 		}
 	}
 }

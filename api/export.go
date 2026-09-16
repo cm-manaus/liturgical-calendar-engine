@@ -102,8 +102,10 @@ func parseMonth(r *http.Request) (int, error) {
 		return m, nil
 	}
 
-	// Try textual name (PT & EN)
+	// Try textual name (PT & EN) or Annual flag
 	switch val {
+	case "all", "ano", "anual", "year", "todos", "0":
+		return 0, nil
 	case "janeiro", "jan", "january":
 		return 1, nil
 	case "fevereiro", "fev", "february", "feb":
@@ -192,26 +194,57 @@ func (h *Handler) HandleExportCalendar(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	tNext := time.Date(year, time.Month(month+1), 0, 0, 0, 0, 0, time.UTC)
-	daysInMonth := tNext.Day()
+	annualQuery := r.URL.Query().Get("annual") == "true" || r.URL.Query().Get("anual") == "true" || r.URL.Query().Get("all") == "true"
+	if annualQuery {
+		month = 0
+	}
 
-	days := make([]LiturgicalResponse, 0, daysInMonth)
-	for day := 1; day <= daysInMonth; day++ {
-		dateStr := fmt.Sprintf("%04d-%02d-%02d", year, month, day)
-		resp, err := h.resolveLiturgicalDay(dateStr, lang, acceptLanguage, calendarStr, includeBrazilian)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
+	var days []LiturgicalResponse
+	var titleText, filename string
+
+	if month == 0 {
+		days = make([]LiturgicalResponse, 0, 366)
+		for m := 1; m <= 12; m++ {
+			tNext := time.Date(year, time.Month(m+1), 0, 0, 0, 0, 0, time.UTC)
+			daysInMonth := tNext.Day()
+			for day := 1; day <= daysInMonth; day++ {
+				dateStr := fmt.Sprintf("%04d-%02d-%02d", year, m, day)
+				resp, err := h.resolveLiturgicalDay(dateStr, lang, acceptLanguage, calendarStr, includeBrazilian)
+				if err != nil {
+					http.Error(w, err.Error(), http.StatusInternalServerError)
+					return
+				}
+				days = append(days, resp)
+			}
 		}
-		days = append(days, resp)
+		titleText = fmt.Sprintf("Ano de %d", year)
+		if format == "html" {
+			filename = fmt.Sprintf("calendario_anual_%d.html", year)
+		} else {
+			filename = fmt.Sprintf("calendario_anual_%d.xls", year)
+		}
+	} else {
+		tNext := time.Date(year, time.Month(month+1), 0, 0, 0, 0, 0, time.UTC)
+		daysInMonth := tNext.Day()
+		days = make([]LiturgicalResponse, 0, daysInMonth)
+		for day := 1; day <= daysInMonth; day++ {
+			dateStr := fmt.Sprintf("%04d-%02d-%02d", year, month, day)
+			resp, err := h.resolveLiturgicalDay(dateStr, lang, acceptLanguage, calendarStr, includeBrazilian)
+			if err != nil {
+				http.Error(w, err.Error(), http.StatusInternalServerError)
+				return
+			}
+			days = append(days, resp)
+		}
+		monthName := ptMonths[month]
+		if monthName == "" {
+			monthName = fmt.Sprintf("Mês %02d", month)
+		}
+		titleText = fmt.Sprintf("%s de %d", monthName, year)
+		filename = fmt.Sprintf("calendario_%s_%d.xls", strings.ToLower(monthName), year)
 	}
 
-	monthName := ptMonths[month]
-	if monthName == "" {
-		monthName = fmt.Sprintf("Mês %02d", month)
-	}
-
-	renderedHTML := GenerateCalendarExportHTML(days, year, month, monthName)
+	renderedHTML := GenerateCalendarExportHTML(days, year, month, titleText)
 
 	if format == "html" {
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
@@ -222,7 +255,6 @@ func (h *Handler) HandleExportCalendar(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Default: Microsoft Excel (.xls)
-	filename := fmt.Sprintf("calendario_%s_%d.xls", strings.ToLower(monthName), year)
 	w.Header().Set("Content-Type", "application/vnd.ms-excel; charset=utf-8")
 	w.Header().Set("Content-Disposition", fmt.Sprintf(`attachment; filename="%s"`, filename))
 	w.Header().Set("Cache-Control", "public, max-age=604800, stale-while-revalidate=86400")
@@ -231,13 +263,13 @@ func (h *Handler) HandleExportCalendar(w http.ResponseWriter, r *http.Request) {
 }
 
 // GenerateCalendarExportHTML renders the complete HTML document matching the Salve Maria 4-column specification.
-func GenerateCalendarExportHTML(days []LiturgicalResponse, year, month int, monthName string) string {
+func GenerateCalendarExportHTML(days []LiturgicalResponse, year, month int, titleText string) string {
 	var buf bytes.Buffer
 
 	buf.WriteString("<!DOCTYPE html>\n")
 	buf.WriteString("<html>\n<head>\n")
 	buf.WriteString("\t<meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\"/>\n")
-	fmt.Fprintf(&buf, "\t<title>Calendário Litúrgico Tradicional — %s de %d</title>\n", html.EscapeString(monthName), year)
+	fmt.Fprintf(&buf, "\t<title>Calendário Litúrgico Tradicional — %s</title>\n", html.EscapeString(titleText))
 	buf.WriteString("\t<meta name=\"generator\" content=\"Tesouro Litúrgico Engine\"/>\n")
 	buf.WriteString("\t<meta name=\"author\" content=\"Congregação Mariana / Tesouro\"/>\n")
 	buf.WriteString("\t<meta name=\"classification\" content=\"Calendário litúrgico e mariano\"/>\n")
@@ -254,7 +286,7 @@ func GenerateCalendarExportHTML(days []LiturgicalResponse, year, month int, mont
 	buf.WriteString("\t<colgroup width=\"479\"></colgroup>\n")
 
 	// Row 1: Main Title
-	fmt.Fprintf(&buf, "\t<tr>\n\t\t<td colspan=\"4\" height=\"38\" align=\"center\" valign=\"middle\" bgcolor=\"#02365F\"><b><font face=\"Aptos Display, Calibri, sans-serif\" size=\"4\" color=\"#FFFFFF\">Calendário Litúrgico Tradicional — %s de %d</font></b></td>\n\t</tr>\n", html.EscapeString(monthName), year)
+	fmt.Fprintf(&buf, "\t<tr>\n\t\t<td colspan=\"4\" height=\"38\" align=\"center\" valign=\"middle\" bgcolor=\"#02365F\"><b><font face=\"Aptos Display, Calibri, sans-serif\" size=\"4\" color=\"#FFFFFF\">Calendário Litúrgico Tradicional — %s</font></b></td>\n\t</tr>\n", html.EscapeString(titleText))
 
 	// Row 2: Subtitle
 	buf.WriteString("\t<tr>\n\t\t<td colspan=\"4\" height=\"29\" align=\"center\" valign=\"middle\" bgcolor=\"#F5F8FC\"><b><font color=\"#02365F\">Calendário litúrgico e mariano</font></b></td>\n\t</tr>\n")
@@ -275,7 +307,7 @@ func GenerateCalendarExportHTML(days []LiturgicalResponse, year, month int, mont
 
 	// Rows for each day
 	for _, dayResp := range days {
-		renderDayRow(&buf, dayResp, monthName)
+		renderDayRow(&buf, dayResp, titleText)
 	}
 
 	buf.WriteString("</table>\n")
@@ -284,7 +316,7 @@ func GenerateCalendarExportHTML(days []LiturgicalResponse, year, month int, mont
 	return buf.String()
 }
 
-func renderDayRow(buf *bytes.Buffer, resp LiturgicalResponse, monthName string) {
+func renderDayRow(buf *bytes.Buffer, resp LiturgicalResponse, titleText string) {
 	d, err := time.Parse("2006-01-02", resp.Date)
 	if err != nil {
 		d = time.Now()
@@ -295,10 +327,15 @@ func renderDayRow(buf *bytes.Buffer, resp LiturgicalResponse, monthName string) 
 		weekdayName = d.Weekday().String()
 	}
 
+	dayMonthName := ptMonths[int(d.Month())]
+	if dayMonthName == "" {
+		dayMonthName = titleText
+	}
+
 	// -------------------------------------------------------------
 	// Column 1: Dia
 	// -------------------------------------------------------------
-	col1Text := fmt.Sprintf("%d de %s<br>%s", d.Day(), monthName, weekdayName)
+	col1Text := fmt.Sprintf("%d de %s<br>%s", d.Day(), dayMonthName, weekdayName)
 
 	// -------------------------------------------------------------
 	// Column 2: Calendário Litúrgico
