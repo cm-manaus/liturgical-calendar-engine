@@ -1,5 +1,5 @@
 # Stage 1: Build binary
-FROM --platform=$BUILDPLATFORM golang:1.24-alpine AS builder
+FROM --platform=$BUILDPLATFORM golang:alpine AS builder
 
 ARG TARGETOS
 ARG TARGETARCH
