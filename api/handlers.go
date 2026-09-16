@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"strconv"
 	"strings"
 	"time"
 
@@ -135,8 +134,6 @@ func (h *Handler) HandlePostLiturgicalDay(w http.ResponseWriter, r *http.Request
 
 // HandleGetLiturgicalMonth resolves all liturgical days of a specified month.
 func (h *Handler) HandleGetLiturgicalMonth(w http.ResponseWriter, r *http.Request) {
-	yearStr := r.URL.Query().Get("year")
-	monthStr := r.URL.Query().Get("month")
 	lang := r.URL.Query().Get("lang")
 	calendarStr := r.URL.Query().Get("calendar")
 	if calendarStr == "" {
@@ -153,26 +150,16 @@ func (h *Handler) HandleGetLiturgicalMonth(w http.ResponseWriter, r *http.Reques
 	}
 	acceptLanguage := r.Header.Get("Accept-Language")
 
-	var year, month int
-	var err error
-	if yearStr != "" {
-		year, err = strconv.Atoi(yearStr)
-		if err != nil {
-			http.Error(w, "invalid year format", http.StatusBadRequest)
-			return
-		}
-	} else {
-		year = time.Now().Year()
+	year, err := parseYear(r)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
 	}
 
-	if monthStr != "" {
-		month, err = strconv.Atoi(monthStr)
-		if err != nil || month < 1 || month > 12 {
-			http.Error(w, "invalid month format", http.StatusBadRequest)
-			return
-		}
-	} else {
-		month = int(time.Now().Month())
+	month, err := parseMonth(r)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
 	}
 
 	tNext := time.Date(year, time.Month(month+1), 0, 0, 0, 0, 0, time.UTC)
@@ -190,7 +177,7 @@ func (h *Handler) HandleGetLiturgicalMonth(w http.ResponseWriter, r *http.Reques
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	if yearStr != "" && monthStr != "" {
+	if r.URL.Query().Get("year") != "" || r.URL.Query().Get("ano") != "" || r.URL.Query().Get("month") != "" || r.URL.Query().Get("mes") != "" {
 		w.Header().Set("Cache-Control", "public, max-age=604800, stale-while-revalidate=86400, stale-if-error=2592000")
 	} else {
 		w.Header().Set("Cache-Control", "public, max-age=3600, stale-while-revalidate=300, stale-if-error=86400")

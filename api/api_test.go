@@ -426,3 +426,33 @@ func TestCalendarExportDirectURLExtensions(t *testing.T) {
 		t.Errorf("Expected text/html for export.html, got %s", ct)
 	}
 }
+
+func TestCalendarExportAliases(t *testing.T) {
+	router := setupTestRouter(t)
+
+	testCases := []struct {
+		url         string
+		expectedSub string
+	}{
+		{"/api/v1/calendar/export?mes=10&ano=2026", "Outubro de 2026"},
+		{"/api/v1/calendar/export?mes=outubro&ano=2026", "Outubro de 2026"},
+		{"/api/v1/calendar/export?mês=10&ano=2026", "Outubro de 2026"},
+		{"/api/v1/calendar/export?m=10&y=2026", "Outubro de 2026"},
+		{"/api/v1/calendar/export?month=october&year=2026", "Outubro de 2026"},
+		{"/api/v1/liturgical-month?mes=10&ano=2026", "2026-10-01"},
+	}
+
+	for _, tc := range testCases {
+		req := httptest.NewRequest("GET", tc.url, nil)
+		w := httptest.NewRecorder()
+		router.ServeHTTP(w, req)
+
+		if w.Code != http.StatusOK {
+			t.Errorf("Expected 200 for %s, got %d: %s", tc.url, w.Code, w.Body.String())
+		}
+		if !strings.Contains(w.Body.String(), tc.expectedSub) {
+			t.Errorf("Expected response for %s to contain %q", tc.url, tc.expectedSub)
+		}
+	}
+}
+

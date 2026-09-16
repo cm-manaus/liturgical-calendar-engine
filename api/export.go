@@ -44,9 +44,105 @@ var ptWeekdays = map[time.Weekday]string{
 //   - lang: language code (default: "pt-br")
 //   - format: "xls" or "html" (default: "xls")
 //   - include_brazilian: "true" or "false" (default: true)
+// parseYear extracts and validates year from path, query (year, ano, y, a) or defaults to current year.
+func parseYear(r *http.Request) (int, error) {
+	val := r.PathValue("year")
+	if val == "" {
+		val = r.URL.Query().Get("year")
+	}
+	if val == "" {
+		val = r.URL.Query().Get("ano")
+	}
+	if val == "" {
+		val = r.URL.Query().Get("y")
+	}
+	if val == "" {
+		val = r.URL.Query().Get("a")
+	}
+	val = strings.TrimSpace(val)
+	if val == "" {
+		return time.Now().Year(), nil
+	}
+	y, err := strconv.Atoi(val)
+	if err != nil || y < 1900 || y > 2100 {
+		return 0, fmt.Errorf("invalid year format (expected 1900-2100)")
+	}
+	return y, nil
+}
+
+// parseMonth extracts and validates month from path, query (month, mes, mês, m) or textual names.
+func parseMonth(r *http.Request) (int, error) {
+	val := r.PathValue("month")
+	if val == "" {
+		val = r.URL.Query().Get("month")
+	}
+	if val == "" {
+		val = r.URL.Query().Get("mes")
+	}
+	if val == "" {
+		val = r.URL.Query().Get("mês")
+	}
+	if val == "" {
+		val = r.URL.Query().Get("m")
+	}
+	val = strings.ToLower(strings.TrimSpace(val))
+	// Strip file extension if passed directly in path like "10.xls" or "outubro.html"
+	if idx := strings.LastIndex(val, "."); idx != -1 {
+		val = val[:idx]
+	}
+	if val == "" {
+		return int(time.Now().Month()), nil
+	}
+
+	// Try numeric format (1-12 or 01-12)
+	if m, err := strconv.Atoi(val); err == nil {
+		if m < 1 || m > 12 {
+			return 0, fmt.Errorf("invalid month format (must be 1-12)")
+		}
+		return m, nil
+	}
+
+	// Try textual name (PT & EN)
+	switch val {
+	case "janeiro", "jan", "january":
+		return 1, nil
+	case "fevereiro", "fev", "february", "feb":
+		return 2, nil
+	case "março", "marco", "mar", "march":
+		return 3, nil
+	case "abril", "abr", "april", "apr":
+		return 4, nil
+	case "maio", "mai", "may":
+		return 5, nil
+	case "junho", "jun", "june":
+		return 6, nil
+	case "julho", "jul", "july":
+		return 7, nil
+	case "agosto", "ago", "august", "aug":
+		return 8, nil
+	case "setembro", "set", "september", "sep":
+		return 9, nil
+	case "outubro", "out", "october", "oct":
+		return 10, nil
+	case "novembro", "nov", "november":
+		return 11, nil
+	case "dezembro", "dez", "december", "dec":
+		return 12, nil
+	default:
+		return 0, fmt.Errorf("invalid month format (must be 1-12 or month name)")
+	}
+}
+
+// HandleExportCalendar generates and exports a styled 4-column liturgical calendar
+// in Microsoft Excel HTML (.xls) or standalone HTML (.html) format.
+// Query parameters:
+//   - year / ano: 4-digit Gregorian year (default: current year)
+//   - month / mes / mês: 1-12 or month name (default: current month)
+//   - calendar / version / calendar_version: "1962" or "1954" (default: "1962")
+//   - lang: language code (default: "pt-br")
+//   - format / formato: "xls" or "html" (default: "xls")
+//   - include_brazilian: "true" or "false" (default: true)
 func (h *Handler) HandleExportCalendar(w http.ResponseWriter, r *http.Request) {
-	yearStr := r.URL.Query().Get("year")
-	monthStr := r.URL.Query().Get("month")
 	lang := r.URL.Query().Get("lang")
 	if lang == "" {
 		lang = "pt-br"
@@ -67,6 +163,12 @@ func (h *Handler) HandleExportCalendar(w http.ResponseWriter, r *http.Request) {
 	}
 
 	format := strings.ToLower(strings.TrimSpace(r.URL.Query().Get("format")))
+	if format == "" {
+		format = strings.ToLower(strings.TrimSpace(r.URL.Query().Get("formato")))
+	}
+	if format == "" {
+		format = strings.ToLower(strings.TrimSpace(r.URL.Query().Get("f")))
+	}
 	if strings.HasSuffix(strings.ToLower(r.URL.Path), ".xls") {
 		format = "xls"
 	} else if strings.HasSuffix(strings.ToLower(r.URL.Path), ".html") {
@@ -78,26 +180,16 @@ func (h *Handler) HandleExportCalendar(w http.ResponseWriter, r *http.Request) {
 
 	acceptLanguage := r.Header.Get("Accept-Language")
 
-	var year, month int
-	var err error
-	if yearStr != "" {
-		year, err = strconv.Atoi(yearStr)
-		if err != nil {
-			http.Error(w, "invalid year format", http.StatusBadRequest)
-			return
-		}
-	} else {
-		year = time.Now().Year()
+	year, err := parseYear(r)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
 	}
 
-	if monthStr != "" {
-		month, err = strconv.Atoi(monthStr)
-		if err != nil || month < 1 || month > 12 {
-			http.Error(w, "invalid month format (must be 1-12)", http.StatusBadRequest)
-			return
-		}
-	} else {
-		month = int(time.Now().Month())
+	month, err := parseMonth(r)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
 	}
 
 	tNext := time.Date(year, time.Month(month+1), 0, 0, 0, 0, 0, time.UTC)

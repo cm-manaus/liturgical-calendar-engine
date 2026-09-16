@@ -229,7 +229,17 @@
             "name": "year",
             "in": "query",
             "required": false,
-            "description": "Ano gregoriano (ex: 2026). Padrão: ano corrente.",
+            "description": "Ano gregoriano (ex: 2026). Padrão: ano corrente. (Alias aceito: 'ano').",
+            "schema": {
+              "type": "integer",
+              "example": 2026
+            }
+          },
+          {
+            "name": "ano",
+            "in": "query",
+            "required": false,
+            "description": "Ano gregoriano (alias para 'year').",
             "schema": {
               "type": "integer",
               "example": 2026
@@ -239,19 +249,27 @@
             "name": "month",
             "in": "query",
             "required": false,
-            "description": "Mês numérico (1 a 12). Padrão: mês corrente.",
+            "description": "Mês numérico (1 a 12) ou nome do mês (ex: 'outubro', 'october'). Padrão: mês corrente. (Alias aceito: 'mes', 'mês').",
             "schema": {
-              "type": "integer",
-              "minimum": 1,
-              "maximum": 12,
-              "example": 10
+              "type": "string",
+              "example": "10"
+            }
+          },
+          {
+            "name": "mes",
+            "in": "query",
+            "required": false,
+            "description": "Mês numérico (1 a 12) ou nome do mês por extenso (alias para 'month'). Ex: '10' ou 'outubro'.",
+            "schema": {
+              "type": "string",
+              "example": "10"
             }
           },
           {
             "name": "format",
             "in": "query",
             "required": false,
-            "description": "Formato de exportação: 'xls' (planilha Excel formatada para download) ou 'html' (código HTML para visualização web). Padrão: xls.",
+            "description": "Formato de exportação: 'xls' (planilha Excel formatada para download) ou 'html' (código HTML para visualização web). Padrão: xls. (Alias aceito: 'formato').",
             "schema": {
               "type": "string",
               "enum": ["xls", "html"],
