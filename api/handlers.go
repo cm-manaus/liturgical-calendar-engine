@@ -44,6 +44,7 @@ func (h *Handler) HandleRoot(w http.ResponseWriter, r *http.Request) {
 			"openapi":          "/openapi.json",
 			"liturgical_day":   "/api/v1/liturgical-day",
 			"liturgical_month": "/api/v1/liturgical-month",
+			"calendar_export":  "/api/v1/calendar/export",
 		},
 	})
 }
@@ -63,7 +64,7 @@ func (h *Handler) HandleHealthz(w http.ResponseWriter, r *http.Request) {
 	_ = json.NewEncoder(w).Encode(map[string]any{
 		"status":         "healthy",
 		"uptime_seconds": int(time.Since(h.startTime).Seconds()),
-		"version":        "2.1.0",
+		"version":        "2.4.0",
 		"calendars":      []string{"1962", "1954"},
 	})
 }
@@ -242,5 +243,7 @@ func (h *Handler) resolveLiturgicalDay(dateStr, lang, acceptLanguage, calendarSt
 		CalendarVersion:  calVersion.AssetID(),
 		CalendarName:     calVersion.DisplayName(),
 		IncludeBrazilian: includeBrazilian,
+		HasAbstinence:         jsonResult.MainDay.HasAbstinence,
+		IsAbstinenceDispensed: jsonResult.MainDay.IsAbstinenceDispensed,
 	}, nil
 }

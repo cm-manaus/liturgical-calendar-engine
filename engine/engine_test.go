@@ -207,29 +207,69 @@ func TestSeptemberEmberDays(t *testing.T) {
 	loc := NewLocalizationManager(getTestDataDir())
 	trans := loc.GetTranslations("pt-br")
 
-	// In 2026, Sept 14 is Monday. Next Wed is Sep 16, Fri is Sep 18, Sat is Sep 19.
-	emberWed := time.Date(2026, 9, 16, 0, 0, 0, 0, time.UTC)
+	// Under 1962 rubrics, September Ember days follow the 3rd Sunday of September (Sept 20, 2026).
+	// Next Wed is Sep 23, Fri is Sep 25, Sat is Sep 26.
+	emberWed := time.Date(2026, 9, 23, 0, 0, 0, 0, time.UTC)
 	resWed := eng.Resolve(emberWed, Calendar1962, false)
 	jsonWed := resWed.ToJSON(trans, emberWed)
 	if jsonWed.MainDay.ID != "ember_wednesday_september" {
-		t.Errorf("Expected ember_wednesday_september on 2026-09-16, got %s", jsonWed.MainDay.ID)
+		t.Errorf("Expected ember_wednesday_september on 2026-09-23, got %s", jsonWed.MainDay.ID)
 	}
 	if jsonWed.MainDay.Liturgy == nil || jsonWed.MainDay.Liturgy.Epistle == "" || jsonWed.MainDay.Liturgy.Gospel == "" {
 		t.Errorf("Expected readings on Ember Wednesday of September")
 	}
 
-	emberFri := time.Date(2026, 9, 18, 0, 0, 0, 0, time.UTC)
+	emberFri := time.Date(2026, 9, 25, 0, 0, 0, 0, time.UTC)
 	resFri := eng.Resolve(emberFri, Calendar1962, false)
 	jsonFri := resFri.ToJSON(trans, emberFri)
 	if jsonFri.MainDay.ID != "ember_friday_september" {
-		t.Errorf("Expected ember_friday_september on 2026-09-18, got %s", jsonFri.MainDay.ID)
+		t.Errorf("Expected ember_friday_september on 2026-09-25, got %s", jsonFri.MainDay.ID)
 	}
 
-	emberSat := time.Date(2026, 9, 19, 0, 0, 0, 0, time.UTC)
+	emberSat := time.Date(2026, 9, 26, 0, 0, 0, 0, time.UTC)
 	resSat := eng.Resolve(emberSat, Calendar1962, false)
 	jsonSat := resSat.ToJSON(trans, emberSat)
 	if jsonSat.MainDay.ID != "ember_saturday_september" {
-		t.Errorf("Expected ember_saturday_september on 2026-09-19, got %s", jsonSat.MainDay.ID)
+		t.Errorf("Expected ember_saturday_september on 2026-09-26, got %s", jsonSat.MainDay.ID)
+	}
+}
+
+func TestCalculateAbstinence(t *testing.T) {
+	eng := NewLiturgicalEngine(getTestDataDir())
+	loc := NewLocalizationManager(getTestDataDir())
+	trans := loc.GetTranslations("pt-br")
+
+	// 1. Regular Friday (e.g. Ember Friday Sep 25, 2026 - Class II) -> Abstinence: true
+	fri := time.Date(2026, 9, 25, 0, 0, 0, 0, time.UTC)
+	resFri := eng.Resolve(fri, Calendar1962, false)
+	jsonFri := resFri.ToJSON(trans, fri)
+	if !jsonFri.MainDay.HasAbstinence {
+		t.Errorf("Expected HasAbstinence=true on regular Friday %s", fri.Format("2006-01-02"))
+	}
+
+	// 2. Ash Wednesday (Feb 18, 2026) -> Abstinence: true
+	ashWed := time.Date(2026, 2, 18, 0, 0, 0, 0, time.UTC)
+	resAsh := eng.Resolve(ashWed, Calendar1962, false)
+	jsonAsh := resAsh.ToJSON(trans, ashWed)
+	if !jsonAsh.MainDay.HasAbstinence {
+		t.Errorf("Expected HasAbstinence=true on Ash Wednesday %s", ashWed.Format("2006-01-02"))
+	}
+
+	// 3. Regular Thursday (e.g. Sep 24, 2026) -> Abstinence: false
+	thu := time.Date(2026, 9, 24, 0, 0, 0, 0, time.UTC)
+	resThu := eng.Resolve(thu, Calendar1962, false)
+	jsonThu := resThu.ToJSON(trans, thu)
+	if jsonThu.MainDay.HasAbstinence {
+		t.Errorf("Expected HasAbstinence=false on regular Thursday %s", thu.Format("2006-01-02"))
+	}
+
+	// 4. Sacred Heart of Jesus (Friday after Octave of Corpus Christi) -> Class I Solemnity -> Abstinence: false
+	// In 2026, Easter is April 5. Corpus Christi is June 4. Sacred Heart is Friday, June 12.
+	sacredHeart := time.Date(2026, 6, 12, 0, 0, 0, 0, time.UTC)
+	resSH := eng.Resolve(sacredHeart, Calendar1962, false)
+	jsonSH := resSH.ToJSON(trans, sacredHeart)
+	if jsonSH.MainDay.ClassCode == "I" && jsonSH.MainDay.HasAbstinence {
+		t.Errorf("Expected HasAbstinence=false on Class I Friday (Sacred Heart) %s", sacredHeart.Format("2006-01-02"))
 	}
 }
 
