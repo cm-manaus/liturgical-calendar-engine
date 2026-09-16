@@ -20,5 +20,7 @@ type LiturgicalResponse struct {
 	ResolvedLang     string                     `json:"resolved_lang"`
 	CalendarVersion  string                     `json:"calendar_version"`
 	CalendarName     string                     `json:"calendar_name"`
-	IncludeBrazilian bool                       `json:"include_brazilian"`
+	IncludeBrazilian      bool                       `json:"include_brazilian"`
+	HasAbstinence         bool                       `json:"has_abstinence"`
+	IsAbstinenceDispensed bool                       `json:"is_abstinence_dispensed"`
 }

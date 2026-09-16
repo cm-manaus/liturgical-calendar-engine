@@ -4,6 +4,43 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/pt-BR/1.0.0/), e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
+## [2.4.0] - 2026-09-16
+
+### 📑 Feature: Endpoint de Exportação do Calendário Litúrgico e Mariano (`.xls` e `.html`)
+- **Novo Endpoint de Exportação (`GET /api/v1/calendar/export` e `GET /calendar/export`)**:
+  - Parâmetros suportados: `year`, `month`, `calendar` (1962 ou 1954), `lang` (padrão: pt-br), `format` (padrão: `xls`, opção `html`), `include_brazilian` (padrão: true).
+  - Gera tabela padronizada em 4 colunas em conformidade estrita com o modelo tradicional do Salve Maria:
+    1. **Dia**: Dia do mês e dia da semana em português (ex: `1 de Outubro\nQuinta`).
+    2. **Calendário Litúrgico**: Festa principal, comemorações formatadas e grau/classe litúrgica (`1ª Classe`, `2ª Classe`, `3ª Classe`, `4ª Classe`, etc.).
+    3. **Calendário Mariano**: Abstinência de carne canônica (`Abstinência de carne` / `Sem abstinência de carne`), devoções de Primeira Sexta-feira e Primeiro Sábado do mês, santos congregados marianos e indulgências de Cristo Rei / Sagrado Coração.
+    4. **Liturgia**: Cor litúrgica e estilização de fundo correspondente (`Branco`, `Verde`, `Vermelho`, `Roxo`, `Preto`, `Rosa`, `Azul`), linha de `Glória • Credo`, `Prefácio` e leituras sagradas (`Epístola • Evangelho`).
+  - Quando solicitado em `format=xls`: serve cabeçalhos `Content-Type: application/vnd.ms-excel; charset=utf-8` e `Content-Disposition: attachment; filename="calendario_{mes}_{ano}.xls"` para abertura nativa e sem alertas em qualquer versão do Microsoft Excel ou LibreOffice.
+  - Quando solicitado em `format=html`: serve `Content-Type: text/html; charset=utf-8` para renderização imediata na web e portais.
+- **Documentação Interativa Scalar & OpenAPI (`api/openapi.json`)**:
+  - Especificação OpenAPI 3.1 atualizada com o novo endpoint `/api/v1/calendar/export`, seus parâmetros e schemas de resposta, automaticamente refletido na UI interativa do Scalar em `/docs`.
+
+## [2.3.0] - 2026-09-16
+
+### 🐟 Feature: Abstinência de Carne (API / Sextas-feiras e Quarta-feira de Cinzas)
+- **Cálculo Canônico de Abstinência (`engine/models.go`)**:
+  - Implementada a função `CalculateAbstinence(date, day, finalName)` em conformidade com o Código de Direito Canônico (CIC 1917, c. 1252 § 1) e as Rubricas Romanas.
+  - Toda sexta-feira do ano é dia de abstinência de carne (`has_abstinence: true`), **exceto** quando coincide com festa de I Classe (1962) ou Duplo de I Classe (1954/Pré-55), na qual a abstinência cessa.
+  - Sexta-feira da Paixão (Sexta-feira Santa) é explicitamente preservada como dia de jejum e abstinência.
+  - Quarta-feira de Cinzas é computada como dia de jejum e abstinência (`has_abstinence: true`).
+  - Dias após a Quarta-feira de Cinzas (quinta-feira e sábado) são explicitamente desmarcados como dias de abstinência.
+- **Exposição na API (`api/dto.go`, `api/handlers.go`, `api/openapi.json`)**:
+  - Adicionado o campo `has_abstinence: bool` em `LiturgicalResponse` e em `LiturgicalDayJSON`.
+  - Atualizada a especificação OpenAPI (`openapi.json`) documentando o novo campo booleano.
+
+### 🔄 Sincronização e Correções de Calendário (LiturgyCalendarApp)
+- **Correção das Têmporas de Setembro no Calendário de 1962 (`engine/temporal.go`)**:
+  - Ajustado o cálculo das Têmporas de Setembro de 1962 para a primeira quarta-feira, sexta-feira e sábado após o **3º domingo de setembro**, conforme as rubricas do Código de 1960 de João XXIII (enquanto no Pré-55/1954 permanece após a Exaltação da Santa Cruz, 14 de setembro).
+- **Comemoração de Têmporas com Festas no Pré-55 (`engine/profile_1954.go`)**:
+  - Permitida a comemoração de dias de têmporas quando concorrem com festas (`_feriaCanBeCommemoratedWithFeast`), preservando as rubricas de 1954.
+  - Ajustado o prefácio sazonal em fés apenas quando o prefácio atual for o comum (`isDefaultPreface`).
+- **Sincronização de Dados Litúrgicos (`data/`)**:
+  - Sincronizados `sanctoral.xml`, `temporal.xml`, `1954/sanctoral.xml`, `1954/temporal.xml`, `1954/PROVENANCE.json` e `1954/schema.json` a partir do repositório upstream `LiturgyCalendarApp`.
+
 ---
 
 ## [2.2.0] - 2026-09-14

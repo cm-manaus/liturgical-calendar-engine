@@ -428,11 +428,11 @@ func (tc *TemporalCycle) GetDay(date time.Time) *LiturgicalDay {
 		}
 	}
 
-	// 7. Ember Days of September (First Wednesday, Friday, Saturday after Holy Cross Sept 14)
-	september14 := time.Date(year, 9, 14, 0, 0, 0, 0, time.UTC)
-	emberWednesday := nextWeekdayAfter(september14, int(time.Wednesday))
-	emberFriday := nextWeekdayAfter(september14, int(time.Friday))
-	emberSaturday := nextWeekdayAfter(september14, int(time.Saturday))
+	// 7. Ember Days of September (First Wednesday, Friday, Saturday after the 3rd Sunday of September in 1962 rubrics)
+	thirdSundayOfSept := thirdSundayOfSeptember(year)
+	emberWednesday := nextWeekdayAfter(thirdSundayOfSept, int(time.Wednesday))
+	emberFriday := nextWeekdayAfter(thirdSundayOfSept, int(time.Friday))
+	emberSaturday := nextWeekdayAfter(thirdSundayOfSept, int(time.Saturday))
 
 	if date.Equal(emberWednesday) {
 		return &LiturgicalDay{
@@ -594,6 +594,12 @@ func getEnglishOrdinal(n int) string {
 		return "4th"
 	}
 	return strconv.Itoa(n) + "th"
+}
+
+func thirdSundayOfSeptember(year int) time.Time {
+	september1 := time.Date(year, 9, 1, 0, 0, 0, 0, time.UTC)
+	daysUntilFirstSunday := (int(time.Sunday) - int(september1.Weekday()) + 7) % 7
+	return september1.AddDate(0, 0, daysUntilFirstSunday+14)
 }
 
 func nextWeekdayAfter(val time.Time, weekday int) time.Time {

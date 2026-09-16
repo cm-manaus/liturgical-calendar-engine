@@ -120,6 +120,9 @@
     "after_advent_iii",
     "after_september_14"
   ],
+  "readingInheritances": [
+    "previous_sunday"
+  ],
   "requiredChildren": {
     "precedence": [
       "rank",
