@@ -250,7 +250,7 @@
     <feast date="10-03" name="St. Therese of the Child Jesus, Virgin" nameResId="st_therese" class="III" color="WHITE"><epistle>Is 66, 12-14</epistle><gospel>Mt 18, 1-4</gospel></feast>
     <feast date="10-04" name="St. Francis of Assisi, Confessor" nameResId="st_francis" class="III" color="WHITE"><epistle>Gal 6, 14-18</epistle><gospel>Mt 11, 25-30</gospel></feast>
     <feast date="10-05" name="St. Placidus and Companions, Martyrs" nameResId="placidus_and_companions_martyrs" class="IV" color="RED" ><epistle>Sb 3,1-8</epistle><gospel>Lc 21,9-19</gospel></feast>
-    <feast date="10-06" name="St. Bruno, Confessor" nameResId="st_bruno" class="III" color="WHITE"><epistle>Eclo 31, 8-11</epistle><gospel>Lc 12, 35-40</gospel></feast>
+    <feast date="10-06" name="St. Bruno, Confessor" nameResId="st_bruno" class="III" color="WHITE"><epistle>Sb 31, 8-11</epistle><gospel>Lc 12, 35-40</gospel></feast>
     <feast date="10-07" name="The Most Holy Rosary of the B.V.M." nameResId="holy_rosary" class="II" color="WHITE"><epistle>Pr 8, 22-24; 32-35</epistle><gospel>Lc 1, 26-38</gospel></feast>
     <feast date="10-07" name="St. Mark, Pope and Confessor" nameResId="mark_pope_and_confessor" class="IV" color="WHITE" ><epistle>Hb 7,23-27</epistle><gospel>Mt 25,14-23</gospel></feast>
     <feast date="10-08" name="St. Bridget, Widow" nameResId="st_bridget" class="III" color="WHITE"><epistle>I Tm 5, 3-10</epistle><gospel>Mt 13, 44-52</gospel></feast>
