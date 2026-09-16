@@ -67,6 +67,11 @@ func (h *Handler) HandleExportCalendar(w http.ResponseWriter, r *http.Request) {
 	}
 
 	format := strings.ToLower(strings.TrimSpace(r.URL.Query().Get("format")))
+	if strings.HasSuffix(strings.ToLower(r.URL.Path), ".xls") {
+		format = "xls"
+	} else if strings.HasSuffix(strings.ToLower(r.URL.Path), ".html") {
+		format = "html"
+	}
 	if format == "" {
 		format = "xls"
 	}

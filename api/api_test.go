@@ -392,8 +392,37 @@ func TestCalendarExportValidation(t *testing.T) {
 	router.ServeHTTP(wBadYear, reqBadYear)
 
 	if wBadYear.Code != http.StatusBadRequest {
-		t.Errorf("Expected status 400 for year=abc, got %d", wBadYear.Code)
+		t.Errorf("Expected status 400 for invalid year, got %d", wBadYear.Code)
 	}
 }
 
+func TestCalendarExportDirectURLExtensions(t *testing.T) {
+	router := setupTestRouter(t)
 
+	// Test GET /api/v1/calendar/export.xls without format query param
+	reqXLS := httptest.NewRequest("GET", "/api/v1/calendar/export.xls?year=2026&month=10", nil)
+	wXLS := httptest.NewRecorder()
+	router.ServeHTTP(wXLS, reqXLS)
+
+	if wXLS.Code != http.StatusOK {
+		t.Fatalf("Expected status 200 for export.xls, got %d", wXLS.Code)
+	}
+	if ct := wXLS.Header().Get("Content-Type"); !strings.Contains(ct, "application/vnd.ms-excel") {
+		t.Errorf("Expected application/vnd.ms-excel for export.xls, got %s", ct)
+	}
+	if cd := wXLS.Header().Get("Content-Disposition"); !strings.Contains(cd, "calendario_outubro_2026.xls") {
+		t.Errorf("Expected attachment for export.xls, got %s", cd)
+	}
+
+	// Test GET /api/v1/calendar/export.html without format query param
+	reqHTML := httptest.NewRequest("GET", "/api/v1/calendar/export.html?year=2026&month=10", nil)
+	wHTML := httptest.NewRecorder()
+	router.ServeHTTP(wHTML, reqHTML)
+
+	if wHTML.Code != http.StatusOK {
+		t.Fatalf("Expected status 200 for export.html, got %d", wHTML.Code)
+	}
+	if ct := wHTML.Header().Get("Content-Type"); !strings.Contains(ct, "text/html") {
+		t.Errorf("Expected text/html for export.html, got %s", ct)
+	}
+}

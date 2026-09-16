@@ -19,7 +19,11 @@ func NewRouter(h *Handler) http.Handler {
 	mux.HandleFunc("POST /api/v1/liturgical-day", h.HandlePostLiturgicalDay)
 	mux.HandleFunc("GET /api/v1/liturgical-month", h.HandleGetLiturgicalMonth)
 	mux.HandleFunc("GET /api/v1/calendar/export", h.HandleExportCalendar)
+	mux.HandleFunc("GET /api/v1/calendar/export.xls", h.HandleExportCalendar)
+	mux.HandleFunc("GET /api/v1/calendar/export.html", h.HandleExportCalendar)
 	mux.HandleFunc("GET /calendar/export", h.HandleExportCalendar)
+	mux.HandleFunc("GET /calendar/export.xls", h.HandleExportCalendar)
+	mux.HandleFunc("GET /calendar/export.html", h.HandleExportCalendar)
 
 	// Interactive Documentation (Scalar / OpenAPI)
 	mux.HandleFunc("GET /docs", h.HandleDocs)
