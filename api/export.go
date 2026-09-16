@@ -416,7 +416,7 @@ func formatClassOrRank(resp LiturgicalResponse) string {
 
 func getLiturgicalColorStyles(color string) (name string, bgColor string) {
 	switch strings.ToUpper(color) {
-	case "WHITE":
+	case "WHITE", "BLUE":
 		return "Branco", "#F7F7F7"
 	case "GREEN":
 		return "Verde", "#EAF4EA"
@@ -428,8 +428,6 @@ func getLiturgicalColorStyles(color string) (name string, bgColor string) {
 		return "Preto", "#E8E8E8"
 	case "ROSE":
 		return "Rosa", "#FCEEF2"
-	case "BLUE":
-		return "Azul", "#EBF3FB"
 	default:
 		return "Branco", "#F7F7F7"
 	}

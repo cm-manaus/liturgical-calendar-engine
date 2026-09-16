@@ -30,7 +30,7 @@
     <feast date="01-30" name="St. Martina, Virgin &amp; Martyr" nameResId="st_martina" class="III" color="RED"><epistle>Eclo 51, 1-8; 51,12</epistle><gospel>Mt 25, 1-13</gospel></feast>
     <feast date="01-31" name="St. John Bosco, Confessor" nameResId="st_john_bosco" class="III" color="WHITE"><epistle>Fl 4,4-9</epistle><gospel>Mt 18,1-5</gospel></feast>
     <feast date="02-01" name="St. Ignatius, Bishop and Martyr" nameResId="st_ignatius" class="III" color="RED" ><epistle>2Tm 4,1-8</epistle><gospel>Jo 10,11-16</gospel></feast>
-    <feast date="02-02" name="Purification of the B.V.M." nameResId="purification_bvm" class="II" color="BLUE" ><epistle>Ml 3,1-4</epistle><gospel>Lc 2,22-32</gospel></feast>
+    <feast date="02-02" name="Purification of the B.V.M." nameResId="purification_bvm" class="II" color="WHITE" ><epistle>Ml 3,1-4</epistle><gospel>Lc 2,22-32</gospel></feast>
     <feast date="02-03" name="St. Blaise, Bishop and Martyr" nameResId="blaise_bishop_and_martyr" class="IV" color="RED" ><epistle>2Tm 4,1-8</epistle><gospel>Jo 10,11-16</gospel></feast>
     <feast date="02-04" name="St. Andrew Corsini, Bishop &amp; Confessor" nameResId="st_andrew_corsini" class="III" color="WHITE" ><epistle>Hb 7,23-27</epistle><gospel>Mt 25,14-23</gospel></feast>
     <feast date="02-05" name="St. Agatha, Virgin and Martyr" nameResId="st_agatha" class="III" color="RED" ><epistle>Eclo 51,1-8;51,12</epistle><gospel>Mt 25,1-13</gospel></feast>
@@ -40,7 +40,7 @@
     <feast date="02-09" name="St. Cyril of Alexandria, Bishop, Confessor &amp; Doctor" nameResId="st_cyril_alexandria" class="III" color="WHITE" ><epistle>2Tm 4,1-8</epistle><gospel>Mt 5,13-19</gospel></feast>
     <feast date="02-09" name="St. Apollonia, Virgin and Martyr" nameResId="apollonia_virgin_and_martyr" class="IV" color="RED" ><epistle>Eclo 51,1-8;51,12</epistle><gospel>Mt 25,1-13</gospel></feast>
     <feast date="02-10" name="St. Scholastica, Virgin" nameResId="st_scholastica" class="III" color="WHITE" ><epistle>Sb 4,7-15</epistle><gospel>Mt 25,1-13</gospel></feast>
-    <feast date="02-11" name="Apparition of the B.V.M. Immaculate (Lourdes)" nameResId="apparition_bvm" class="III" color="BLUE" ><epistle>Eclo 24,14-16</epistle><gospel>Lc 11,27-28</gospel></feast>
+    <feast date="02-11" name="Apparition of the B.V.M. Immaculate (Lourdes)" nameResId="apparition_bvm" class="III" color="WHITE" ><epistle>Eclo 24,14-16</epistle><gospel>Lc 11,27-28</gospel></feast>
     <feast date="02-12" name="Seven Holy Founders of the Servite Order" nameResId="seven_founders_servites" class="III" color="WHITE" ><epistle>Eclo 31,8-11</epistle><gospel>Lc 12,35-40</gospel></feast>
     <feast date="02-14" name="St. Valentine, Priest and Martyr" nameResId="valentine_priest_and_martyr" class="IV" color="RED" ><epistle>2Tm 4,1-8</epistle><gospel>Lc 9,23-26</gospel></feast>
     <feast date="02-15" name="SS. Faustinus and Jovita, Martyrs" nameResId="faustinus_and_jovita_martyrs" class="IV" color="RED" ><epistle>Sb 3,1-8</epistle><gospel>Lc 21,9-19</gospel></feast>
@@ -62,7 +62,7 @@
     <feast date="03-19" name="St. Joseph, Confessor, Spouse of the B.V.M." nameResId="st_joseph" class="I" color="WHITE" ><epistle>Eclo 45,1-6</epistle><gospel>Mt 1,18-21</gospel></feast>
     <feast date="03-21" name="St. Benedict, Abbot" nameResId="st_benedict" class="III" color="WHITE" ><epistle>Eclo 45,1-6</epistle><gospel>Lc 12,35-40</gospel></feast>
     <feast date="03-24" name="St. Gabriel, Archangel" nameResId="st_gabriel" class="III" color="WHITE" ><epistle>Dn 9,21-26</epistle><gospel>Lc 1,26-38</gospel></feast>
-    <feast date="03-25" name="Annunciation of the B.V.M." nameResId="annunciation" class="I" color="BLUE" isLordFeast="true" ><epistle>Is 7,10-15</epistle><gospel>Lc 1,26-38</gospel></feast>
+    <feast date="03-25" name="Annunciation of the B.V.M." nameResId="annunciation" class="I" color="WHITE" isLordFeast="true" ><epistle>Is 7,10-15</epistle><gospel>Lc 1,26-38</gospel></feast>
     <feast date="03-27" name="St. John Damascene, Confessor &amp; Doctor" nameResId="st_john_damascene" class="III" color="WHITE" ><epistle>2Tm 4,1-8</epistle><gospel>Mt 5,13-19</gospel></feast>
     <feast date="03-28" name="St. John Capistran, Confessor" nameResId="st_john_capistran" class="III" color="WHITE" ><epistle>Eclo 31,8-11</epistle><gospel>Lc 12,35-40</gospel></feast>
     <feast date="04-02" name="St. Francis of Paola, Confessor" nameResId="st_francis_paola" class="III" color="WHITE" ><epistle>Eclo 31,8-11</epistle><gospel>Lc 12,35-40</gospel></feast>
@@ -89,7 +89,7 @@
     <feast date="05-04" name="St. Monica, Widow" nameResId="st_monica" class="III" color="WHITE" ><epistle>Pr 31,10-31</epistle><gospel>Mt 13,44-52</gospel></feast>
     <feast date="05-05" name="St. Pius V, Pope and Confessor" nameResId="st_pius_v" class="III" color="WHITE" ><epistle>Hb 7,23-27</epistle><gospel>Mt 25,14-23</gospel></feast>
     <feast date="05-07" name="St. Stanislaus, Bishop &amp; Martyr" nameResId="st_stanislaus" class="III" color="RED" ><epistle>2Tm 4,1-8</epistle><gospel>Jo 10,11-16</gospel></feast>
-    <feast date="05-08" name="Our Lady, Mediatrix of All Graces" nameResId="our_lady_mediatrix" class="III" color="BLUE" ><epistle>Eclo 24,14-16</epistle><gospel>Lc 11,27-28</gospel></feast>
+    <feast date="05-08" name="Our Lady, Mediatrix of All Graces" nameResId="our_lady_mediatrix" class="III" color="WHITE" ><epistle>Eclo 24,14-16</epistle><gospel>Lc 11,27-28</gospel></feast>
     <feast date="05-09" name="St. Gregory Nazianzen, Bishop, Confessor &amp; Doctor" nameResId="st_gregory_nazianzen" class="III" color="WHITE" ><epistle>2Tm 4,1-8</epistle><gospel>Mt 5,13-19</gospel></feast>
     <feast date="05-10" name="St. Antoninus, Bishop &amp; Confessor" nameResId="st_antoninus" class="III" color="WHITE" ><epistle>Hb 7,23-27</epistle><gospel>Mt 25,14-23</gospel></feast>
     <feast date="05-11" name="Sts. Philip and James, Apostles" nameResId="sts_philip_james" class="II" color="RED" ><epistle>1Co 15,1-8</epistle><gospel>Jo 14,6-14</gospel></feast>
@@ -112,7 +112,7 @@
     <feast date="05-28" name="St. Augustine of Canterbury, Bishop &amp; Confessor" nameResId="st_augustine_canterbury" class="III" color="WHITE" ><epistle>Hb 7,23-27</epistle><gospel>Mt 25,14-23</gospel></feast>
     <feast date="05-29" name="St. Mary Magdalen de Pazzi, Virgin" nameResId="st_mary_magdalen_pazzi" class="III" color="WHITE" ><epistle>Sb 4,7-15</epistle><gospel>Mt 25,1-13</gospel></feast>
     <feast date="05-30" name="St. Felix, Pope and Martyr" nameResId="felix_pope_and_martyr" class="IV" color="RED" ><epistle>2Tm 4,1-8</epistle><gospel>Jo 10,11-16</gospel></feast>
-    <feast date="05-31" name="The Queenship of the B.V.M." nameResId="queenship_bvm" class="II" color="BLUE" ><epistle>Eclo 24,14-16</epistle><gospel>Lc 11,27-28</gospel></feast>
+    <feast date="05-31" name="The Queenship of the B.V.M." nameResId="queenship_bvm" class="II" color="WHITE" ><epistle>Eclo 24,14-16</epistle><gospel>Lc 11,27-28</gospel></feast>
     <feast date="05-31" name="St. Petronilla, Virgin" nameResId="petronilla_virgin" class="IV" color="WHITE" ><epistle>Sb 4,7-15</epistle><gospel>Mt 25,1-13</gospel></feast>
     <feast date="06-01" name="St. Angela Merici, Virgin" nameResId="st_angela_merici" class="III" color="WHITE" ><epistle>Sb 4,7-15</epistle><gospel>Mt 25,1-13</gospel></feast>
     <feast date="06-02" name="SS. Marcellinus, Peter, and Erasmus, Martyrs" nameResId="sts_marcellinus_peter_erasmus" class="IV" color="RED" ><epistle>Sb 3,1-8</epistle><gospel>Lc 21,9-19</gospel></feast>
@@ -143,7 +143,7 @@
     <feast date="06-30" name="Commemoration of St. Paul, Apostle" nameResId="st_paul_commemoration" class="III" color="RED" ><epistle>Gal 1,11-20</epistle><gospel>Mt 10,16-22</gospel></feast>
     <feast date="06-30" name="Commemoration of St. Peter, Apostle" nameResId="st_peter_commemoration" class="IV" color="RED" ><epistle>1Pe 5,1-4</epistle><gospel>Mt 16,13-19</gospel></feast>
     <feast date="07-01" name="The Most Precious Blood of Our Lord" nameResId="precious_blood" class="I" color="RED" isLordFeast="true"><epistle>Hb 9, 11-15</epistle><gospel>Jo 19, 30-35</gospel></feast>
-    <feast date="07-02" name="Visitation of the B.V.M." nameResId="visitation_bvm" class="II" color="BLUE"><epistle>Ct 2, 8-14</epistle><gospel>Lc 1, 39-47</gospel></feast>
+    <feast date="07-02" name="Visitation of the B.V.M." nameResId="visitation_bvm" class="II" color="WHITE"><epistle>Ct 2, 8-14</epistle><gospel>Lc 1, 39-47</gospel></feast>
     <feast date="07-02" name="SS. Processus and Martinian, Martyrs" nameResId="processus_and_martinian_martyrs" class="IV" color="RED"><epistle>Ct 2, 8-14</epistle><gospel>Lc 1, 39-47</gospel></feast>
     <feast date="07-03" name="St. Irenaeus, Bishop &amp; Martyr" nameResId="st_irenaeus" class="III" color="RED"><epistle>Ef 3,8-19</epistle><gospel>Lc 22,15-20</gospel></feast>
     <feast date="07-05" name="St. Anthony Mary Zaccaria, Confessor" nameResId="st_anthony_mary_zaccaria" class="III" color="WHITE"><epistle>1Tm 4, 8-16</epistle><gospel>Mc 10, 15-21</gospel></feast>
@@ -156,7 +156,7 @@
     <feast date="07-12" name="SS. Nabor and Felix, Martyrs" nameResId="nabor_and_felix_martyrs" class="IV" color="RED"><epistle>Ecl 45, 1-6</epistle><gospel>Mt 5, 43-48</gospel></feast>
     <feast date="07-14" name="St. Bonaventure, Bishop, Confessor and Doctor" nameResId="st_bonaventure" class="III" color="WHITE"><epistle>2Tm 4,1-8</epistle><gospel>Mt 5, 13-19</gospel></feast>
     <feast date="07-15" name="St. Henry, Emperor, Confessor" nameResId="st_henry" class="III" color="WHITE"><epistle>Sb 3, 1-8</epistle><gospel>Lc 21, 9-19</gospel></feast>
-    <feast date="07-16" name="Commemoration of B.V.M. of Mount Carmel" nameResId="commem_bvm_carmel" class="III" color="BLUE"><epistle>Eclo 24,23-31</epistle><gospel>Lc 11, 27-28</gospel></feast>
+    <feast date="07-16" name="Commemoration of B.V.M. of Mount Carmel" nameResId="commem_bvm_carmel" class="III" color="WHITE"><epistle>Eclo 24,23-31</epistle><gospel>Lc 11, 27-28</gospel></feast>
     <feast date="07-17" name="St. Alexius, Confessor" nameResId="st_alexius" class="IV" color="WHITE"><epistle>1Pe 3, 8-15</epistle><gospel>Mt 5, 20-24</gospel></feast>
     <feast date="07-18" name="St. Camillus de Lellis, Confessor" nameResId="st_camillus_de_lellis" class="III" color="WHITE"><epistle>1Jo 3, 13-18</epistle><gospel>Jo 15, 12-16</gospel></feast>
     <feast date="07-18" name="SS. Symphorosa and her Seven Sons, Martyrs" nameResId="symphorosa_and_her_seven_sons_martyrs" class="IV" color="RED"><epistle>1Jo 3, 13-18</epistle><gospel>Jo 15, 12-16</gospel></feast>
@@ -181,7 +181,7 @@
     <feast date="08-02" name="St. Alphonsus Mary de Liguori, Bishop, Confessor and Doctor" nameResId="st_alphonsus_liguori" class="III" color="WHITE"><epistle>1Co 12, 2-11</epistle><gospel>Lc 18, 9-14</gospel></feast>
     <feast date="08-02" name="St. Stephen, Pope and Martyr" nameResId="stephen_pope_and_martyr" class="IV" color="RED"><epistle>1Co 12, 2-11</epistle><gospel>Lc 18, 9-14</gospel></feast>
     <feast date="08-04" name="St. Dominic, Confessor" nameResId="st_dominic" class="III" color="WHITE"><epistle>2 Tim 4, 1-8</epistle><gospel>Lc 12, 35-40</gospel></feast>
-    <feast date="08-05" name="Our Lady of the Snows" nameResId="our_lady_of_the_snows" class="III" color="BLUE"><epistle>Eclo 24, 14-16</epistle><gospel>Lc 11, 27-28</gospel></feast>
+    <feast date="08-05" name="Our Lady of the Snows" nameResId="our_lady_of_the_snows" class="III" color="WHITE"><epistle>Eclo 24, 14-16</epistle><gospel>Lc 11, 27-28</gospel></feast>
     <feast date="08-06" name="Transfiguration of Our Lord" nameResId="transfiguration" class="II" color="WHITE" isLordFeast="true"><epistle>2Pe 1, 16-19</epistle><gospel>Mt 17, 1-9</gospel></feast>
     <feast date="08-06" name="SS. Sixtus, Felicissimus and Agapitus, Martyrs" nameResId="sixtus_felicissimus_and_agapitus_martyrs" class="IV" color="RED"><epistle>2Pe 1, 16-19</epistle><gospel>Mt 17, 1-9</gospel></feast>
     <feast date="08-07" name="St. Cajetan, Confessor" nameResId="st_cajetan" class="III" color="WHITE"><epistle>Eclo 31, 8-11</epistle><gospel>Mt 6, 24-33</gospel></feast>
@@ -195,14 +195,14 @@
     <feast date="08-12" name="St. Clare, Virgin" nameResId="st_clare" class="III" color="WHITE"><epistle>2 Cor 10, 17-18; 11, 1-2</epistle><gospel>Mt 25, 1-13</gospel></feast>
     <feast date="08-13" name="SS. Hippolytus and Cassian, Martyrs" nameResId="hippolytus_and_cassian_martyrs" class="IV" color="RED" ><epistle>1 Co 10, 6-13</epistle><gospel>Lc 19, 41-47</gospel></feast>
     <feast date="08-14" name="Vigil of the Assumption of the B.V.M." nameResId="vigil_assumption" class="II" color="VIOLET"><epistle>Eclo 24, 23-31</epistle><gospel>Lc 11, 27-28</gospel></feast>
-    <feast date="08-15" name="Assumption of the B.V.M." nameResId="assumption" class="I" color="BLUE"><epistle>Jdt 13, 22-25; 15, 10</epistle><gospel>Lc 1, 41-50</gospel></feast>
+    <feast date="08-15" name="Assumption of the B.V.M." nameResId="assumption" class="I" color="WHITE"><epistle>Jdt 13, 22-25; 15, 10</epistle><gospel>Lc 1, 41-50</gospel></feast>
     <feast date="08-16" name="St. Joachim, Father of the B.V.M." nameResId="st_joachim" class="II" color="WHITE"><epistle>Eclo 31, 8-11</epistle><gospel>Mt 1, 1-16</gospel></feast>
     <feast date="08-17" name="St. Hyacinth, Confessor" nameResId="st_hyacinth" class="III" color="WHITE"><epistle>Eclo 31, 8-11</epistle><gospel>Mt 5, 13-19</gospel></feast>
     <feast date="08-18" name="St. Agapitus, Martyr" nameResId="agapitus_martyr" class="IV" color="RED" ><epistle>2Tm 2, 8-10; 3, 10-12</epistle><gospel>Jo 12, 24-26</gospel></feast>
     <feast date="08-19" name="St. John Eudes, Confessor" nameResId="st_john_eudes" class="III" color="WHITE"><epistle>Eclo 31, 8-11</epistle><gospel>Lc 12, 35-40</gospel></feast>
     <feast date="08-20" name="St. Bernard, Abbot, Confessor and Doctor" nameResId="st_bernard" class="III" color="WHITE"><epistle>Eclo 39, 6-14</epistle><gospel>Mt 5, 13-19</gospel></feast>
     <feast date="08-21" name="St. Jane Frances de Chantal, Widow" nameResId="st_jane_frances" class="III" color="WHITE"><epistle>Pr 31, 10-31</epistle><gospel>Mt 13, 44-52</gospel></feast>
-    <feast date="08-22" name="The Immaculate Heart of the B.V.M." nameResId="immaculate_heart_bvm" class="II" color="BLUE"><epistle>Eclo 24, 23-31</epistle><gospel>Jo 19, 25-27</gospel></feast>
+    <feast date="08-22" name="The Immaculate Heart of the B.V.M." nameResId="immaculate_heart_bvm" class="II" color="WHITE"><epistle>Eclo 24, 23-31</epistle><gospel>Jo 19, 25-27</gospel></feast>
     <feast date="08-23" name="St. Philip Benizi, Confessor" nameResId="st_philip_benizi" class="III" color="WHITE"><epistle>1Co 4, 9-14</epistle><gospel>Lc 12, 32-34</gospel></feast>
     <feast date="08-24" name="St. Bartholomew, Apostle" nameResId="st_bartholomew" class="II" color="RED"><epistle>1Co 12, 27-31</epistle><gospel>Lc 6, 12-19</gospel></feast>
     <feast date="08-25" name="St. Louis, King, Confessor" nameResId="st_louis" class="III" color="WHITE"><epistle>Sb 10, 10-14</epistle><gospel>Lc 19, 12-26</gospel></feast>
@@ -220,13 +220,13 @@
     <feast date="09-02" name="St. Stephen, King, Confessor" nameResId="st_stephen_king" class="III" color="WHITE" ><epistle>Eclo 31,8-11</epistle><gospel>Lc 12,35-40</gospel></feast>
     <feast date="09-03" name="St. Pius X, Pope and Confessor" nameResId="st_pius_x" class="III" color="WHITE" ><epistle>Hb 7,23-27</epistle><gospel>Mt 25,14-23</gospel></feast>
     <feast date="09-05" name="St. Lawrence Justinian, Bishop &amp; Confessor" nameResId="st_lawrence_justinian" class="III" color="WHITE" ><epistle>Hb 7,23-27</epistle><gospel>Mt 25,14-23</gospel></feast>
-    <feast date="09-08" name="Nativity of the B.V.M." nameResId="nativity_bvm" class="II" color="BLUE" ><epistle>Eclo 24,11-13</epistle><gospel>Mt 1,1-16</gospel></feast>
+    <feast date="09-08" name="Nativity of the B.V.M." nameResId="nativity_bvm" class="II" color="WHITE" ><epistle>Eclo 24,11-13</epistle><gospel>Mt 1,1-16</gospel></feast>
     <feast date="09-09" name="St. Gorgonius, Martyr" nameResId="gorgonius_martyr" class="IV" color="RED" ><epistle>2Tm 4,1-8</epistle><gospel>Lc 9,23-26</gospel></feast>
     <feast date="09-10" name="St. Nicholas of Tolentino, Confessor" nameResId="st_nicholas_tolentino" class="III" color="WHITE" ><epistle>Eclo 31,8-11</epistle><gospel>Lc 12,35-40</gospel></feast>
     <feast date="09-11" name="SS. Protus and Hyacinth, Martyrs" nameResId="protus_and_hyacinth_martyrs" class="IV" color="RED" ><epistle>Sb 3,1-8</epistle><gospel>Lc 21,9-19</gospel></feast>
-    <feast date="09-12" name="The Most Holy Name of Mary" nameResId="holy_name_mary" class="III" color="BLUE" ><epistle>Eclo 24,14-16</epistle><gospel>Lc 11,27-28</gospel></feast>
+    <feast date="09-12" name="The Most Holy Name of Mary" nameResId="holy_name_mary" class="III" color="WHITE" ><epistle>Eclo 24,14-16</epistle><gospel>Lc 11,27-28</gospel></feast>
     <feast date="09-14" name="Exaltation of the Holy Cross" nameResId="exaltation_cross" class="II" color="RED" isLordFeast="true" ><epistle>Gal 6,14-18</epistle><gospel>Jo 12,31-36</gospel></feast>
-    <feast date="09-15" name="Seven Sorrows of the B.V.M." nameResId="seven_sorrows_bvm" class="II" color="BLUE" ><epistle>Hb 10,4-7</epistle><gospel>Lc 2,33-35</gospel></feast>
+    <feast date="09-15" name="Seven Sorrows of the B.V.M." nameResId="seven_sorrows_bvm" class="II" color="WHITE" ><epistle>Hb 10,4-7</epistle><gospel>Lc 2,33-35</gospel></feast>
     <feast date="09-15" name="St. Nicomedes, Martyr" nameResId="nicomedes_martyr" class="IV" color="RED" ><epistle>2Tm 4,1-8</epistle><gospel>Lc 9,23-26</gospel></feast>
     <feast date="09-16" name="SS. Cornelius and Cyprian, Martyrs" nameResId="sts_cornelius_cyprian" class="III" color="RED"><epistle>Sb 3,1-8</epistle><gospel>Lc 21,9-19</gospel></feast>
     <feast date="09-16" name="SS. Euphemia, Lucy and Geminian, Martyrs" nameResId="euphemia_lucy_and_geminian_martyrs" class="IV" color="RED"><epistle>Sb 3,1-8</epistle><gospel>Lc 21,9-19</gospel></feast>
@@ -239,7 +239,7 @@
     <feast date="09-22" name="St. Maurice and Companions, Martyrs" nameResId="maurice_and_companions_martyrs" class="IV" color="RED"><epistle>Eclo 44, 1-15</epistle><gospel>Mt 25, 14-23</gospel></feast>
     <feast date="09-23" name="St. Linus, Pope &amp; Martyr" nameResId="st_linus" class="III" color="RED" ><epistle>2Tm 4,1-8</epistle><gospel>Jo 10,11-16</gospel></feast>
     <feast date="09-23" name="St. Thecla, Virgin and Martyr" nameResId="thecla_virgin_and_martyr" class="IV" color="RED" ><epistle>Eclo 51,1-8;51,12</epistle><gospel>Mt 25,1-13</gospel></feast>
-    <feast date="09-24" name="Our Lady of Ransom" nameResId="our_lady_ransom" class="III" color="BLUE"><epistle>Eclo 24, 14-16</epistle><gospel>Lc 11, 27-28</gospel></feast>
+    <feast date="09-24" name="Our Lady of Ransom" nameResId="our_lady_ransom" class="III" color="WHITE"><epistle>Eclo 24, 14-16</epistle><gospel>Lc 11, 27-28</gospel></feast>
     <feast date="09-26" name="SS. Isaac Jogues, John de Brebeuf &amp; Companions" nameResId="sts_north_american_martyrs" class="III" color="RED"><epistle>Heb 10, 32-38</epistle><gospel>Mt 24, 3-13</gospel></feast>
     <feast date="09-27" name="SS. Cosmas and Damian, Martyrs" nameResId="sts_cosmas_damian" class="III" color="RED"><epistle>Sb 5,16-20</epistle><gospel>Lc 6,17-23</gospel></feast>
     <feast date="09-28" name="St. Wenceslaus, Duke, Martyr" nameResId="st_wenceslaus" class="III" color="RED"><epistle>Sb 10, 10-14</epistle><gospel>Mt 10, 34-42</gospel></feast>
@@ -247,30 +247,30 @@
     <feast date="09-30" name="St. Jerome, Confessor and Doctor" nameResId="st_jerome" class="III" color="WHITE"><epistle>2 Tim 4, 1-8</epistle><gospel>Mt 5, 13-19</gospel></feast>
     <feast date="10-01" name="St. Remigius, Bishop and Confessor" nameResId="remigius_bishop_and_confessor" class="IV" color="WHITE" ><epistle>Hb 7,23-27</epistle><gospel>Mt 25,14-23</gospel></feast>
     <feast date="10-02" name="Holy Guardian Angels" nameResId="holy_guardian_angels" class="III" color="WHITE"><epistle>Ex 23, 20-23</epistle><gospel>Mt 18, 1-10</gospel></feast>
-    <feast date="10-03" name="St. Therese of the Child Jesus, Virgin" nameResId="st_therese" class="III" color="WHITE"><epistle>Sb 4, 7-15</epistle><gospel>Mt 18, 1-4</gospel></feast>
+    <feast date="10-03" name="St. Therese of the Child Jesus, Virgin" nameResId="st_therese" class="III" color="WHITE"><epistle>Is 66, 12-14</epistle><gospel>Mt 18, 1-4</gospel></feast>
     <feast date="10-04" name="St. Francis of Assisi, Confessor" nameResId="st_francis" class="III" color="WHITE"><epistle>Gal 6, 14-18</epistle><gospel>Mt 11, 25-30</gospel></feast>
     <feast date="10-05" name="St. Placidus and Companions, Martyrs" nameResId="placidus_and_companions_martyrs" class="IV" color="RED" ><epistle>Sb 3,1-8</epistle><gospel>Lc 21,9-19</gospel></feast>
     <feast date="10-06" name="St. Bruno, Confessor" nameResId="st_bruno" class="III" color="WHITE"><epistle>Eclo 31, 8-11</epistle><gospel>Lc 12, 35-40</gospel></feast>
-    <feast date="10-07" name="The Most Holy Rosary of the B.V.M." nameResId="holy_rosary" class="II" color="BLUE"><epistle>Pr 8, 22-24.32-35</epistle><gospel>Lc 1, 26-38</gospel></feast>
+    <feast date="10-07" name="The Most Holy Rosary of the B.V.M." nameResId="holy_rosary" class="II" color="WHITE"><epistle>Pr 8, 22-24; 32-35</epistle><gospel>Lc 1, 26-38</gospel></feast>
     <feast date="10-07" name="St. Mark, Pope and Confessor" nameResId="mark_pope_and_confessor" class="IV" color="WHITE" ><epistle>Hb 7,23-27</epistle><gospel>Mt 25,14-23</gospel></feast>
-    <feast date="10-08" name="St. Bridget, Widow" nameResId="st_bridget" class="III" color="WHITE"><epistle>Pr 31, 10-31</epistle><gospel>Mt 13, 44-52</gospel></feast>
+    <feast date="10-08" name="St. Bridget, Widow" nameResId="st_bridget" class="III" color="WHITE"><epistle>I Tm 5, 3-10</epistle><gospel>Mt 13, 44-52</gospel></feast>
     <feast date="10-08" name="SS. Sergius, Bacchus, Marcellus and Apuleius, Martyrs" nameResId="sergius_bacchus_marcellus_and_apuleius_m" class="IV" color="RED" ><epistle>Sb 3,1-8</epistle><gospel>Lc 21,9-19</gospel></feast>
-    <feast date="10-09" name="St. John Leonardi, Confessor" nameResId="st_john_leonardi" class="III" color="WHITE"><epistle>Eclo 31, 8-11</epistle><gospel>Lc 12, 35-40</gospel></feast>
+    <feast date="10-09" name="St. John Leonardi, Confessor" nameResId="st_john_leonardi" class="III" color="WHITE"><epistle>2 Cor 4, 1-6; 15-18</epistle><gospel>Lc 10, 1-9</gospel></feast>
     <feast date="10-09" name="SS. Dionysius, Rusticus and Eleutherius, Martyrs" nameResId="dionysius_rusticus_and_eleutherius_marty" class="IV" color="RED" ><epistle>Sb 3,1-8</epistle><gospel>Lc 21,9-19</gospel></feast>
-    <feast date="10-10" name="St. Francis Borgia, Confessor" nameResId="st_francis_borgia" class="III" color="WHITE"><epistle>Sb 10, 10-14</epistle><gospel>Lc 10, 21-24</gospel></feast>
-    <feast date="10-11" name="Maternity of the B.V.M." nameResId="maternity_bvm" class="II" color="BLUE"><epistle>Is 7, 10-15</epistle><gospel>Lc 1, 26-38</gospel></feast>
-    <feast date="10-13" name="St. Edward, King, Confessor" nameResId="st_edward" class="III" color="WHITE"><epistle>Sb 10, 10-14</epistle><gospel>Mt 19, 27-29</gospel></feast>
-    <feast date="10-14" name="St. Callistus I, Pope and Martyr" nameResId="st_callistus" class="III" color="RED"><epistle>Sb 10, 10-14</epistle><gospel>Mt 16, 24-27</gospel></feast>
-    <feast date="10-15" name="St. Teresa of Avila, Virgin" nameResId="st_teresa_avila" class="III" color="WHITE"><epistle>Sb 4, 7-15</epistle><gospel>Mt 25, 1-13</gospel></feast>
+    <feast date="10-10" name="St. Francis Borgia, Confessor" nameResId="st_francis_borgia" class="III" color="WHITE"><epistle>Eclo 45, 1-6</epistle><gospel>Mt 19, 27-29</gospel></feast>
+    <feast date="10-11" name="Maternity of the B.V.M." nameResId="maternity_bvm" class="II" color="WHITE"><epistle>Is 7, 10-15</epistle><gospel>Lc 1, 26-38</gospel></feast>
+    <feast date="10-13" name="St. Edward, King, Confessor" nameResId="st_edward" class="III" color="WHITE"><epistle>Sb 31, 8-11</epistle><gospel>Lc 12, 35-40</gospel></feast>
+    <feast date="10-14" name="St. Callistus I, Pope and Martyr" nameResId="st_callistus" class="III" color="RED"><epistle>1 Pe 5, 1-4; 10-11</epistle><gospel>Mt 16, 13-19</gospel></feast>
+    <feast date="10-15" name="St. Teresa of Avila, Virgin" nameResId="st_teresa_avila" class="III" color="WHITE"><epistle>2 Cor 10, 17-18; 11, 1-2</epistle><gospel>Mt 25, 1-13</gospel></feast>
     <feast date="10-16" name="St. Hedwig, Widow" nameResId="st_hedwig" class="III" color="WHITE"><epistle>Pr 31, 10-31</epistle><gospel>Mt 13, 44-52</gospel></feast>
-    <feast date="10-17" name="St. Margaret Mary Alacoque, Virgin" nameResId="st_margaret_mary" class="III" color="WHITE"><epistle>Ef 3, 8-9.14-19</epistle><gospel>Mt 11, 25-30</gospel></feast>
+    <feast date="10-17" name="St. Margaret Mary Alacoque, Virgin" nameResId="st_margaret_mary" class="III" color="WHITE"><epistle>Ef 3, 8-9; 14-19</epistle><gospel>Mt 11, 25-30</gospel></feast>
     <feast date="10-18" name="St. Luke, Evangelist" nameResId="st_luke" class="II" color="RED"><epistle>2 Tim 4, 5-17</epistle><gospel>Lc 10, 1-9</gospel></feast>
     <feast date="10-19" name="St. Peter of Alcantara, Confessor" nameResId="st_peter_alcantara" class="III" color="WHITE"><epistle>Flp 3, 7-12</epistle><gospel>Lc 12, 32-34</gospel></feast>
     <feast date="10-20" name="St. John Cantius, Confessor" nameResId="st_john_cantius" class="III" color="WHITE"><epistle>Tg 2, 12-17</epistle><gospel>Lc 12, 35-40</gospel></feast>
     <feast date="10-21" name="St. Hilarion, Abbot" nameResId="hilarion_abbot" class="IV" color="WHITE" ><epistle>Eclo 45,1-6</epistle><gospel>Lc 12,35-40</gospel></feast>
     <feast date="10-21" name="St. Ursula and Companions, Virgins and Martyrs" nameResId="ursula_and_companions_virgins_and_martyr" class="IV" color="RED" ><epistle>Sb 3,1-8</epistle><gospel>Lc 21,9-19</gospel></feast>
-    <feast date="10-23" name="St. Anthony Mary Claret, Bishop &amp; Confessor" nameResId="st_anthony_mary_claret" class="III" color="WHITE"><epistle>Heb 7, 23-27</epistle><gospel>Mt 24, 42-47</gospel></feast>
-    <feast date="10-24" name="St. Raphael, Archangel" nameResId="st_raphael" class="III" color="WHITE"><epistle>Tb 12, 7-15</epistle><gospel>Jo 5, 1-4</gospel></feast>
+    <feast date="10-23" name="St. Anthony Mary Claret, Bishop &amp; Confessor" nameResId="st_anthony_mary_claret" class="III" color="WHITE"><epistle>Hb 7, 23-27</epistle><gospel>Mt 24, 42-47</gospel></feast>
+    <feast date="10-24" name="St. Raphael, Archangel" nameResId="st_raphael" class="III" color="WHITE"><epistle>Tb 12, 7-15</epistle><gospel>Jo 5, 1-15</gospel></feast>
     <feast date="10-25" name="SS. Chrysanthus and Daria, Martyrs" nameResId="sts_chrysanthus_daria" class="IV" color="RED" ><epistle>Sb 3,1-8</epistle><gospel>Lc 21,9-19</gospel></feast>
     <feast date="10-26" name="St. Evaristus, Pope and Martyr" nameResId="evaristus_pope_and_martyr" class="IV" color="RED" ><epistle>2Tm 4,1-8</epistle><gospel>Jo 10,11-16</gospel></feast>
     <feast date="10-28" name="Sts. Simon and Jude, Apostles" nameResId="sts_simon_jude" class="II" color="RED"><epistle>Ef 4, 7-13</epistle><gospel>Jo 15, 17-25</gospel></feast>
@@ -294,7 +294,7 @@
     <feast date="11-19" name="St. Elizabeth, Queen of Hungary, Widow" nameResId="st_elizabeth_hungary" class="III" color="WHITE"><epistle>Pr 31, 10-31</epistle><gospel>Mt 13, 44-52</gospel></feast>
     <feast date="11-19" name="St. Pontianus, Pope and Martyr" nameResId="pontianus_pope_and_martyr" class="IV" color="RED" ><epistle>2Tm 4,1-8</epistle><gospel>Jo 10,11-16</gospel></feast>
     <feast date="11-20" name="St. Felix of Valois, Confessor" nameResId="st_felix_valois" class="III" color="WHITE"><epistle>Eclo 31, 8-11</epistle><gospel>Lc 12, 35-40</gospel></feast>
-    <feast date="11-21" name="Presentation of the B.V.M." nameResId="presentation_bvm" class="III" color="BLUE"><epistle>Eclo 24, 14-16</epistle><gospel>Lc 1, 26-38</gospel></feast>
+    <feast date="11-21" name="Presentation of the B.V.M." nameResId="presentation_bvm" class="III" color="WHITE"><epistle>Eclo 24, 14-16</epistle><gospel>Lc 1, 26-38</gospel></feast>
     <feast date="11-22" name="St. Cecilia, Virgin and Martyr" nameResId="st_cecilia" class="III" color="RED"><epistle>Sb 4, 7-15</epistle><gospel>Mt 25, 1-13</gospel></feast>
     <feast date="11-23" name="St. Clement I, Pope &amp; Martyr" nameResId="st_clement" class="III" color="RED"><epistle>Jo 21, 15-17</epistle><gospel>Mt 16, 24-27</gospel></feast>
     <feast date="11-23" name="St. Felicity, Martyr" nameResId="felicity_martyr" class="IV" color="RED" ><epistle>Eclo 51,1-8;51,12</epistle><gospel>Mt 13,44-52</gospel></feast>
@@ -311,7 +311,7 @@
     <feast date="12-05" name="St. Sabba, Abbot" nameResId="sabba_abbot" class="IV" color="WHITE" ><epistle>Eclo 45,1-6</epistle><gospel>Lc 12,35-40</gospel></feast>
     <feast date="12-06" name="St. Nicholas, Bishop and Confessor" nameResId="st_nicholas" class="III" color="WHITE"><epistle>Eclo 44, 16-27; 45, 3-20</epistle><gospel>Mt 25, 14-23</gospel></feast>
     <feast date="12-07" name="St. Ambrose, Bishop, Confessor and Doctor" nameResId="st_ambrose" class="III" color="WHITE"><epistle>Eclo 15, 1-6</epistle><gospel>Mt 5, 13-19</gospel></feast>
-    <feast date="12-08" name="Immaculate Conception of the B.V.M." nameResId="immaculate_conception" class="I" color="BLUE"><epistle>Eclo 24, 14-16.18-21</epistle><gospel>Lc 1, 26-38</gospel></feast>
+    <feast date="12-08" name="Immaculate Conception of the B.V.M." nameResId="immaculate_conception" class="I" color="WHITE"><epistle>Eclo 24, 14-16.18-21</epistle><gospel>Lc 1, 26-38</gospel></feast>
     <feast date="12-10" name="St. Miltiades, Pope and Martyr" nameResId="miltiades_pope_and_martyr" class="IV" color="RED" ><epistle>2Tm 4,1-8</epistle><gospel>Jo 10,11-16</gospel></feast>
     <feast date="12-11" name="St. Damasus I, Pope and Confessor" nameResId="st_damasus" class="III" color="WHITE"><epistle>1 Pet 5, 1-4</epistle><gospel>Jo 10, 11-16</gospel></feast>
     <feast date="12-13" name="St. Lucy, Virgin and Martyr" nameResId="st_lucy" class="III" color="RED"><epistle>Sb 4, 7-15</epistle><gospel>Mt 25, 1-13</gospel></feast>

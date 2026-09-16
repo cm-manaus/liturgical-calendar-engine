@@ -86,6 +86,25 @@ func ParseColor(s string) LiturgicalColor {
 	}
 }
 
+func (c LiturgicalColor) LocalizedName(translations map[string]string) string {
+	switch c {
+	case ColorWhite, ColorBlue:
+		return "Branco"
+	case ColorRed:
+		return "Vermelho"
+	case ColorGreen:
+		return "Verde"
+	case ColorViolet:
+		return "Roxo"
+	case ColorBlack:
+		return "Preto"
+	case ColorRose:
+		return "Rosa"
+	default:
+		return string(c)
+	}
+}
+
 // CalendarObservanceMetadata contains optional rubrical and source metadata from XML.
 type CalendarObservanceMetadata struct {
 	ObservanceKind       string           `json:"observance_kind,omitempty"`
@@ -237,7 +256,7 @@ func (d LiturgicalDay) displayColor(baseColor, localizedName string) string {
 		return string(ColorWhite)
 	}
 	if d.isMarianFeast(localizedName) || (d.IsPre55() && d.isMarianFeast(d.Name)) {
-		return string(ColorBlue)
+		return string(ColorWhite)
 	}
 	return baseColor
 }
@@ -632,7 +651,31 @@ func build1962LiturgyInfo(
 	epistle, gospel, englishName string,
 ) *LiturgyInfo {
 	lowerName := strings.ToLower(feastName)
-	isSunday := strings.Contains(strings.ToLower(englishName), "sunday") || strings.Contains(lowerName, "sunday")
+	lowerEng := strings.ToLower(englishName)
+	isSunday := strings.Contains(lowerEng, "sunday") || strings.Contains(lowerName, "sunday") || strings.Contains(lowerName, "domingo")
+
+	isBVM := strings.Contains(lowerName, "nossa senhora") ||
+		strings.Contains(lowerName, "virgem maria") ||
+		strings.Contains(lowerName, "rosário") ||
+		strings.Contains(lowerName, "rosary") ||
+		strings.Contains(lowerName, "b.v.m.") ||
+		strings.Contains(lowerEng, "our lady") ||
+		strings.Contains(lowerEng, "b.v.m.") ||
+		strings.Contains(lowerEng, "rosary") ||
+		englishName == "our_lady_saturday" ||
+		englishName == "holy_rosary"
+
+	isApostleOrEvangelist := strings.Contains(lowerName, "apóstol") ||
+		strings.Contains(lowerName, "apostle") ||
+		strings.Contains(lowerName, "evangelist") ||
+		strings.Contains(lowerEng, "apostle") ||
+		strings.Contains(lowerEng, "evangelist") ||
+		englishName == "sts_simon_jude"
+
+	isChristTheKing := englishName == "christ_the_king" ||
+		strings.Contains(lowerName, "cristo rei") ||
+		strings.Contains(lowerName, "christ the king") ||
+		strings.Contains(lowerEng, "christ the king")
 
 	isPenitentialOrBlack := colorName == "VIOLET" || colorName == "ROSE" || colorName == "BLACK"
 
@@ -657,7 +700,7 @@ func build1962LiturgyInfo(
 		} else if liturgicalClass == ClassI || liturgicalClass == ClassII || liturgicalClass == ClassIII {
 			hasGloria = true
 		} else if liturgicalClass == ClassIV {
-			hasGloria = strings.Contains(lowerName, "saturday") || isChristmasTimeFeria || isEasterTimeFeria
+			hasGloria = englishName == "our_lady_saturday" || strings.Contains(lowerName, "sábado") || strings.Contains(lowerName, "saturday") || isChristmasTimeFeria || isEasterTimeFeria
 		}
 	}
 
@@ -667,22 +710,24 @@ func build1962LiturgyInfo(
 			hasCredo = true
 		} else if isSunday {
 			hasCredo = true
-		} else if liturgicalClass == ClassII && isLordFeast {
+		} else if liturgicalClass == ClassII && (isLordFeast || isBVM || isApostleOrEvangelist) {
 			hasCredo = true
 		}
 	}
 
 	prefaceKey := "preface_common"
-	if isLordFeast {
-		prefaceKey = "preface_trinity"
-	}
-	if isSunday {
-		prefaceKey = "preface_trinity"
-	}
-	if strings.Contains(lowerName, "nossa senhora") || strings.Contains(lowerName, "our lady") || strings.Contains(lowerName, "virgem maria") {
+	if isChristTheKing {
+		prefaceKey = "preface_christ_the_king"
+	} else if isApostleOrEvangelist && (liturgicalClass == ClassI || liturgicalClass == ClassII) {
+		prefaceKey = "preface_apostles"
+	} else if isBVM {
 		prefaceKey = "preface_our_lady"
+	} else if isLordFeast {
+		prefaceKey = "preface_trinity"
+	} else if isSunday {
+		prefaceKey = "preface_trinity"
 	}
-	if offsetFromEaster != nil {
+	if offsetFromEaster != nil && prefaceKey == "preface_common" {
 		if *offsetFromEaster >= 0 && *offsetFromEaster <= 48 {
 			prefaceKey = "preface_easter"
 		} else if *offsetFromEaster >= 49 && *offsetFromEaster <= 55 {

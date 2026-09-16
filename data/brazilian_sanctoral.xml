@@ -7,8 +7,8 @@
     <feast date="07-15" name="Bl. Ignatius of Azevedo and Companions" nameResId="bl_ignatius_azevedo" class="III" color="RED"><epistle>Sb 3,1-8</epistle><gospel>Lc 21,9-19</gospel></feast>
     <feast date="07-16" name="Commemoration of B.V.M. of Mount Carmel" nameResId="commem_bvm_carmel" class="III" color="WHITE"><epistle>Eclo 24,23-31</epistle><gospel>Lc 11,27-28</gospel></feast>
     <feast date="08-30" name="St. Rose of Lima" nameResId="st_rose_lima" class="I" color="WHITE"><epistle>2Co 10,17-18; 11,1-2</epistle><gospel>Mt 25,1-13</gospel></feast>
-    <feast date="10-01" name="B.V.M. Mediatrix of All Graces" nameResId="bvm_mediatrix" class="III" color="WHITE"><epistle>Eclo 24,14-16</epistle><gospel>Lc 11,27-28</gospel></feast>
-    <feast date="10-12" name="Our Lady of Aparecida" nameResId="our_lady_aparecida" class="I" color="WHITE"><epistle>Eclo 24,17-21</epistle><gospel>Lc 11,27-28</gospel></feast>
+    <feast date="10-01" name="B.V.M. Mediatrix of All Graces" nameResId="bvm_mediatrix" class="III" color="WHITE"><epistle>Is 55, 1-3,5</epistle><gospel>Jo 19, 25-27</gospel></feast>
+    <feast date="10-12" name="Our Lady of Aparecida" nameResId="our_lady_aparecida" class="I" color="WHITE"><epistle>Ap 12, 1; 5; 14 e 15-16</epistle><gospel>Lc 1, 26-28</gospel></feast>
     <feast date="10-19" name="St. Peter of Alcantara" nameResId="st_peter_alcantara" class="III" color="WHITE"><epistle>Flp 3,7-12</epistle><gospel>Lc 12,32-34</gospel></feast>
     <feast date="10-25" name="St. Frei Galvao" nameResId="st_frei_galvao" class="III" color="WHITE"><epistle>Fl 3,7-12</epistle><gospel>Lc 12,32-34</gospel></feast>
     <feast date="11-05" name="Holy Relics" nameResId="holy_relics" class="III" color="RED"><epistle>Eclo 44,10-15</epistle><gospel>Lc 6,17-23</gospel></feast>

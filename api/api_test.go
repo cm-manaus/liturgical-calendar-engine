@@ -456,3 +456,54 @@ func TestCalendarExportAliases(t *testing.T) {
 	}
 }
 
+func TestOctoberReferenceAlignment(t *testing.T) {
+	router := setupTestRouter(t)
+
+	req := httptest.NewRequest("GET", "/api/v1/calendar/export?mes=10&ano=2026&format=html", nil)
+	w := httptest.NewRecorder()
+	router.ServeHTTP(w, req)
+
+	if w.Code != http.StatusOK {
+		t.Fatalf("Expected 200, got %d: %s", w.Code, w.Body.String())
+	}
+
+	body := w.Body.String()
+	os.WriteFile("/tmp/local_outubro_2026.html", []byte(body), 0644)
+
+	assertions := []struct {
+		desc     string
+		expected string
+	}{
+		{"Day 1 Marian White", "Branco<br>Glória • Sem Credo<br>Prefácio de Nossa Senhora"},
+		{"Day 1 Mediatrix Proper Readings", "Is 55, 1-3,5 • Jo 19, 25-27"},
+		{"Day 3 St Therese Proper Epistle", "Is 66, 12-14 • Mt 18, 1-4"},
+		{"Day 5 Feria Readings from 19th Sunday", "Ef 4, 23-28 • Mt 22, 1-14"},
+		{"Day 7 Rosary Marian White and Credo", "Branco<br>Glória • Credo<br>Prefácio de Nossa Senhora"},
+		{"Day 7 Rosary Readings", "Pr 8, 22-24; 32-35 • Lc 1, 26-38"},
+		{"Day 8 St Bridget Proper Epistle", "I Tm 5, 3-10 • Mt 13, 44-52"},
+		{"Day 9 St John Leonardi Proper Readings", "2 Cor 4, 1-6; 15-18 • Lc 10, 1-9"},
+		{"Day 10 St Francis Borgia Readings", "Eclo 45, 1-6 • Mt 19, 27-29"},
+		{"Day 12 Aparecida White and Credo", "Branco<br>Glória • Credo<br>Prefácio de Nossa Senhora"},
+		{"Day 12 Aparecida Proper Readings", "Ap 12, 1; 5; 14 e 15-16 • Lc 1, 26-28"},
+		{"Day 13 St Edward King Readings", "Sb 31, 8-11 • Lc 12, 35-40"},
+		{"Day 14 St Callistus Proper Readings", "1 Pe 5, 1-4; 10-11 • Mt 16, 13-19"},
+		{"Day 15 St Teresa of Avila Proper Epistle", "2 Cor 10, 17-18; 11, 1-2 • Mt 25, 1-13"},
+		{"Day 21 Feria Readings from 21st Sunday", "Ef 6, 10-17 • Mt 18, 23-35"},
+		{"Day 24 St Raphael Full Gospel", "Tb 12, 7-15 • Jo 5, 1-15"},
+		{"Day 25 Christ the King Preface", "Prefácio de Cristo Rei"},
+		{"Day 25 Christ the King Readings", "Cl 1, 12-20 • Jo 18, 33-37"},
+		{"Day 26 Feria Readings from 22nd Sunday", "Flp 1, 6-11 • Mt 22, 15-21"},
+		{"Day 28 Apostles Credo and Preface", "Vermelho<br>Glória • Credo<br>Prefácio dos Apóstolos"},
+		{"Day 28 Apostles Readings", "Ef 4, 7-13 • Jo 15, 17-25"},
+		{"Day 31 Saturday BVM White and Gloria", "Branco<br>Glória • Sem Credo<br>Prefácio de Nossa Senhora"},
+		{"Day 31 Saturday BVM Readings", "Eclo 24,14-16 • Lc 11,27-28"},
+	}
+
+	for _, a := range assertions {
+		if !strings.Contains(body, a.expected) {
+			t.Errorf("Assertion failed for %s: body does not contain %q", a.desc, a.expected)
+		}
+	}
+}
+
+

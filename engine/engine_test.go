@@ -35,15 +35,15 @@ func Test1962Resolution(t *testing.T) {
 	loc := NewLocalizationManager(getTestDataDir())
 	trans := loc.GetTranslations("pt-br")
 
-	// Test 1: Oct 12, 2026 (Nossa Senhora Aparecida - Class I, White/Blue)
+	// Test 1: Oct 12, 2026 (Nossa Senhora Aparecida - Class I, White)
 	d1 := time.Date(2026, 10, 12, 0, 0, 0, 0, time.UTC)
 	res1 := eng.Resolve(d1, Calendar1962, true)
 	json1 := res1.ToJSON(trans, d1)
 	if json1.MainDay.ClassCode != "I" {
 		t.Errorf("Expected Class I for Oct 12, got %s", json1.MainDay.ClassCode)
 	}
-	if json1.MainDay.Color != "BLUE" {
-		t.Errorf("Expected BLUE color for Marian feast on Oct 12, got %s", json1.MainDay.Color)
+	if json1.MainDay.Color != "WHITE" {
+		t.Errorf("Expected WHITE color for Marian feast on Oct 12, got %s", json1.MainDay.Color)
 	}
 
 	// Test 2: March 25, 2024 (Annunciation in Holy Week -> Transferred in 1962)

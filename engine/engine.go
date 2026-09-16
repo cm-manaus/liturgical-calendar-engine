@@ -44,7 +44,7 @@ var annunciation1962 = LiturgicalDay{
 	Name:            "Annunciation of the B.V.M.",
 	NameResID:       "annunciation",
 	LiturgicalClass: ClassI,
-	Color:           ColorBlue,
+	Color:           ColorWhite,
 	IsLordFeast:     true,
 	CalendarVersion: Calendar1962,
 }
@@ -212,6 +212,8 @@ func (le *LiturgicalEngine) resolve1962(date time.Time, includeBrazilian bool) L
 				NameResID:       "our_lady_saturday",
 				LiturgicalClass: ClassIV,
 				Color:           ColorWhite,
+				Epistle:         "Eclo 24,14-16",
+				Gospel:          "Lc 11,27-28",
 				CalendarVersion: Calendar1962,
 			}
 			return resultWithFilteredComms(ourLady, comms)
@@ -220,6 +222,7 @@ func (le *LiturgicalEngine) resolve1962(date time.Time, includeBrazilian bool) L
 
 	if temporal == nil && sanctoral == nil {
 		seasonColor := le.GetSeasonColor(dateUTC)
+		ep, gosp, _ := getFerialReadings1962(dateUTC)
 		return LiturgicalResult{
 			MainDay: LiturgicalDay{
 				ID:              "feria",
@@ -227,6 +230,8 @@ func (le *LiturgicalEngine) resolve1962(date time.Time, includeBrazilian bool) L
 				NameResID:       "feria",
 				LiturgicalClass: ClassIV,
 				Color:           seasonColor,
+				Epistle:         ep,
+				Gospel:          gosp,
 				CalendarVersion: Calendar1962,
 			},
 			Commemorations:  []LiturgicalDay{},
@@ -244,12 +249,15 @@ func (le *LiturgicalEngine) resolve1962(date time.Time, includeBrazilian bool) L
 
 	if temporal == nil && sanctoral != nil {
 		seasonColor := le.GetSeasonColor(dateUTC)
+		ep, gosp, _ := getFerialReadings1962(dateUTC)
 		feria := LiturgicalDay{
 			ID:              "feria",
 			Name:            "Feria",
 			NameResID:       "feria",
 			LiturgicalClass: ClassIV,
 			Color:           seasonColor,
+			Epistle:         ep,
+			Gospel:          gosp,
 			CalendarVersion: Calendar1962,
 		}
 		if sanctoral.LiturgicalClass == ClassIV {

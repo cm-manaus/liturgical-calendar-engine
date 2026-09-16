@@ -108,6 +108,8 @@ func (s *Sanctorale) GetAllFeasts(date time.Time) []LiturgicalDay {
 			LiturgicalClass: ClassI,
 			Color:           ColorWhite,
 			IsLordFeast:     true,
+			Epistle:         "Cl 1, 12-20",
+			Gospel:          "Jo 18, 33-37",
 			CalendarVersion: Calendar1962,
 		})
 	}
