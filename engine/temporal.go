@@ -338,22 +338,28 @@ func (tc *TemporalCycle) GetDay(date time.Time) *LiturgicalDay {
 	}
 
 	// 6. Sundays after Pentecost
+	//
+	// Nomeados pela POSICAO ordinal (1o, 2o ... Ultimo Domingo depois de
+	// Pentecostes). Quando a Pascoa e cedo e ha mais de 24 domingos, os que
+	// ficam entre o 23o e o ultimo rezam as Missas dos Domingos depois de
+	// Epifania que sobraram (retomadas), com o 6o caindo sempre imediatamente
+	// antes do Ultimo. O Ultimo reza sempre a Missa do 24o ("Dicit Dominus").
 	if diffFromEaster > 56 && date.Weekday() == time.Sunday && date.Before(advent1) {
 		trinityPlus7 := easter.AddDate(0, 0, 56)
 		totalDays := int(advent1.Sub(trinityPlus7).Hours()/24) - 1
 		totalSundaysAfterPentecost := totalDays/7 + 1
 		sundayNum := (diffFromEaster-56)/7 + 1
 
+		// Ultimo Domingo depois de Pentecostes (sempre a Missa do 24o).
 		if sundayNum == totalSundaysAfterPentecost {
 			ep, gosp := "", ""
 			if r, ok := sundayReadingsAfterPentecost[24]; ok {
 				ep, gosp = r[0], r[1]
 			}
 			return &LiturgicalDay{
-				ID:              "sunday_after_pentecost",
-				Name:            "24th Sunday after Pentecost",
-				NameResID:       "sunday_after_pentecost",
-				NameArgs:        []any{"ord_24"},
+				ID:              "last_sunday_after_pentecost",
+				Name:            "Last Sunday after Pentecost",
+				NameResID:       "last_sunday_after_pentecost",
 				LiturgicalClass: ClassII,
 				Color:           ColorGreen,
 				Epistle:         ep,
@@ -362,49 +368,26 @@ func (tc *TemporalCycle) GetDay(date time.Time) *LiturgicalDay {
 			}
 		}
 
-		if totalSundaysAfterPentecost > 24 {
+		// Domingos retomados (entre o 23o e o ultimo): nomeados pela posicao,
+		// rezando a Missa do Domingo depois de Epifania que sobrou (o 6o fica
+		// imediatamente antes do Ultimo).
+		if totalSundaysAfterPentecost > 24 && sundayNum > 23 {
 			numExtra := totalSundaysAfterPentecost - 24
-			if sundayNum > 23 && sundayNum <= 23+numExtra {
-				septOffset := int(septuagesima.Sub(sundayAfterEpiphany1).Hours() / 24)
-				lastEpiphanySunday := (septOffset-1)/7 + 1
-				omittedStart := lastEpiphanySunday + 1
-				currentOmitted := omittedStart + (sundayNum - 24)
-				if currentOmitted >= 3 && currentOmitted <= 6 {
-					var arg any = currentOmitted
-					if currentOmitted >= 1 && currentOmitted <= 5 {
-						arg = fmt.Sprintf("ord_%d", currentOmitted)
-					}
-					return &LiturgicalDay{
-						ID:              "sunday_after_epiphany",
-						Name:            fmt.Sprintf("%s Sunday after Epiphany (Resumed)", getEnglishOrdinal(currentOmitted)),
-						NameResID:       "sunday_after_epiphany",
-						NameArgs:        []any{arg},
-						LiturgicalClass: ClassII,
-						Color:           ColorGreen,
-						CalendarVersion: Calendar1962,
-					}
-				}
-			}
-
-			if sundayNum > 23+numExtra {
-				ep, gosp := "", ""
-				if r, ok := sundayReadingsAfterPentecost[24]; ok {
-					ep, gosp = r[0], r[1]
-				}
+			epiphanyMass := 6 - numExtra + (sundayNum - 23)
+			if epiphanyMass >= 3 && epiphanyMass <= 6 {
 				return &LiturgicalDay{
 					ID:              "sunday_after_pentecost",
-					Name:            "24th Sunday after Pentecost",
-					NameResID:       "sunday_after_pentecost",
-					NameArgs:        []any{"ord_24"},
+					Name:            fmt.Sprintf("%s Sunday after Pentecost (Mass of the %s Sunday after Epiphany)", getEnglishOrdinal(sundayNum), getEnglishOrdinal(epiphanyMass)),
+					NameResID:       "sunday_after_pentecost_resumed",
+					NameArgs:        []any{sundayNum, epiphanyMass},
 					LiturgicalClass: ClassII,
 					Color:           ColorGreen,
-					Epistle:         ep,
-					Gospel:          gosp,
 					CalendarVersion: Calendar1962,
 				}
 			}
 		}
 
+		// Domingos comuns depois de Pentecostes (1o-23o).
 		if sundayNum <= 23 {
 			var arg any = sundayNum
 			if sundayNum >= 1 && sundayNum <= 5 {

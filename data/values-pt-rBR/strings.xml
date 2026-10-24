@@ -16,6 +16,8 @@
     <string name="sunday_of_advent">%1$s Domingo do Advento</string>
     <string name="sunday_of_advent_gaudete">3º Domingo do Advento (Gaudete)</string>
     <string name="sunday_after_pentecost">%1$s Domingo depois de Pentecostes</string>
+    <string name="last_sunday_after_pentecost">Último Domingo depois de Pentecostes</string>
+    <string name="sunday_after_pentecost_resumed">%1$s Domingo depois de Pentecostes (Missa do %2$s Domingo depois da Epifania)</string>
     <string name="sunday_after_easter">%1$s Domingo depois da Páscoa</string>
     <string name="sunday_after_easter_good_shepherd">2º Domingo depois da Páscoa (Bom Pastor)</string>
     <string name="lent_sunday">%1$s Domingo da Quaresma</string>
