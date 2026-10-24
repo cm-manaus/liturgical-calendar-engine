@@ -15,6 +15,8 @@
     <!-- Seasons/Cycle Terms -->
     <string name="sunday_of_advent">%1$s Sunday of Advent</string>
     <string name="sunday_after_pentecost">%1$s Sunday after Pentecost</string>
+    <string name="last_sunday_after_pentecost">Last Sunday after Pentecost</string>
+    <string name="sunday_after_pentecost_resumed">%1$s Sunday after Pentecost (Mass of the %2$s Sunday after Epiphany)</string>
     <string name="sunday_after_easter">%1$s Sunday after Easter</string>
     <string name="sunday_after_easter_good_shepherd">2nd Sunday after Easter (Good Shepherd Sunday)</string>
     <string name="lent_sunday">%1$s Sunday of Lent</string>
